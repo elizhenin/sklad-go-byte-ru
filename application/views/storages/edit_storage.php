@@ -3,7 +3,7 @@
         <tbody>
         <tr>
 <td style="text-align: right">
-    Город:
+    Название:
 </td>
             <td style="text-align: left">
 <input type="text" name="name" value="<?=(!empty($item['name']))?$item['name']:''?>"/>
@@ -11,36 +11,50 @@
         </tr>
         <tr>
             <td style="text-align: right">
-                login & alias:
+                present:
             </td>
             <td style="text-align: left">
-                <input type="text" name="alias" value="<?=(!empty($item['login']))?$item['login']:''?>" placeholder="Оставьте пустым, будет создан автоматически"/>
+                <input type="checkbox" name="present" <?=(!empty($item['present']))?'checked="checked"':''?>"/>
             </td>
         </tr>
         <tr>
             <td style="text-align: right">
-                Права:
+               Город:
             </td>
             <td style="text-align: left">
-                <select name="rights">
-                    <option value="sale" <?=(!empty($item['rights'])&&$item['rights']=='sale')?'selected="selected"':''?>>Продавец</option>
-                    <option value="content" <?=(!empty($item['rights'])&&$item['rights']=='content')?'selected="selected"':''?>>Контент-менеджер</option>
-                    <option value="super" <?=(!empty($item['rights'])&&$item['rights']=='super')?'selected="selected"':''?>>Суперпользователь</option>
+                <select name="id_citys">
+                    <?php
+                    if(!empty($citys)){
+                        foreach($citys as $city){
+                            ?>
+                            <option value="<?=$city['id']?>" <?=(!empty($item['id_citys'])&&$item['id_citys']==$city['id'])?'selected="selected"':''?>><?=$city['name']?></option>
+                    <?php
+                        }
+                    }
+                    ?>
                     </select>
             </td>
         </tr>
         <tr>
             <td style="text-align: right">
-                Пароль:
+                arrive:
             </td>
             <td style="text-align: left">
-                <input type="password" name="password" placeholder="Задать новый"/>
+                <input type="text" name="arrive" value="<?=(!empty($item['arrive']))?$item['arrive']:''?>"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: right">
+                transit:
+            </td>
+            <td style="text-align: left">
+                <input type="checkbox" name="transit" <?=(!empty($item['transit']))?'checked="checked"':''?>"/>
             </td>
         </tr>
         </tbody>
     </table>
     <input type="hidden" name="operation" value="<?=$operation?>">
-    <input type="hidden" name="users_id" value="<?=(!empty($item['id']))?$item['id']:''?>">
+    <input type="hidden" name="storage_id" value="<?=(!empty($item['id']))?$item['id']:''?>">
     <input type="submit" value="Сохранить">
 </form>
 

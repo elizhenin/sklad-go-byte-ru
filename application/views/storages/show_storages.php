@@ -1,4 +1,4 @@
-<h1>Пользователи</h1>
+<h1>Склады</h1>
     <form name="form_add" method="POST" style="float:left"><input
             type="hidden" name="operation" value="add"/><input type="submit" value="Добавить"/>
     </form>
@@ -8,9 +8,10 @@
     <thead style="background-color: dimgray">
     <td></td>
     <td>Город</td>
-    <td>Логин</td>
-    <td>Входил</td>
-    <td>Права</td>
+    <td>Название</td>
+    <td>present</td>
+    <td>arrive</td>
+    <td>Транзит</td>
     </thead>
     <tbody>
     <?php
@@ -21,7 +22,7 @@
                 <td>
 
                     <form name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"><input
-                            type="hidden" name="users_id"
+                            type="hidden" name="storages_id"
                             value="<?= $item['id'] ?>"/><input
                             type="hidden" name="operation" value="edit"/><input type="submit" value="&#x270E;" title="Редактировать"/>
                     </form>
@@ -30,7 +31,7 @@
                         ?>
                         <form name="form<?= $item['id'] ?>enable" method="POST" style="display:inline;float:left;">
                             <input
-                                type="hidden" name="users_id"
+                                type="hidden" name="storages_id"
                                 value="<?= $item['id'] ?>"/><input
                                 type="hidden" name="operation" value="enable"/><input type="submit" value="&#10005;" title="Включить"/>
                         </form>
@@ -39,7 +40,7 @@
                         ?>
                         <form name="form<?= $item['id'] ?>disable" method="POST" style="display:inline;float:left;">
                             <input
-                                type="hidden" name="users_id"
+                                type="hidden" name="storages_id"
                                 value="<?= $item['id'] ?>"/><input
                                 type="hidden" name="operation" value="disable"/><input type="submit" value="&#10003;" title="Отключить"/>
                         </form>
@@ -47,14 +48,11 @@
                     }
                         ?>
                 </td>
+                <td><?= $item['city'] ?></td>
                 <td><?= $item['name'] ?></td>
-                <td><?= $item['login'] ?></td>
-                <td><?= $item['lastenter'] ?><br> IP <?= $item['lastip'] ?></td>
-                <td>
-                    <?=($item['rights']=='super')?'Суперпользователь':''?>
-                    <?=($item['rights']=='content')?'Контент-менеджер':''?>
-                    <?=($item['rights']=='sale')?'Продавец':''?>
-                </td>
+                <td><?= (empty($item['present']))?'&#10005;':'&#10003;' ?></td>
+                <td><?= $item['arrive'] ?></td>
+                <td><?= (empty($item['transit']))?'&#10005;':'&#10003;' ?></td>
             </tr>
         <?php
         }

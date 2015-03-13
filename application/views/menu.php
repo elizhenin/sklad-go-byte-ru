@@ -5,6 +5,9 @@
         <li>
             <a href="/sklad/users">Пользователи</a>
         </li>
+        <li>
+            <a href="/sklad/storages">Склады</a>
+        </li>
     <?php
     }
     ?>

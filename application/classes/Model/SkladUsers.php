@@ -8,37 +8,11 @@ class Model_SkladUsers extends Model
 //sale = sale manager
 
 
-    public function toUrl($str)
-    {
-        $tr = array(
-            "а" => "a", "б" => "b",
-            "в" => "v", "г" => "g", "д" => "d", "е" => "e", "ж" => "zh",
-            "з" => "z", "и" => "i", "й" => "y", "к" => "k", "л" => "l",
-            "м" => "m", "н" => "n", "о" => "o", "п" => "p", "р" => "r",
-            "с" => "s", "т" => "t", "у" => "u", "ф" => "f", "х" => "h",
-            "ц" => "ts", "ч" => "ch", "ш" => "sh", "щ" => "sch", "ъ" => "y",
-            "ы" => "yi", "ь" => "", "э" => "e", "ю" => "yu", "я" => "ya",
-            " " => "-"
-        );
-
-        if (!preg_match('//u', $str)) {
-            $str = iconv('cp1251', 'UTF-8', $str);
-        }
-
-        $str = mb_strtolower($str, 'utf-8');
-        $str = trim($str);
-        $urlstr = strtr($str, $tr);
-        $urlstr = preg_replace('/[^A-Za-z0-9_\-]/', '', $urlstr);
-        $urlstr = preg_replace('/\-+/', '-', $urlstr);
-        return $urlstr;
-    }
-
-
     public function NewUser($post)
     {
         $post['name'] = trim(htmlspecialchars($post['name']));
         if (empty($post['alias'])) {
-            $post['alias'] = $this->toUrl($post['name']);
+            $post['alias'] = Alias::textToAlias($post['name']);
         } else {
             $post['alias'] = trim(htmlspecialchars($post['alias']));
         }
@@ -55,14 +29,15 @@ class Model_SkladUsers extends Model
     public function UpdateUser($post)
     {
         $user = $this->GetById($post['users_id']);
-        $post['name'] = trim(htmlspecialchars($post['name']));
-        if (empty($post['alias'])) {
-            $post['alias'] = $this->toUrl($post['name']);
-        } else {
-            $post['alias'] = trim(htmlspecialchars($post['alias']));
-        }
-        $post['rights'] = trim(htmlspecialchars($post['rights']));
         if ($user) {
+            $post['name'] = trim(htmlspecialchars($post['name']));
+            if (empty($post['alias'])) {
+                $post['alias'] = Alias::textToAlias($post['name']);
+            } else {
+                $post['alias'] = trim(htmlspecialchars($post['alias']));
+            }
+            $post['rights'] = trim(htmlspecialchars($post['rights']));
+
             DB::update('citys')
                 ->set(array(
                         'name' => $post['name'],

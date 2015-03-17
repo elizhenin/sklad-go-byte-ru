@@ -155,3 +155,12 @@
 #13 /var/www/sklad-go-byte-ru/system/classes/Kohana/Request.php(997): Kohana_Request_Client->execute(Object(Request))
 #14 /var/www/sklad-go-byte-ru/index.php(118): Kohana_Request->execute()
 #15 {main} in /var/www/sklad-go-byte-ru/application/views/models/show_categories.php:120
+2015-03-17 09:10:33 --- EMERGENCY: ErrorException [ 8 ]: Undefined offset: 0 ~ APPPATH/classes/Controller/Sklad.php [ 215 ] in /var/www/sklad-go-byte-ru/application/classes/Controller/Sklad.php:215
+2015-03-17 09:10:33 --- DEBUG: #0 /var/www/sklad-go-byte-ru/application/classes/Controller/Sklad.php(215): Kohana_Core::error_handler(8, 'Undefined offse...', '/var/www/sklad-...', 215, Array)
+#1 /var/www/sklad-go-byte-ru/system/classes/Kohana/Controller.php(84): Controller_Sklad->action_categories()
+#2 [internal function]: Kohana_Controller->execute()
+#3 /var/www/sklad-go-byte-ru/system/classes/Kohana/Request/Client/Internal.php(97): ReflectionMethod->invoke(Object(Controller_Sklad))
+#4 /var/www/sklad-go-byte-ru/system/classes/Kohana/Request/Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#5 /var/www/sklad-go-byte-ru/system/classes/Kohana/Request.php(997): Kohana_Request_Client->execute(Object(Request))
+#6 /var/www/sklad-go-byte-ru/index.php(118): Kohana_Request->execute()
+#7 {main} in /var/www/sklad-go-byte-ru/application/classes/Controller/Sklad.php:215

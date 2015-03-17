@@ -156,10 +156,15 @@ Route::set('ajax', 'ajax/<action>')
         'controller' => 'ajax'
     ));
 
-Route::set('sklad_models_categories', 'sklad/categories(/<alias>)',array('alias'=>'[\w-/.]+'))
+Route::set('sklad_categories', 'sklad/categories(/<alias>)',array('alias'=>'[\w-/.]+'))
     ->defaults(array(
         'controller' => 'Sklad',
         'action' => 'categories',
+    ));
+Route::set('specifications', 'sklad/specifications(/<model>)', array('alias'=>'[\w-/.]+'))
+    ->defaults(array(
+        'controller' => 'Sklad',
+        'action'     => 'specifications'
     ));
 Route::set('sklad', 'sklad(/<action>)', array('action' => '[0-9a-zA-Z_-]+'))
     ->defaults(array(

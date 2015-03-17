@@ -1,18 +1,17 @@
-
+<h1><?php
+    if (!empty($alias)) {
+        ?>
+        <form name="form_back" method="GET" style="float:left" action="/sklad/categories/<?= substr($alias, 0, strrpos($alias, '/')) ?>">
+            <input type="submit" value="<- Назад"/>
+        </form>
+    <?php } ?> / <?=(empty($name))?'':$name?></h1>
 
 
 <table style="width:100%">
     <tbody>
     <tr style="width: 50%">
         <td>
-            <h1>Категории</h1>
-            <?php
-            if (!empty($alias)) {
-                ?>
-                <form name="form_back" method="GET" style="float:left" action="/sklad/categories/<?= substr($alias, 0, strrpos($alias, '/')) ?>">
-                    <input type="submit" value="<- Назад"/>
-                </form>
-            <?php } ?>
+            <h2>Подкатегории</h2>
             <form name="form_add" method="POST" style="float:left"><input
                     type="hidden" name="operation" value="add"/><input type="submit" value="Добавить" <?=($rights=='super')?'':'disabled="disabled"'?>/>
             </form>

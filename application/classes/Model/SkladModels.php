@@ -79,7 +79,7 @@ class Model_SkladModels extends Model
                 }
 
                 DB::delete('models_categorys')
-                    ->where('id_models','=',$post['id'])
+                    ->where('id_models', '=', $post['id'])
                     ->execute();
 
                 $cat->execute();
@@ -122,16 +122,16 @@ class Model_SkladModels extends Model
             $select = $select[0];
 
             $categorys = DB::select(
-                array('id_categorys','id_categorys')
+                array('id_categorys', 'id_categorys')
             )
                 ->from('models_categorys')
-                ->where('id_models','=',$id)
+                ->where('id_models', '=', $id)
                 ->execute()
                 ->as_array();
 
             $cat = $this->CategoriesFullName(true);
-            foreach($categorys as $one){
-                if($cat[$one['id_categorys']]['allowed']){
+            foreach ($categorys as $one) {
+                if ($cat[$one['id_categorys']]['allowed']) {
                     $select['id_categorys'] = $one['id_categorys'];
                 }
             }
@@ -157,9 +157,9 @@ class Model_SkladModels extends Model
 
     public function GetCurrent($category)
     {
-        if(empty($category)){
+        if (empty($category)) {
             $select = $this->GetAll();
-        }else {
+        } else {
             $select = DB::select(
                 array('models.id', 'id'),
                 array('models.sku', 'sku'),
@@ -242,7 +242,9 @@ class Model_SkladModels extends Model
     {
         $cache = Cache::instance();
         if ($result = $cache->get('CategoriesFullName', false)) {
-            if(!$raw){$result = $this->array_orderby($result, 'name', SORT_ASC);}
+            if (!$raw) {
+                $result = $this->array_orderby($result, 'name', SORT_ASC);
+            }
             return $result;
         } else {
             $tmp = DB::select()
@@ -269,17 +271,21 @@ class Model_SkladModels extends Model
             unset($categories_before);
 
 
-
             $cache->set('CategoriesFullName', $categories, 1800);
-            if(!$raw){$categories = $this->array_orderby($categories, 'name', SORT_ASC);}
+            if (!$raw) {
+                $categories = $this->array_orderby($categories, 'name', SORT_ASC);
+            }
             return $categories;
         }
     }
 
-    public function CategoriesFullNameAllowed(){
+    public function CategoriesFullNameAllowed()
+    {
         $categories = $this->CategoriesFullName();
-        foreach($categories as $key =>$cat){
-            if (!$cat['allowed']){unset($categories[$key]);}
+        foreach ($categories as $key => $cat) {
+            if (!$cat['allowed']) {
+                unset($categories[$key]);
+            }
         }
         return $categories;
     }
@@ -361,4 +367,31 @@ class Model_SkladModels extends Model
             ->where('id', '=', $id)
             ->execute();
     }
+
+    public function SpecificationsGetCurrent($id_models)
+    {
+
+        $records = DB::select()
+            ->from('specifications_models')
+            ->where('id_models', '=', $id_models)
+            ->execute()
+            ->as_array();
+        return $records;
+    }
+
+    public function NewSpecification($post)
+    {
+
+    }
+
+    public function UpdateSpecification($post)
+    {
+
+    }
+
+    public function SpecificationGetById($id)
+    {
+        return false;
+    }
+
 }

@@ -51,7 +51,7 @@
                 </td>
                 <td><?= $item['sku'] ?></td>
                 <td><?= $item['name'] ?></td>
-                <td><?= $item['category'] ?></td>
+                <td></td>
                 <td><?= $item['price'] ?></td>
                 <td><?= $item['in_price'] ?></td>
                 <td><?= $item['modificated'] ?></td>

@@ -26,6 +26,10 @@ class Model_SkladModels extends Model
 
     public function NewModel($post)
     {
+        $categories = $this->CategoriesFullName(true);
+        $category = $post['id_categorys'];
+
+
         $post['name'] = trim(htmlspecialchars($post['name']));
         $post['sku'] = trim(htmlspecialchars($post['sku']));
 
@@ -46,9 +50,19 @@ class Model_SkladModels extends Model
         $post['modificated'] = DB::expr('NOW()');
         unset($post['operation']);
         unset($post['id']);
-        DB::insert('models', array_keys($post))
+        unset($post['id_categorys']);
+        $models = DB::insert('models', array_keys($post))
             ->values($post)
             ->execute();
+
+        $models = $models[0];
+        if (!empty($categories[$category]['includes'])) {
+            $cat = DB::insert('models_categorys', array('id_models', 'id_categorys'));
+            foreach ($categories[$category]['includes'] as $one) {
+                $cat->values(array($models, $one));
+            }
+            $cat->execute();
+        }
     }
 
     public function UpdateModel($post)
@@ -56,6 +70,21 @@ class Model_SkladModels extends Model
         $model = $this->GetById($post['id']);
 
         if ($model) {
+            $categories = $this->CategoriesFullName(true);
+
+            if (!empty($categories[$post['id_categorys']]['includes'])) {
+                $cat = DB::insert('models_categorys', array('id_models', 'id_categorys'));
+                foreach ($categories[$post['id_categorys']]['includes'] as $one) {
+                    $cat->values(array($post['id'], $one));
+                }
+
+                DB::delete('models_categorys')
+                    ->where('id_models','=',$post['id'])
+                    ->execute();
+
+                $cat->execute();
+            }
+
             $post['name'] = trim(htmlspecialchars($post['name']));
             $post['sku'] = trim(htmlspecialchars($post['sku']));
 
@@ -70,11 +99,13 @@ class Model_SkladModels extends Model
 
             unset($post['id']);
             unset($post['operation']);
+            unset($post['id_categorys']);
 
             DB::update('models')
                 ->set($post)
                 ->where('id', '=', $model['id'])
                 ->execute();
+
         }
     }
 
@@ -88,7 +119,24 @@ class Model_SkladModels extends Model
             ->execute()
             ->as_array();
         if (!empty($select)) {
-            return $select[0];
+            $select = $select[0];
+
+            $categorys = DB::select(
+                array('id_categorys','id_categorys')
+            )
+                ->from('models_categorys')
+                ->where('id_models','=',$id)
+                ->execute()
+                ->as_array();
+
+            $cat = $this->CategoriesFullName(true);
+            foreach($categorys as $one){
+                if($cat[$one['id_categorys']]['allowed']){
+                    $select['id_categorys'] = $one['id_categorys'];
+                }
+            }
+
+            return $select;
         } else {
             return false;
         }
@@ -96,22 +144,38 @@ class Model_SkladModels extends Model
 
     public function GetAll()
     {
-        $select = DB::select(
-            array('models.id', 'id'),
-            array('models.sku', 'sku'),
-            array('models.name', 'name'),
-            array('models.alias', 'alias'),
-            array('categorys.name', 'category'),
-            array('models.modificated', 'modificated'),
-            array('models.price', 'price'),
-            array('models.in_price', 'in_price'),
-            array('models.deleted', 'deleted')
-        )
+        $select = DB::select()
             ->from('models')
-            ->join('categorys')
-            ->on('categorys.id', '=', 'models.id_categorys')
             ->execute()
             ->as_array();
+        if (!empty($select)) {
+            return $select;
+        } else {
+            return false;
+        }
+    }
+
+    public function GetCurrent($category)
+    {
+        if(empty($category)){
+            $select = $this->GetAll();
+        }else {
+            $select = DB::select(
+                array('models.id', 'id'),
+                array('models.sku', 'sku'),
+                array('models.name', 'name'),
+                array('models.price', 'price'),
+                array('models.in_price', 'in_price'),
+                array('models.modificated', 'modificated'),
+                array('models.deleted', 'deleted')
+            )
+                ->from('models')
+                ->join('models_categorys')
+                ->on('models.id', '=', 'models_categorys.id_models')
+                ->where('models_categorys.id_categorys', '=', $category)
+                ->execute()
+                ->as_array();
+        }
         if (!empty($select)) {
             return $select;
         } else {
@@ -174,30 +238,49 @@ class Model_SkladModels extends Model
 
     }
 
-    public function CategoriesFullName()
+    public function CategoriesFullName($raw = false)
     {
-        $tmp =  DB::select(
-        )
-            ->from('categorys')
-            ->execute()
-            ->as_array();
-        $categories = array();
-        foreach($tmp as $one)
-        {
-            $categories[$one['id']] = $one;
-        }
-        unset($tmp);
-        $categories_before = $categories;
-        foreach($categories as $category)
-        {
-            $parent = $category['id_parent'];
-            while($parent != 0){
-                $categories[$category['id']]['name']=$categories_before[$parent]['name'].' / '. $categories[$category['id']]['name'];
-                $parent = $categories[$parent]['id_parent'];
+        $cache = Cache::instance();
+        if ($result = $cache->get('CategoriesFullName', false)) {
+            if(!$raw){$result = $this->array_orderby($result, 'name', SORT_ASC);}
+            return $result;
+        } else {
+            $tmp = DB::select()
+                ->from('categorys')
+                ->execute()
+                ->as_array();
+            $categories = array();
+            foreach ($tmp as $one) {
+                $categories[$one['id']] = $one;
+                $categories[$one['id']]['includes'][$one['id']] = $one['id'];
+                $categories[$one['id']]['allowed'][$one['id']] = true;
             }
+            unset($tmp);
+            $categories_before = $categories;
+            foreach ($categories as $category) {
+                $parent = $category['id_parent'];
+                while ($parent != 0) {
+                    $categories[$category['id']]['name'] = $categories_before[$parent]['name'] . ' / ' . $categories[$category['id']]['name'];
+                    $categories[$category['id']]['includes'][$categories_before[$parent]['id']] = $categories_before[$parent]['id'];
+                    $categories[$parent]['allowed'] = false;
+                    $parent = $categories[$parent]['id_parent'];
+                }
+            }
+            unset($categories_before);
+
+
+
+            $cache->set('CategoriesFullName', $categories, 1800);
+            if(!$raw){$categories = $this->array_orderby($categories, 'name', SORT_ASC);}
+            return $categories;
         }
-        unset($categories_before);
-        $categories = $this->array_orderby($categories,'name',SORT_ASC);
+    }
+
+    public function CategoriesFullNameAllowed(){
+        $categories = $this->CategoriesFullName();
+        foreach($categories as $key =>$cat){
+            if (!$cat['allowed']){unset($categories[$key]);}
+        }
         return $categories;
     }
 
@@ -245,6 +328,8 @@ class Model_SkladModels extends Model
         DB::insert('categorys', array_keys($item))
             ->values($item)
             ->execute();
+        $cache = Cache::instance();
+        $cache->delete('CategoriesFullName');
     }
 
 
@@ -265,6 +350,15 @@ class Model_SkladModels extends Model
             ->set($item)
             ->where('id', '=', $id)
             ->execute();
+        $cache = Cache::instance();
+        $cache->delete('CategoriesFullName');
     }
 
+    public function CategorySetDeletedById($id, $deleted)
+    {
+        DB::update('categorys')
+            ->set(array('deleted' => $deleted))
+            ->where('id', '=', $id)
+            ->execute();
+    }
 }

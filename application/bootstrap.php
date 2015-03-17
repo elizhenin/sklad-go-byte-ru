@@ -122,7 +122,7 @@ Kohana::$config->attach(new Config_File);
  */
 Kohana::modules(array(
 	// 'auth'       => MODPATH.'auth',       // Basic authentication
-// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
+ 'cache'      => MODPATH.'cache',      // Caching with multiple backends
 	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
 'database'   => MODPATH.'database',   // Database access
 	// 'image'      => MODPATH.'image',      // Image manipulation
@@ -156,10 +156,10 @@ Route::set('ajax', 'ajax/<action>')
         'controller' => 'ajax'
     ));
 
-Route::set('sklad_models_categories', 'sklad/models_categories(/<alias>)',array('alias'=>'[\w-/.]+'))
+Route::set('sklad_models_categories', 'sklad/categories(/<alias>)',array('alias'=>'[\w-/.]+'))
     ->defaults(array(
         'controller' => 'Sklad',
-        'action' => 'models_categories',
+        'action' => 'categories',
     ));
 Route::set('sklad', 'sklad(/<action>)', array('action' => '[0-9a-zA-Z_-]+'))
     ->defaults(array(

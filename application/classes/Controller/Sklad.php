@@ -62,11 +62,11 @@ class Controller_Sklad extends Controller_SkladTmp
                 break;
             case 'new':
                 $ModelUsers->NewUser($UsersPOST);
-                HTTP::redirect('/sklad/users');
+                $this->redirect($this->request->referrer());
                 break;
             case 'update':
                 $ModelUsers->UpdateUser($UsersPOST);
-                HTTP::redirect('/sklad/users');
+                $this->redirect($this->request->referrer());
                 break;
             case 'edit':
                 $content = View::factory('users/edit_user');
@@ -79,11 +79,11 @@ class Controller_Sklad extends Controller_SkladTmp
                 break;
             case 'disable':
                 $ModelUsers->SetDeletedById($UsersPOST['users_id'], '1');
-                HTTP::redirect('/sklad/users');
+                $this->redirect($this->request->referrer());
                 break;
             case 'enable':
                 $ModelUsers->SetDeletedById($UsersPOST['users_id'], '0');
-                HTTP::redirect('/sklad/users');
+                $this->redirect($this->request->referrer());
                 break;
         }
 
@@ -149,6 +149,7 @@ class Controller_Sklad extends Controller_SkladTmp
             $ModelsPOST['operation'] = 'list';
         }
         $ModelModels = New Model_SkladModels();
+        $cache = Cache::instance();
         switch ($ModelsPOST['operation']) {
             case 'list':
                 $content = View::factory('models/show_models');
@@ -156,41 +157,43 @@ class Controller_Sklad extends Controller_SkladTmp
                 break;
             case 'new':
                 $ModelModels->NewModel($ModelsPOST);
-                HTTP::redirect('/sklad/models');
+                $this->redirect($cache->get('ReturnTo', false));
                 break;
             case 'update':
                 $ModelModels->UpdateModel($ModelsPOST);
-                HTTP::redirect('/sklad/models');
+                $this->redirect($cache->get('ReturnTo', false));
                 break;
             case 'edit':
                 $content = View::factory('models/edit_model');
                 $content->item = $ModelModels->GetById($ModelsPOST['models_id']);
-                $content->categorys = $ModelModels->CategoriesFullName();
+                $content->categorys = $ModelModels->CategoriesFullNameAllowed();
                 $content->operation = 'update';
+                $cache->set('ReturnTo', $this->request->referrer());
                 break;
             case 'add':
                 $content = View::factory('models/edit_model');
-                $content->categorys = $ModelModels->CategoriesFullName();
+                $content->categorys = $ModelModels->CategoriesFullNameAllowed();
                 $content->operation = 'new';
+                $cache->set('ReturnTo', $this->request->referrer());
                 break;
             case 'disable':
                 $ModelModels->SetDeletedById($ModelsPOST['models_id'], '1');
-                HTTP::redirect('/sklad/models');
+                $this->redirect($this->request->referrer());
                 break;
             case 'enable':
                 $ModelModels->SetDeletedById($ModelsPOST['models_id'], '0');
-                HTTP::redirect('/sklad/models');
+                $this->redirect($this->request->referrer());
                 break;
         }
 
         $this->content = $content;
     }
 
-    public function action_models_categories()
+    public function action_categories()
     {
         $ses = Session::instance();
         $user = $ses->get('user', false);
-        if(($user['rights']!='super')) HTTP::redirect('/sklad/main');
+        if(($user['rights']=='sale')) HTTP::redirect('/sklad/main');
 
         $CategoriesPOST = $this->request->post();
         if (empty($CategoriesPOST['operation'])) {
@@ -203,39 +206,54 @@ class Controller_Sklad extends Controller_SkladTmp
             case 'list':
                 if($check){
                     $content = View::factory('models/show_categories');
+                    $content->rights = $user['rights'];
                     $content->alias = $alias;
-                    $content->items = $ModelModels->CategoriesGetCurrent($check);
+                    $items['categories'] = $ModelModels->CategoriesGetCurrent($check);
+                    $items['models'] = $ModelModels->GetCurrent($check['id']);
+                    $content->items = $items;
                 }else throw new HTTP_Exception_404;
                 break;
             case 'new':
-                $ModelModels->AddCategory($CategoriesPOST,$check['id']);
+                if(($user['rights']=='super')) {
+                    $ModelModels->AddCategory($CategoriesPOST, $check['id']);
+                }
                 $this->redirect($this->request->referrer());
                 break;
             case 'update':
-                $ModelModels->CategoriesUpdateRecord($CategoriesPOST);
+                if(($user['rights']=='super')) {
+                    $ModelModels->CategoriesUpdateRecord($CategoriesPOST);
+                }
                 $this->redirect($this->request->referrer());
                 break;
             case 'edit':
-                $content = View::factory('models/edit_category');
-                $content->item = $ModelModels->CategoriesGetById($CategoriesPOST['category_id']);
-                $content->categorys = $ModelModels->CategoriesFullName();
-                $content->parent = $check['id'];
-                $content->operation = 'update';
+                if(($user['rights']=='super')) {
+                    $content = View::factory('models/edit_category');
+                    $content->item = $ModelModels->CategoriesGetById($CategoriesPOST['category_id']);
+                    $content->categorys = $ModelModels->CategoriesFullName();
+                    $content->parent = $check['id'];
+                    $content->operation = 'update';
+                }else $this->redirect($this->request->referrer());
                 break;
             case 'add':
-                $content = View::factory('models/edit_category');
-                $content->categorys = $ModelModels->CategoriesFullName();
-                $content->parent = $check['id'];
-                $content->operation = 'new';
+                if(($user['rights']=='super')) {
+                    $content = View::factory('models/edit_category');
+                    $content->categorys = $ModelModels->CategoriesFullName();
+                    $content->parent = $check['id'];
+                    $content->operation = 'new';
+                }else $this->redirect($this->request->referrer());
                 break;
-//            case 'disable':
-//                $ModelModels->SetDeletedById($CategoriesPOST['models_id'], '1');
-//                HTTP::redirect('/sklad/models');
-//                break;
-//            case 'enable':
-//                $ModelModels->SetDeletedById($CategoriesPOST['models_id'], '0');
-//                HTTP::redirect('/sklad/models');
-//                break;
+            case 'disable':
+                if(($user['rights']=='super')) {
+                    $ModelModels->CategorySetDeletedById($CategoriesPOST['category_id'], '1');
+                }
+                $this->redirect($this->request->referrer());
+                break;
+            case 'enable':
+                if(($user['rights']=='super')) {
+                    $ModelModels->CategorySetDeletedById($CategoriesPOST['category_id'], '0');
+                }
+                $this->redirect($this->request->referrer());
+                break;
         }
 
         $this->content = $content;

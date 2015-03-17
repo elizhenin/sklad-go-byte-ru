@@ -44,16 +44,8 @@ class Model_SkladStorages extends Model
     public function GetById($id)
     {
         $select = DB::select(
-            array('storages.id','id'),
-            array('storages.name','name'),
-            array('storages.present','present'),
-            array('citys.name','city'),
-            array('storages.arrive','arrive'),
-            array('storages.transit','transit')
         )
             ->from('storages')
-            ->join('citys')
-            ->on('citys.id', '=', 'storages.id_citys')
             ->where('storages.id', '=', $id)
             ->limit(1)
             ->execute()

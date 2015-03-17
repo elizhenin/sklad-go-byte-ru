@@ -40,7 +40,9 @@ class Controller_Sklad extends Controller_SkladTmp
 
 
     public function action_main()
-    {}
+    {
+
+    }
 
     public function action_users()
     {
@@ -131,6 +133,109 @@ class Controller_Sklad extends Controller_SkladTmp
                 $ModelStorages->SetDeletedById($StoragesPOST['storages_id'], '0');
                 HTTP::redirect('/sklad/storages');
                 break;
+        }
+
+        $this->content = $content;
+    }
+
+    public function action_models()
+    {
+        $ses = Session::instance();
+        $user = $ses->get('user', false);
+        if(($user['rights']!='super')) HTTP::redirect('/sklad/main');
+
+        $ModelsPOST = $this->request->post();
+        if (empty($ModelsPOST['operation'])) {
+            $ModelsPOST['operation'] = 'list';
+        }
+        $ModelModels = New Model_SkladModels();
+        switch ($ModelsPOST['operation']) {
+            case 'list':
+                $content = View::factory('models/show_models');
+                $content->items = $ModelModels->GetAll();
+                break;
+            case 'new':
+                $ModelModels->NewModel($ModelsPOST);
+                HTTP::redirect('/sklad/models');
+                break;
+            case 'update':
+                $ModelModels->UpdateModel($ModelsPOST);
+                HTTP::redirect('/sklad/models');
+                break;
+            case 'edit':
+                $content = View::factory('models/edit_model');
+                $content->item = $ModelModels->GetById($ModelsPOST['models_id']);
+                $content->categorys = $ModelModels->CategoriesFullName();
+                $content->operation = 'update';
+                break;
+            case 'add':
+                $content = View::factory('models/edit_model');
+                $content->categorys = $ModelModels->CategoriesFullName();
+                $content->operation = 'new';
+                break;
+            case 'disable':
+                $ModelModels->SetDeletedById($ModelsPOST['models_id'], '1');
+                HTTP::redirect('/sklad/models');
+                break;
+            case 'enable':
+                $ModelModels->SetDeletedById($ModelsPOST['models_id'], '0');
+                HTTP::redirect('/sklad/models');
+                break;
+        }
+
+        $this->content = $content;
+    }
+
+    public function action_models_categories()
+    {
+        $ses = Session::instance();
+        $user = $ses->get('user', false);
+        if(($user['rights']!='super')) HTTP::redirect('/sklad/main');
+
+        $CategoriesPOST = $this->request->post();
+        if (empty($CategoriesPOST['operation'])) {
+            $CategoriesPOST['operation'] = 'list';
+        }
+        $ModelModels = New Model_SkladModels();
+        $alias = $this->request->param('alias');
+        $check = $ModelModels->CategoriesCheckPath($alias);
+        switch ($CategoriesPOST['operation']) {
+            case 'list':
+                if($check){
+                    $content = View::factory('models/show_categories');
+                    $content->alias = $alias;
+                    $content->items = $ModelModels->CategoriesGetCurrent($check);
+                }else throw new HTTP_Exception_404;
+                break;
+            case 'new':
+                $ModelModels->AddCategory($CategoriesPOST,$check['id']);
+                $this->redirect($this->request->referrer());
+                break;
+            case 'update':
+                $ModelModels->CategoriesUpdateRecord($CategoriesPOST);
+                $this->redirect($this->request->referrer());
+                break;
+            case 'edit':
+                $content = View::factory('models/edit_category');
+                $content->item = $ModelModels->CategoriesGetById($CategoriesPOST['category_id']);
+                $content->categorys = $ModelModels->CategoriesFullName();
+                $content->parent = $check['id'];
+                $content->operation = 'update';
+                break;
+            case 'add':
+                $content = View::factory('models/edit_category');
+                $content->categorys = $ModelModels->CategoriesFullName();
+                $content->parent = $check['id'];
+                $content->operation = 'new';
+                break;
+//            case 'disable':
+//                $ModelModels->SetDeletedById($CategoriesPOST['models_id'], '1');
+//                HTTP::redirect('/sklad/models');
+//                break;
+//            case 'enable':
+//                $ModelModels->SetDeletedById($CategoriesPOST['models_id'], '0');
+//                HTTP::redirect('/sklad/models');
+//                break;
         }
 
         $this->content = $content;

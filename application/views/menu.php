@@ -8,6 +8,14 @@
         <li>
             <a href="/sklad/storages">Склады</a>
         </li>
+        <li>
+            <a href="/sklad/models">Модели</a>
+            <ul>
+                <li>
+                    <a href="/sklad/models_categories">Категории</a>
+                </li>
+            </ul>
+        </li>
     <?php
     }
     ?>

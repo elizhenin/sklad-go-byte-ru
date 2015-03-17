@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36287add-0d5f-401a-87e9-5ed22a4f0472" name="Default" comment="categories and models integration">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/specifications/edit_specification.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/specifications/show_specifications.php" />
+    <list default="true" id="36287add-0d5f-401a-87e9-5ed22a4f0472" name="Default" comment="models hotfix">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/logs/2015/03/17.php" afterPath="$PROJECT_DIR$/application/logs/2015/03/17.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/classes/Controller/Sklad.php" afterPath="$PROJECT_DIR$/application/classes/Controller/Sklad.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/classes/Model/SkladModels.php" afterPath="$PROJECT_DIR$/application/classes/Model/SkladModels.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/bootstrap.php" afterPath="$PROJECT_DIR$/application/bootstrap.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/models/show_categories.php" afterPath="$PROJECT_DIR$/application/views/models/show_categories.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -37,7 +32,7 @@
       <file leaf-file-name="Sklad.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/classes/Controller/Sklad.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.0" vertical-offset="1008" max-vertical-offset="3276">
+            <state vertical-scroll-proportion="-35.333332" vertical-offset="378" max-vertical-offset="3276">
               <caret line="164" column="24" selection-start-line="164" selection-start-column="24" selection-end-line="164" selection-end-column="24" />
               <folding>
                 <element signature="n#action_users#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
@@ -51,11 +46,21 @@
       <file leaf-file-name="show_categories.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/views/models/show_categories.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28398058" vertical-offset="0" max-vertical-offset="2592">
-              <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+            <state vertical-scroll-proportion="1.8349514" vertical-offset="0" max-vertical-offset="2592">
+              <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
               <folding>
                 <element signature="n#style#0;n#form#0;n#h1#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SkladModels.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/classes/Model/SkladModels.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-82.666664" vertical-offset="3510" max-vertical-offset="7254">
+              <caret line="319" column="5" selection-start-line="319" selection-start-column="5" selection-end-line="319" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -84,9 +89,9 @@
         <option value="$PROJECT_DIR$/application/views/models/edit_category.php" />
         <option value="$PROJECT_DIR$/application/views/menu.php" />
         <option value="$PROJECT_DIR$/application/bootstrap.php" />
-        <option value="$PROJECT_DIR$/application/classes/Model/SkladModels.php" />
         <option value="$PROJECT_DIR$/application/classes/Controller/Sklad.php" />
         <option value="$PROJECT_DIR$/application/views/models/show_categories.php" />
+        <option value="$PROJECT_DIR$/application/classes/Model/SkladModels.php" />
       </list>
     </option>
   </component>
@@ -416,7 +421,13 @@
       <option name="project" value="LOCAL" />
       <updated>1426593623848</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="models hotfix">
+      <created>1426605434201</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1426605434201</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -467,10 +478,13 @@
     <MESSAGE value="storages model" />
     <MESSAGE value="storages controller and view" />
     <MESSAGE value="categories and models integration" />
-    <option name="LAST_COMMIT_MESSAGE" value="categories and models integration" />
+    <MESSAGE value="models hotfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="models hotfix" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -544,9 +558,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3762">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#CategoriesFullName#0;n#Model_SkladModels#0;n#!!top" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -849,16 +861,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/classes/Model/SkladModels.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-39.51852" vertical-offset="5305" max-vertical-offset="6552">
-          <caret line="393" column="21" selection-start-line="393" selection-start-column="21" selection-end-line="393" selection-end-column="21" />
-          <folding>
-            <element signature="n#CategoriesFullName#0;n#Model_SkladModels#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/specifications/edit_specification.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2106">
@@ -931,9 +933,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/classes/Model/SkladModels.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-82.666664" vertical-offset="3510" max-vertical-offset="7254">
+          <caret line="319" column="5" selection-start-line="319" selection-start-column="5" selection-end-line="319" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/classes/Controller/Sklad.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.0" vertical-offset="1008" max-vertical-offset="3276">
+        <state vertical-scroll-proportion="-35.333332" vertical-offset="378" max-vertical-offset="3276">
           <caret line="164" column="24" selection-start-line="164" selection-start-column="24" selection-end-line="164" selection-end-column="24" />
           <folding>
             <element signature="n#action_users#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
@@ -945,8 +955,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/models/show_categories.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28398058" vertical-offset="0" max-vertical-offset="2592">
-          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
+        <state vertical-scroll-proportion="1.8349514" vertical-offset="0" max-vertical-offset="2592">
+          <caret line="84" column="20" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
           <folding>
             <element signature="n#style#0;n#form#0;n#h1#0;n#!!top" expanded="true" />
           </folding>

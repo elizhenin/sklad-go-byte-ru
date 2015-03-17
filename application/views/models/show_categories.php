@@ -20,7 +20,7 @@
     <td></td>
     <td>Название</td>
     <td>Меню</td>
-    <td>modificated</td>
+    <td>Изменена</td>
     </thead>
     <tbody>
     <?php
@@ -81,9 +81,9 @@
         <td></td>
         <td>Код</td>
         <td>Название</td>
-        <td>price</td>
-        <td>in_price</td>
-        <td>modificated</td>
+        <td>Цена</td>
+        <td>Мин.цена</td>
+        <td>Изменен</td>
         </thead>
         <tbody>
         <?php

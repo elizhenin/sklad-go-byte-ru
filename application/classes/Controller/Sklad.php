@@ -18,7 +18,7 @@ class Controller_Sklad extends Controller_SkladTmp
     public function action_login()
     {
         $ses = Session::instance();
-        $this->template = View::factory('login');
+        $this->template = View::factory('sklad/login');
         $modelSklad = new Model_SkladLogin();
         if (HTTP_Request::POST == $this->request->method()) {
             $login = $this->request->post('login');
@@ -103,7 +103,7 @@ class Controller_Sklad extends Controller_SkladTmp
         $ModelStorages = New Model_SkladStorages();
         switch ($StoragesPOST['operation']) {
             case 'list':
-                $content = View::factory('storages/show_storages');
+                $content = View::factory('sklad/storages/show_storages');
                 $content->items = $ModelStorages->GetAll();
                 break;
             case 'new':
@@ -115,13 +115,13 @@ class Controller_Sklad extends Controller_SkladTmp
                 HTTP::redirect('/sklad/storages');
                 break;
             case 'edit':
-                $content = View::factory('storages/edit_storage');
+                $content = View::factory('sklad/storages/edit_storage');
                 $content->item = $ModelStorages->GetById($StoragesPOST['storages_id']);
                 $content->citys = $ModelStorages->GetCitys();
                 $content->operation = 'update';
                 break;
             case 'add':
-                $content = View::factory('storages/edit_storage');
+                $content = View::factory('sklad/storages/edit_storage');
                 $content->citys = $ModelStorages->GetCitys();
                 $content->operation = 'new';
                 break;
@@ -151,7 +151,7 @@ class Controller_Sklad extends Controller_SkladTmp
         $ModelModels = New Model_SkladModels();
         switch ($ModelsPOST['operation']) {
             case 'list':
-                $content = View::factory('models/show_models');
+                $content = View::factory('sklad/models/show_models');
                 $content->items = $ModelModels->ModelGetAll();
                 break;
             case 'new':
@@ -163,7 +163,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 $this->redirect($ses->get('ReturnTo', false));
                 break;
             case 'edit':
-                $content = View::factory('models/edit_model');
+                $content = View::factory('sklad/models/edit_model');
                 $content->item = $ModelModels->ModelGetById($ModelsPOST['models_id']);
                 $content->categorys = $ModelModels->CategoryFullNameAllowed();
                 $content->operation = 'update';
@@ -204,7 +204,7 @@ class Controller_Sklad extends Controller_SkladTmp
         switch ($CategoriesPOST['operation']) {
             case 'list':
                 if ($check) {
-                    $content = View::factory('models/show_categories');
+                    $content = View::factory('sklad/models/show_categories');
                     $content->rights = $user['rights'];
                     $content->alias = $alias;
                     $items['categories'] = $ModelModels->CategoryGetSub($check);
@@ -229,7 +229,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 break;
             case 'edit':
                 if (($user['rights'] == 'super')) {
-                    $content = View::factory('models/edit_category');
+                    $content = View::factory('sklad/models/edit_category');
                     $content->item = $ModelModels->CategoryGetById($CategoriesPOST['category_id']);
                     $content->categorys = $ModelModels->CategoryFullNames();
                     $content->parent = $check['id'];
@@ -238,7 +238,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 break;
             case 'add':
                 if (($user['rights'] == 'super')) {
-                    $content = View::factory('models/edit_category');
+                    $content = View::factory('sklad/models/edit_category');
                     $content->categorys = $ModelModels->CategoryFullNames();
                     $content->parent = $check['id'];
                     $content->operation = 'new';
@@ -276,25 +276,25 @@ class Controller_Sklad extends Controller_SkladTmp
         $cache = Cache::instance();
         switch ($SpecificationsPOST['operation']) {
             case 'list':
-                $content = View::factory('specifications/show_specifications');
+                $content = View::factory('sklad/specifications/show_specifications');
                 $content->items = $ModelModels->SpecificationsGetCurrent($model);
                 break;
             case 'new':
-                $ModelModels->NewSpecification($SpecificationsPOST);
+                $ModelModels->SpecificationAdd($SpecificationsPOST);
                 $this->redirect($cache->get('ReturnTo', false));
                 break;
             case 'update':
-                $ModelModels->UpdateSpecification($SpecificationsPOST);
+                $ModelModels->SpecificationUpdate($SpecificationsPOST);
                 $this->redirect($cache->get('ReturnTo', false));
                 break;
             case 'edit':
-                $content = View::factory('specifications/edit_specification');
+                $content = View::factory('sklad/specifications/edit_specification');
                 $content->item = $ModelModels->SpecificationGetById($SpecificationsPOST['models_id']);
                 $content->operation = 'update';
                 $cache->set('ReturnTo', $this->request->referrer());
                 break;
             case 'add':
-                $content = View::factory('specifications/edit_specification');
+                $content = View::factory('sklad/specifications/edit_specification');
                 $content->operation = 'new';
                 $cache->set('ReturnTo', $this->request->referrer());
                 break;

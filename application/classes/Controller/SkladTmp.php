@@ -2,7 +2,7 @@
 
 class Controller_SkladTmp extends Controller_Template
 {
-    public $template = 'template';
+    public $template = 'sklad/template';
     public $title;
     public $description;
     public $keywords;
@@ -28,12 +28,21 @@ class Controller_SkladTmp extends Controller_Template
 
         $this->template->content = $this->content;
 
-        $menu = view::factory('menu');
         $ses = Session::instance();
-        $rights = $ses->get('user', false);
+        $user = $ses->get('user', false);
 
-        $menu->rights = $rights['rights'];
-        $this->template->menu = $menu;
+        switch($user['rights']) {
+            case 'super':
+                $this->template->menu = view::factory('sklad/menu/super');
+                break;
+            case 'content':
+                $this->template->menu = view::factory('sklad/menu/content');
+                break;
+            default:
+                $this->template->menu = view::factory('sklad/menu/sale');
+                break;
+        }
+
 
         if(!empty($this->alias)){$this->template->alias = $this->alias;}
         parent::after();

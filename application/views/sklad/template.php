@@ -24,7 +24,6 @@
                 toolbarFixedBox: true,
                 removeEmpty: ['strong', 'em', 'span', 'p']
             });
-            $( "#datepicker" ).datepicker({ dateFormat: "dd-mm-yy" });
         });
     </script>
     <title><?$title?></title>

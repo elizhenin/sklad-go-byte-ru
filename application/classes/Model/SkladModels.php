@@ -362,30 +362,39 @@ class Model_SkladModels extends Model
             ->execute();
     }
 
-    public function SpecificationsGetCurrent($id_models)
+    public function SpecificationsGetAll()
     {
 
         $records = DB::select()
-            ->from('specifications_models')
-            ->where('id_models', '=', $id_models)
+            ->from('specifications')
+            ->order_by('deleted')
             ->execute()
             ->as_array();
         return $records;
     }
 
-    public function SpecificationAdd($post)
+    public function SpecificationsNew($post)
     {
-
+        $item =$records =DB::insert('specifications', array('name'))
+            ->values(array(trim(htmlspecialchars($post['name']))))
+            ->execute();
+        return $item[0];
     }
 
-    public function SpecificationUpdate($post)
+    public function SpecificationsRename($post)
     {
-
+        DB::update('specifications')
+            ->set(array('name' => trim(htmlspecialchars($post['name']))))
+            ->where('id', '=', $post['id'])
+            ->execute();
     }
 
-    public function SpecificationGetById($id)
+    public function SpecificationsSetDeletedById($id, $deleted)
     {
-        return false;
+        DB::update('specifications')
+            ->set(array('deleted' => $deleted))
+            ->where('id', '=', $id)
+            ->execute();
     }
 
 }

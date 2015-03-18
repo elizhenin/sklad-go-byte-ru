@@ -11,6 +11,10 @@
             <a href="/sklad/categories">Модели</a>
 
         </li>
+    <li>
+        <a href="/sklad/specifications">Спецификации</a>
+
+    </li>
 
     <li>
         <a href="/sklad/orders">Продажи</a>

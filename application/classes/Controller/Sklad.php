@@ -270,15 +270,32 @@ class Controller_Sklad extends Controller_SkladTmp
         $param = $this->request->param('param');
         $SpecificationsPOST = $this->request->post();
         if (empty($SpecificationsPOST['operation'])) {
-            $SpecificationsPOST['operation'] = 'list';
+            $SpecificationsPOST['operation'] = 'specifications_list';
         }
         $ModelModels = New Model_SkladModels();
         $cache = Cache::instance();
         switch ($SpecificationsPOST['operation']) {
-            case 'list':
-                $content = View::factory('sklad/specifications/show_specifications');
-                $content->items = $ModelModels->SpecificationsGetCurrent($model);
+            case 'specifications_list':
+                $content = View::factory('sklad/specifications/specifications');
+                $content->items = $ModelModels->SpecificationsGetAll();
                 break;
+            case 'specifications_rename':
+                $ModelModels->SpecificationsRename($SpecificationsPOST);
+                $this->redirect($this->request->referrer());
+                break;
+            case 'specifications_new':
+                $ModelModels->SpecificationsNew($SpecificationsPOST);
+                $this->redirect($this->request->referrer());
+                break;
+            case 'specifications_disable':
+                $ModelModels->SpecificationsSetDeletedById($SpecificationsPOST['id'], '1');
+                $this->redirect($this->request->referrer());
+                break;
+            case 'specifications_enable':
+                $ModelModels->SpecificationsSetDeletedById($SpecificationsPOST['id'], '0');
+                $this->redirect($this->request->referrer());
+                break;
+
             case 'new':
                 $ModelModels->SpecificationAdd($SpecificationsPOST);
                 $this->redirect($cache->get('ReturnTo', false));

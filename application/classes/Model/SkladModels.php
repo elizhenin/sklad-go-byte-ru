@@ -373,7 +373,18 @@ class Model_SkladModels extends Model
         return $records;
     }
 
-    public function SpecificationsNew($post)
+    public function SpecificationsGetVisible()
+    {
+
+        $records = DB::select()
+            ->from('specifications')
+            ->where('deleted','=', '0')
+            ->execute()
+            ->as_array();
+        return $records;
+    }
+
+    public function SpecificationsAdd($post)
     {
         $item =$records =DB::insert('specifications', array('name'))
             ->values(array(trim(htmlspecialchars($post['name']))))
@@ -397,4 +408,57 @@ class Model_SkladModels extends Model
             ->execute();
     }
 
+    public function SpecificationsModelGetAll($model)
+    {
+        $items = DB::select(
+            array('specifications_models.id','id'),
+            array('specifications_models.id_specifications','id_specifications'),
+            array('specifications_models.id_models','id_models'),
+            array('specifications_models.value','value'),
+            array('specifications_models.important','important'),
+            array('specifications_models.manual','manual'),
+            array('specifications_models.id','created'),
+            array('specifications_models.modificated','modificated'),
+            array('specifications_models.deleted','deleted'),
+            array('specifications.name','specification')
+        )
+            ->from('specifications_models')
+            ->join('specifications')
+            ->on('specifications_models.id_specifications','=','specifications.id')
+
+            ->where('specifications_models.id_models','=',$model)
+            ->execute()
+            ->as_array();
+
+        if($items) return $items; else return false;
+    }
+
+    public function SpecificationsModelAdd($post)
+    {
+        $specification = array();
+        if($post['id_specifications']=='0'){
+            $post['id_specifications'] = $this->SpecificationsAdd($post);
+        }
+        $specification['id_specifications'] = $post['id_specifications'];
+        $specification['id_models'] = $post['id_models'];
+        $specification['value'] = 'N/A';
+        $specification['important'] = '0';
+        $specification['manual'] = '0';
+        $specification['created'] = DB::expr('NOW()');
+        $specification['modificated'] = DB::expr('NOW()');
+
+        $id = DB::insert('specifications_models', array_keys($specification))
+            ->values($specification)
+            ->execute();
+        if($id) return $id[0]; else return false;
+    }
+
+    public function SpecificationsModelDelete($id)
+    {
+
+        $id = DB::delete('specifications_models')
+            ->where('specifications_models.id','=',$id)
+            ->execute();
+        if($id) return $id[0]; else return false;
+    }
 }

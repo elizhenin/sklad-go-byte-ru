@@ -148,6 +148,13 @@ class Controller_Sklad extends Controller_SkladTmp
         if (empty($ModelsPOST['operation'])) {
             $ModelsPOST['operation'] = 'list';
         }
+
+       $ModelOpened = $ses->get('ModelOpened', false);
+        if(($ModelsPOST['operation']!='update')&&($ModelOpened)){
+            $ModelsPOST['operation'] = 'edit';
+            $ModelsPOST['models_id'] = $ModelOpened;
+        }
+
         $ModelModels = New Model_SkladModels();
         switch ($ModelsPOST['operation']) {
             case 'list':
@@ -156,24 +163,35 @@ class Controller_Sklad extends Controller_SkladTmp
                 break;
             case 'new':
                 $ModelModels->ModelAdd($ModelsPOST);
-                $this->redirect($ses->get('ReturnTo', false));
+                $return = $ses->get('ReturnTo', '/sklad/categories');
+                $ses->delete('ReturnTo');
+                $this->redirect($return);
                 break;
             case 'update':
                 $ModelModels->ModelUpdate($ModelsPOST);
-                $this->redirect($ses->get('ReturnTo', false));
+                $ses->set('ModelOpened',false);
+                $return = $ses->get('ReturnTo', '/sklad/categories');
+                $ses->delete('ReturnTo');
+                $this->redirect($return);
                 break;
             case 'edit':
                 $content = View::factory('sklad/models/edit_model');
                 $content->item = $ModelModels->ModelGetById($ModelsPOST['models_id']);
+                $content->specifications = $ModelModels->SpecificationsGetVisible();
+                $content->model_specifications = $ModelModels->SpecificationsModelGetAll($ModelsPOST['models_id']);
                 $content->categorys = $ModelModels->CategoryFullNameAllowed();
                 $content->operation = 'update';
-                $ses->set('ReturnTo', $this->request->referrer());
+                $return = $ses->get('ReturnTo', false);
+                if(empty($return)) $ses->set('ReturnTo', $this->request->referrer());
+                $ses->set('ModelOpened', $ModelsPOST['models_id']);
                 break;
             case 'add':
-                $content = View::factory('models/edit_model');
+                $content = View::factory('sklad/models/edit_model');
                 $content->categorys = $ModelModels->CategoryFullNameAllowed();
                 $content->operation = 'new';
-                $ses->set('ReturnTo', $this->request->referrer());
+
+                $return = $ses->get('ReturnTo', false);
+                if(empty($return)) $ses->set('ReturnTo', $this->request->referrer());
                 break;
             case 'disable':
                 $ModelModels->ModelSetDeletedById($ModelsPOST['models_id'], '1');
@@ -273,8 +291,9 @@ class Controller_Sklad extends Controller_SkladTmp
             $SpecificationsPOST['operation'] = 'specifications_list';
         }
         $ModelModels = New Model_SkladModels();
-        $cache = Cache::instance();
         switch ($SpecificationsPOST['operation']) {
+//specs itself
+
             case 'specifications_list':
                 $content = View::factory('sklad/specifications/specifications');
                 $content->items = $ModelModels->SpecificationsGetAll();
@@ -284,7 +303,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 $this->redirect($this->request->referrer());
                 break;
             case 'specifications_new':
-                $ModelModels->SpecificationsNew($SpecificationsPOST);
+                $ModelModels->SpecificationsAdd($SpecificationsPOST);
                 $this->redirect($this->request->referrer());
                 break;
             case 'specifications_disable':
@@ -295,33 +314,23 @@ class Controller_Sklad extends Controller_SkladTmp
                 $ModelModels->SpecificationsSetDeletedById($SpecificationsPOST['id'], '0');
                 $this->redirect($this->request->referrer());
                 break;
+//model specs
+            case 'model_list':
+                $ses->set('ReturnTo', $this->request->referrer());
+                $content = View::factory('sklad/specifications/model_specifications');
+                $content->referrer = $ses->get('ReturnTo', false);
+                $content->items = $ModelModels->SpecificationsModelGetAll($model);
 
-            case 'new':
-                $ModelModels->SpecificationAdd($SpecificationsPOST);
-                $this->redirect($cache->get('ReturnTo', false));
                 break;
-            case 'update':
-                $ModelModels->SpecificationUpdate($SpecificationsPOST);
-                $this->redirect($cache->get('ReturnTo', false));
+            case 'model_add':
+                $ModelModels->SpecificationsModelAdd($SpecificationsPOST);
+                $this->redirect($this->request->referrer());
+
                 break;
-            case 'edit':
-                $content = View::factory('sklad/specifications/edit_specification');
-                $content->item = $ModelModels->SpecificationGetById($SpecificationsPOST['models_id']);
-                $content->operation = 'update';
-                $cache->set('ReturnTo', $this->request->referrer());
-                break;
-            case 'add':
-                $content = View::factory('sklad/specifications/edit_specification');
-                $content->operation = 'new';
-                $cache->set('ReturnTo', $this->request->referrer());
-                break;
-//            case 'disable':
-//                $ModelModels->SpecificationsSetDeletedById($SpecificationsPOST['specifications_id'], '1');
-//                $this->redirect($this->request->referrer());
-//                break;
-//            case 'enable':
-//                $ModelModels->SpecificationsSetDeletedById($SpecificationsPOST['specifications_id'], '0');
-//                $this->redirect($this->request->referrer());
+            case 'model_delete':
+                $ModelModels->SpecificationsModelDelete($SpecificationsPOST['id']);
+                $this->redirect($this->request->referrer());
+
                 break;
         }
 

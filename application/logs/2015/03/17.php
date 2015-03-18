@@ -164,3 +164,24 @@
 #5 /var/www/sklad-go-byte-ru/system/classes/Kohana/Request.php(997): Kohana_Request_Client->execute(Object(Request))
 #6 /var/www/sklad-go-byte-ru/index.php(118): Kohana_Request->execute()
 #7 {main} in /var/www/sklad-go-byte-ru/application/classes/Controller/Sklad.php:215
+2015-03-17 10:49:57 --- EMERGENCY: ErrorException [ 8 ]: Undefined index: id_categorys ~ APPPATH/classes/Model/SkladModels.php [ 366 ] in /var/www/sklad-go-byte-ru/application/classes/Model/SkladModels.php:366
+2015-03-17 10:49:57 --- DEBUG: #0 /var/www/sklad-go-byte-ru/application/classes/Model/SkladModels.php(366): Kohana_Core::error_handler(8, 'Undefined index...', '/var/www/sklad-...', 366, Array)
+#1 /var/www/sklad-go-byte-ru/application/classes/Controller/Sklad.php(226): Model_SkladModels->CategoriesUpdateRecord(Array)
+#2 /var/www/sklad-go-byte-ru/system/classes/Kohana/Controller.php(84): Controller_Sklad->action_categories()
+#3 [internal function]: Kohana_Controller->execute()
+#4 /var/www/sklad-go-byte-ru/system/classes/Kohana/Request/Client/Internal.php(97): ReflectionMethod->invoke(Object(Controller_Sklad))
+#5 /var/www/sklad-go-byte-ru/system/classes/Kohana/Request/Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#6 /var/www/sklad-go-byte-ru/system/classes/Kohana/Request.php(997): Kohana_Request_Client->execute(Object(Request))
+#7 /var/www/sklad-go-byte-ru/index.php(118): Kohana_Request->execute()
+#8 {main} in /var/www/sklad-go-byte-ru/application/classes/Model/SkladModels.php:366
+2015-03-17 10:51:39 --- EMERGENCY: ErrorException [ 8 ]: Undefined variable: id ~ APPPATH/classes/Model/SkladModels.php [ 185 ] in /var/www/sklad-go-byte-ru/application/classes/Model/SkladModels.php:185
+2015-03-17 10:51:39 --- DEBUG: #0 /var/www/sklad-go-byte-ru/application/classes/Model/SkladModels.php(185): Kohana_Core::error_handler(8, 'Undefined varia...', '/var/www/sklad-...', 185, Array)
+#1 /var/www/sklad-go-byte-ru/application/classes/Model/SkladModels.php(376): Model_SkladModels->GetCurrent('10')
+#2 /var/www/sklad-go-byte-ru/application/classes/Controller/Sklad.php(226): Model_SkladModels->CategoriesUpdateRecord(Array)
+#3 /var/www/sklad-go-byte-ru/system/classes/Kohana/Controller.php(84): Controller_Sklad->action_categories()
+#4 [internal function]: Kohana_Controller->execute()
+#5 /var/www/sklad-go-byte-ru/system/classes/Kohana/Request/Client/Internal.php(97): ReflectionMethod->invoke(Object(Controller_Sklad))
+#6 /var/www/sklad-go-byte-ru/system/classes/Kohana/Request/Client.php(114): Kohana_Request_Client_Internal->execute_request(Object(Request), Object(Response))
+#7 /var/www/sklad-go-byte-ru/system/classes/Kohana/Request.php(997): Kohana_Request_Client->execute(Object(Request))
+#8 /var/www/sklad-go-byte-ru/index.php(118): Kohana_Request->execute()
+#9 {main} in /var/www/sklad-go-byte-ru/application/classes/Model/SkladModels.php:185

@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36287add-0d5f-401a-87e9-5ed22a4f0472" name="Default" comment="SkladModels cleanup">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/sklad/menu/content.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/sklad/menu/sale.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/login.php" afterPath="$PROJECT_DIR$/application/views/sklad/login.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/menu.php" afterPath="$PROJECT_DIR$/application/views/sklad/menu/super.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/models/edit_category.php" afterPath="$PROJECT_DIR$/application/views/sklad/models/edit_category.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/models/edit_model.php" afterPath="$PROJECT_DIR$/application/views/sklad/models/edit_model.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/models/show_categories.php" afterPath="$PROJECT_DIR$/application/views/sklad/models/show_categories.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/models/show_models.php" afterPath="$PROJECT_DIR$/application/views/sklad/models/show_models.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/specifications/edit_specification.php" afterPath="$PROJECT_DIR$/application/views/sklad/specifications/edit_specification.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/specifications/show_specifications.php" afterPath="$PROJECT_DIR$/application/views/sklad/specifications/show_specifications.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/storages/edit_storage.php" afterPath="$PROJECT_DIR$/application/views/sklad/storages/edit_storage.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/storages/show_storages.php" afterPath="$PROJECT_DIR$/application/views/sklad/storages/show_storages.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/template.php" afterPath="$PROJECT_DIR$/application/views/sklad/template.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/users/edit_user.php" afterPath="$PROJECT_DIR$/application/views/sklad/users/edit_user.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/users/show_users.php" afterPath="$PROJECT_DIR$/application/views/sklad/users/show_users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/classes/Controller/Sklad.php" afterPath="$PROJECT_DIR$/application/classes/Controller/Sklad.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/classes/Controller/SkladTmp.php" afterPath="$PROJECT_DIR$/application/classes/Controller/SkladTmp.php" />
+    <list default="true" id="36287add-0d5f-401a-87e9-5ed22a4f0472" name="Default" comment="image saving refactor">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/classes/Controller/Ajax.php" afterPath="$PROJECT_DIR$/application/classes/Controller/Ajax.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/classes/Goodies.php" afterPath="$PROJECT_DIR$/application/classes/Goodies.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="sklad-go-byte-ru.iws" />
@@ -47,7 +32,7 @@
       <file leaf-file-name="Sklad.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/classes/Controller/Sklad.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-168.0" vertical-offset="0" max-vertical-offset="4968">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4536" max-vertical-offset="4968">
               <caret line="296" column="48" selection-start-line="296" selection-start-column="48" selection-end-line="296" selection-end-column="48" />
               <folding>
                 <element signature="n#action_users#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
@@ -56,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ajax.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Ajax.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/classes/Controller/Ajax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="630">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.58064514" vertical-offset="0" max-vertical-offset="837">
+              <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -69,7 +54,7 @@
       <file leaf-file-name="Welcome.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/classes/Controller/Welcome.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="324">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="324">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -79,7 +64,7 @@
       <file leaf-file-name="super.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/super.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.666667" vertical-offset="0" max-vertical-offset="468">
+            <state vertical-scroll-proportion="0.0" vertical-offset="234" max-vertical-offset="468">
               <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding />
             </state>
@@ -89,7 +74,7 @@
       <file leaf-file-name="sale.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/sale.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.6666667" vertical-offset="0" max-vertical-offset="234">
+            <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="234">
               <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
@@ -99,41 +84,19 @@
       <file leaf-file-name="SkladModels.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/classes/Model/SkladModels.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-157.66667" vertical-offset="2637" max-vertical-offset="7146">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2637" max-vertical-offset="7146">
               <caret line="383" column="5" selection-start-line="383" selection-start-column="5" selection-end-line="383" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SkladLogin.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SkladLogin.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/classes/Model/SkladLogin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.13978495" vertical-offset="117" max-vertical-offset="954">
+            <state vertical-scroll-proportion="0.0" vertical-offset="117" max-vertical-offset="954">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SkladStorages.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/classes/Model/SkladStorages.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-36.0" vertical-offset="0" max-vertical-offset="1998">
-              <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SkladUsers.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/classes/Model/SkladUsers.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="41.0" vertical-offset="1359" max-vertical-offset="2196">
-              <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
-              <folding>
-                <element signature="e#958#2305#0#PHP" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -141,9 +104,62 @@
       <file leaf-file-name="Goodies.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/classes/Goodies.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.333334" vertical-offset="0" max-vertical-offset="918">
-              <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
+            <state vertical-scroll-proportion="-12.407408" vertical-offset="601" max-vertical-offset="1476">
+              <caret line="52" column="81" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="81" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Image.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/image/classes/Kohana/Image.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1098" max-vertical-offset="2178">
+              <caret line="373" column="36" selection-start-line="373" selection-start-column="36" selection-end-line="373" selection-end-column="36" />
+              <folding>
+                <element signature="e#584#733#0#PHP" expanded="false" />
+                <element signature="e#844#1132#0#PHP" expanded="false" />
+                <element signature="e#1134#1520#0#PHP" expanded="false" />
+                <element signature="e#1523#1565#0#PHP" expanded="false" />
+                <element signature="e#1583#1622#0#PHP" expanded="false" />
+                <element signature="e#1641#1681#0#PHP" expanded="false" />
+                <element signature="e#1701#1761#0#PHP" expanded="false" />
+                <element signature="e#1779#1828#0#PHP" expanded="false" />
+                <element signature="e#1846#2065#0#PHP" expanded="false" />
+                <element signature="e#2067#2686#0#PHP" expanded="false" />
+                <element signature="e#2689#2932#0#PHP" expanded="false" />
+                <element signature="e#2934#3347#0#PHP" expanded="false" />
+                <element signature="e#3350#4189#0#PHP" expanded="false" />
+                <element signature="e#4191#6489#0#PHP" expanded="false" />
+                <element signature="e#6492#7124#0#PHP" expanded="false" />
+                <element signature="e#7126#8487#0#PHP" expanded="false" />
+                <element signature="e#8490#8796#0#PHP" expanded="false" />
+                <element signature="e#8798#9276#0#PHP" expanded="false" />
+                <element signature="e#9279#9655#0#PHP" expanded="false" />
+                <element signature="e#9657#9847#0#PHP" expanded="false" />
+                <element signature="e#9850#10079#0#PHP" expanded="false" />
+                <element signature="e#10081#10256#0#PHP" expanded="false" />
+                <element signature="e#10259#11137#0#PHP" expanded="false" />
+                <element signature="e#11139#11501#0#PHP" expanded="false" />
+                <element signature="e#11504#12213#0#PHP" expanded="false" />
+                <element signature="e#12215#13236#0#PHP" expanded="false" />
+                <element signature="e#13239#13708#0#PHP" expanded="false" />
+                <element signature="e#13710#14250#0#PHP" expanded="false" />
+                <element signature="e#14253#14876#0#PHP" expanded="false" />
+                <element signature="e#14878#15636#0#PHP" expanded="false" />
+                <element signature="e#15639#16051#0#PHP" expanded="false" />
+                <element signature="e#16053#16276#0#PHP" expanded="false" />
+                <element signature="e#16279#16414#0#PHP" expanded="false" />
+                <element signature="e#16475#16719#0#PHP" expanded="false" />
+                <element signature="e#16800#16904#0#PHP" expanded="false" />
+                <element signature="e#16958#17060#0#PHP" expanded="false" />
+                <element signature="e#17114#17216#0#PHP" expanded="false" />
+                <element signature="e#17270#17497#0#PHP" expanded="false" />
+                <element signature="e#17574#17845#0#PHP" expanded="false" />
+                <element signature="e#17938#18144#0#PHP" expanded="false" />
+                <element signature="e#18214#18358#0#PHP" expanded="false" />
+                <element signature="e#18417#18576#0#PHP" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -173,13 +189,14 @@
         <option value="$PROJECT_DIR$/application/bootstrap.php" />
         <option value="$PROJECT_DIR$/application/views/models/show_categories.php" />
         <option value="$PROJECT_DIR$/application/classes/Model/SkladUsers.php" />
-        <option value="$PROJECT_DIR$/application/classes/Goodies.php" />
         <option value="$PROJECT_DIR$/application/classes/Model/SkladModels.php" />
         <option value="$PROJECT_DIR$/application/views/menu/content.php" />
         <option value="$PROJECT_DIR$/application/views/menu/super.php" />
         <option value="$PROJECT_DIR$/application/views/menu/sale.php" />
         <option value="$PROJECT_DIR$/application/classes/Controller/SkladTmp.php" />
         <option value="$PROJECT_DIR$/application/classes/Controller/Sklad.php" />
+        <option value="$PROJECT_DIR$/application/classes/Goodies.php" />
+        <option value="$PROJECT_DIR$/application/classes/Controller/Ajax.php" />
       </list>
     </option>
   </component>
@@ -441,15 +458,15 @@
       <BehatRunner />
       <method />
     </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -519,21 +536,32 @@
       <option name="project" value="LOCAL" />
       <updated>1426677518862</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="views refactoring">
+      <created>1426678044608</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1426678044608</updated>
+    </task>
+    <task id="LOCAL-00011" summary="image saving refactor">
+      <created>1426679292046</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1426679292046</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="25" width="1922" height="1007" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32996634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32996634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2630458" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2657082" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32996634" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -542,6 +570,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -573,28 +602,21 @@
     <MESSAGE value="models hotfix" />
     <MESSAGE value="code refactoring&#10;categories moving hotfix" />
     <MESSAGE value="SkladModels cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="SkladModels cleanup" />
+    <MESSAGE value="views refactoring" />
+    <MESSAGE value="image saving refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="image saving refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/classes/Model/SkladModels.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3762">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/sklad/models/show_models.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="7" max-vertical-offset="1278">
           <caret line="56" column="52" selection-start-line="56" selection-start-column="52" selection-end-line="56" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -602,7 +624,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1255" max-vertical-offset="2106">
           <caret line="106" column="31" selection-start-line="106" selection-start-column="31" selection-end-line="106" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -650,9 +671,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="558" max-vertical-offset="2196">
           <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
-          <folding>
-            <element signature="e#958#2305#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -667,7 +685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2142">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -723,9 +740,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="558" max-vertical-offset="2196">
           <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
-          <folding>
-            <element signature="e#958#2305#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -740,7 +754,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2142">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -763,7 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34408602" vertical-offset="1296" max-vertical-offset="2610">
           <caret line="88" column="27" selection-start-line="88" selection-start-column="27" selection-end-line="88" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -785,7 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="2106">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -800,7 +811,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1422">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -816,7 +826,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2106">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -824,7 +833,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.333333" vertical-offset="270" max-vertical-offset="1278">
           <caret line="29" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -839,7 +847,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.703704" vertical-offset="4337" max-vertical-offset="5580">
           <caret line="257" column="7" selection-start-line="257" selection-start-column="7" selection-end-line="257" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -882,7 +889,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.48058254" vertical-offset="0" max-vertical-offset="2592">
           <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -890,7 +896,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-36.0" vertical-offset="0" max-vertical-offset="1998">
           <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -898,23 +903,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="41.0" vertical-offset="1359" max-vertical-offset="2196">
           <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
-          <folding>
-            <element signature="e#958#2305#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/classes/Goodies.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.333334" vertical-offset="0" max-vertical-offset="918">
-          <caret line="29" column="10" selection-start-line="29" selection-start-column="10" selection-end-line="29" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/classes/Model/SkladModels.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-157.66667" vertical-offset="2637" max-vertical-offset="7146">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2637" max-vertical-offset="7146">
           <caret line="383" column="5" selection-start-line="383" selection-start-column="5" selection-end-line="383" selection-end-column="5" />
           <folding />
         </state>
@@ -922,7 +916,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/sale.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6666667" vertical-offset="0" max-vertical-offset="234">
+        <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="234">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
@@ -932,13 +926,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.021505376" vertical-offset="0" max-vertical-offset="837">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/super.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.666667" vertical-offset="0" max-vertical-offset="468">
+        <state vertical-scroll-proportion="0.0" vertical-offset="234" max-vertical-offset="468">
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
@@ -948,25 +941,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.68817204" vertical-offset="162" max-vertical-offset="1044">
           <caret line="41" column="61" selection-start-line="41" selection-start-column="61" selection-end-line="41" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/classes/Controller/Sklad.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-168.0" vertical-offset="0" max-vertical-offset="4968">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4536" max-vertical-offset="4968">
           <caret line="296" column="48" selection-start-line="296" selection-start-column="48" selection-end-line="296" selection-end-column="48" />
           <folding>
             <element signature="n#action_users#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/classes/Controller/Ajax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="864">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -980,8 +964,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/classes/Model/SkladLogin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.13978495" vertical-offset="117" max-vertical-offset="954">
+        <state vertical-scroll-proportion="0.0" vertical-offset="117" max-vertical-offset="954">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/image/classes/Kohana/Image.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1098" max-vertical-offset="2178">
+          <caret line="373" column="36" selection-start-line="373" selection-start-column="36" selection-end-line="373" selection-end-column="36" />
+          <folding>
+            <element signature="e#584#733#0#PHP" expanded="false" />
+            <element signature="e#844#1132#0#PHP" expanded="false" />
+            <element signature="e#1134#1520#0#PHP" expanded="false" />
+            <element signature="e#1523#1565#0#PHP" expanded="false" />
+            <element signature="e#1583#1622#0#PHP" expanded="false" />
+            <element signature="e#1641#1681#0#PHP" expanded="false" />
+            <element signature="e#1701#1761#0#PHP" expanded="false" />
+            <element signature="e#1779#1828#0#PHP" expanded="false" />
+            <element signature="e#1846#2065#0#PHP" expanded="false" />
+            <element signature="e#2067#2686#0#PHP" expanded="false" />
+            <element signature="e#2689#2932#0#PHP" expanded="false" />
+            <element signature="e#2934#3347#0#PHP" expanded="false" />
+            <element signature="e#3350#4189#0#PHP" expanded="false" />
+            <element signature="e#4191#6489#0#PHP" expanded="false" />
+            <element signature="e#6492#7124#0#PHP" expanded="false" />
+            <element signature="e#7126#8487#0#PHP" expanded="false" />
+            <element signature="e#8490#8796#0#PHP" expanded="false" />
+            <element signature="e#8798#9276#0#PHP" expanded="false" />
+            <element signature="e#9279#9655#0#PHP" expanded="false" />
+            <element signature="e#9657#9847#0#PHP" expanded="false" />
+            <element signature="e#9850#10079#0#PHP" expanded="false" />
+            <element signature="e#10081#10256#0#PHP" expanded="false" />
+            <element signature="e#10259#11137#0#PHP" expanded="false" />
+            <element signature="e#11139#11501#0#PHP" expanded="false" />
+            <element signature="e#11504#12213#0#PHP" expanded="false" />
+            <element signature="e#12215#13236#0#PHP" expanded="false" />
+            <element signature="e#13239#13708#0#PHP" expanded="false" />
+            <element signature="e#13710#14250#0#PHP" expanded="false" />
+            <element signature="e#14253#14876#0#PHP" expanded="false" />
+            <element signature="e#14878#15636#0#PHP" expanded="false" />
+            <element signature="e#15639#16051#0#PHP" expanded="false" />
+            <element signature="e#16053#16276#0#PHP" expanded="false" />
+            <element signature="e#16279#16414#0#PHP" expanded="false" />
+            <element signature="e#16475#16719#0#PHP" expanded="false" />
+            <element signature="e#16800#16904#0#PHP" expanded="false" />
+            <element signature="e#16958#17060#0#PHP" expanded="false" />
+            <element signature="e#17114#17216#0#PHP" expanded="false" />
+            <element signature="e#17270#17497#0#PHP" expanded="false" />
+            <element signature="e#17574#17845#0#PHP" expanded="false" />
+            <element signature="e#17938#18144#0#PHP" expanded="false" />
+            <element signature="e#18214#18358#0#PHP" expanded="false" />
+            <element signature="e#18417#18576#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/classes/Goodies.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.407408" vertical-offset="601" max-vertical-offset="1476">
+          <caret line="52" column="81" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/classes/Controller/Ajax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58064514" vertical-offset="0" max-vertical-offset="837">
+          <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
           <folding />
         </state>
       </provider>

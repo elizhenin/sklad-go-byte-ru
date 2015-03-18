@@ -15,10 +15,13 @@ class Controller_Ajax extends Controller
 
     public function action_imageUpload()
     {
-        if (HTTP_Request::POST == $this->request->method()) {
-            $file = Goodies::image_save('file', 'images/sklad');
-            if ($file) {
-                echo stripslashes(json_encode(array('filelink' => 'images/sklad/' . $file)));
+        if (isset($_FILES['file'])) {
+            if (!empty($_FILES['file']['name'])) {
+                $ext = substr(strrchr($_FILES['file']['name'], '.'), 1);
+                $filename=time();
+                substr(strrchr(Upload::save($_FILES['file'], $filename . '.' . $ext, 'images/uploads/'), DIRECTORY_SEPARATOR), 1);
+                $array = array('filelink' => '/images/uploads/' . $filename . '.' . $ext);
+                echo stripslashes(json_encode($array));
             }
         }
     }

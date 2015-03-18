@@ -43,4 +43,27 @@ class Goodies
         call_user_func_array('array_multisort', $args);
         return array_pop($args);
     }
+
+    static function image_save($name, $path, $width = false, $height = false)
+    {
+        if (!empty($_FILES[$name]['name'])) {
+            $ext = substr(strrchr($_FILES[$name]['name'], '.'), 1);
+            $filename = time() . '_' . Text::random('alnum', 4);
+            $image_file = substr(strrchr(Upload::save($_FILES[$name], $filename . '_tmp.' . $ext, stripcslashes($path) . '/'), DIRECTORY_SEPARATOR), 1);
+            $image = Image::factory(stripcslashes($path) . '/' . $image_file);
+            if ($width && ($image->width > $width)) {
+                $image->resize($width, $image->height);
+            }
+            if ($height && ($image->height > $height)) {
+                $image->resize($image->width, $height);
+            }
+            $image->save();
+
+            copy(stripcslashes($path) . '/' . $image_file, stripcslashes($path) . '/' . $filename . '.' . $ext);
+            unlink(stripcslashes($path) . '/' . $image_file);
+
+            return $filename . '.' . $ext;
+        } else return false;
+    }
+
 }

@@ -7,26 +7,10 @@ class Model_SkladModels extends Model
 //content = content manager
 //sale = sale manager
 
-    private function array_orderby()
-    {
-        $args = func_get_args();
-        $data = array_shift($args);
-        foreach ($args as $n => $field) {
-            if (is_string($field)) {
-                $tmp = array();
-                foreach ($data as $key => $row)
-                    $tmp[$key] = $row[$field];
-                $args[$n] = $tmp;
-            }
-        }
-        $args[] = &$data;
-        call_user_func_array('array_multisort', $args);
-        return array_pop($args);
-    }
 
-    public function NewModel($post)
+    public function ModelAdd($post)
     {
-        $categories = $this->CategoriesFullName(true);
+        $categories = $this->CategoryFullNames(false);
         $category = $post['id_categorys'];
 
 
@@ -34,7 +18,7 @@ class Model_SkladModels extends Model
         $post['sku'] = trim(htmlspecialchars($post['sku']));
 
         if (empty($post['alias'])) {
-            $post['alias'] = Alias::textToAlias($post['name']);
+            $post['alias'] = Goodies::textToAlias($post['name']);
         } else {
             $post['alias'] = trim(htmlspecialchars($post['alias']));
         }
@@ -64,12 +48,12 @@ class Model_SkladModels extends Model
         }
     }
 
-    public function UpdateModel($post)
+    public function ModelUpdate($post)
     {
-        $model = $this->GetById($post['id']);
+        $model = $this->ModelGetById($post['id']);
 
         if ($model) {
-            $categories = $this->CategoriesFullName(true);
+            $categories = $this->CategoryFullNames(false);
 
             if (!empty($categories[$post['id_categorys']]['includes'])) {
                 $cat = DB::insert('models_categorys', array('id_models', 'id_categorys'));
@@ -108,7 +92,7 @@ class Model_SkladModels extends Model
     }
 
 
-    public function GetById($id)
+    public function ModelGetById($id)
     {
         $select = DB::select()
             ->from('models')
@@ -123,7 +107,7 @@ class Model_SkladModels extends Model
         }
     }
 
-    public function GetAll()
+    public function ModelGetAll()
     {
         $select = DB::select()
             ->from('models')
@@ -136,10 +120,10 @@ class Model_SkladModels extends Model
         }
     }
 
-    public function GetCurrent($category)
+    public function ModelGetByCategory($category)
     {
         if (empty($category)) {
-            $select = $this->GetAll();
+            $select = $this->ModelGetAll();
         } else {
             $select = DB::select(
                 array('models.id', 'id'),
@@ -165,7 +149,7 @@ class Model_SkladModels extends Model
         }
     }
 
-    public function SetDeletedById($id, $deleted)
+    public function ModelSetDeletedById($id, $deleted)
     {
         DB::update('models')
             ->set(array('deleted' => $deleted))
@@ -173,7 +157,7 @@ class Model_SkladModels extends Model
             ->execute();
     }
 
-    public function GetCategories()
+    public function ModelGetCategories()
     {
         $select = DB::select(
             array('id', 'id'),
@@ -189,7 +173,7 @@ class Model_SkladModels extends Model
         }
     }
 
-    public function CategoriesCheckPath($alias)
+    public function CategoryCheckPath($alias)
     {
         $check = true;
         $path = explode('/', $alias);
@@ -220,12 +204,12 @@ class Model_SkladModels extends Model
 
     }
 
-    public function CategoriesFullName($raw = false)
+    public function CategoryFullNames($sort = true)
     {
         $cache = Cache::instance();
         if ($result = $cache->get('CategoriesFullName', false)) {
-            if (!$raw) {
-                $result = $this->array_orderby($result, 'name', SORT_ASC);
+            if ($sort) {
+                $result = Goodies::array_orderby($result, 'name', SORT_ASC);
             }
             return $result;
         } else {
@@ -254,16 +238,16 @@ class Model_SkladModels extends Model
 
 
             $cache->set('CategoriesFullName', $categories, 1800);
-            if (!$raw) {
-                $categories = $this->array_orderby($categories, 'name', SORT_ASC);
+            if ($sort) {
+                $categories = Goodies::array_orderby($categories, 'name', SORT_ASC);
             }
             return $categories;
         }
     }
 
-    public function CategoriesFullNameAllowed()
+    public function CategoryFullNameAllowed()
     {
-        $categories = $this->CategoriesFullName();
+        $categories = $this->CategoryFullNames();
         foreach ($categories as $key => $cat) {
             if (!$cat['allowed']) {
                 unset($categories[$key]);
@@ -272,7 +256,7 @@ class Model_SkladModels extends Model
         return $categories;
     }
 
-    public function CategoriesGetCurrent($item)
+    public function CategoryGetSub($item)
     {
 
         $records = DB::select()
@@ -283,7 +267,7 @@ class Model_SkladModels extends Model
         return $records;
     }
 
-    public function CategoriesGetById($id)
+    public function CategoryGetById($id)
     {
         $records = DB::select()
             ->from('categorys')
@@ -298,10 +282,10 @@ class Model_SkladModels extends Model
         }
     }
 
-    public function AddCategory($item, $id_parent)
+    public function CategoryAdd($item, $id_parent)
     {
         $item['name'] = trim(htmlspecialchars($item['name']));
-        $item['alias'] = Alias::textToAlias($item['name']);
+        $item['alias'] = Goodies::textToAlias($item['name']);
         $item['menu'] = trim(htmlspecialchars($item['menu']));
         if (empty($item['menu'])) $item['menu'] = $item['name'];
         $item['title'] = trim(htmlspecialchars($item['title']));
@@ -321,7 +305,7 @@ class Model_SkladModels extends Model
     }
 
 
-    public function CategoriesUpdateRecord($item)
+    public function CategoryUpdate($item)
     {
 
         $id = $item['id'];
@@ -350,7 +334,7 @@ class Model_SkladModels extends Model
         $cache->delete('CategoriesFullName');
         if(!empty($models)){
             foreach ($models as $model) {
-                $categories = $this->CategoriesFullName(true);
+                $categories = $this->CategoryFullNames(false);
 
                 if (!empty($categories[$model['id_categorys']]['includes'])) {
                     $cat = DB::insert('models_categorys', array('id_models', 'id_categorys'));
@@ -389,12 +373,12 @@ class Model_SkladModels extends Model
         return $records;
     }
 
-    public function NewSpecification($post)
+    public function SpecificationAdd($post)
     {
 
     }
 
-    public function UpdateSpecification($post)
+    public function SpecificationUpdate($post)
     {
 
     }

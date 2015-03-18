@@ -12,7 +12,7 @@ class Model_SkladUsers extends Model
     {
         $post['name'] = trim(htmlspecialchars($post['name']));
         if (empty($post['alias'])) {
-            $post['alias'] = Alias::textToAlias($post['name']);
+            $post['alias'] = Goodies::textToAlias($post['name']);
         } else {
             $post['alias'] = trim(htmlspecialchars($post['alias']));
         }

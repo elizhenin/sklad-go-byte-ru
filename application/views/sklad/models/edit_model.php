@@ -126,6 +126,7 @@
     <?php
     if (!empty($item['id'])) {
         ?>
+
         <table style="width: 100%">
             <thead style="background-color: dimgray">
             <td style="text-align: left">
@@ -150,6 +151,7 @@
             </td>
             </thead>
         </table>
+    <form action="/sclad/specifications">
         <table style="width: 100%">
             <thead style="background-color: dimgray">
             <td>
@@ -177,19 +179,13 @@
                     ?>
                     <tr>
                         <td>
-                                <form name="form<?= $one['id'] ?>delete" method="POST"
-                                      style="display:inline;float:right;" action="/sklad/specifications">
-                                    <input type="hidden" name="id" value="<?= $one['id'] ?>"/>
-                                    <input type="hidden" name="operation" value="model_delete"/>
-                                    <input type="hidden" name="id_models" value="<?= $one['id'] ?>"/>
-                                    <input type="submit" value="Удалить" title="Удалить"/>
-                                </form>
+<label><input type="checkbox" name="delete_<?=$item['id']?>"/>Удалить</label>
                         </td>
                         <td><?=$one['specification']?> </td>
-                        <td>  <?=$one['value']?>   </td>
+                        <td><input type="text" value="<?=$one['value']?>" name="value_<?=$item['id']?>"/></td>
 
-                        <td><?= (empty($one['important']))?'&#10005;':'&#10003;' ?></td>
-                        <td><?= (empty($one['manual']))?'&#10005;':'&#10003;' ?></td>
+                        <td><input type="checkbox" <?= (empty($one['important']))?'':'checked="checked"' ?> name="important_<?=$item['id']?>"/></td>
+                        <td><input type="checkbox" <?= (empty($one['manual']))?'':'checked="checked"' ?> name="manual_<?=$item['id']?>"/></td>
                         <td><?=$one['modificated']?></td>
                     </tr>
                 <?php
@@ -198,6 +194,10 @@
             ?>
             </tbody>
         </table>
+        <input type="hidden" name="operation" value="model_update">
+        <input type="hidden" name="id_models" value="<?= (!empty($item['id'])) ? $item['id'] : '' ?>">
+        <input type="submit" value="Сохранить">
+        </form>
     <?php
     } else {
         ?>

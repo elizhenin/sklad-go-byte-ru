@@ -332,6 +332,11 @@ class Controller_Sklad extends Controller_SkladTmp
                 $this->redirect($this->request->referrer());
 
                 break;
+            case 'model_update':
+
+                                $this->redirect($this->request->referrer());
+
+                break;
         }
 
         $this->content = $content;

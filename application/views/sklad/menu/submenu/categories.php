@@ -10,3 +10,6 @@
 <form method="get" action="/sklad/specifications">
     <input type="submit" value="Спецификации" <?=($rights!='sale')?'':'disabled="disabled"'?>>
 </form>
+<form method="get" action="/sklad/models">
+    <input type="submit" value="Все модели" <?=($rights!='sale')?'':'disabled="disabled"'?>>
+</form>

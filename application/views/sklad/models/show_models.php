@@ -1,9 +1,4 @@
 <h1>Модели</h1>
-    <form name="form_add" method="POST" style="float:left"><input
-            type="hidden" name="operation" value="add"/><input type="submit" value="Добавить"/>
-    </form>
-<br>
-
 <table style="width:100%">
     <thead style="background-color: dimgray">
     <td></td>
@@ -51,7 +46,7 @@
                 </td>
                 <td><?= $item['sku'] ?></td>
                 <td><?= $item['name'] ?></td>
-                <td></td>
+                <td><?=(empty($categorys[$item['id_categorys']]))?'(недопустимая категория)':$categorys[$item['id_categorys']]['name']?></td>
                 <td><?= $item['price'] ?></td>
                 <td><?= $item['in_price'] ?></td>
                 <td><?= $item['modificated'] ?></td>

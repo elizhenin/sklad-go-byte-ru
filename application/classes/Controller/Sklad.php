@@ -170,6 +170,7 @@ class Controller_Sklad extends Controller_SkladTmp
             case 'list':
                 $content = View::factory('sklad/models/show_models');
                 $content->items = $ModelModels->ModelGetAll();
+                $content->categorys = $ModelModels->CategoryFullNameAllowed(false);
                 break;
             case 'new':
                 $ModelModels->ModelAdd($ModelsPOST);
@@ -295,7 +296,6 @@ class Controller_Sklad extends Controller_SkladTmp
         $user = $ses->get('user', false);
         if (($user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
         $model = $this->request->param('model');
-        $param = $this->request->param('param');
         $SpecificationsPOST = $this->request->post();
         if (empty($SpecificationsPOST['operation'])) {
             $SpecificationsPOST['operation'] = 'specifications_list';
@@ -350,6 +350,13 @@ class Controller_Sklad extends Controller_SkladTmp
         }
 
         $this->content = $content;
+    }
+
+    public function action_images(){
+        $ses = Session::instance();
+        $user = $ses->get('user', false);
+        if (($user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
+
     }
 
 }

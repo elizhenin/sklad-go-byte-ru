@@ -111,6 +111,7 @@ class Model_SkladModels extends Model
     {
         $select = DB::select()
             ->from('models')
+            ->order_by('modificated','DESC')
             ->execute()
             ->as_array();
         if (!empty($select)) {
@@ -139,6 +140,7 @@ class Model_SkladModels extends Model
                 ->join('models_categorys')
                 ->on('models.id', '=', 'models_categorys.id_models')
                 ->where('models_categorys.id_categorys', '=', $category)
+                ->order_by('models.modificated','DESC')
                 ->execute()
                 ->as_array();
         }
@@ -245,9 +247,9 @@ class Model_SkladModels extends Model
         }
     }
 
-    public function CategoryFullNameAllowed()
+    public function CategoryFullNameAllowed($sort = true)
     {
-        $categories = $this->CategoryFullNames();
+        $categories = $this->CategoryFullNames($sort);
         foreach ($categories as $key => $cat) {
             if (!$cat['allowed']) {
                 unset($categories[$key]);

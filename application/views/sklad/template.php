@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=1024">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <link type="text/css" rel="stylesheet" href="/style/style.css">
+    <link type="text/css" rel="stylesheet" href="/style/icons.css">
     <link type="text/css" rel="stylesheet" href="/style/magnific-popup.css">
     <link type="text/css" rel="stylesheet" href="/js/redactor/redactor.css">
 
@@ -29,9 +30,12 @@
     <title><?$title?></title>
 </head>
 <body>
-<div class="right">
+<div class="menu">
     <h2><?=$title?></h2>
     <?=$menu?>
+</div>
+<div class="submenu">
+    <?=(!empty($submenu))?$submenu:''?>
 </div>
 <div class="wrap">
     <?= $content ?>

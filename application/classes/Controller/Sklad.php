@@ -57,7 +57,7 @@ class Controller_Sklad extends Controller_SkladTmp
         $ModelUsers = New Model_SkladUsers();
         switch ($UsersPOST['operation']) {
             case 'list':
-                $content = View::factory('users/show_users');
+                $content = View::factory('sklad/users/show_users');
                 $content->items = $ModelUsers->GetAll();
                 break;
             case 'new':
@@ -69,12 +69,12 @@ class Controller_Sklad extends Controller_SkladTmp
                 $this->redirect($this->request->referrer());
                 break;
             case 'edit':
-                $content = View::factory('users/edit_user');
+                $content = View::factory('sklad/users/edit_user');
                 $content->item = $ModelUsers->GetById($UsersPOST['users_id']);
                 $content->operation = 'update';
                 break;
             case 'add':
-                $content = View::factory('users/edit_user');
+                $content = View::factory('sklad/users/edit_user');
                 $content->operation = 'new';
                 break;
             case 'disable':
@@ -230,7 +230,7 @@ class Controller_Sklad extends Controller_SkladTmp
                     $content->items = $items;
                     $categories = $ModelModels->CategoryFullNames(false);
                     if($check['id']!=0) $content->name = $categories[$check['id']]['name'];
-
+                    $ses->set('ModelOpened',false);
                 } else throw new HTTP_Exception_404;
                 break;
             case 'new':

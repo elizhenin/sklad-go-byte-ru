@@ -1,3 +1,4 @@
+<h1>Категория</h1>
 <form method="POST">
     <table style="width:100%">
         <tbody>

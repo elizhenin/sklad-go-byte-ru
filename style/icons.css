@@ -1,0 +1,34 @@
+.icon-users span {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    background: url(img/icons/system-users.png) no-repeat center center;
+}
+
+.icon-storages span {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    background: url(img/icons/system-file-manager.png) no-repeat center center;
+}
+
+.icon-models span {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    background: url(img/icons/view-restore.png) no-repeat center center;
+}
+
+.icon-products span {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    background: url(img/icons/view-restore.png) no-repeat center center;
+}
+
+.icon-orders span {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    background: url(img/icons/accessories-text-editor.png) no-repeat center center;
+}

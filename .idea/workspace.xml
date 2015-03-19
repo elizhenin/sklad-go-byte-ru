@@ -1,9 +1,471 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36287add-0d5f-401a-87e9-5ed22a4f0472" name="Default" comment="добавление/удаление спецификаций, пока без изменения свойств">
+    <list default="true" id="36287add-0d5f-401a-87e9-5ed22a4f0472" name="Default" comment="рефактори">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/accessories-calculator.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/accessories-character-map.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/accessories-dictionary.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/accessories-text-editor.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/accessories-text-editor.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/action-unavailable.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/alarm.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/anaconda.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/applets-screenshooter.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/mimetypes/application-certificate.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/mimetypes/application-rss+xml.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/mimetypes/application-x-appliance.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/applications-blender.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/categories/applications-engineering.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/categories/applications-games.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/categories/applications-graphics.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/categories/applications-multimedia.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/categories/applications-science.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/categories/applications-utilities.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/appointment-missed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/appointment-soon.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/audio-card.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/audio-input-microphone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/audio-volume-high.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/audio-volume-low.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/audio-volume-medium.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/audio-volume-muted.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/mimetypes/audio-x-generic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/audiobook.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/avatar-default.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/baobab.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/battery-caution-charging.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/battery-caution.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/battery-empty-charging.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/battery-empty.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/battery-full-charged.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/battery-full-charging.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/battery-full.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/battery-good-charging.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/battery-good.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/battery-low-charging.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/battery-low.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/battery-missing.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/blender.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/bluetooth-active.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/bluetooth-disabled.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/bluetooth.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/bookmark-add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/bookmark-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/boxes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/brasero.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/call-end.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/call-missed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/call-start.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/camera-photo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/camera-web.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/changes-allow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/changes-prevent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/channel-insecure.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/channel-secure.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/cheese.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/colorimeter-colorhug.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/computer-apple-ipad.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/computer-fail.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/computer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/config-firewall.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/configuration-editor.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/dconf-editor.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/deja-dup.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/devhelp.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/dialog-error.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/dialog-information.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/dialog-password.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/dialog-question.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/dialog-warning.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/display-brightness.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/display-projector.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/document-open-recent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/document-open.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/document-page-setup.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/document-properties.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/document-save-as.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/document-save.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/document-send.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/documents.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/drive-harddisk-ieee1394.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/drive-harddisk-system.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/drive-harddisk-usb.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/drive-harddisk.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/drive-multidisk.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/drive-multidisk.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/drive-optical.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/drive-removable-media.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/edit-clear-all.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/edit-clear-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/edit-clear.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/edit-copy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/edit-cut.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/edit-delete.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/edit-find.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/edit-paste.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/edit-redo-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/edit-redo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/edit-select-all.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/edit-select.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/edit-undo-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/edit-undo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emblems/emblem-default.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emblems/emblem-documents.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emblems/emblem-favorite.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emblems/emblem-important.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emblems/emblem-music.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emblems/emblem-ok.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emblems/emblem-photos.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emblems/emblem-shared.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emblems/emblem-synchronizing.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emblems/emblem-system.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emblems/emblem-videos.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/empathy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/eog.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/evince.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/evolution.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-angel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-angry.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-confused.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-cool.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-crying.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-devilish.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-embarrassed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-kiss.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-laugh.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-monkey.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-plain.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-raspberry.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-sad.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-shutmouth.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-sick.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-smile-big.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-smile.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-smirk.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-surprised.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-tired.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-uncertain.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-wink.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-worried.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/emotes/face-yawn.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/fedora-release-notes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/file-roller.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/find-location.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/firefox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/five-or-more.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/places/folder-documents.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/places/folder-download.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/places/folder-music.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/places/folder-pictures.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/mimetypes/folder-publicshare.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/places/folder-publicshare.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/places/folder-remote.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/places/folder-saved-search.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/places/folder-templates.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/places/folder-videos.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/places/folder.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/format-indent-less-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/format-indent-less.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/format-indent-more-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/format-indent-more.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/format-justify-center.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/format-justify-fill.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/format-justify-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/format-justify-right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/format-text-bold.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/format-text-direction-ltr.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/format-text-direction-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/format-text-italic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/format-text-strikethrough.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/format-text-underline.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/gimp.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/glade.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/gnome-abrt.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/gnome-aisleriot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/gnome-boxes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/gnome-disks.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/gnome-documents.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/gnome-freecell.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/gnome-mahjongg.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/gnome-mines.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/gnome-nettool.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/gnome-power-manager.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/gnome-power-statistics.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/gnome-sudoku.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/gnome-tweak-tool.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/go-bottom.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/go-down.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/go-first-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/go-first.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/go-home.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/go-jump-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/go-jump.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/go-last-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/go-last.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/go-next-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/go-next.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/go-previous-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/go-previous.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/go-top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/go-up.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/goa-panel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-apply.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-bold.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-cancel.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-connect.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-convert.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-disconnect.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-dnd-multiple.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-dnd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-edit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-index.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-no.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-ok.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-preferences.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-select-color.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-select-font.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-undelete.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/stock/gtk-yes.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/gtranslator.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/haguichi.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/headphones.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/headpin.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/help-browser.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/iagno.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/ifolder.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/inkscape.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/input-dialpad.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/input-gaming.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/input-keyboard.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/input-mouse.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/input-tablet.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/input-touchpad.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/insert-image.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/insert-link.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/insert-object.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/insert-text.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/katello.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/keyboard-brightness.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/libreoffice-base.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/libreoffice-calc.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/libreoffice-draw.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/libreoffice-impress.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/libreoffice-math.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/libreoffice-startcenter.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/libreoffice-writer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/list-add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/list-remove-all.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/list-remove.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/logview.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/mail-attachment.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/mail-mark-important.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/mail-read.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/mail-replied.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/mail-send-receive.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/mail-send.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/mail-unread.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/media-eject.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/media-flash.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/media-floppy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/media-optical-bd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/media-optical-cd-audio.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/media-optical-dvd.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/media-optical.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/media-playback-pause.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/media-playback-start-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/media-playback-start.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/media-playback-stop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/media-playlist-repeat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/media-playlist-shuffle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/media-record.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/media-removable.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/media-seek-backward-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/media-seek-backward.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/media-seek-forward-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/media-seek-forward.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/media-skip-backward-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/media-skip-backward.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/media-skip-forward-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/media-skip-forward.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/media-zip.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/microphone-sensitivity-high.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/microphone-sensitivity-low.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/microphone-sensitivity-medium.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/microphone-sensitivity-muted.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/miro.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/multimedia-player-apple-ipod-touch.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/multimedia-player.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-cellular-3g.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-cellular-4g.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-cellular-acquiring.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-cellular-connected.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-cellular-edge.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-cellular-gprs.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-cellular-signal-excellent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-cellular-signal-good.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-cellular-signal-none.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-cellular-signal-ok.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-cellular-signal-weak.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-cellular-umts.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-error.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-idle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-no-route.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-offline.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-receive.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/places/network-server.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-transmit-receive.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-transmit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-vpn-acquiring.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-vpn.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-wired-acquiring.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-wired-disconnected.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-wired.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-wireless-acquiring.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-wireless-connected.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-wireless-encrypted.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-wireless-hotspot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-wireless-signal-excellent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-wireless-signal-good.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-wireless-signal-none.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-wireless-signal-ok.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/network-wireless-signal-weak.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/places/network-workgroup.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/non-starred.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/object-flip-horizontal.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/object-flip-vertical.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/object-rotate-left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/object-rotate-right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/object-select.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/mimetypes/package-x-generic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/palimpsest.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/phone-apple-iphone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/phone.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/pidgin.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/pino.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/preferences-color.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/preferences-desktop-accessibility.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/preferences-desktop-display.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/preferences-desktop-keyboard-shortcuts.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/preferences-desktop-locale.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/preferences-desktop-remote-desktop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/preferences-desktop-screensaver.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/preferences-desktop-wallpaper.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/categories/preferences-other.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/preferences-system-date-and-time.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/preferences-system-network-proxy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/preferences-system-network.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/preferences-system-notifications.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/preferences-system-privacy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/preferences-system-search.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/preferences-system-sharing.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/preferences-system-time.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/categories/preferences-system.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/printer-error.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/printer-network.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/printer-printing.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/printer-warning.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/printer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/animations/process-idle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/process-stop.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/animations/process-working.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/rhythmbox.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/scanner.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/scribus.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/seahorse.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/security-high.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/security-low.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/security-medium.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/semi-starred-rtl.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/semi-starred.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/send-to.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/session-properties.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/shotwell.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/software-update-available.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/software-update-urgent.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/sound-juicer.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/sparkleshare.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/starred.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/places/start-here.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/system-config-authentication.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/system-file-manager.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/system-file-manager.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/categories/system-help.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/system-run.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/system-shutdown.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/system-software-install.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/system-software-update.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/system-users.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/system-users.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/tab-new.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/task-due.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/task-past-due.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/tasque.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/text-editor.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/mimetypes/text-x-generic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/tomboy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/totem.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/touchpad-disabled.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/transmission.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/user-available.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/user-away.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/places/user-bookmarks.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/user-busy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/places/user-home.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/user-idle.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/user-info.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/user-invisible.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/user-offline.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/user-status-pending.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/user-trash-full.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/places/user-trash.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/utilities-system-monitor.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/utilities-terminal.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/devices/video-display.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/mimetypes/video-x-generic.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/view-continuous.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/view-dual.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/view-fullscreen.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/view-grid.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/view-list.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/view-more.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/view-paged.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/view-refresh.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/view-restore.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/view-restore.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/view-wrapped.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/vim.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/weather-clear-night.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/weather-clear.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/weather-few-clouds-night.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/weather-few-clouds.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/weather-fog.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/weather-overcast.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/weather-severe-alert.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/weather-showers-scattered.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/weather-showers.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/weather-snow.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/status/weather-storm.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/web-browser.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/window-close.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/mimetypes/x-office-calendar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/xchat-gnome.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/apps/xchat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/zoom-fit-best.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/zoom-in.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/zoom-original.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/actions/zoom-out.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/sklad/menu/submenu/categories.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/sklad/menu/submenu/default.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/icons.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/style/img/icons/animations/process-idle.svg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/sklad/menu/submenu/users.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/classes/Controller/Sklad.php" afterPath="$PROJECT_DIR$/application/classes/Controller/Sklad.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/sklad/models/edit_model.php" afterPath="$PROJECT_DIR$/application/views/sklad/models/edit_model.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/classes/Controller/SkladTmp.php" afterPath="$PROJECT_DIR$/application/classes/Controller/SkladTmp.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/sklad/models/edit_category.php" afterPath="$PROJECT_DIR$/application/views/sklad/models/edit_category.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/sklad/models/show_categories.php" afterPath="$PROJECT_DIR$/application/views/sklad/models/show_categories.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/style/style.css" afterPath="$PROJECT_DIR$/style/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/sklad/menu/super.php" afterPath="$PROJECT_DIR$/application/views/sklad/menu/super.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/sklad/template.php" afterPath="$PROJECT_DIR$/application/views/sklad/template.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="sklad-go-byte-ru.iws" />
@@ -32,56 +494,112 @@
       <file leaf-file-name="Sklad.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/classes/Controller/Sklad.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-24.333334" vertical-offset="3771" max-vertical-offset="4698">
-              <caret line="336" column="16" selection-start-line="336" selection-start-column="16" selection-end-line="336" selection-end-column="16" />
+            <state vertical-scroll-proportion="-16.222221" vertical-offset="2910" max-vertical-offset="5490">
+              <caret line="232" column="51" selection-start-line="232" selection-start-column="51" selection-end-line="232" selection-end-column="51" />
               <folding>
-                <element signature="n#action_users#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
                 <element signature="n#action_storages#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="edit_model.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/views/sklad/models/edit_model.php">
+      <file leaf-file-name="super.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/super.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4975728" vertical-offset="2542" max-vertical-offset="3528">
-              <caret line="187" column="117" selection-start-line="187" selection-start-column="117" selection-end-line="187" selection-end-column="117" />
+            <state vertical-scroll-proportion="-6.0" vertical-offset="0" max-vertical-offset="522">
+              <caret line="9" column="164" selection-start-line="9" selection-start-column="164" selection-end-line="9" selection-end-column="164" />
               <folding>
-                <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#2;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#3;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#3;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#4;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#4;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#5;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#5;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#6;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#6;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#7;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#7;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#8;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#8;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#9;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#9;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#10;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#10;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="tag#table#0;tag#td#1;tag#tr#0;tag#tbody#0;tag#table#0" expanded="false" />
-                <element signature="n#style#0;n#thead#0;n#table#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#thead#0;n#table#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#0;n#td#0;n#thead#0;n#table#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#form#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#thead#0;n#table#0;n#form#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
+                <marker date="1426768513680" expanded="true" signature="293:365" placeholder="..." />
+                <marker date="1426768513680" expanded="true" signature="554:700" placeholder="..." />
+                <marker date="1426768513680" expanded="true" signature="710:720" placeholder="..." />
+                <marker date="1426768513680" expanded="true" signature="813:884" placeholder="..." />
+                <marker date="1426768513680" expanded="true" signature="980:1052" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.22916667" vertical-offset="0" max-vertical-offset="864">
+              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="categories.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/submenu/categories.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.6666667" vertical-offset="0" max-vertical-offset="198">
+              <caret line="4" column="87" selection-start-line="4" selection-start-column="87" selection-end-line="4" selection-end-column="87" />
+              <folding>
+                <element signature="n#style#0;n#form#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/submenu/users.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.0" vertical-offset="0" max-vertical-offset="162">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show_categories.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/sklad/models/show_categories.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.6666667" vertical-offset="1224" max-vertical-offset="2538">
+              <caret line="72" column="11" selection-start-line="70" selection-start-column="4" selection-end-line="72" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SkladTmp.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/classes/Controller/SkladTmp.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-21.0" vertical-offset="369" max-vertical-offset="1368">
+              <caret line="52" column="70" selection-start-line="52" selection-start-column="70" selection-end-line="52" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit_category.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/sklad/models/edit_category.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1440">
+              <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/submenu/default.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="234">
+              <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/style/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.0" vertical-offset="2835" max-vertical-offset="6570">
+              <caret line="174" column="12" selection-start-line="174" selection-start-column="12" selection-end-line="174" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,7 +617,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/application/classes/Alias.php" />
         <option value="$PROJECT_DIR$/application/views/storages/show_storages.php" />
         <option value="$PROJECT_DIR$/application/views/storages/edit_storage.php" />
@@ -114,17 +631,25 @@
         <option value="$PROJECT_DIR$/application/views/menu/content.php" />
         <option value="$PROJECT_DIR$/application/views/menu/super.php" />
         <option value="$PROJECT_DIR$/application/views/menu/sale.php" />
-        <option value="$PROJECT_DIR$/application/classes/Controller/SkladTmp.php" />
         <option value="$PROJECT_DIR$/application/classes/Goodies.php" />
         <option value="$PROJECT_DIR$/application/classes/Controller/Ajax.php" />
         <option value="$PROJECT_DIR$/application/views/sklad/specifications/show_specifications.php" />
-        <option value="$PROJECT_DIR$/application/views/sklad/menu/super.php" />
-        <option value="$PROJECT_DIR$/application/views/sklad/template.php" />
         <option value="$PROJECT_DIR$/application/views/sklad/specifications/specifications.php" />
         <option value="$PROJECT_DIR$/application/views/sklad/specifications/model_specifications.php" />
         <option value="$PROJECT_DIR$/application/classes/Model/SkladModels.php" />
-        <option value="$PROJECT_DIR$/application/classes/Controller/Sklad.php" />
         <option value="$PROJECT_DIR$/application/views/sklad/models/edit_model.php" />
+        <option value="$PROJECT_DIR$/style/icons.css" />
+        <option value="$PROJECT_DIR$/application/views/sklad/template.php" />
+        <option value="$PROJECT_DIR$/application/views/sklad/menu/submenu/users.php" />
+        <option value="$PROJECT_DIR$/application/views/sklad/menu/submenu/default.php" />
+        <option value="$PROJECT_DIR$/application/classes/Controller/SkladTmp.php" />
+        <option value="$PROJECT_DIR$/application/views/sklad/models/edit_category.php" />
+        <option value="$PROJECT_DIR$/style/style.css" />
+        <option value="$PROJECT_DIR$/application/views/sklad/models/show_categories.php" />
+        <option value="$PROJECT_DIR$/application/views/sklad/menu/submenu/categories.php" />
+        <option value="$PROJECT_DIR$/application/classes/Controller/Sklad.php" />
+        <option value="$PROJECT_DIR$/application/views/sklad/menu/super.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -161,6 +686,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -189,6 +715,42 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="style" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sklad" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sklad-go-byte-ru" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="style" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="img" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="icons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sklad" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sklad-go-byte-ru" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -237,33 +799,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="storages" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sklad" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sklad-go-byte-ru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sklad" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="specifications" />
+              <option name="myItemId" value="users" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -333,51 +869,19 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="logs" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="2015" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="03" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="sklad" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sklad-go-byte-ru" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
+              <option name="myItemId" value="menu" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sklad" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sklad-go-byte-ru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="classes" />
+              <option name="myItemId" value="submenu" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -396,10 +900,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="classes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Model" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -425,44 +925,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sklad" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sklad-go-byte-ru" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cache" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="71" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="ignore_missing_gitignore" value="true" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/application/views/sklad/menu/submenu" />
+      <recent name="$PROJECT_DIR$/style/img" />
       <recent name="$PROJECT_DIR$/application/views/sklad/models" />
       <recent name="$PROJECT_DIR$/application/views/menu" />
       <recent name="$PROJECT_DIR$/application/views" />
-      <recent name="$PROJECT_DIR$/application/config" />
-      <recent name="$PROJECT_DIR$/application/views/models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/application/views/sklad" />
@@ -484,15 +962,15 @@
       <BehatRunner />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -592,33 +1070,39 @@
       <option name="project" value="LOCAL" />
       <updated>1426694554501</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="каркас формы редактирования спецификаций">
+      <created>1426696363265</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1426696363265</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="25" width="1922" height="1007" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32996634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32996634" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2657082" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2683706" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32996634" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -650,7 +1134,8 @@
     <MESSAGE value="image saving refactor" />
     <MESSAGE value="работа со списком спецификаций" />
     <MESSAGE value="добавление/удаление спецификаций, пока без изменения свойств" />
-    <option name="LAST_COMMIT_MESSAGE" value="добавление/удаление спецификаций, пока без изменения свойств" />
+    <MESSAGE value="каркас формы редактирования спецификаций" />
+    <option name="LAST_COMMIT_MESSAGE" value="каркас формы редактирования спецификаций" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -659,61 +1144,11 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/application/classes/Model/SkladLogin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="954">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/classes/Model/SkladUsers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="558" max-vertical-offset="2196">
-          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
-          <folding>
-            <element signature="e#958#2305#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/sklad/storages/edit_storage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="382" max-vertical-offset="1206">
-          <caret line="56" column="38" selection-start-line="56" selection-start-column="38" selection-end-line="56" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/classes/Model/SkladStorages.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2142">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/classes/Goodies.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="612">
-          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/bootstrap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2230" max-vertical-offset="3042">
-          <caret line="16" column="1" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/classes/Controller/Sklad.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1665" max-vertical-offset="2610">
           <caret line="116" column="52" selection-start-line="116" selection-start-column="52" selection-end-line="116" selection-end-column="52" />
           <folding>
-            <element signature="n#action_users#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
             <element signature="n#action_storages#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
           </folding>
         </state>
@@ -770,14 +1205,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="612">
           <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="864">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -785,7 +1212,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34408602" vertical-offset="1296" max-vertical-offset="2610">
           <caret line="88" column="27" selection-start-line="88" selection-start-column="27" selection-end-line="88" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -800,21 +1226,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.59485924" vertical-offset="486" max-vertical-offset="1368">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/sklad/models/edit_category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1422">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/bootstrap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.333334" vertical-offset="2385" max-vertical-offset="3222">
-          <caret line="163" column="51" selection-start-line="163" selection-start-column="51" selection-end-line="163" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -836,7 +1247,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.703704" vertical-offset="4337" max-vertical-offset="5580">
           <caret line="257" column="7" selection-start-line="257" selection-start-column="7" selection-end-line="257" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -897,7 +1307,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="234">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -908,19 +1317,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/classes/Controller/SkladTmp.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68817204" vertical-offset="162" max-vertical-offset="1044">
-          <caret line="41" column="61" selection-start-line="41" selection-start-column="61" selection-end-line="41" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/classes/Controller/Welcome.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="864">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -936,50 +1336,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1098" max-vertical-offset="2178">
           <caret line="373" column="36" selection-start-line="373" selection-start-column="36" selection-end-line="373" selection-end-column="36" />
-          <folding>
-            <element signature="e#584#733#0#PHP" expanded="false" />
-            <element signature="e#844#1132#0#PHP" expanded="false" />
-            <element signature="e#1134#1520#0#PHP" expanded="false" />
-            <element signature="e#1523#1565#0#PHP" expanded="false" />
-            <element signature="e#1583#1622#0#PHP" expanded="false" />
-            <element signature="e#1641#1681#0#PHP" expanded="false" />
-            <element signature="e#1701#1761#0#PHP" expanded="false" />
-            <element signature="e#1779#1828#0#PHP" expanded="false" />
-            <element signature="e#1846#2065#0#PHP" expanded="false" />
-            <element signature="e#2067#2686#0#PHP" expanded="false" />
-            <element signature="e#2689#2932#0#PHP" expanded="false" />
-            <element signature="e#2934#3347#0#PHP" expanded="false" />
-            <element signature="e#3350#4189#0#PHP" expanded="false" />
-            <element signature="e#4191#6489#0#PHP" expanded="false" />
-            <element signature="e#6492#7124#0#PHP" expanded="false" />
-            <element signature="e#7126#8487#0#PHP" expanded="false" />
-            <element signature="e#8490#8796#0#PHP" expanded="false" />
-            <element signature="e#8798#9276#0#PHP" expanded="false" />
-            <element signature="e#9279#9655#0#PHP" expanded="false" />
-            <element signature="e#9657#9847#0#PHP" expanded="false" />
-            <element signature="e#9850#10079#0#PHP" expanded="false" />
-            <element signature="e#10081#10256#0#PHP" expanded="false" />
-            <element signature="e#10259#11137#0#PHP" expanded="false" />
-            <element signature="e#11139#11501#0#PHP" expanded="false" />
-            <element signature="e#11504#12213#0#PHP" expanded="false" />
-            <element signature="e#12215#13236#0#PHP" expanded="false" />
-            <element signature="e#13239#13708#0#PHP" expanded="false" />
-            <element signature="e#13710#14250#0#PHP" expanded="false" />
-            <element signature="e#14253#14876#0#PHP" expanded="false" />
-            <element signature="e#14878#15636#0#PHP" expanded="false" />
-            <element signature="e#15639#16051#0#PHP" expanded="false" />
-            <element signature="e#16053#16276#0#PHP" expanded="false" />
-            <element signature="e#16279#16414#0#PHP" expanded="false" />
-            <element signature="e#16475#16719#0#PHP" expanded="false" />
-            <element signature="e#16800#16904#0#PHP" expanded="false" />
-            <element signature="e#16958#17060#0#PHP" expanded="false" />
-            <element signature="e#17114#17216#0#PHP" expanded="false" />
-            <element signature="e#17270#17497#0#PHP" expanded="false" />
-            <element signature="e#17574#17845#0#PHP" expanded="false" />
-            <element signature="e#17938#18144#0#PHP" expanded="false" />
-            <element signature="e#18214#18358#0#PHP" expanded="false" />
-            <element signature="e#18417#18576#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -987,7 +1343,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.407408" vertical-offset="601" max-vertical-offset="1476">
           <caret line="52" column="81" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="81" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -995,23 +1350,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.58064514" vertical-offset="0" max-vertical-offset="837">
           <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/super.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.333333" vertical-offset="0" max-vertical-offset="540">
-          <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/sklad/template.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.666666" vertical-offset="0" max-vertical-offset="990">
-          <caret line="25" column="15" selection-start-line="25" selection-start-column="15" selection-end-line="25" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1019,18 +1357,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1332">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="21" />
-          <folding>
-            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#thead#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#1;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#2;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <marker date="1426689064832" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1426689064832" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1426689064832" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1046,10 +1372,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.3333335" vertical-offset="0" max-vertical-offset="468">
           <caret line="52" column="8" selection-start-line="1" selection-start-column="0" selection-end-line="52" selection-end-column="8" />
-          <folding>
-            <element signature="tag#td#1;tag#thead#0;tag#table#0" expanded="false" />
-            <element signature="tag#tbody#0;tag#table#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1057,7 +1379,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="829">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1065,7 +1386,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="142.14815" vertical-offset="4252" max-vertical-offset="5058">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1073,7 +1393,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.043010753" vertical-offset="558" max-vertical-offset="3348">
           <caret line="29" column="37" selection-start-line="29" selection-start-column="37" selection-end-line="29" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1085,75 +1404,145 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/sklad/storages/show_storages.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6344086" vertical-offset="405" max-vertical-offset="1242">
+          <caret line="52" column="79" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/sklad/models/edit_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.185184" vertical-offset="3055" max-vertical-offset="3942">
+          <caret line="194" column="20" selection-start-line="194" selection-start-column="20" selection-end-line="194" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/bootstrap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-21.333334" vertical-offset="2358" max-vertical-offset="3222">
+          <caret line="163" column="51" selection-start-line="163" selection-start-column="51" selection-end-line="163" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/style/icons.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="702">
+          <caret line="4" column="46" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/sklad/users/show_users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6666667" vertical-offset="0" max-vertical-offset="1278">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="3" selection-end-column="11" />
+          <folding>
+            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/sklad/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.333334" vertical-offset="225" max-vertical-offset="1062">
+          <caret line="37" column="30" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/submenu/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="234">
+          <caret line="5" column="29" selection-start-line="5" selection-start-column="29" selection-end-line="5" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/submenu/users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0" vertical-offset="0" max-vertical-offset="162">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/classes/Controller/SkladTmp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-21.0" vertical-offset="369" max-vertical-offset="1368">
+          <caret line="52" column="70" selection-start-line="52" selection-start-column="70" selection-end-line="52" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/sklad/models/edit_category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1440">
+          <caret line="0" column="13" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/style/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.0" vertical-offset="2835" max-vertical-offset="6570">
+          <caret line="174" column="12" selection-start-line="174" selection-start-column="12" selection-end-line="174" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/sklad/models/show_categories.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26213592" vertical-offset="0" max-vertical-offset="2592">
-          <caret line="12" column="12" selection-start-line="9" selection-start-column="0" selection-end-line="12" selection-end-column="12" />
+        <state vertical-scroll-proportion="-2.6666667" vertical-offset="1224" max-vertical-offset="2538">
+          <caret line="72" column="11" selection-start-line="70" selection-start-column="4" selection-end-line="72" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/submenu/categories.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6666667" vertical-offset="0" max-vertical-offset="198">
+          <caret line="4" column="87" selection-start-line="4" selection-start-column="87" selection-end-line="4" selection-end-column="87" />
           <folding>
-            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#1;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/classes/Controller/Sklad.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-24.333334" vertical-offset="3771" max-vertical-offset="4698">
-          <caret line="336" column="16" selection-start-line="336" selection-start-column="16" selection-end-line="336" selection-end-column="16" />
+        <state vertical-scroll-proportion="-16.222221" vertical-offset="2910" max-vertical-offset="5490">
+          <caret line="232" column="51" selection-start-line="232" selection-start-column="51" selection-end-line="232" selection-end-column="51" />
           <folding>
-            <element signature="n#action_users#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
             <element signature="n#action_storages#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/sklad/storages/show_storages.php">
+    <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/super.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6344086" vertical-offset="405" max-vertical-offset="1242">
-          <caret line="52" column="79" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="79" />
-          <folding />
+        <state vertical-scroll-proportion="-6.0" vertical-offset="0" max-vertical-offset="522">
+          <caret line="9" column="164" selection-start-line="9" selection-start-column="164" selection-end-line="9" selection-end-column="164" />
+          <folding>
+            <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
+            <marker date="1426768513680" expanded="true" signature="293:365" placeholder="..." />
+            <marker date="1426768513680" expanded="true" signature="554:700" placeholder="..." />
+            <marker date="1426768513680" expanded="true" signature="710:720" placeholder="..." />
+            <marker date="1426768513680" expanded="true" signature="813:884" placeholder="..." />
+            <marker date="1426768513680" expanded="true" signature="980:1052" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/sklad/models/edit_model.php">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4975728" vertical-offset="2542" max-vertical-offset="3528">
-          <caret line="187" column="117" selection-start-line="187" selection-start-column="117" selection-end-line="187" selection-end-column="117" />
-          <folding>
-            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#1;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#2;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#3;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#3;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#4;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#4;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#5;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#5;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#6;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#6;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#7;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#7;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#8;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#8;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#9;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#9;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#10;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#10;n#tbody#0;n#table#0;n#form#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="tag#table#0;tag#td#1;tag#tr#0;tag#tbody#0;tag#table#0" expanded="false" />
-            <element signature="n#style#0;n#thead#0;n#table#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#thead#0;n#table#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#td#0;n#thead#0;n#table#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#form#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#thead#0;n#table#0;n#form#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.22916667" vertical-offset="0" max-vertical-offset="864">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>

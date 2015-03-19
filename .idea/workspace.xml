@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36287add-0d5f-401a-87e9-5ed22a4f0472" name="Default" comment="рефакторинг интерфейсной части, приведение к юзабельному варианту">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/classes/Controller/SkladTmp.php" afterPath="$PROJECT_DIR$/application/classes/Controller/SkladTmp.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/sklad/menu/submenu/users.php" afterPath="$PROJECT_DIR$/application/views/sklad/menu/submenu/users.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="sklad-go-byte-ru.iws" />
@@ -28,18 +28,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Sklad.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/classes/Controller/Sklad.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.222221" vertical-offset="2910" max-vertical-offset="5490">
-              <caret line="232" column="51" selection-start-line="232" selection-start-column="51" selection-end-line="232" selection-end-column="51" />
-              <folding>
-                <element signature="n#action_storages#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="super.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/super.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -119,11 +107,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SkladTmp.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SkladTmp.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/classes/Controller/SkladTmp.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.67741936" vertical-offset="585" max-vertical-offset="1602">
+            <state vertical-scroll-proportion="-21.0" vertical-offset="585" max-vertical-offset="1602">
               <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="users.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/submenu/users.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.021505376" vertical-offset="0" max-vertical-offset="837">
+              <caret line="1" column="85" selection-start-line="1" selection-start-column="85" selection-end-line="1" selection-end-column="85" />
               <folding />
             </state>
           </provider>
@@ -175,7 +173,6 @@
         <option value="$PROJECT_DIR$/application/views/sklad/models/edit_model.php" />
         <option value="$PROJECT_DIR$/style/icons.css" />
         <option value="$PROJECT_DIR$/application/views/sklad/template.php" />
-        <option value="$PROJECT_DIR$/application/views/sklad/menu/submenu/users.php" />
         <option value="$PROJECT_DIR$/application/views/sklad/menu/submenu/default.php" />
         <option value="$PROJECT_DIR$/application/views/sklad/models/edit_category.php" />
         <option value="$PROJECT_DIR$/style/style.css" />
@@ -191,6 +188,7 @@
         <option value="$PROJECT_DIR$/application/views/sklad/menu/super.php" />
         <option value="$PROJECT_DIR$/application/views/sklad/menu/submenu/categories.php" />
         <option value="$PROJECT_DIR$/application/classes/Controller/SkladTmp.php" />
+        <option value="$PROJECT_DIR$/application/views/sklad/menu/submenu/users.php" />
       </list>
     </option>
   </component>
@@ -655,7 +653,13 @@
       <option name="project" value="LOCAL" />
       <updated>1426769148114</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="рефакторинг интерфейсной части, приведение к юзабельному варианту">
+      <created>1426769210864</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1426769210864</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -993,16 +997,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/submenu/users.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0" vertical-offset="0" max-vertical-offset="162">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#form#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/sklad/models/edit_category.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1440">
@@ -1120,8 +1114,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/classes/Controller/SkladTmp.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67741936" vertical-offset="585" max-vertical-offset="1602">
+        <state vertical-scroll-proportion="-21.0" vertical-offset="585" max-vertical-offset="1602">
           <caret line="64" column="36" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/submenu/users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.021505376" vertical-offset="0" max-vertical-offset="837">
+          <caret line="1" column="85" selection-start-line="1" selection-start-column="85" selection-end-line="1" selection-end-column="85" />
           <folding />
         </state>
       </provider>

@@ -1,0 +1,182 @@
+.menu {
+    background-color: #1D2D44;
+    width: 150px;
+    height: 100%;
+    position: fixed;
+    color: #fff;
+    top: 20px;
+    left: 0;
+    padding: 20px 0px 30px 0px;
+}
+
+.menu h2 {
+    font-size: 26px;
+    margin: 0 0 25px 0;
+    padding: 0;
+    color: #ddd;
+    text-align: center;
+}
+
+.menu ul {
+    margin: 0;
+    padding: 0 0 0 15px;
+
+}
+
+.menu ul li {
+    list-style: none;
+    margin: 0;
+    padding: 8px 0 8px 0;
+}
+
+.menu ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 5px 10px 5px 0;
+}
+
+.menu ul li a:hover {
+    text-decoration: none;
+}
+
+.menu_active {
+    background-color: #1a4580;
+}
+
+.submenu {
+    background-color: #1a4580;
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    color: #fff;
+    top: 40px;
+    left: 150px;
+    padding: 20px 0px 30px 0px;
+}
+
+.submenu h2 {
+    font-size: 26px;
+    margin: 0 0 25px 0;
+    padding: 0;
+    color: #ddd;
+    text-align: center;
+}
+
+.submenu ul {
+    margin: 0;
+    padding: 0 0 0 15px;
+}
+
+.submenu ul li {
+    list-style: none;
+    margin: 0;
+    padding: 8px 0 8px 0;
+}
+
+.submenu ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: normal;
+    padding: 5px 10px 5px 0;
+}
+
+.submenu ul li a:hover {
+    text-decoration: none;
+}
+
+.submenu form input {
+    background-color: #1a4580;
+    color: #7cc1f0;
+    border: 0px;
+    font-weight: normal;
+    width: 200px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.submenu form input:hover {
+    background-color: #0066cc;
+    color: #ffffff;
+}
+
+.submenu form input:disabled {
+    background-color: #1a4580;
+    color: #808080;
+}
+
+.topmenu {
+    background-color: #1D2D44;
+    width: 100%;
+    height: 40px;
+    position: fixed;
+    color: #fff;
+    top: 0;
+    left: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.topmenu div {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px;
+    width: 130px;
+    padding: 0px;
+    text-align: center;
+}
+
+.topmenu_exit{
+    position: fixed;
+    right: 0px;
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+}
+
+.topmenu_site{
+    position: fixed;
+    right: 150px;
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+}
+
+.topmenu input {
+    display: inline-block;
+    background-color: #1D2D44;
+    color: #fff;
+    border: 0px;
+    font-weight: normal;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    padding: 0px;
+    margin: 0px;
+}
+
+.topmenu form input:hover {
+    background-color: #1a4580;
+    color: #ffffff;
+}
+
+.topmenu form input:disabled {
+    background-color: #1a4580;
+    color: #808080;
+}
+
+.topmenu a{
+    position: relative;
+    right: 0px;
+    background-color: #1a4580;
+    color: #7cc1f0;
+    font-weight: normal;
+    width: 200px;
+    height: 40px;
+    cursor: pointer;
+    padding: 0px;
+    margin: 0px;
+}

@@ -44,6 +44,16 @@ class Controller_Sklad extends Controller_SkladTmp
 
     }
 
+    public function action_orders()
+    {
+
+    }
+
+    public function action_products()
+    {
+
+    }
+
     public function action_users()
     {
         $ses = Session::instance();
@@ -142,15 +152,15 @@ class Controller_Sklad extends Controller_SkladTmp
     {
         $ses = Session::instance();
         $user = $ses->get('user', false);
-        if (($user['rights'] != 'super')) HTTP::redirect('/sklad/main');
+        if (($user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
 
         $ModelsPOST = $this->request->post();
         if (empty($ModelsPOST['operation'])) {
             $ModelsPOST['operation'] = 'list';
         }
 
-       $ModelOpened = $ses->get('ModelOpened', false);
-        if(($ModelsPOST['operation']!='update')&&($ModelOpened)){
+        $ModelOpened = $ses->get('ModelOpened', false);
+        if (($ModelsPOST['operation'] != 'update') && ($ModelOpened)) {
             $ModelsPOST['operation'] = 'edit';
             $ModelsPOST['models_id'] = $ModelOpened;
         }
@@ -169,7 +179,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 break;
             case 'update':
                 $ModelModels->ModelUpdate($ModelsPOST);
-                $ses->set('ModelOpened',false);
+                $ses->set('ModelOpened', false);
                 $return = $ses->get('ReturnTo', '/sklad/categories');
                 $ses->delete('ReturnTo');
                 $this->redirect($return);
@@ -182,7 +192,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 $content->categorys = $ModelModels->CategoryFullNameAllowed();
                 $content->operation = 'update';
                 $return = $ses->get('ReturnTo', false);
-                if(empty($return)) $ses->set('ReturnTo', $this->request->referrer());
+                if (empty($return)) $ses->set('ReturnTo', $this->request->referrer());
                 $ses->set('ModelOpened', $ModelsPOST['models_id']);
                 break;
             case 'add':
@@ -191,7 +201,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 $content->operation = 'new';
 
                 $return = $ses->get('ReturnTo', false);
-                if(empty($return)) $ses->set('ReturnTo', $this->request->referrer());
+                if (empty($return)) $ses->set('ReturnTo', $this->request->referrer());
                 break;
             case 'disable':
                 $ModelModels->ModelSetDeletedById($ModelsPOST['models_id'], '1');
@@ -229,8 +239,8 @@ class Controller_Sklad extends Controller_SkladTmp
                     $items['models'] = $ModelModels->ModelGetByCategory($check['id']);
                     $content->items = $items;
                     $categories = $ModelModels->CategoryFullNames(false);
-                    if($check['id']!=0) $content->name = $categories[$check['id']]['name'];
-                    $ses->set('ModelOpened',false);
+                    if ($check['id'] != 0) $content->name = $categories[$check['id']]['name'];
+                    $ses->set('ModelOpened', false);
                 } else throw new HTTP_Exception_404;
                 break;
             case 'new':
@@ -283,7 +293,7 @@ class Controller_Sklad extends Controller_SkladTmp
     {
         $ses = Session::instance();
         $user = $ses->get('user', false);
-        if (($user['rights'] != 'super')) HTTP::redirect('/sklad/main');
+        if (($user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
         $model = $this->request->param('model');
         $param = $this->request->param('param');
         $SpecificationsPOST = $this->request->post();
@@ -333,8 +343,8 @@ class Controller_Sklad extends Controller_SkladTmp
 
                 break;
             case 'model_update':
-
-                                $this->redirect($this->request->referrer());
+                $ModelModels->SpecificationsModelUpdate($SpecificationsPOST);
+                $this->redirect($this->request->referrer());
 
                 break;
         }

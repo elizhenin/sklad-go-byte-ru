@@ -2,11 +2,11 @@
         type="hidden" name="operation" value="add"/><input type="submit" value="Создать категорию" <?=($rights=='super')?'':'disabled="disabled"'?>/>
 </form>
 <form name="" method="POST" style="float:left" action="/sklad/models"><input
-        type="hidden" name="operation" value="add"/><input type="submit" value="Создать модель"/>
+        type="hidden" name="operation" value="add"/><input type="submit" value="Создать модель" <?=($rights!='sale')?'':'disabled="disabled"'?>/>
 </form>
 <form>
     <input type="button" value="" disabled>
 </form>
 <form method="get" action="/sklad/specifications">
-    <input type="submit" value="Спецификации">
+    <input type="submit" value="Спецификации" <?=($rights!='sale')?'':'disabled="disabled"'?>>
 </form>

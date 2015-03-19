@@ -26,6 +26,10 @@ class Controller_SkladTmp extends Controller_Template
             $this->template->title = 'Склад';
         }
 
+        $topmenu = view::factory('/sklad/menu/top');
+        $topmenu->title = $this->template->title;
+        $this->template->topmenu = $topmenu;
+
         $this->template->content = $this->content;
 
         $ses = Session::instance();

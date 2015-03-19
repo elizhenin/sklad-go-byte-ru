@@ -79,108 +79,7 @@ body.login .wrap form input.button {
     width: auto;
 }
 
-.menu {
-    background-color: #1D2D44;
-    width: 150px;
-    height: 100%;
-    position: fixed;
-    color: #fff;
-    top: 0;
-    left: 0;
-    padding: 20px 0px 30px 0px;
-}
 
-.menu h2 {
-    font-size: 26px;
-    margin: 0 0 25px 0;
-    padding: 0;
-    color: #ddd;
-    text-align: center;
-}
-
-.menu ul {
-    margin: 0;
-    padding: 0 0 0 15px;
-}
-
-.menu ul li {
-    list-style: none;
-    margin: 0;
-    padding: 8px 0 8px 0;
-}
-
-.menu ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: normal;
-    padding: 5px 10px 5px 0;
-}
-
-.menu ul li a:hover {
-    text-decoration: none;
-}
-
-.menu_active {
-    background-color: #1a4580;
-}
-
-.submenu {
-    background-color: #1a4580;
-    width: 200px;
-    height: 100%;
-    position: fixed;
-    color: #fff;
-    top: 0;
-    left: 150px;
-    padding: 20px 0px 30px 0px;
-}
-
-.submenu h2 {
-    font-size: 26px;
-    margin: 0 0 25px 0;
-    padding: 0;
-    color: #ddd;
-    text-align: center;
-}
-
-.submenu ul {
-    margin: 0;
-    padding: 0 0 0 15px;
-}
-
-.submenu ul li {
-    list-style: none;
-    margin: 0;
-    padding: 8px 0 8px 0;
-}
-
-.submenu ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: normal;
-    padding: 5px 10px 5px 0;
-}
-
-.submenu ul li a:hover {
-    text-decoration: none;
-}
-
-.submenu form input {
-    background-color: #1a4580;
-    color: #7cc1f0;
-    border: 0px ;
-    font-weight: normal;
-    width:200px;
-    height: 40px;
-    cursor: pointer;
-}
-
-.submenu form input:hover {
-    background-color: #0066cc;
-    color: #ffffff;
-}
 
 .wrap {
     position: static;
@@ -188,7 +87,7 @@ body.login .wrap form input.button {
     color: #333333;
     top: 40px;
     padding: 0;
-    margin: 40px 30px 25px 400px;
+    margin: 60px 30px 25px 400px;
     font-size: 14px;
     text-align: center;
     min-width: 710px;
@@ -253,39 +152,6 @@ a.add {
     line-height: 40px;
     color: #009900 !important;
     text-transform: uppercase;
-}
-
-.top {
-    position: absolute;
-    right: 10px;
-    top: 0;
-}
-
-.top ul {
-    margin: 0;
-    padding: 0;
-    line-height: 35px;
-}
-
-.top ul li {
-    display: inline-block;
-    list-style: none;
-    margin: 0 5px 0 5px;
-    padding: 0;
-    color: #999999;
-    font-size: 11px;
-}
-
-.top ul li a {
-    margin: 0;
-    padding: 0;
-    font-size: 11px;
-    text-decoration: none;
-    color: #999999;
-}
-
-.top ul li a:hover {
-    text-decoration: underline;
 }
 
 .wrap form.city {

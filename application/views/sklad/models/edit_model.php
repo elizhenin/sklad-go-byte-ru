@@ -151,7 +151,7 @@
             </td>
             </thead>
         </table>
-    <form action="/sclad/specifications">
+    <form name="form_edit" method="POST" action="/sklad/specifications">
         <table style="width: 100%">
             <thead style="background-color: dimgray">
             <td>
@@ -179,13 +179,13 @@
                     ?>
                     <tr>
                         <td>
-<label><input type="checkbox" name="delete_<?=$item['id']?>"/>Удалить</label>
+<label><input type="checkbox" name="delete_<?=$one['id']?>"/>Удалить</label>
                         </td>
                         <td><?=$one['specification']?> </td>
-                        <td><input type="text" value="<?=$one['value']?>" name="value_<?=$item['id']?>"/></td>
+                        <td><input type="text" value="<?=$one['value']?>" name="value_<?=$one['id']?>"/></td>
 
-                        <td><input type="checkbox" <?= (empty($one['important']))?'':'checked="checked"' ?> name="important_<?=$item['id']?>"/></td>
-                        <td><input type="checkbox" <?= (empty($one['manual']))?'':'checked="checked"' ?> name="manual_<?=$item['id']?>"/></td>
+                        <td><input type="checkbox" <?= (empty($one['important']))?'':'checked="checked"' ?> name="important_<?=$one['id']?>"/></td>
+                        <td><input type="checkbox" <?= (empty($one['manual']))?'':'checked="checked"' ?> name="manual_<?=$one['id']?>"/></td>
                         <td><?=$one['modificated']?></td>
                     </tr>
                 <?php

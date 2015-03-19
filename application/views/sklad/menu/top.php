@@ -1,3 +1,6 @@
+<form class="topmenu_search">
+    <input type="text" placeholder="поиск">
+</form>
 <form class="topmenu_site" action="/" target="_blank">
     <input type="submit" value="Открыть сайт">
 </form>

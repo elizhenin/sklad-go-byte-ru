@@ -146,6 +146,25 @@
     margin: 0px;
 }
 
+.topmenu_search{
+    position: fixed;
+    right: 300px;
+    display: inline-block;
+    padding: 0px;
+    margin: 0px;
+}
+
+.topmenu_search input{
+    border-radius: 15px;
+    display: inline-block;
+    background-color: #fff !important;
+    color: #000  !important;
+    width: 150px;
+    height: 30px !important;
+    margin-top: 5px !important;
+    padding-left: 15px !important;
+}
+
 .topmenu input {
     display: inline-block;
     background-color: #1D2D44;

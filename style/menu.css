@@ -105,6 +105,7 @@
 .submenu form input:disabled {
     background-color: #1a4580;
     color: #808080;
+    cursor: default;
 }
 
 .topmenu {

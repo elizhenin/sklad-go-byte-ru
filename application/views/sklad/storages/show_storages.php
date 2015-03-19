@@ -1,9 +1,4 @@
 <h1>Склады</h1>
-    <form name="form_add" method="POST" style="float:left"><input
-            type="hidden" name="operation" value="add"/><input type="submit" value="Добавить"/>
-    </form>
-<br>
-
 <table style="width:100%">
     <thead style="background-color: dimgray">
     <td></td>

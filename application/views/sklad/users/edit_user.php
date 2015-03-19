@@ -1,3 +1,4 @@
+<h1>Пользователь(город)</h1>
 <form method="POST">
     <table style="width:100%">
         <tbody>

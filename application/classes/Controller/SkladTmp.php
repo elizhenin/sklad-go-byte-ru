@@ -49,6 +49,9 @@ class Controller_SkladTmp extends Controller_Template
                 case 'users':
                     $this->template->submenu = view::factory('/sklad/menu/submenu/users');
                     break;
+                case 'storages':
+                    $this->template->submenu = view::factory('/sklad/menu/submenu/storages');
+                    break;
                 case 'categories':
                     $submenu = View::factory('/sklad/menu/submenu/categories');
                     $submenu->rights = $user['rights'];

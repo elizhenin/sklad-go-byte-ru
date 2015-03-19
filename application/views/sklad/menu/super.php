@@ -9,7 +9,6 @@
 
     <li class="icon-models <?=(Request::current()->action()=='categories' || Request::current()->action()=='models' || Request::current()->action()=='specifications')?'menu_active':''?>">
         <a href="/sklad/categories"><span></span><br>Модели</a>
-        <a href="/sklad/specifications"><small>Спецификации</small></a>
     </li>
 
     <li>

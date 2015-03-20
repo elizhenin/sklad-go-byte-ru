@@ -190,6 +190,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 $content->item = $ModelModels->ModelGetById($ModelsPOST['models_id']);
                 $content->specifications = $ModelModels->SpecificationsGetVisible();
                 $content->model_specifications = $ModelModels->SpecificationsModelGetAll($ModelsPOST['models_id']);
+                $content->images = $ModelModels->ImagesModelGetAll($ModelsPOST['models_id']);
                 $content->categorys = $ModelModels->CategoryFullNameAllowed();
                 $content->operation = 'update';
                 $return = $ses->get('ReturnTo', false);
@@ -352,11 +353,38 @@ class Controller_Sklad extends Controller_SkladTmp
         $this->content = $content;
     }
 
-    public function action_images(){
+    public function action_images()
+    {
         $ses = Session::instance();
         $user = $ses->get('user', false);
         if (($user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
+        $model = $this->request->param('model');
+        $ImagesPOST = $this->request->post();
+        if (empty($ImagesPOST['operation'])) {
+            $ImagesPOST['operation'] = '';
+        }
+        $ModelModels = New Model_SkladModels();
+        switch ($ImagesPOST['operation']) {
+//specs itself
+            case 'images_upload':
+                $ModelModels->ImagesUpload($ImagesPOST['models_id']);
+                $this->redirect($this->request->referrer());
+                break;
+            case 'images_update':
+                $ModelModels->ImagesUpdate($ImagesPOST);
+                $this->redirect($this->request->referrer());
 
+                break;
+            default:
+                $content = View::factory('sklad/models/show_images');
+                if(!empty($model)) {
+                    $content->images = $ModelModels->ImagesGetAll();
+                    $content->model = $model;
+                }
+                break;
+        }
+
+        $this->content = $content;
     }
 
 }

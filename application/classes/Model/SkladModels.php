@@ -388,14 +388,16 @@ class Model_SkladModels extends Model
 
     public function SpecificationsAdd($post)
     {
+        if(trim(htmlspecialchars($post['name'])))
         $item = $records = DB::insert('specifications', array('name'))
             ->values(array(trim(htmlspecialchars($post['name']))))
             ->execute();
-        return $item[0];
+        if (!empty($item)) return $item[0]; else return false;
     }
 
     public function SpecificationsRename($post)
     {
+        if(trim(htmlspecialchars($post['name'])))
         DB::update('specifications')
             ->set(array('name' => trim(htmlspecialchars($post['name']))))
             ->where('id', '=', $post['id'])
@@ -481,6 +483,80 @@ class Model_SkladModels extends Model
                 if(!empty($post['manual_'.$one['id']])) $new['manual'] = '1';else $new['manual'] = '0';
                 $new['modificated'] = DB::expr('NOW()');
                 DB::update('specifications_models')
+                    ->set($new)
+                    ->where('id', '=', $one['id'])
+                    ->execute();
+            }
+        }
+    }
+
+    public function ImagesUpload($id_models)
+    {
+        if (!empty($_FILES['image']['name'])) {
+            $files = Goodies::images_save('image', 'images/sklad', 700, 700);
+            foreach($files as $file){
+
+                    DB::insert('images_models', array(
+                        'file',
+                        'alt',
+                        'id_models',
+                        'important',
+                        'active',
+                        'created'
+                    ))
+                        ->values(array(
+                            $file,
+                            '',
+                            $id_models,
+                            '0',
+                            '0',
+                            DB::expr('NOW()')
+                        ))
+                        ->execute();
+                }
+            }
+
+        }
+
+    public function ImagesGetAll()
+    {
+        $items = DB::select()
+            ->from('images_models')
+            ->execute()
+            ->as_array();
+
+        if ($items) return $items; else return false;
+    }
+
+    public function ImagesModelGetAll($model)
+    {
+        $items = DB::select()
+            ->from('images_models')
+            ->where('images_models.id_models', '=', $model)
+            ->execute()
+            ->as_array();
+
+        if ($items) return $items; else return false;
+    }
+
+    public function ImagesUpdate($post)
+    {
+        $current_images = $this->ImagesModelGetAll($post['id_models']);
+
+        foreach($current_images as $one){
+            if(!empty($post['delete_'.$one['id']])){
+                unlink('images/sklad/'.$one['file']);
+                DB::delete('images_models')
+                    ->where('images_models.id', '=', $one['id'])
+                    ->execute();
+            }
+            else
+            {
+                $new = array();
+                if(!empty($post['alt_'.$one['id']])) $new['alt'] = trim(htmlspecialchars($post['alt_'.$one['id']]));
+                if(!empty($post['important_'.$one['id']])) $new['important'] = '1';else $new['important'] = '0';
+                if(!empty($post['active_'.$one['id']])) $new['active'] = '1';else $new['active'] = '0';
+                DB::update('images_models')
                     ->set($new)
                     ->where('id', '=', $one['id'])
                     ->execute();

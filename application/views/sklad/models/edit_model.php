@@ -1,7 +1,7 @@
 <h1>Модель</h1>
 <table style="width:100%;">
 <tbody>
-<tr style="width: 50%">
+<tr style="width: 50%;vertical-align: top">
 <td>
     <form method="POST">
         <h2>Параметры</h2>
@@ -118,7 +118,7 @@
         </table>
         <input type="hidden" name="operation" value="<?= $operation ?>">
         <input type="hidden" name="id" value="<?= (!empty($item['id'])) ? $item['id'] : '' ?>">
-        <input type="submit" value="Сохранить">
+        <input type="submit" value="Сохранить и закрыть">
     </form>
 </td>
 <td style="vertical-align: top;">
@@ -206,6 +206,77 @@
     }
     ?>
 </td>
+</tr>
+<tr style="vertical-align: top">
+   <td  colspan="2">
+       <h2>Фотографии</h2>
+       <?php
+       if (!empty($item['id'])) {
+       ?>
+           <table style="width: 100%">
+               <thead style="background-color: dimgray">
+
+               <td style="text-align: left">
+                   <form name="form_images_add" method="POST" enctype="multipart/form-data" style="float:left" action="/sklad/images"><input
+                           type="hidden" name="operation" value="images_upload"/>
+
+                       <div style="display: inline-block">
+                           <input type="submit" value="Добавить"/>
+                       </div>
+                       <div style="display: inline-block">
+                           <input type="file" name="image[]" accept="image/jpeg,image/png,image/gif" multiple>
+                       </div>
+                       <input type="hidden" name="models_id" value="<?=$item['id']?>">
+
+                   </form>
+               </td>
+
+               </thead>
+           </table>
+           <form name="form_edit" method="POST" action="/sklad/images">
+               <table style="width:100%">
+                   <thead style="background-color: dimgray">
+                   <td></td>
+                   <td>Фото</td>
+                   <td>alt</td>
+                   <td>Важно</td>
+                   <td>Показывать</td>
+                   </thead>
+                   <tbody>
+                   <?php
+                   if(!empty($images)){
+                       foreach ($images as $image) {
+                           ?>
+
+                           <tr>
+                               <td>
+                                   <label><input type="checkbox" name="delete_<?=$image['id']?>"/>Удалить</label>
+                               </td>
+                               <td><img alt="" src="/images/sklad/<?= $image['file'] ?>"
+                                        style="width:100px;height:100px;"></td>
+                               <td><input type="text" value="<?=$image['alt']?>" name="alt_<?=$image['id']?>"/></td>
+
+                               <td><input type="checkbox" <?= (empty($image['important']))?'':'checked="checked"' ?> name="important_<?=$image['id']?>"/></td>
+                               <td><input type="checkbox" <?= (empty($image['active']))?'':'checked="checked"' ?> name="active_<?=$image['id']?>"/></td>
+                           </tr>
+
+                       <?php
+                       }}
+                   ?>
+                   </tbody>
+               </table>
+               <input type="hidden" name="operation" value="images_update">
+               <input type="hidden" name="id_models" value="<?= $item['id'] ?>">
+               <input type="submit" value="Сохранить">
+           </form>
+       <?php
+       } else {
+           ?>
+           (сначала сохраните модель)
+       <?php
+       }
+       ?>
+   </td>
 </tr>
 </tbody>
 </table>

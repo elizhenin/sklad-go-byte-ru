@@ -247,7 +247,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 break;
             case 'new':
                 if (($user['rights'] == 'super')) {
-                    $ModelModels->CategoryAdd($CategoriesPOST, $check['id']);
+                    $ModelModels->CategoryAdd($CategoriesPOST, false);
                 }
                 $this->redirect($this->request->referrer());
                 break;

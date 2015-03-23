@@ -1,4 +1,4 @@
-<form name="" method="POST" action="/sklad/categories"><input
+<form name="" method="POST" action="<?=(Request::initial()->action()=='categories')?'':'/sklad/categories'?>"><input
         type="hidden" name="operation" value="add"/><input type="submit" value="Создать категорию" <?=($rights=='super')?'':'disabled="disabled"'?>/>
 </form>
 <form name="" method="POST" style="float:left" action="/sklad/models"><input

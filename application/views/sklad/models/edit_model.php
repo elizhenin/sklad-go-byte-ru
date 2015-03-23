@@ -93,7 +93,7 @@
                 </td>
                 <td style="text-align: left">
                     <textarea
-                        name="complete"><?= (!empty($item['complete'])) ? $item['complete'] : '' ?></textarea>
+                        name="complectation"><?= (!empty($item['complete'])) ? $item['complete'] : '' ?></textarea>
                 </td>
             </tr>
             <tr>

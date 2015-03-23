@@ -27,7 +27,7 @@ class Model_SkladModels extends Model
         if (empty($post['title'])) $post['title'] = $post['name'];
         $post['short_text'] = trim(htmlspecialchars($post['short_text']));
         $post['text'] = trim(htmlspecialchars($post['text']));
-        $post['complete'] = trim(htmlspecialchars($post['complete']));
+        $post['complectation'] = trim(htmlspecialchars($post['complectation']));
         $post['description'] = trim(htmlspecialchars($post['description']));
         $post['keywords'] = trim(htmlspecialchars($post['keywords']));
         $post['created'] = DB::expr('NOW()');
@@ -75,7 +75,7 @@ class Model_SkladModels extends Model
             if (empty($post['title'])) $post['title'] = $post['name'];
             $post['short_text'] = trim(htmlspecialchars($post['short_text']));
             $post['text'] = trim(htmlspecialchars($post['text']));
-            $post['complete'] = trim(htmlspecialchars($post['complete']));
+            $post['complectation'] = trim(htmlspecialchars($post['complectation']));
             $post['description'] = trim(htmlspecialchars($post['description']));
             $post['keywords'] = trim(htmlspecialchars($post['keywords']));
             $post['modificated'] = DB::expr('NOW()');
@@ -294,7 +294,7 @@ class Model_SkladModels extends Model
         if (empty($item['title'])) $item['title'] = $item['name'];
         $item['text'] = trim(htmlspecialchars($item['text']));
         $item['description'] = trim(htmlspecialchars($item['description']));
-
+if($id_parent)
         $item['id_parent'] = $id_parent;
         $item['created'] = DB::expr('NOW()');
         $item['modificated'] = DB::expr('NOW()');

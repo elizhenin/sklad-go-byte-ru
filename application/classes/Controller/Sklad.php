@@ -51,7 +51,53 @@ class Controller_Sklad extends Controller_SkladTmp
 
     public function action_products()
     {
+        $ProductsPOST = $this->request->post();
+        if (empty($ProductsPOST['operation'])) {
+            $ProductsPOST['operation'] = 'list';
+        }
 
+
+        $ModelProducts = New Model_SkladProducts();
+        $ModelModels = New Model_SkladModels();
+        $ModelStorages = New Model_SkladStorages();
+        switch ($ProductsPOST['operation']) {
+            case 'list':
+                $content = View::factory('sklad/products/show_products');
+                $content->items = $ModelProducts->ProductsGetAll();
+
+                break;
+            case 'new':
+                $ModelProducts->ProductsAdd($ProductsPOST);
+                $this->redirect($this->request->referrer());
+                break;
+            case 'update':
+                $ModelProducts->ProductsUpdate($ProductsPOST);
+                $this->redirect($this->request->referrer());
+                break;
+            case 'edit':
+                $content = View::factory('sklad/products/edit_product');
+                $content->item = $ModelProducts->ProductsGetById($ProductsPOST['products_id']);
+                $content->models = $ModelModels->ModelGetVisible();
+                $content->storages = $ModelStorages->StoragesGetVisible();
+                $content->operation = 'update';
+                break;
+            case 'add':
+                $content = View::factory('sklad/products/edit_product');
+                $content->models = $ModelModels->ModelGetVisible();
+                $content->storages = $ModelStorages->StoragesGetVisible();
+                $content->operation = 'new';
+                break;
+            case 'disable':
+                $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '1');
+                $this->redirect($this->request->referrer());
+                break;
+            case 'enable':
+                $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '0');
+                $this->redirect($this->request->referrer());
+                break;
+        }
+
+        $this->content = $content;
     }
 
     public function action_users()
@@ -189,6 +235,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 $content = View::factory('sklad/models/edit_model');
                 $content->item = $ModelModels->ModelGetById($ModelsPOST['models_id']);
                 $content->specifications = $ModelModels->SpecificationsGetVisible();
+                $content->specifications_groups = $ModelModels->SpecificationsGroupsGetVisible();
                 $content->model_specifications = $ModelModels->SpecificationsModelGetAll($ModelsPOST['models_id']);
                 $content->images = $ModelModels->ImagesModelGetAll($ModelsPOST['models_id']);
                 $content->categorys = $ModelModels->CategoryFullNameAllowed();
@@ -307,10 +354,15 @@ class Controller_Sklad extends Controller_SkladTmp
 
             case 'specifications_list':
                 $content = View::factory('sklad/specifications/specifications');
+                $content->groups = $ModelModels->SpecificationsGroupsGetAll();
                 $content->items = $ModelModels->SpecificationsGetAll();
                 break;
             case 'specifications_rename':
                 $ModelModels->SpecificationsRename($SpecificationsPOST);
+                $this->redirect($this->request->referrer());
+                break;
+            case 'specifications_regroup':
+                $ModelModels->SpecificationsRegroup($SpecificationsPOST);
                 $this->redirect($this->request->referrer());
                 break;
             case 'specifications_new':
@@ -347,6 +399,45 @@ class Controller_Sklad extends Controller_SkladTmp
                 $ModelModels->SpecificationsModelUpdate($SpecificationsPOST);
                 $this->redirect($this->request->referrer());
 
+                break;
+        }
+
+        $this->content = $content;
+    }
+
+    public function action_specifications_groups()
+    {
+        $ses = Session::instance();
+        $user = $ses->get('user', false);
+        if (($user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
+        $model = $this->request->param('model');
+        $SpecificationsPOST = $this->request->post();
+        if (empty($SpecificationsPOST['operation'])) {
+            $SpecificationsPOST['operation'] = 'specifications_list';
+        }
+        $ModelModels = New Model_SkladModels();
+        switch ($SpecificationsPOST['operation']) {
+//specs itself
+
+            case 'specifications_list':
+                $content = View::factory('sklad/specifications/specifications_groups');
+                $content->items = $ModelModels->SpecificationsGroupsGetAll();
+                break;
+            case 'specifications_rename':
+                $ModelModels->SpecificationsGroupsRename($SpecificationsPOST);
+                $this->redirect($this->request->referrer());
+                break;
+            case 'specifications_new':
+                $ModelModels->SpecificationsGroupsAdd($SpecificationsPOST);
+                $this->redirect($this->request->referrer());
+                break;
+            case 'specifications_disable':
+                $ModelModels->SpecificationsGroupsSetDeletedById($SpecificationsPOST['id'], '1');
+                $this->redirect($this->request->referrer());
+                break;
+            case 'specifications_enable':
+                $ModelModels->SpecificationsGroupsSetDeletedById($SpecificationsPOST['id'], '0');
+                $this->redirect($this->request->referrer());
                 break;
         }
 

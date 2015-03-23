@@ -80,6 +80,29 @@ class Model_SkladStorages extends Model
         }
     }
 
+    public function StoragesGetVisible()
+    {
+        $select = DB::select(
+            array('storages.id','id'),
+            array('storages.name','name'),
+            array('storages.present','present'),
+            array('citys.name','city'),
+            array('storages.arrive','arrive'),
+            array('storages.transit','transit')
+        )
+            ->from('storages')
+            ->join('citys')
+            ->on('citys.id', '=', 'storages.id_citys')
+            ->where('storages.deleted','=','0')
+            ->execute()
+            ->as_array();
+        if (!empty($select)) {
+            return $select;
+        } else {
+            return false;
+        }
+    }
+
     public function SetDeletedById($id, $deleted)
     {
         DB::update('storages')

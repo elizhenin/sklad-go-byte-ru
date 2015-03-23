@@ -163,6 +163,7 @@
     height: 30px !important;
     margin-top: 5px !important;
     padding-left: 15px !important;
+    cursor: text !important;
 }
 
 .topmenu input {

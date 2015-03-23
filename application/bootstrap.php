@@ -166,6 +166,11 @@ Route::set('specifications', 'sklad/specifications(/<model>)', array('alias'=>'[
         'controller' => 'Sklad',
         'action'     => 'specifications'
     ));
+Route::set('specifications_groups', 'sklad/specifications_groups(/<model>)', array('alias'=>'[\w-/.]+'))
+    ->defaults(array(
+        'controller' => 'Sklad',
+        'action'     => 'specifications_groups'
+    ));
 Route::set('images', 'sklad/images(/<model>)', array('alias'=>'[\w-/.]+'))
     ->defaults(array(
         'controller' => 'Sklad',

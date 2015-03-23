@@ -7,6 +7,7 @@ class Model_SkladModels extends Model
 //content = content manager
 //sale = sale manager
 
+//models
 
     public function ModelAdd($post)
     {
@@ -111,7 +112,22 @@ class Model_SkladModels extends Model
     {
         $select = DB::select()
             ->from('models')
-            ->order_by('modificated','DESC')
+            ->order_by('modificated', 'DESC')
+            ->execute()
+            ->as_array();
+        if (!empty($select)) {
+            return $select;
+        } else {
+            return false;
+        }
+    }
+
+    public function ModelGetVisible()
+    {
+        $select = DB::select()
+            ->from('models')
+            ->where('deleted','=','0')
+            ->order_by('modificated', 'DESC')
             ->execute()
             ->as_array();
         if (!empty($select)) {
@@ -140,7 +156,7 @@ class Model_SkladModels extends Model
                 ->join('models_categorys')
                 ->on('models.id', '=', 'models_categorys.id_models')
                 ->where('models_categorys.id_categorys', '=', $category)
-                ->order_by('models.modificated','DESC')
+                ->order_by('models.modificated', 'DESC')
                 ->execute()
                 ->as_array();
         }
@@ -174,6 +190,8 @@ class Model_SkladModels extends Model
             return false;
         }
     }
+
+//categories
 
     public function CategoryCheckPath($alias)
     {
@@ -294,8 +312,8 @@ class Model_SkladModels extends Model
         if (empty($item['title'])) $item['title'] = $item['name'];
         $item['text'] = trim(htmlspecialchars($item['text']));
         $item['description'] = trim(htmlspecialchars($item['description']));
-if($id_parent)
-        $item['id_parent'] = $id_parent;
+        if ($id_parent)
+            $item['id_parent'] = $id_parent;
         $item['created'] = DB::expr('NOW()');
         $item['modificated'] = DB::expr('NOW()');
         unset($item['operation']);
@@ -305,7 +323,6 @@ if($id_parent)
         $cache = Cache::instance();
         $cache->delete('CategoriesFullName');
     }
-
 
     public function CategoryUpdate($item)
     {
@@ -364,12 +381,22 @@ if($id_parent)
             ->execute();
     }
 
+//specifications
+
     public function SpecificationsGetAll()
     {
 
-        $records = DB::select()
+        $records = DB::select(
+            array('specifications.id', 'id'),
+            array('specifications.name', 'name'),
+            array('specifications.deleted', 'deleted'),
+            array('specifications_groups.name', 'group')
+        )
             ->from('specifications')
-            ->order_by('deleted')
+            ->join('specifications_groups', 'LEFT')
+            ->on('specifications.id_specifications_groups', '=', 'specifications_groups.id')
+            ->order_by('specifications_groups.name')
+            ->order_by('specifications.deleted')
             ->execute()
             ->as_array();
         return $records;
@@ -388,20 +415,29 @@ if($id_parent)
 
     public function SpecificationsAdd($post)
     {
-        if(trim(htmlspecialchars($post['name'])))
-        $item = $records = DB::insert('specifications', array('name'))
-            ->values(array(trim(htmlspecialchars($post['name']))))
-            ->execute();
+        if (trim(htmlspecialchars($post['name'])))
+            $item = $records = DB::insert('specifications', array('name', 'id_specifications_groups'))
+                ->values(array(trim(htmlspecialchars($post['name'])), trim(htmlspecialchars($post['id_specifications_groups']))))
+                ->execute();
         if (!empty($item)) return $item[0]; else return false;
     }
 
     public function SpecificationsRename($post)
     {
-        if(trim(htmlspecialchars($post['name'])))
-        DB::update('specifications')
-            ->set(array('name' => trim(htmlspecialchars($post['name']))))
-            ->where('id', '=', $post['id'])
-            ->execute();
+        if (trim(htmlspecialchars($post['name'])))
+            DB::update('specifications')
+                ->set(array('name' => trim(htmlspecialchars($post['name']))))
+                ->where('id', '=', $post['id'])
+                ->execute();
+    }
+
+    public function SpecificationsRegroup($post)
+    {
+        if (trim(htmlspecialchars($post['id_specifications_groups'])))
+            DB::update('specifications')
+                ->set(array('id_specifications_groups' => trim(htmlspecialchars($post['id_specifications_groups']))))
+                ->where('id', '=', $post['id'])
+                ->execute();
     }
 
     public function SpecificationsSetDeletedById($id, $deleted)
@@ -411,6 +447,67 @@ if($id_parent)
             ->where('id', '=', $id)
             ->execute();
     }
+
+//specifications groups
+
+    public function SpecificationsGroupsGetAll()
+    {
+
+        $tmp = DB::select()
+            ->from('specifications_groups')
+            ->order_by('deleted')
+            ->execute()
+            ->as_array();
+        $records = array();
+        if (!empty($tmp))
+            foreach ($tmp as $one)
+                $records[$one['id']] = $one;
+
+        return $records;
+    }
+
+    public function SpecificationsGroupsGetVisible()
+    {
+
+        $tmp = DB::select()
+            ->from('specifications_groups')
+            ->where('deleted', '=', '0')
+            ->execute()
+            ->as_array();
+        $records = array();
+        if (!empty($tmp))
+            foreach ($tmp as $one)
+                $records[$one['id']] = $one;
+        return $records;
+    }
+
+    public function SpecificationsGroupsAdd($post)
+    {
+        if (trim(htmlspecialchars($post['name'])))
+            $item = $records = DB::insert('specifications_groups', array('name'))
+                ->values(array(trim(htmlspecialchars($post['name']))))
+                ->execute();
+        if (!empty($item)) return $item[0]; else return false;
+    }
+
+    public function SpecificationsGroupsRename($post)
+    {
+        if (trim(htmlspecialchars($post['name'])))
+            DB::update('specifications_groups')
+                ->set(array('name' => trim(htmlspecialchars($post['name']))))
+                ->where('id', '=', $post['id'])
+                ->execute();
+    }
+
+    public function SpecificationsGroupsSetDeletedById($id, $deleted)
+    {
+        DB::update('specifications_groups')
+            ->set(array('deleted' => $deleted))
+            ->where('id', '=', $id)
+            ->execute();
+    }
+
+//model specifications
 
     public function SpecificationsModelGetAll($model)
     {
@@ -424,7 +521,8 @@ if($id_parent)
             array('specifications_models.id', 'created'),
             array('specifications_models.modificated', 'modificated'),
             array('specifications_models.deleted', 'deleted'),
-            array('specifications.name', 'specification')
+            array('specifications.name', 'specification'),
+            array('specifications.id_specifications_groups', 'group')
         )
             ->from('specifications_models')
             ->join('specifications')
@@ -469,18 +567,16 @@ if($id_parent)
     {
         $current_specifications = $this->SpecificationsModelGetAll($post['id_models']);
 
-        foreach($current_specifications as $one){
-            if(!empty($post['delete_'.$one['id']])){
+        foreach ($current_specifications as $one) {
+            if (!empty($post['delete_' . $one['id']])) {
                 DB::delete('specifications_models')
                     ->where('specifications_models.id', '=', $one['id'])
                     ->execute();
-            }
-            else
-            {
+            } else {
                 $new = array();
-                if(!empty($post['value_'.$one['id']])) $new['value'] = trim(htmlspecialchars($post['value_'.$one['id']]));
-                if(!empty($post['important_'.$one['id']])) $new['important'] = '1';else $new['important'] = '0';
-                if(!empty($post['manual_'.$one['id']])) $new['manual'] = '1';else $new['manual'] = '0';
+                if (!empty($post['value_' . $one['id']])) $new['value'] = trim(htmlspecialchars($post['value_' . $one['id']]));
+                if (!empty($post['important_' . $one['id']])) $new['important'] = '1'; else $new['important'] = '0';
+                if (!empty($post['manual_' . $one['id']])) $new['manual'] = '1'; else $new['manual'] = '0';
                 $new['modificated'] = DB::expr('NOW()');
                 DB::update('specifications_models')
                     ->set($new)
@@ -490,33 +586,35 @@ if($id_parent)
         }
     }
 
+//images
+
     public function ImagesUpload($id_models)
     {
         if (!empty($_FILES['image']['name'])) {
             $files = Goodies::images_save('image', 'images/sklad', 700, 700);
-            foreach($files as $file){
+            foreach ($files as $file) {
 
-                    DB::insert('images_models', array(
-                        'file',
-                        'alt',
-                        'id_models',
-                        'important',
-                        'active',
-                        'created'
+                DB::insert('images_models', array(
+                    'file',
+                    'alt',
+                    'id_models',
+                    'important',
+                    'active',
+                    'created'
+                ))
+                    ->values(array(
+                        $file,
+                        '',
+                        $id_models,
+                        '0',
+                        '0',
+                        DB::expr('NOW()')
                     ))
-                        ->values(array(
-                            $file,
-                            '',
-                            $id_models,
-                            '0',
-                            '0',
-                            DB::expr('NOW()')
-                        ))
-                        ->execute();
-                }
+                    ->execute();
             }
-
         }
+
+    }
 
     public function ImagesGetAll()
     {
@@ -543,19 +641,17 @@ if($id_parent)
     {
         $current_images = $this->ImagesModelGetAll($post['id_models']);
 
-        foreach($current_images as $one){
-            if(!empty($post['delete_'.$one['id']])){
-                unlink('images/sklad/'.$one['file']);
+        foreach ($current_images as $one) {
+            if (!empty($post['delete_' . $one['id']])) {
+                unlink('images/sklad/' . $one['file']);
                 DB::delete('images_models')
                     ->where('images_models.id', '=', $one['id'])
                     ->execute();
-            }
-            else
-            {
+            } else {
                 $new = array();
-                if(!empty($post['alt_'.$one['id']])) $new['alt'] = trim(htmlspecialchars($post['alt_'.$one['id']]));
-                if(!empty($post['important_'.$one['id']])) $new['important'] = '1';else $new['important'] = '0';
-                if(!empty($post['active_'.$one['id']])) $new['active'] = '1';else $new['active'] = '0';
+                if (!empty($post['alt_' . $one['id']])) $new['alt'] = trim(htmlspecialchars($post['alt_' . $one['id']]));
+                if (!empty($post['important_' . $one['id']])) $new['important'] = '1'; else $new['important'] = '0';
+                if (!empty($post['active_' . $one['id']])) $new['active'] = '1'; else $new['active'] = '0';
                 DB::update('images_models')
                     ->set($new)
                     ->where('id', '=', $one['id'])

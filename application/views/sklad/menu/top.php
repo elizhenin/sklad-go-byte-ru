@@ -1,5 +1,5 @@
-<form class="topmenu_search">
-    <input type="text" placeholder="поиск">
+<form class="topmenu_search" action="/sklad/search">
+    <input name="query" type="text" placeholder="поиск" onchange="this.form.submit();">
 </form>
 <form class="topmenu_site" action="/" target="_blank">
     <input type="submit" value="Открыть сайт">

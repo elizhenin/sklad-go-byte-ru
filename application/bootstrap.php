@@ -156,22 +156,33 @@ Route::set('ajax', 'ajax/<action>')
         'controller' => 'ajax'
     ));
 
+Route::set('search', 'sklad/search')
+    ->defaults(array(
+        'controller' => 'SkladSearch',
+        'action' => 'index'
+    ));
+
 Route::set('sklad_categories', 'sklad/categories(/<alias>)',array('alias'=>'[\w-/.]+'))
     ->defaults(array(
         'controller' => 'Sklad',
         'action' => 'categories',
     ));
-Route::set('specifications', 'sklad/specifications(/<model>)', array('alias'=>'[\w-/.]+'))
+Route::set('specifications', 'sklad/specifications(/<model>)', array('alias'=>'[0-9a-zA-Z_-]+'))
     ->defaults(array(
         'controller' => 'Sklad',
         'action'     => 'specifications'
     ));
-Route::set('specifications_groups', 'sklad/specifications_groups(/<model>)', array('alias'=>'[\w-/.]+'))
+Route::set('specifications_groups', 'sklad/specifications_groups(/<model>)', array('model'=>'[0-9a-zA-Z_-]+'))
     ->defaults(array(
         'controller' => 'Sklad',
         'action'     => 'specifications_groups'
     ));
-Route::set('images', 'sklad/images(/<model>)', array('alias'=>'[\w-/.]+'))
+Route::set('products', 'sklad/products(/<id_model>)', array('id_model'=>'[0-9a-zA-Z_-]+'))
+    ->defaults(array(
+        'controller' => 'Sklad',
+        'action'     => 'products'
+    ));
+Route::set('images', 'sklad/images(/<model>)', array('alias'=>'[0-9a-zA-Z_-]+'))
     ->defaults(array(
         'controller' => 'Sklad',
         'action'     => 'images'

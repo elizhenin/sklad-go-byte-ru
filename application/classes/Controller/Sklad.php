@@ -55,26 +55,34 @@ class Controller_Sklad extends Controller_SkladTmp
         if (empty($ProductsPOST['operation'])) {
             $ProductsPOST['operation'] = 'list';
         }
-
+        $ses = Session::instance();
+        $user = $ses->get('user', false);
 
         $ModelProducts = New Model_SkladProducts();
         $ModelModels = New Model_SkladModels();
         $ModelStorages = New Model_SkladStorages();
         switch ($ProductsPOST['operation']) {
             case 'list':
+                $id_model = $this->request->param('id_model');
                 $content = View::factory('sklad/products/show_products');
-                $content->items = $ModelProducts->ProductsGetAll();
-
+                $content->items = $ModelProducts->ProductsGetAll($id_model);
+                $content->rights = $user['rights'];
                 break;
             case 'new':
+
+                if (($user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $ModelProducts->ProductsAdd($ProductsPOST);
                 $this->redirect($this->request->referrer());
                 break;
             case 'update':
+
+                if (($user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $ModelProducts->ProductsUpdate($ProductsPOST);
                 $this->redirect($this->request->referrer());
                 break;
             case 'edit':
+
+                if (($user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $content = View::factory('sklad/products/edit_product');
                 $content->item = $ModelProducts->ProductsGetById($ProductsPOST['products_id']);
                 $content->models = $ModelModels->ModelGetVisible();
@@ -82,16 +90,20 @@ class Controller_Sklad extends Controller_SkladTmp
                 $content->operation = 'update';
                 break;
             case 'add':
+
+                if (($user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $content = View::factory('sklad/products/edit_product');
                 $content->models = $ModelModels->ModelGetVisible();
                 $content->storages = $ModelStorages->StoragesGetVisible();
                 $content->operation = 'new';
                 break;
             case 'disable':
+                if (($user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '1');
                 $this->redirect($this->request->referrer());
                 break;
             case 'enable':
+                if (($user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '0');
                 $this->redirect($this->request->referrer());
                 break;

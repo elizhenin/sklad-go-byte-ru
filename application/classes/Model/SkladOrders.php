@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Model_SkladProducts extends Model
+class Model_SkladOrders extends Model
 {
 //    Users rights:
 //super = superuser;

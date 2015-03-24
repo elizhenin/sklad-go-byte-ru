@@ -48,7 +48,7 @@ class Controller_SkladTmp extends Controller_Template
         }
         $controller = $this->request->controller();
         $action = $this->request->action();
-        if ($controller == 'Sklad') {
+        if ($controller == 'Sklad' || $controller = 'SkladSearch') {
             switch ($action) {
                 case 'users':
                     $this->template->submenu = view::factory('/sklad/menu/submenu/users');
@@ -57,7 +57,9 @@ class Controller_SkladTmp extends Controller_Template
                     $this->template->submenu = view::factory('/sklad/menu/submenu/storages');
                     break;
                 case 'products':
-                    $this->template->submenu = view::factory('/sklad/menu/submenu/products');
+                    $submenu = view::factory('/sklad/menu/submenu/products');
+                    $submenu->rights = $user['rights'];
+                    $this->template->submenu = $submenu;
                     break;
                 case 'categories':
                     $submenu = View::factory('/sklad/menu/submenu/categories');

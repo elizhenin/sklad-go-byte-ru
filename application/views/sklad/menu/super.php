@@ -7,7 +7,7 @@
         <a href="/sklad/storages"><span></span><br>Склады</a>
     </li>
 
-    <li class="icon-models <?=(Request::current()->action()=='categories' || Request::current()->action()=='models' || Request::current()->action()=='specifications')?'menu_active':''?>">
+    <li class="icon-models <?=(Request::current()->action()=='categories' || Request::current()->action()=='models' || Request::current()->action()=='specifications' || Request::current()->action()=='specifications_groups')?'menu_active':''?>">
         <a href="/sklad/categories"><span></span><br>Модели</a>
     </li>
 

@@ -46,7 +46,57 @@ class Controller_Sklad extends Controller_SkladTmp
 
     public function action_orders()
     {
+        $ProductsPOST = $this->request->post();
+        if (empty($ProductsPOST['operation'])) {
+            $ProductsPOST['operation'] = 'list';
+        }
+        $ses = Session::instance();
+        $user = $ses->get('user', false);
 
+        $ModelProducts = New Model_SkladProducts();
+
+        switch ($ProductsPOST['operation']) {
+            case 'list':
+                $content = View::factory('sklad/orders/show_orders');
+
+                $content->rights = $user['rights'];
+                break;
+            case 'new':
+
+             //   $ModelProducts->ProductsAdd($ProductsPOST);
+                $this->redirect($this->request->referrer());
+                break;
+            case 'update':
+
+              //  $ModelProducts->ProductsUpdate($ProductsPOST);
+                $this->redirect($this->request->referrer());
+                break;
+            case 'edit':
+
+                $content = View::factory('sklad/orders/edit_order');
+               // $content->item = $ModelProducts->ProductsGetById($ProductsPOST['products_id']);
+
+                $content->operation = 'update';
+                break;
+            case 'add':
+
+                $content = View::factory('sklad/orders/edit_order');
+
+                $content->operation = 'new';
+                break;
+            case 'disable':
+
+              //  $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '1');
+                $this->redirect($this->request->referrer());
+                break;
+            case 'enable':
+
+              //  $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '0');
+                $this->redirect($this->request->referrer());
+                break;
+        }
+
+        $this->content = $content;
     }
 
     public function action_products()

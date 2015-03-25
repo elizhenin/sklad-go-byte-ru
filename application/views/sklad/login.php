@@ -16,7 +16,7 @@
     <?php } ?>
     <form method="post">
         <p>Логин</p>
-        <input type="text" name="login">
+        <input type="text" name="login" autofocus="autofocus">
 
         <p>Пароль</p>
         <input type="password" name="password"><br>

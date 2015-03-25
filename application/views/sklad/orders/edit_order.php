@@ -1,35 +1,65 @@
-<form method="POST">
+<h1>Ордер на продажу</h1>
+
+<?php
+if(empty($id_orders)){
+    ?>
+    (для добавления товаров сначала сохраните ордер)
+<?php
+}else{
+    ?>
+    <table style="width:100%">
+        <tbody>
+
+        <tr>
+            <td colspan="2">
+                <table style="width: 100%">
+                    <thead style="background-color: dimgray">
+                    <td style="width: 5%;">
+                    </td>
+                    <td style="text-align: left">
+                        Товар <form><input type="submit" value="test"><input name="test" type="text"></form>
+                    </td>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+<?php
+}
+?>
+
+
+<form method="post" name="order">
+    <input type="hidden" name="operation" value="<?= $operation ?>">
+    <input type="hidden" name="id" value="<?= (!empty($item['id'])) ? $item['id'] : '' ?>">
     <table style="width:100%">
         <tbody>
         <tr>
-<td style="text-align: right">
-    Модель:
-</td>
+            <td style="text-align: right">
+                Комментарий:
+            </td>
             <td style="text-align: left">
-
-<select name="id_models">
-    <?php
-    if(!empty($models))
-    foreach($models as $one){
-        ?>
-        <option value="<?=$one['id']?>" <?=(!empty($model) && $one['id']==$model)?'selected="selected"':''?>><?=$one['name']?></option>
-    <?php
-    }
-    ?>
-</select>
+                <input type="text" name="text" value="<?= (!empty($item['text'])) ? $item['text'] : '' ?>"/>
             </td>
         </tr>
         <tr>
             <td style="text-align: right">
-                Склад:
+                Сессия:
             </td>
             <td style="text-align: left">
-                <select name="id_storage">
+
+                <select name="id_sessions" >
+                    <option value="0">(новая)</option>
                     <?php
-                    if(!empty($storages))
-                        foreach($storages as $one){
+                    if (!empty($sessions))
+                        foreach ($sessions as $one) {
                             ?>
-                            <option value="<?=$one['id']?>" <?=(!empty($storage) && $one['id']==$storage)?'selected="selected"':''?>><?=$one['name']?></option>
+                            <option
+                                value="<?= $one['id'] ?>" <?= (!empty($session) && $one['id'] == $session) ? 'selected="selected"' : '' ?>>#<?=$one['id']?>&nbsp;(<?=$one['created']?>)</option>
                         <?php
                         }
                     ?>
@@ -39,34 +69,26 @@
 
         <tr>
             <td style="text-align: right">
-                Код:
+                Контактный телефон:
             </td>
             <td style="text-align: left">
-                <input type="text" name="sku" value="<?=(!empty($item['sku']))?$item['sku']:''?>"/>
+                <input type="text" name="phone" value="<?= (!empty($item['phone'])) ? $item['phone'] : '' ?>"/>
             </td>
         </tr>
         <tr>
             <td style="text-align: right">
-                out:
+                Confirm:
             </td>
             <td style="text-align: left">
-                <input type="checkbox" name="out" <?=(!empty($item['out']))?'checked="checked"':''?>"/>
+                <input type="checkbox" name="confirm" <?=(!empty($item['confirm']))?'checked="confirm"':''?>"/>
             </td>
         </tr>
-        <tr>
-            <td style="text-align: right">
-                Комментарий:
-            </td>
-            <td style="text-align: left">
-                <textarea
-                    name="comments"><?= (!empty($item['comments'])) ? $item['comments'] : '' ?></textarea>
-            </td>
-        </tr>
+
         </tbody>
     </table>
-    <input type="hidden" name="operation" value="<?=$operation?>">
-    <input type="hidden" name="id" value="<?=(!empty($item['id']))?$item['id']:''?>">
     <input type="submit" value="Сохранить">
 </form>
+
+
 
 

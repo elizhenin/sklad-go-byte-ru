@@ -46,52 +46,52 @@ class Controller_Sklad extends Controller_SkladTmp
 
     public function action_orders()
     {
-        $ProductsPOST = $this->request->post();
-        if (empty($ProductsPOST['operation'])) {
-            $ProductsPOST['operation'] = 'list';
+        $OrdersPOST = $this->request->post();
+        $session = $this->request->param('session');
+        if (empty($OrdersPOST['operation'])) {
+            $OrdersPOST['operation'] = 'list';
         }
         $ses = Session::instance();
         $user = $ses->get('user', false);
 
-        $ModelProducts = New Model_SkladProducts();
+        $ModelOrders = New Model_SkladOrders();
 
-        switch ($ProductsPOST['operation']) {
+        switch ($OrdersPOST['operation']) {
             case 'list':
                 $content = View::factory('sklad/orders/show_orders');
-
+                $content->items = $ModelOrders->OrdersGetAll();
                 $content->rights = $user['rights'];
                 break;
             case 'new':
-
-             //   $ModelProducts->ProductsAdd($ProductsPOST);
+                $ModelOrders->OrdersAdd($OrdersPOST);
                 $this->redirect($this->request->referrer());
                 break;
             case 'update':
 
-              //  $ModelProducts->ProductsUpdate($ProductsPOST);
+                //  $ModelProducts->ProductsUpdate($ProductsPOST);
                 $this->redirect($this->request->referrer());
                 break;
             case 'edit':
 
                 $content = View::factory('sklad/orders/edit_order');
-               // $content->item = $ModelProducts->ProductsGetById($ProductsPOST['products_id']);
-
+                // $content->item = $ModelProducts->ProductsGetById($ProductsPOST['products_id']);
+                $content->sessions = $ModelOrders->SessionsGetAll();
                 $content->operation = 'update';
                 break;
             case 'add':
-
                 $content = View::factory('sklad/orders/edit_order');
-
+                $content->sessions = $ModelOrders->SessionsGetAll();
+                $content->session = $session;
                 $content->operation = 'new';
                 break;
             case 'disable':
 
-              //  $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '1');
+                //  $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '1');
                 $this->redirect($this->request->referrer());
                 break;
             case 'enable':
 
-              //  $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '0');
+                //  $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '0');
                 $this->redirect($this->request->referrer());
                 break;
         }
@@ -530,7 +530,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 break;
             default:
                 $content = View::factory('sklad/models/show_images');
-                if(!empty($model)) {
+                if (!empty($model)) {
                     $content->images = $ModelModels->ImagesGetAll();
                     $content->model = $model;
                 }

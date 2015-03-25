@@ -182,6 +182,11 @@ Route::set('products', 'sklad/products(/<id_model>)', array('id_model'=>'[0-9a-z
         'controller' => 'Sklad',
         'action'     => 'products'
     ));
+Route::set('orders', 'sklad/orders(/<session>(/<order>))', array('session'=>'[0-9a-zA-Z_-]+', 'order'=>'[0-9a-zA-Z_-]+'))
+    ->defaults(array(
+        'controller' => 'Sklad',
+        'action'     => 'orders'
+    ));
 Route::set('images', 'sklad/images(/<model>)', array('alias'=>'[0-9a-zA-Z_-]+'))
     ->defaults(array(
         'controller' => 'Sklad',

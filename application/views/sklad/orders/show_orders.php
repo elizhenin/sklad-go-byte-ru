@@ -16,7 +16,7 @@
                 <td>
 
                     <form name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"><input
-                            type="hidden" name="products_id"
+                            type="hidden" name="orders_id"
                             value="<?= $item['id'] ?>"/><input
                             type="hidden" name="operation" value="edit"/><input type="submit" value="&#x270E;" title="Редактировать" />
                     </form>
@@ -25,18 +25,18 @@
                         ?>
                         <form name="form<?= $item['id'] ?>enable" method="POST" style="display:inline;float:left;">
                             <input
-                                type="hidden" name="products_id"
+                                type="hidden" name="orders_id"
                                 value="<?= $item['id'] ?>"/><input
-                                type="hidden" name="operation" value="enable"/><input type="submit" value="&#10005;" title="Провести" />
+                                type="hidden" name="operation" value="enable"/><input type="submit" value="&#10003;" title="Провести" />
                         </form>
                         <?php
                     }else {
                         ?>
                         <form name="form<?= $item['id'] ?>disable" method="POST" style="display:inline;float:left;">
                             <input
-                                type="hidden" name="products_id"
+                                type="hidden" name="orders_id"
                                 value="<?= $item['id'] ?>"/><input
-                                type="hidden" name="operation" value="disable"/><input type="submit" value="&#10003;" title="Отменить" />
+                                type="hidden" name="operation" value="disable"/><input type="submit" value="&#10005;" title="Отменить" />
                         </form>
                     <?php
                     }
@@ -45,8 +45,8 @@
                     <td><?=$item['date']?></td>
                 <td><?=$item['text']?></td>
                 <td><?=$item['phone']?></td>
-                <td>#<?=$item['id_sessions']?>&nbsp;(<?=$item['created']?>)
-                    <form name="form<?= $item['id'] ?>add" method="POST" style="display:inline;float:right;" action="/sklad/orders/<?=$item['id_sessions']?>">
+                <td><a href="/sklad/orders/<?=$item['session']?>"><?=$item['session']?></a>&nbsp;
+                    <form name="form<?= $item['id'] ?>add" method="POST" style="display:inline;float:right;" action="/sklad/orders/<?=$item['session']?>">
                         <input
                             type="hidden" name="products_id"
                             value="<?= $item['id'] ?>"/><input

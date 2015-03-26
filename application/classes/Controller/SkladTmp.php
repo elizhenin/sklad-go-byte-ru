@@ -12,6 +12,7 @@ class Controller_SkladTmp extends Controller_Template
     public function before()
     {
         parent::before();
+
         $ses = Session::instance();
         if (!$ses->get('user', false) && $this->request->action() != 'login') {
             HTTP::redirect('/sklad/login');

@@ -53,13 +53,23 @@ class Controller_Sklad extends Controller_SkladTmp
         }
         $ses = Session::instance();
         $user = $ses->get('user', false);
-
+        $OrderOpened = $ses->get('OrderOpened', false);
+        if (($OrdersPOST['operation'] != 'update'
+                && $OrdersPOST['operation'] != 'add_product'
+                && $OrdersPOST['operation'] != 'remove_product'
+            ) && ($OrderOpened)) {
+            $OrdersPOST['operation'] = 'edit';
+            $OrdersPOST['orders_id'] = $OrderOpened;
+        }
         $ModelOrders = New Model_SkladOrders();
 
         switch ($OrdersPOST['operation']) {
             case 'list':
                 $content = View::factory('sklad/orders/show_orders');
-                $content->items = $ModelOrders->OrdersGetAll();
+                if($session)
+                    $content->items = $ModelOrders->OrdersGetBySession($session);
+                else
+                    $content->items = $ModelOrders->OrdersGetAll();
                 $content->rights = $user['rights'];
                 break;
             case 'new':
@@ -67,31 +77,44 @@ class Controller_Sklad extends Controller_SkladTmp
                 $this->redirect($this->request->referrer());
                 break;
             case 'update':
-
-                //  $ModelProducts->ProductsUpdate($ProductsPOST);
+                $ses->set('OrderOpened', false);
+                $ModelOrders->OrdersUpdate($OrdersPOST);
                 $this->redirect($this->request->referrer());
                 break;
             case 'edit':
-
                 $content = View::factory('sklad/orders/edit_order');
-                // $content->item = $ModelProducts->ProductsGetById($ProductsPOST['products_id']);
+                $content->item = $ModelOrders->OrdersGetById($OrdersPOST['orders_id']);
+                $content->id_orders = $OrdersPOST['orders_id'];
                 $content->sessions = $ModelOrders->SessionsGetAll();
+                $content->products = $ModelOrders->OrdersProductsGetAll($OrdersPOST['orders_id']);
                 $content->operation = 'update';
+                $ses->set('OrderOpened', $OrdersPOST['orders_id']);
                 break;
             case 'add':
                 $content = View::factory('sklad/orders/edit_order');
                 $content->sessions = $ModelOrders->SessionsGetAll();
-                $content->session = $session;
+                if($session) {
+                    $items = $ModelOrders->OrdersGetBySession($session);
+                    $content->item = $items[0];
+                }
                 $content->operation = 'new';
                 break;
             case 'disable':
 
-                //  $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '1');
+                 $ModelOrders->OrdersSetCompleteById($OrdersPOST['orders_id'], '1');
                 $this->redirect($this->request->referrer());
                 break;
             case 'enable':
 
-                //  $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '0');
+                  $ModelOrders->OrdersSetCompleteById($OrdersPOST['orders_id'], '0');
+                $this->redirect($this->request->referrer());
+                break;
+            case 'add_product':
+                $ModelOrders->OrdersProductsAdd($OrdersPOST);
+                $this->redirect($this->request->referrer());
+                break;
+            case 'remove_product':
+                $ModelOrders->OrdersProductsRemove($OrdersPOST);
                 $this->redirect($this->request->referrer());
                 break;
         }

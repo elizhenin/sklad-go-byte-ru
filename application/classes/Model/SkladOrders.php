@@ -11,71 +11,76 @@ class Model_SkladOrders extends Model
     public function OrdersAdd($post)
     {
 
-        $client['phone'] = trim(htmlspecialchars($post['phone']));
+        $post['phone'] = trim(htmlspecialchars($post['phone']));
         if (empty($post['confirm']))
-            $client['confirm'] = '0';
+            $post['confirm'] = '0';
         else
-            $client['confirm'] = '1';
-        $check = DB::select()
-            ->from('clients')
-            ->where('phone', '=', $client['phone'])
-            ->execute()
-            ->as_array();
-        if (empty($check)) {
-            $check = DB::insert('clients', array_keys($client))
-                ->values($client)
-                ->execute();
-            $check = $check[0];
-        } else {
-            $check = $check[0]['id'];
-        }
-        if ($post['id_sessions'] == '0')
-            $post['id_sessions'] = $this->SessionsAdd($post['text'],$check);
-        else {
-            DB::update('sessions')
-                ->set(
-                    array('text'=>trim(htmlspecialchars($post['text'])),
-                        'modificated' =>DB::expr('NOW()'),
-                        'id_clients'=>$check
-                    ))
-                ->where('id','=', $post['id_sessions'])
-                ->execute();
-        }
+            $post['confirm'] = '1';
+
         $ses = Session::instance();
         $user = $ses->get('user', false);
 
-        $order['date'] = DB::expr('NOW()');
-        $order['id_users'] = $user['id'];
+        if ($post['session'] == '0') {
+            $post['session'] = $user['login'] . time() . Text::random(null, '1');
+            $post['created'] = DB::expr('NOW()');
+        } else {
+            $check = $this->OrdersGetBySession($post['session']);
+            $post['created'] = $check[0]['created'];
+        }
 
-        $order = DB::insert('orders', array_keys($order))
-            ->values($order)
+        $post['date'] = DB::expr('NOW()');
+        $post['id_users'] = $user['id'];
+
+        $post['modificated'] = DB::expr('NOW()');
+        $post['text'] = trim(htmlspecialchars($post['text']));
+
+        unset($post['operation']);
+        unset($post['id']);
+        DB::insert('orders', array_keys($post))
+            ->values($post)
             ->execute();
 
-        DB::insert('orders_session', array('id_sessions', 'id_orders'))
-            ->values(array($post['id_sessions'], $order[0]))
+    }
+
+    public function OrdersUpdate($post)
+    {
+
+        $post['phone'] = trim(htmlspecialchars($post['phone']));
+        if (empty($post['confirm']))
+            $post['confirm'] = '0';
+        else
+            $post['confirm'] = '1';
+
+        $ses = Session::instance();
+        $user = $ses->get('user', false);
+
+        if ($post['session'] == '0') {
+            $post['session'] = $user['login'] . time() . Text::random(null, '1');
+            $post['created'] = DB::expr('NOW()');
+        } else {
+            $check = $this->OrdersGetBySession($post['session']);
+            $post['created'] = $check[0]['created'];
+        }
+
+        $post['id_users'] = $user['id'];
+
+        $post['modificated'] = DB::expr('NOW()');
+        $post['text'] = trim(htmlspecialchars($post['text']));
+
+        unset($post['operation']);
+        $id=$post['id'];
+        unset($post['id']);
+        DB::update('orders')
+            ->set($post)
+            ->where('id','=',$id)
             ->execute();
     }
 
     public function OrdersGetAll()
     {
-        $select = DB::select(
-            array('orders.id','id'),
-            array('orders.date','date'),
-            array('sessions.id','id_sessions'),
-            array('orders.complete','complete'),
-            array('sessions.created','created'),
-            array('sessions.text','text'),
-            array('clients.phone','phone')
-
-        )
-            ->from('orders_session')
-            ->join('sessions')
-            ->on('sessions.id','=','orders_session.id_sessions')
-            ->join('orders')
-            ->on('orders.id','=','orders_session.id_orders')
-            ->join('clients')
-            ->on('clients.id','=','sessions.id_clients')
-            ->order_by('sessions.created','DESC')
+        $select = DB::select()
+            ->from('orders')
+            ->order_by('created', 'DESC')
             ->execute()
             ->as_array();
         if (!empty($select)) {
@@ -85,26 +90,107 @@ class Model_SkladOrders extends Model
         }
     }
 
-    public function SessionsAdd($text='',$id_clients)
+    public function OrdersGetById($id)
     {
-        $post['created'] = DB::expr('NOW()');
-        $post['modificated'] = DB::expr('NOW()');
-        $post['text'] = trim(htmlspecialchars($text));
-        $post['id_clients'] = trim(htmlspecialchars($id_clients));
-        $result = DB::insert('sessions', array_keys($post))
-            ->values($post)
-            ->execute();
+        $select = DB::select()
+            ->from('orders')
+            ->where('id', '=', $id)
+            ->limit(1)
+            ->execute()
+            ->as_array();
+        if (!empty($select)) {
+            return $select[0];
+        } else {
+            return false;
+        }
+    }
 
-        return $result[0];
+    public function OrdersGetBySession($session)
+    {
+        $select = DB::select()
+            ->from('orders')
+            ->where('session', '=', $session)
+            ->execute()
+            ->as_array();
+        if (!empty($select)) {
+            return $select;
+        } else {
+            return false;
+        }
+    }
+
+    public function OrdersSetCompleteById($id, $deleted)
+    {
+        DB::update('orders')
+            ->set(array('complete' => $deleted))
+            ->where('id', '=', $id)
+            ->execute();
+    }
+
+    public function OrdersProductsAdd($post)
+    {
+        $product['id_orders'] = trim(htmlspecialchars($post['id_orders']));
+        $product['id_products'] = trim(htmlspecialchars($post['id_products']));
+        $product['price_out'] = trim(htmlspecialchars($post['price_out']));
+        DB::insert('orders_products', array_keys($product))
+            ->values($product)
+            ->execute();
+        DB::update('products')
+            ->set(array('out' => '1', 'date_out' => DB::expr('NOW()')))
+            ->where('id', '=', $product['id_products'])
+            ->execute();
 
     }
 
+    public function OrdersProductsRemove($post)
+    {
+        DB::update('products')
+            ->set(array('out' => '0'))
+            ->where('id', '=', $post['product'])
+            ->execute();
+        DB::delete('orders_products')
+            ->where('id', '=', $post['id'])
+            ->execute();
+    }
+
+    public function OrdersProductsGetAll($id)
+    {
+        $products = DB::select(
+            array('orders_products.id', 'id'),
+            array('orders_products.id_products', 'id_products'),
+            array('orders_products.price_out', 'price_out'),
+            array('products.sku', 'sku'),
+            array('models.name', 'name')
+        )
+            ->from('orders_products')
+            ->join('products')
+            ->on('products.id', '=', 'orders_products.id_products')
+            ->join('models')
+            ->on('models.id', '=', 'products.id_models')
+            ->where('orders_products.id_orders', '=', $id)
+            ->execute()
+            ->as_array();
+        if ($products) {
+            $products['products'] = $products;
+            $cash = 0;
+            foreach ($products['products'] as $product) {
+                $cash += $product['price_out'];
+            }
+            $products['cash'] = $cash;
+
+            return $products;
+        } else return false;
+    }
 
     public function SessionsGetAll()
     {
-        $select = DB::select()
-            ->from('sessions')
+        $select = DB::select(
+            array('orders.session', 'id'),
+            array('orders.created', 'created')
+        )
+            ->from('orders')
             ->order_by('created', 'DESC')
+            ->group_by('session')
             ->execute()
             ->as_array();
         if (!empty($select)) {

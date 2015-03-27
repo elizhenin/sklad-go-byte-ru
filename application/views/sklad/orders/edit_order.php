@@ -145,7 +145,7 @@ if (empty($id_orders)) {
         </tr>
         <tr>
             <td style="text-align: right">
-                Confirm:
+                Подтвержден:
             </td>
             <td style="text-align: left">
                 <input type="checkbox" name="confirm" <?= (!empty($item['confirm'])) ? 'checked="confirm"' : '' ?>"/>

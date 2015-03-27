@@ -5,8 +5,8 @@
     <td>Код</td>
     <td>Модель</td>
     <td>Склад</td>
-    <td>out</td>
-    <td>date_out</td>
+    <td>Продан</td>
+    <td>Дата продажи</td>
     </thead>
     <tbody>
     <?php

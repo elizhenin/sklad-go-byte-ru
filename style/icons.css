@@ -2,33 +2,40 @@
     width: 48px;
     height: 48px;
     display: inline-block;
-    background: url(img/icons/system-users.png) no-repeat center center;
+    background: url(img/icons/users48.png) no-repeat center center;
+}
+
+.icon-userinfo span {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    background: url(img/icons/userinfo48.png) no-repeat center center;
 }
 
 .icon-storages span {
     width: 48px;
     height: 48px;
     display: inline-block;
-    background: url(img/icons/system-file-manager.png) no-repeat center center;
+    background: url(img/icons/storages48.png) no-repeat center center;
 }
 
 .icon-models span {
     width: 48px;
     height: 48px;
     display: inline-block;
-    background: url(img/icons/view-restore.png) no-repeat center center;
+    background: url(img/icons/models48.png) no-repeat center center;
 }
 
 .icon-products span {
     width: 48px;
     height: 48px;
     display: inline-block;
-    background: url(img/icons/preferences-system-network.png) no-repeat center center;
+    background: url(img/icons/products48.png) no-repeat center center;
 }
 
 .icon-orders span {
     width: 48px;
     height: 48px;
     display: inline-block;
-    background: url(img/icons/accessories-text-editor.png) no-repeat center center;
+    background: url(img/icons/orders48.png) no-repeat center center;
 }

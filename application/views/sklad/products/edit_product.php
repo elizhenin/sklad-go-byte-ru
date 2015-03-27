@@ -47,14 +47,6 @@
         </tr>
         <tr>
             <td style="text-align: right">
-                out:
-            </td>
-            <td style="text-align: left">
-                <input type="checkbox" name="out" <?=(!empty($item['out']))?'checked="checked"':''?>"/>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: right">
                 Комментарий:
             </td>
             <td style="text-align: left">

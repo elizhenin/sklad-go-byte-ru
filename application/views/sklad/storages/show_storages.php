@@ -4,8 +4,8 @@
     <td></td>
     <td>Город</td>
     <td>Название</td>
-    <td>present</td>
-    <td>arrive</td>
+    <td>Наличие</td>
+    <td>Прибытие</td>
     <td>Транзит</td>
     </thead>
     <tbody>

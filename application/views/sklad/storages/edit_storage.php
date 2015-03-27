@@ -11,7 +11,7 @@
         </tr>
         <tr>
             <td style="text-align: right">
-                present:
+                Наличие:
             </td>
             <td style="text-align: left">
                 <input type="checkbox" name="present" <?=(!empty($item['present']))?'checked="checked"':''?>"/>
@@ -37,7 +37,7 @@
         </tr>
         <tr>
             <td style="text-align: right">
-                arrive:
+                Прибытие:
             </td>
             <td style="text-align: left">
                 <input type="text" name="arrive" value="<?=(!empty($item['arrive']))?$item['arrive']:''?>"/>
@@ -45,7 +45,7 @@
         </tr>
         <tr>
             <td style="text-align: right">
-                transit:
+                Транзит:
             </td>
             <td style="text-align: left">
                 <input type="checkbox" name="transit" <?=(!empty($item['transit']))?'checked="checked"':''?>"/>

@@ -4,7 +4,7 @@
     <td style="width: 80px"></td>
     <td>Дата</td>
     <td>Комментарий</td>
-    <td>Клиент</td>
+    <td>№ телефона</td>
     <td>Сессия</td>
     </thead>
     <tbody>
@@ -18,7 +18,7 @@
                     <form name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"><input
                             type="hidden" name="orders_id"
                             value="<?= $item['id'] ?>"/><input
-                            type="hidden" name="operation" value="edit"/><input type="submit" value="&#x270E;" title="Редактировать" />
+                            type="hidden" name="operation" value="edit"/><input type="submit" value="&#x270E;" title="Не проведен" />
                     </form>
                     <?php
                     if($item['complete']){
@@ -27,7 +27,7 @@
                             <input
                                 type="hidden" name="orders_id"
                                 value="<?= $item['id'] ?>"/><input
-                                type="hidden" name="operation" value="enable"/><input type="submit" value="&#10003;" title="Провести" />
+                                type="hidden" name="operation" value="enable"/><input type="submit" value="&#10003;" title="Проведен" />
                         </form>
                         <?php
                     }else {

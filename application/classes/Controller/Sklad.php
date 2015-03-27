@@ -52,11 +52,11 @@ class Controller_Sklad extends Controller_SkladTmp
             $OrdersPOST['operation'] = 'list';
         }
         $ses = Session::instance();
-        $user = $ses->get('user', false);
         $OrderOpened = $ses->get('OrderOpened', false);
         if (($OrdersPOST['operation'] != 'update'
                 && $OrdersPOST['operation'] != 'add_product'
                 && $OrdersPOST['operation'] != 'remove_product'
+                && $OrdersPOST['operation'] != 'close'
             ) && ($OrderOpened)) {
             $OrdersPOST['operation'] = 'edit';
             $OrdersPOST['orders_id'] = $OrderOpened;
@@ -64,13 +64,17 @@ class Controller_Sklad extends Controller_SkladTmp
         $ModelOrders = New Model_SkladOrders();
 
         switch ($OrdersPOST['operation']) {
+            case 'close':
+                $ses->set('OrderOpened', false);
+                $this->redirect($this->request->referrer());
+                break;
             case 'list':
                 $content = View::factory('sklad/orders/show_orders');
                 if($session)
                     $content->items = $ModelOrders->OrdersGetBySession($session);
                 else
                     $content->items = $ModelOrders->OrdersGetAll();
-                $content->rights = $user['rights'];
+                $content->rights = $this->user['rights'];
                 break;
             case 'new':
                 $ModelOrders->OrdersAdd($OrdersPOST);
@@ -128,8 +132,6 @@ class Controller_Sklad extends Controller_SkladTmp
         if (empty($ProductsPOST['operation'])) {
             $ProductsPOST['operation'] = 'list';
         }
-        $ses = Session::instance();
-        $user = $ses->get('user', false);
 
         $ModelProducts = New Model_SkladProducts();
         $ModelModels = New Model_SkladModels();
@@ -139,23 +141,23 @@ class Controller_Sklad extends Controller_SkladTmp
                 $id_model = $this->request->param('first');
                 $content = View::factory('sklad/products/show_products');
                 $content->items = $ModelProducts->ProductsGetAll($id_model);
-                $content->rights = $user['rights'];
+                $content->rights = $this->user['rights'];
                 break;
             case 'new':
 
-                if (($user['rights'] == 'sale')) $this->redirect($this->request->referrer());
+                if (($this->user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $ModelProducts->ProductsAdd($ProductsPOST);
                 $this->redirect($this->request->referrer());
                 break;
             case 'update':
 
-                if (($user['rights'] == 'sale')) $this->redirect($this->request->referrer());
+                if (($this->user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $ModelProducts->ProductsUpdate($ProductsPOST);
                 $this->redirect($this->request->referrer());
                 break;
             case 'edit':
 
-                if (($user['rights'] == 'sale')) $this->redirect($this->request->referrer());
+                if (($this->user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $content = View::factory('sklad/products/edit_product');
                 $content->item = $ModelProducts->ProductsGetById($ProductsPOST['products_id']);
                 $content->models = $ModelModels->ModelGetVisible();
@@ -164,19 +166,19 @@ class Controller_Sklad extends Controller_SkladTmp
                 break;
             case 'add':
 
-                if (($user['rights'] == 'sale')) $this->redirect($this->request->referrer());
+                if (($this->user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $content = View::factory('sklad/products/edit_product');
                 $content->models = $ModelModels->ModelGetVisible();
                 $content->storages = $ModelStorages->StoragesGetVisible();
                 $content->operation = 'new';
                 break;
             case 'disable':
-                if (($user['rights'] == 'sale')) $this->redirect($this->request->referrer());
+                if (($this->user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '1');
                 $this->redirect($this->request->referrer());
                 break;
             case 'enable':
-                if (($user['rights'] == 'sale')) $this->redirect($this->request->referrer());
+                if (($this->user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '0');
                 $this->redirect($this->request->referrer());
                 break;
@@ -187,9 +189,8 @@ class Controller_Sklad extends Controller_SkladTmp
 
     public function action_users()
     {
-        $ses = Session::instance();
-        $user = $ses->get('user', false);
-        if (($user['rights'] != 'super')) HTTP::redirect('/sklad/main');
+
+        if (($this->user['rights'] != 'super')) HTTP::redirect('/sklad/main');
 
         $UsersPOST = $this->request->post();
         if (empty($UsersPOST['operation'])) {
@@ -233,9 +234,8 @@ class Controller_Sklad extends Controller_SkladTmp
 
     public function action_storages()
     {
-        $ses = Session::instance();
-        $user = $ses->get('user', false);
-        if (($user['rights'] != 'super')) HTTP::redirect('/sklad/main');
+
+        if (($this->user['rights'] != 'super')) HTTP::redirect('/sklad/main');
 
         $StoragesPOST = $this->request->post();
         if (empty($StoragesPOST['operation'])) {
@@ -282,8 +282,7 @@ class Controller_Sklad extends Controller_SkladTmp
     public function action_models()
     {
         $ses = Session::instance();
-        $user = $ses->get('user', false);
-        if (($user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
+        if (($this->user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
 
         $ModelsPOST = $this->request->post();
         if (empty($ModelsPOST['operation'])) {
@@ -353,8 +352,8 @@ class Controller_Sklad extends Controller_SkladTmp
     public function action_categories()
     {
         $ses = Session::instance();
-        $user = $ses->get('user', false);
-        if (($user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
+
+        if (($this->user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
 
         $CategoriesPOST = $this->request->post();
         if (empty($CategoriesPOST['operation'])) {
@@ -367,7 +366,7 @@ class Controller_Sklad extends Controller_SkladTmp
             case 'list':
                 if ($check) {
                     $content = View::factory('sklad/models/show_categories');
-                    $content->rights = $user['rights'];
+                    $content->rights = $this->user['rights'];
                     $content->alias = $alias;
                     $items['categories'] = $ModelModels->CategoryGetSub($check);
                     $items['models'] = $ModelModels->ModelGetByCategory($check['id']);
@@ -378,19 +377,19 @@ class Controller_Sklad extends Controller_SkladTmp
                 } else throw new HTTP_Exception_404;
                 break;
             case 'new':
-                if (($user['rights'] == 'super')) {
+                if (($this->user['rights'] == 'super')) {
                     $ModelModels->CategoryAdd($CategoriesPOST, false);
                 }
                 $this->redirect($this->request->referrer());
                 break;
             case 'update':
-                if (($user['rights'] == 'super')) {
+                if (($this->user['rights'] == 'super')) {
                     $ModelModels->CategoryUpdate($CategoriesPOST);
                 }
                 $this->redirect($this->request->referrer());
                 break;
             case 'edit':
-                if (($user['rights'] == 'super')) {
+                if (($this->user['rights'] == 'super')) {
                     $content = View::factory('sklad/models/edit_category');
                     $content->item = $ModelModels->CategoryGetById($CategoriesPOST['category_id']);
                     $content->categorys = $ModelModels->CategoryFullNames();
@@ -399,7 +398,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 } else $this->redirect($this->request->referrer());
                 break;
             case 'add':
-                if (($user['rights'] == 'super')) {
+                if (($this->user['rights'] == 'super')) {
                     $content = View::factory('sklad/models/edit_category');
                     $content->categorys = $ModelModels->CategoryFullNames();
                     $content->parent = $check['id'];
@@ -407,13 +406,13 @@ class Controller_Sklad extends Controller_SkladTmp
                 } else $this->redirect($this->request->referrer());
                 break;
             case 'disable':
-                if (($user['rights'] == 'super')) {
+                if (($this->user['rights'] == 'super')) {
                     $ModelModels->CategorySetDeletedById($CategoriesPOST['category_id'], '1');
                 }
                 $this->redirect($this->request->referrer());
                 break;
             case 'enable':
-                if (($user['rights'] == 'super')) {
+                if (($this->user['rights'] == 'super')) {
                     $ModelModels->CategorySetDeletedById($CategoriesPOST['category_id'], '0');
                 }
                 $this->redirect($this->request->referrer());
@@ -426,8 +425,8 @@ class Controller_Sklad extends Controller_SkladTmp
     public function action_specifications()
     {
         $ses = Session::instance();
-        $user = $ses->get('user', false);
-        if (($user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
+
+        if (($this->user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
         $model = $this->request->param('first');
         $SpecificationsPOST = $this->request->post();
         if (empty($SpecificationsPOST['operation'])) {
@@ -492,16 +491,14 @@ class Controller_Sklad extends Controller_SkladTmp
 
     public function action_specifications_groups()
     {
-        $ses = Session::instance();
-        $user = $ses->get('user', false);
-        if (($user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
+
+        if (($this->user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
         $SpecificationsPOST = $this->request->post();
         if (empty($SpecificationsPOST['operation'])) {
             $SpecificationsPOST['operation'] = 'specifications_list';
         }
         $ModelModels = New Model_SkladModels();
         switch ($SpecificationsPOST['operation']) {
-//specs itself
 
             case 'specifications_list':
                 $content = View::factory('sklad/specifications/specifications_groups');
@@ -530,9 +527,7 @@ class Controller_Sklad extends Controller_SkladTmp
 
     public function action_images()
     {
-        $ses = Session::instance();
-        $user = $ses->get('user', false);
-        if (($user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
+        if (($this->user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
         $model = $this->request->param('first');
         $ImagesPOST = $this->request->post();
         if (empty($ImagesPOST['operation'])) {

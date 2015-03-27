@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36287add-0d5f-401a-87e9-5ed22a4f0472" name="Default" comment="по мелочи">
+    <list default="true" id="36287add-0d5f-401a-87e9-5ed22a4f0472" name="Default" comment="сокращение роутов">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/classes/Controller/Sklad.php" afterPath="$PROJECT_DIR$/application/classes/Controller/Sklad.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/classes/Controller/Welcome.php" afterPath="$PROJECT_DIR$/application/classes/Controller/Welcome.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/bootstrap.php" afterPath="$PROJECT_DIR$/application/bootstrap.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/classes/Controller/SkladSearch.php" afterPath="$PROJECT_DIR$/application/classes/Controller/SkladSearch.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/classes/Controller/SkladTmp.php" afterPath="$PROJECT_DIR$/application/classes/Controller/SkladTmp.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/sklad/menu/submenu/orders.php" afterPath="$PROJECT_DIR$/application/views/sklad/menu/submenu/orders.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="sklad-go-byte-ru.iws" />
@@ -30,23 +31,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Sklad.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Sklad.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/classes/Controller/Sklad.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="15.0" vertical-offset="1431" max-vertical-offset="2304">
-              <caret line="432" column="54" selection-start-line="432" selection-start-column="54" selection-end-line="432" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.33333334" vertical-offset="675" max-vertical-offset="2628">
+              <caret line="58" column="53" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="53" />
               <folding>
                 <element signature="n#action_logout#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
-                <element signature="n#action_main#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
-                <element signature="n#action_orders#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
                 <element signature="n#action_products#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
                 <element signature="n#action_users#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
                 <element signature="n#action_storages#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
                 <element signature="n#action_models#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
                 <element signature="n#action_categories#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
+                <element signature="n#action_specifications#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
                 <element signature="n#action_specifications_groups#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
                 <element signature="n#action_images#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SkladSearch.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/classes/Controller/SkladSearch.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.0" vertical-offset="0" max-vertical-offset="378">
+              <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="orders.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/submenu/orders.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.6666667" vertical-offset="0" max-vertical-offset="234">
+              <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -61,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Welcome.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/classes/Controller/Welcome.php">
+      <file leaf-file-name="SkladTmp.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/classes/Controller/SkladTmp.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.043010753" vertical-offset="0" max-vertical-offset="837">
-              <caret line="2" column="43" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
+            <state vertical-scroll-proportion="-56.0" vertical-offset="0" max-vertical-offset="1926">
+              <caret line="84" column="50" selection-start-line="84" selection-start-column="50" selection-end-line="84" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -114,14 +134,11 @@
         <option value="$PROJECT_DIR$/application/views/sklad/menu/sale.php" />
         <option value="$PROJECT_DIR$/application/classes/Model/SkladProducts.php" />
         <option value="$PROJECT_DIR$/application/views/sklad/menu/top.php" />
-        <option value="$PROJECT_DIR$/application/classes/Controller/SkladSearch.php" />
         <option value="$PROJECT_DIR$/application/views/sklad/search/result.php" />
         <option value="$PROJECT_DIR$/application/views/sklad/menu/submenu/products.php" />
         <option value="$PROJECT_DIR$/application/views/sklad/menu/super.php" />
         <option value="$PROJECT_DIR$/application/views/sklad/menu/content.php" />
         <option value="$PROJECT_DIR$/application/views/sklad/login.php" />
-        <option value="$PROJECT_DIR$/application/views/sklad/menu/submenu/orders.php" />
-        <option value="$PROJECT_DIR$/application/classes/Controller/SkladTmp.php" />
         <option value="$PROJECT_DIR$/application/classes/Controller/Ajax.php" />
         <option value="$PROJECT_DIR$/application/classes/Model/SkladOrders.php" />
         <option value="$PROJECT_DIR$/application/views/sklad/products/show_products.php" />
@@ -132,9 +149,12 @@
         <option value="$PROJECT_DIR$/application/views/sklad/storages/show_storages.php" />
         <option value="$PROJECT_DIR$/application/views/sklad/orders/show_orders.php" />
         <option value="$PROJECT_DIR$/style/icons.css" />
-        <option value="$PROJECT_DIR$/application/classes/Controller/Sklad.php" />
         <option value="$PROJECT_DIR$/application/bootstrap.php" />
         <option value="$PROJECT_DIR$/application/classes/Controller/Welcome.php" />
+        <option value="$PROJECT_DIR$/application/classes/Controller/SkladTmp.php" />
+        <option value="$PROJECT_DIR$/application/classes/Controller/SkladSearch.php" />
+        <option value="$PROJECT_DIR$/application/views/sklad/menu/submenu/orders.php" />
+        <option value="$PROJECT_DIR$/application/classes/Controller/Sklad.php" />
       </list>
     </option>
   </component>
@@ -229,6 +249,84 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sklad" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sklad-go-byte-ru" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sklad" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sklad" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sklad-go-byte-ru" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sklad" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sklad" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sklad-go-byte-ru" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sklad" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="submenu" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -543,7 +641,13 @@
       <option name="project" value="LOCAL" />
       <updated>1427453006163</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="сокращение роутов">
+      <created>1427453543660</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1427453543661</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -614,7 +718,8 @@
     <MESSAGE value="продажи продолжение" />
     <MESSAGE value="продажи готово" />
     <MESSAGE value="по мелочи" />
-    <option name="LAST_COMMIT_MESSAGE" value="по мелочи" />
+    <MESSAGE value="сокращение роутов" />
+    <option name="LAST_COMMIT_MESSAGE" value="сокращение роутов" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -763,13 +868,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/classes/Controller/SkladSearch.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21505377" vertical-offset="0" max-vertical-offset="936">
-          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/classes/Model/SkladProducts.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5818399" vertical-offset="1187" max-vertical-offset="3474">
@@ -842,14 +940,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/submenu/orders.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="198">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/classes/Model/SkladModels.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32925338" vertical-offset="2881" max-vertical-offset="12024">
@@ -862,14 +952,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24235006" vertical-offset="0" max-vertical-offset="954">
           <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/classes/Controller/SkladTmp.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="65" max-vertical-offset="1962">
-          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -983,22 +1065,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/classes/Controller/Sklad.php">
+    <entry file="file://$PROJECT_DIR$/application/classes/Controller/Welcome.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="15.0" vertical-offset="1431" max-vertical-offset="2304">
-          <caret line="432" column="54" selection-start-line="432" selection-start-column="54" selection-end-line="432" selection-end-column="54" />
-          <folding>
-            <element signature="n#action_logout#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
-            <element signature="n#action_main#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
-            <element signature="n#action_orders#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
-            <element signature="n#action_products#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
-            <element signature="n#action_users#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
-            <element signature="n#action_storages#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
-            <element signature="n#action_models#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
-            <element signature="n#action_categories#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
-            <element signature="n#action_specifications_groups#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
-            <element signature="n#action_images#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="0.043010753" vertical-offset="0" max-vertical-offset="837">
+          <caret line="2" column="43" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1010,11 +1081,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/classes/Controller/Welcome.php">
+    <entry file="file://$PROJECT_DIR$/application/classes/Controller/SkladTmp.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.043010753" vertical-offset="0" max-vertical-offset="837">
-          <caret line="2" column="43" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
+        <state vertical-scroll-proportion="-56.0" vertical-offset="0" max-vertical-offset="1926">
+          <caret line="84" column="50" selection-start-line="84" selection-start-column="50" selection-end-line="84" selection-end-column="50" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/classes/Controller/SkladSearch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.0" vertical-offset="0" max-vertical-offset="378">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/sklad/menu/submenu/orders.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6666667" vertical-offset="0" max-vertical-offset="234">
+          <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/classes/Controller/Sklad.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="675" max-vertical-offset="2628">
+          <caret line="58" column="53" selection-start-line="58" selection-start-column="53" selection-end-line="58" selection-end-column="53" />
+          <folding>
+            <element signature="n#action_logout#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
+            <element signature="n#action_products#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
+            <element signature="n#action_users#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
+            <element signature="n#action_storages#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
+            <element signature="n#action_models#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
+            <element signature="n#action_categories#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
+            <element signature="n#action_specifications#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
+            <element signature="n#action_specifications_groups#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
+            <element signature="n#action_images#0;n#Controller_Sklad#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

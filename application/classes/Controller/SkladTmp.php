@@ -8,6 +8,7 @@ class Controller_SkladTmp extends Controller_Template
     public $keywords;
     public $content;
     public $alias;
+    public $user;
 
     public function before()
     {
@@ -16,7 +17,7 @@ class Controller_SkladTmp extends Controller_Template
         $ses = Session::instance();
         if (!$ses->get('user', false) && $this->request->action() != 'login') {
             HTTP::redirect('/sklad/login');
-        }
+        }else $this->user = $ses->get('user', false);
     }
 
     public function after()
@@ -33,10 +34,7 @@ class Controller_SkladTmp extends Controller_Template
 
         $this->template->content = $this->content;
 
-        $ses = Session::instance();
-        $user = $ses->get('user', false);
-
-        switch ($user['rights']) {
+        switch ($this->user['rights']) {
             case 'super':
                 $this->template->menu = view::factory('sklad/menu/super');
                 break;
@@ -59,32 +57,32 @@ class Controller_SkladTmp extends Controller_Template
                     break;
                 case 'products':
                     $submenu = view::factory('/sklad/menu/submenu/products');
-                    $submenu->rights = $user['rights'];
+                    $submenu->rights = $this->user['rights'];
                     $this->template->submenu = $submenu;
                     break;
                 case 'orders':
                     $submenu = view::factory('/sklad/menu/submenu/orders');
-                    $submenu->rights = $user['rights'];
+                    $submenu->rights = $this->user['rights'];
                     $this->template->submenu = $submenu;
                     break;
                 case 'categories':
                     $submenu = View::factory('/sklad/menu/submenu/categories');
-                    $submenu->rights = $user['rights'];
+                    $submenu->rights = $this->user['rights'];
                     $this->template->submenu = $submenu;
                     break;
                 case 'models':
                     $submenu = View::factory('/sklad/menu/submenu/categories');
-                    $submenu->rights = $user['rights'];
+                    $submenu->rights = $this->user['rights'];
                     $this->template->submenu = $submenu;
                     break;
                 case 'specifications':
                     $submenu = View::factory('/sklad/menu/submenu/categories');
-                    $submenu->rights = $user['rights'];
+                    $submenu->rights = $this->user['rights'];
                     $this->template->submenu = $submenu;
                     break;
                 case 'specifications_groups':
                     $submenu = View::factory('/sklad/menu/submenu/categories');
-                    $submenu->rights = $user['rights'];
+                    $submenu->rights = $this->user['rights'];
                     $this->template->submenu = $submenu;
                     break;
                     default:

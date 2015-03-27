@@ -1,6 +1,6 @@
 .menu {
     background-color: #1D2D44;
-    width: 150px;
+    width: 100px;
     height: 100%;
     position: fixed;
     color: #fff;
@@ -19,7 +19,7 @@
 
 .menu ul {
     margin: 0;
-    padding: 0 0 0 15px;
+    padding: 0 0 0 0px;
 
 }
 
@@ -52,7 +52,7 @@
     position: fixed;
     color: #fff;
     top: 40px;
-    left: 150px;
+    left: 100px;
     padding: 20px 0px 30px 0px;
 }
 

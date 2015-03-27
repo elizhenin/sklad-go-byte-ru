@@ -1,8 +1,8 @@
 <h1>Модель</h1>
 <table style="width:100%;">
 <tbody>
-<tr style="width: 50%;vertical-align: top">
-<td>
+<tr style="vertical-align: top">
+<td  style="width: 40%">
     <form method="POST">
         <h2>Параметры</h2>
         <table style="width:100%">

@@ -10,8 +10,8 @@
 
 <table style="width:100%">
     <tbody>
-    <tr style="width: 50%">
-        <td>
+    <tr>
+        <td  style="width: 50%">
             <h2>Подкатегории</h2>
             <table style="width:100%">
                 <thead style="background-color: dimgray">

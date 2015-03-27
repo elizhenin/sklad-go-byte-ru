@@ -47,7 +47,7 @@ class Controller_Sklad extends Controller_SkladTmp
     public function action_orders()
     {
         $OrdersPOST = $this->request->post();
-        $session = $this->request->param('session');
+        $session = $this->request->param('first');
         if (empty($OrdersPOST['operation'])) {
             $OrdersPOST['operation'] = 'list';
         }
@@ -136,7 +136,7 @@ class Controller_Sklad extends Controller_SkladTmp
         $ModelStorages = New Model_SkladStorages();
         switch ($ProductsPOST['operation']) {
             case 'list':
-                $id_model = $this->request->param('id_model');
+                $id_model = $this->request->param('first');
                 $content = View::factory('sklad/products/show_products');
                 $content->items = $ModelProducts->ProductsGetAll($id_model);
                 $content->rights = $user['rights'];
@@ -428,7 +428,7 @@ class Controller_Sklad extends Controller_SkladTmp
         $ses = Session::instance();
         $user = $ses->get('user', false);
         if (($user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
-        $model = $this->request->param('model');
+        $model = $this->request->param('first');
         $SpecificationsPOST = $this->request->post();
         if (empty($SpecificationsPOST['operation'])) {
             $SpecificationsPOST['operation'] = 'specifications_list';
@@ -495,7 +495,6 @@ class Controller_Sklad extends Controller_SkladTmp
         $ses = Session::instance();
         $user = $ses->get('user', false);
         if (($user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
-        $model = $this->request->param('model');
         $SpecificationsPOST = $this->request->post();
         if (empty($SpecificationsPOST['operation'])) {
             $SpecificationsPOST['operation'] = 'specifications_list';
@@ -534,7 +533,7 @@ class Controller_Sklad extends Controller_SkladTmp
         $ses = Session::instance();
         $user = $ses->get('user', false);
         if (($user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
-        $model = $this->request->param('model');
+        $model = $this->request->param('first');
         $ImagesPOST = $this->request->post();
         if (empty($ImagesPOST['operation'])) {
             $ImagesPOST['operation'] = '';

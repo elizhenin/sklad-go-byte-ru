@@ -167,32 +167,8 @@ Route::set('sklad_categories', 'sklad/categories(/<alias>)',array('alias'=>'[\w-
         'controller' => 'Sklad',
         'action' => 'categories',
     ));
-Route::set('specifications', 'sklad/specifications(/<model>)', array('alias'=>'[0-9a-zA-Z_-]+'))
-    ->defaults(array(
-        'controller' => 'Sklad',
-        'action'     => 'specifications'
-    ));
-Route::set('specifications_groups', 'sklad/specifications_groups(/<model>)', array('model'=>'[0-9a-zA-Z_-]+'))
-    ->defaults(array(
-        'controller' => 'Sklad',
-        'action'     => 'specifications_groups'
-    ));
-Route::set('products', 'sklad/products(/<id_model>)', array('id_model'=>'[0-9a-zA-Z_-]+'))
-    ->defaults(array(
-        'controller' => 'Sklad',
-        'action'     => 'products'
-    ));
-Route::set('orders', 'sklad/orders(/<session>(/<order>))', array('session'=>'[0-9a-zA-Z_-]+', 'order'=>'[0-9a-zA-Z_-]+'))
-    ->defaults(array(
-        'controller' => 'Sklad',
-        'action'     => 'orders'
-    ));
-Route::set('images', 'sklad/images(/<model>)', array('alias'=>'[0-9a-zA-Z_-]+'))
-    ->defaults(array(
-        'controller' => 'Sklad',
-        'action'     => 'images'
-    ));
-Route::set('sklad', 'sklad(/<action>)', array('action' => '[0-9a-zA-Z_-]+'))
+
+Route::set('sklad', 'sklad(/<action>(/<first>(/<second>)))', array('action' => '[0-9a-zA-Z_-]+', 'first'=>'[0-9a-zA-Z_-]+', 'second'=>'[0-9a-zA-Z_-]+'))
     ->defaults(array(
         'controller' => 'Sklad',
         'action' => 'index',

@@ -39,7 +39,7 @@ class Goodies
                 $args[$n] = $tmp;
             }
         }
-        $args[] = &$data;
+        $args = &$data;
         call_user_func_array('array_multisort', $args);
         return array_pop($args);
     }

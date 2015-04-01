@@ -19,9 +19,9 @@ return array
 			 * Ports and sockets may be appended to the hostname.
 			 */
 			'hostname'   => 'localhost',
-			'database'   => 'sklad',
-			'username'   => 'sklad',
-			'password'   => 'Pass123',
+			'database'   => 'gobyte_studio',
+			'username'   => 'gobyte_studio',
+			'password'   => 'Y4UI54ew',
 			'persistent' => FALSE,
 		),
 		'table_prefix' => 'skl_',

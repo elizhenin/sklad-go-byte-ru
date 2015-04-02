@@ -58,6 +58,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 && $OrdersPOST['operation'] != 'remove_product'
                 && $OrdersPOST['operation'] != 'close'
                 && $OrdersPOST['operation'] != 'buyit'
+                && $OrdersPOST['operation'] != 'release'
             ) && ($OrderOpened)
         ) {
             $OrdersPOST['operation'] = 'edit';
@@ -119,6 +120,11 @@ class Controller_Sklad extends Controller_SkladTmp
                 $content->buyit = $ModelOrders->OrdersProductsCheck($OrdersPOST['sku']);
                 $content->operation = 'update';
                 $ses->set('OrderOpened', $order);
+                break;
+            case
+            'release':
+                $ModelOrders->OrdersProductsRelease($this->user['id']);
+                $this->redirect($this->request->referrer());
                 break;
             case
             'disable':

@@ -143,6 +143,40 @@ class Model_SkladOrders extends Model
 
     }
 
+    public function OrdersProductsRelease($id_users)
+    {
+        $orders = DB::select(
+            array('orders.id','id')
+        )
+            ->from('orders')
+            ->where('orders.id_users','=',$id_users)
+            ->where('orders.complete','=','0')
+            ->execute()
+            ->as_array();
+        if($orders)
+            foreach($orders as $one)
+            {
+                $products = DB::select(
+                    array('orders_products.id_products','id')
+                )
+                    ->from('orders_products')
+                    ->where('id_orders','=',$one['id'])
+                    ->execute()
+                    ->as_array();
+                DB::delete('orders_products')
+                    ->where('id_orders','=',$one['id'])
+                    ->execute();
+                foreach($products as $product)
+                {
+                    DB::update('products')
+                        ->set(array('out' => '0'))
+                        ->where('id', '=', $product['id'])
+                        ->execute();
+                }
+            }
+
+    }
+
     static function OrdersProductsCheck($sku){
         $ses = Session::instance();
         $user = $ses->get('user', 0);

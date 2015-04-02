@@ -57,7 +57,9 @@ class Controller_Sklad extends Controller_SkladTmp
                 && $OrdersPOST['operation'] != 'add_product'
                 && $OrdersPOST['operation'] != 'remove_product'
                 && $OrdersPOST['operation'] != 'close'
-            ) && ($OrderOpened)) {
+                && $OrdersPOST['operation'] != 'buyit'
+            ) && ($OrderOpened)
+        ) {
             $OrdersPOST['operation'] = 'edit';
             $OrdersPOST['orders_id'] = $OrderOpened;
         }
@@ -70,7 +72,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 break;
             case 'list':
                 $content = View::factory('sklad/orders/show_orders');
-                if($session)
+                if ($session)
                     $content->items = $ModelOrders->OrdersGetBySession($session);
                 else
                     $content->items = $ModelOrders->OrdersGetAll();
@@ -97,20 +99,36 @@ class Controller_Sklad extends Controller_SkladTmp
             case 'add':
                 $content = View::factory('sklad/orders/edit_order');
                 $content->sessions = $ModelOrders->SessionsGetAll();
-                if($session) {
+                if ($session) {
                     $items = $ModelOrders->OrdersGetBySession($session);
                     $content->item = $items[0];
                 }
                 $content->operation = 'new';
                 break;
-            case 'disable':
+            case 'buyit':
+                $order = $ModelOrders->OrdersAdd(array(
+                    'session' => 0,
+                    'phone' => '',
+                    'text'=> ''
+                ));
+                $content = View::factory('sklad/orders/edit_order');
+                $content->item = $ModelOrders->OrdersGetById($order);
+                $content->id_orders = $order;
+                $content->sessions = $ModelOrders->SessionsGetAll();
+                $content->products = $ModelOrders->OrdersProductsGetAll($order);
+                $content->buyit = $ModelOrders->OrdersProductsCheck($OrdersPOST['sku']);
+                $content->operation = 'update';
+                $ses->set('OrderOpened', $order);
+                break;
+            case
+            'disable':
 
-                 $ModelOrders->OrdersSetCompleteById($OrdersPOST['orders_id'], '1');
+                $ModelOrders->OrdersSetCompleteById($OrdersPOST['orders_id'], '1');
                 $this->redirect($this->request->referrer());
                 break;
             case 'enable':
 
-                  $ModelOrders->OrdersSetCompleteById($OrdersPOST['orders_id'], '0');
+                $ModelOrders->OrdersSetCompleteById($OrdersPOST['orders_id'], '0');
                 $this->redirect($this->request->referrer());
                 break;
             case 'add_product':
@@ -126,7 +144,8 @@ class Controller_Sklad extends Controller_SkladTmp
         $this->content = $content;
     }
 
-    public function action_products()
+    public
+    function action_products()
     {
         $ProductsPOST = $this->request->post();
         if (empty($ProductsPOST['operation'])) {
@@ -141,7 +160,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 $id_model = $this->request->param('first');
                 $content = View::factory('sklad/products/show_products');
                 $filter = $this->request->query('filter');
-                $content->items = $ModelProducts->ProductsGetAll($id_model,$filter);
+                $content->items = $ModelProducts->ProductsGetAll($id_model, $filter);
                 $content->rights = $this->user['rights'];
                 break;
             case 'new':
@@ -188,7 +207,8 @@ class Controller_Sklad extends Controller_SkladTmp
         $this->content = $content;
     }
 
-    public function action_users()
+    public
+    function action_users()
     {
 
         if (($this->user['rights'] != 'super')) HTTP::redirect('/sklad/main');
@@ -233,7 +253,8 @@ class Controller_Sklad extends Controller_SkladTmp
         $this->content = $content;
     }
 
-    public function action_storages()
+    public
+    function action_storages()
     {
 
         if (($this->user['rights'] != 'super')) HTTP::redirect('/sklad/main');
@@ -280,7 +301,8 @@ class Controller_Sklad extends Controller_SkladTmp
         $this->content = $content;
     }
 
-    public function action_models()
+    public
+    function action_models()
     {
         $ses = Session::instance();
         if (($this->user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
@@ -350,7 +372,8 @@ class Controller_Sklad extends Controller_SkladTmp
         $this->content = $content;
     }
 
-    public function action_categories()
+    public
+    function action_categories()
     {
         $ses = Session::instance();
 
@@ -423,7 +446,8 @@ class Controller_Sklad extends Controller_SkladTmp
         $this->content = $content;
     }
 
-    public function action_specifications()
+    public
+    function action_specifications()
     {
         $ses = Session::instance();
 
@@ -495,7 +519,8 @@ class Controller_Sklad extends Controller_SkladTmp
         $this->content = $content;
     }
 
-    public function action_specifications_groups()
+    public
+    function action_specifications_groups()
     {
 
         if (($this->user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
@@ -535,7 +560,8 @@ class Controller_Sklad extends Controller_SkladTmp
         $this->content = $content;
     }
 
-    public function action_images()
+    public
+    function action_images()
     {
         if (($this->user['rights'] == 'sale')) HTTP::redirect('/sklad/main');
         $model = $this->request->param('first');

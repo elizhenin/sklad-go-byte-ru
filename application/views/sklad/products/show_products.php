@@ -49,7 +49,13 @@
                 <td><?= $item['sku'] ?></td>
                 <td><a href="/sklad/products/<?=$item['alias']?>"><?= $item['model'] ?></a></td>
                 <td><?= $item['storage'] ?></td>
-                <td><form><input type="checkbox" name="out" <?=(!empty($item['out']))?'checked="checked"':''?>" disabled/></form></td>
+                <td>
+                    <form action="/sklad/orders" method="post">
+                        <input type="checkbox" name="out" <?=(!empty($item['out']))?'checked="checked" disabled="disabled"':'onclick="this.form.submit();"'?>"/>
+                        <input type="hidden" name="operation" value="buyit">
+                        <input type="hidden" name="sku" value="<?=$item['sku']?>">
+                    </form>
+                </td>
                 <td><?= $item['date_out'] ?></td>
             </tr>
         <?php
@@ -58,4 +64,3 @@
     ?>
     </tbody>
 </table>
-

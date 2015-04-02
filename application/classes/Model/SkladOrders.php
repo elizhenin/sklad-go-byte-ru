@@ -36,9 +36,10 @@ class Model_SkladOrders extends Model
 
         unset($post['operation']);
         unset($post['id']);
-        DB::insert('orders', array_keys($post))
+        $order = DB::insert('orders', array_keys($post))
             ->values($post)
             ->execute();
+        return $order[0];
 
     }
 
@@ -140,6 +141,32 @@ class Model_SkladOrders extends Model
             ->where('id', '=', $product['id_products'])
             ->execute();
 
+    }
+
+    static function OrdersProductsCheck($sku){
+        $ses = Session::instance();
+        $user = $ses->get('user', 0);
+        $product = DB::select(
+            array('models.name', 'name'),
+            array('models.price', 'price'),
+            array('models.in_price', 'in_price'),
+            array('products.id', 'id'),
+            array('products.sku', 'sku')
+        )
+            ->from('products')
+            ->join('models')
+            ->on('models.id', '=', 'products.id_models')
+            ->join('storages')
+            ->on('storages.id', '=', 'products.id_storage')
+            ->join('citys')
+            ->on('citys.id', '=', 'storages.id_citys')
+            ->where('products.sku', '=', $sku)
+            ->where('products.out', '=', '0')
+            ->where('citys.alias', '=', $user['login'])
+            ->limit(1)
+            ->execute()
+            ->as_array();
+        if($product) return $product[0];
     }
 
     public function OrdersProductsRemove($post)

@@ -28,29 +28,8 @@ class Controller_Ajax extends Controller
 
     public function action_checkProduct()
     {
-        $ses = Session::instance();
-        $user = $ses->get('user', 0);
-
-        $product = DB::select(
-            array('models.name', 'name'),
-            array('models.price', 'price'),
-            array('models.in_price', 'in_price'),
-            array('products.id', 'id')
-        )
-            ->from('products')
-            ->join('models')
-            ->on('models.id', '=', 'products.id_models')
-            ->join('storages')
-            ->on('storages.id', '=', 'products.id_storage')
-            ->join('citys')
-            ->on('citys.id', '=', 'storages.id_citys')
-            ->where('products.sku', '=', trim(htmlspecialchars(($this->request->post('sku')))))
-            ->where('products.out', '=', '0')
-            ->where('citys.alias', '=', $user['login'])
-            ->limit(1)
-            ->execute()
-            ->as_array();
+        $product = Model_SkladOrders::OrdersProductsCheck(trim(htmlspecialchars($this->request->post('sku'))));
         if ($product)
-            echo json_encode($product[0]);
+            echo json_encode($product);
     }
 }

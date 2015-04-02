@@ -19,18 +19,18 @@ if (empty($id_orders)) {
                         <form method="POST">
                             <input type="hidden" name="operation" value="add_product">
                             <input type="hidden" name="id_orders" value="<?= $id_orders ?>">
-                            <input id="id_products" type="hidden" name="id_products" value="">
+                            <input id="id_products" type="hidden" name="id_products" value="<?=(empty($buyit))?'':$buyit['id']?>">
                             <input type="submit" value="+" autofocus="autofocus" title="добавить">
-                            <input id="sku" name="sku" type="text" onchange="check_product();" placeholder="код товара">
+                            <input id="sku" name="sku" type="text" onchange="check_product();" placeholder="код товара" value="<?=(empty($buyit))?'':$buyit['sku']?>">
                             <input type="button" value=">">
                             <label>Название:
-                                <input id="name" type="text" value="" readonly>
+                                <input id="name" type="text" value="<?=(empty($buyit))?'':$buyit['name']?>" readonly>
                             </label>
                             <label>Цена:
-                                <input id="price" type="text" value="" name="price_out">руб
+                                <input id="price" type="text" value="<?=(empty($buyit))?'':$buyit['price']?>" name="price_out">руб
                             </label>
                             <label>мин:
-                                <input id="in_price" type="text" value="" readonly>руб
+                                <input id="in_price" type="text" value="<?=(empty($buyit))?'':$buyit['in_price']?>" readonly>руб
                             </label>
                         </form>
                     </td>

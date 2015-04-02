@@ -25,6 +25,7 @@
 <td>
     Группа
 </td>
+    <td>Порядок</td>
     </thead>
     <tbody>
     <?php
@@ -76,6 +77,26 @@
                         ?>
                     </select>
                         </form>
+                </td>
+                <td>
+
+                    <form name="form<?= $item['id'] ?>movedown" method="POST" style="display:inline-block;float: right">
+                        <input type="hidden" name="id" value="<?= $item['id'] ?>"/>
+                        <input type="hidden" name="newpos" value="<?=$item['order']+1?>"?>
+                        <input type="hidden" name="operation" value="specifications_move"/>
+                        <input type="submit" value="&darr;" title="Вниз" <?=($item == end($items))?'disabled="disabled"':''?>/>
+                    </form>
+
+                    <form name="form<?= $item['id'] ?>moveup" method="POST" style="display:inline-block;float: left">
+                        <input type="hidden" name="id" value="<?= $item['id'] ?>"/>
+                        <input type="hidden" name="newpos" value="<?=$item['order']-1?>"?>
+                        <input type="hidden" name="operation" value="specifications_move"/>
+                        <input type="submit" value="&uarr;" title="Вверх" <?=($item == reset($items))?'disabled="disabled"':''?>/>
+                    </form>
+
+                    <div style="float: inherit">
+                        <?=$item['order']?>
+                    </div>
                 </td>
             </tr>
         <?php

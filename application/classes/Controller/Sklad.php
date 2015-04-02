@@ -66,7 +66,7 @@ class Controller_Sklad extends Controller_SkladTmp
         switch ($OrdersPOST['operation']) {
             case 'close':
                 $ses->set('OrderOpened', false);
-                $this->redirect($this->request->referrer());
+                $this->redirect('/sklad/orders');
                 break;
             case 'list':
                 $content = View::factory('sklad/orders/show_orders');
@@ -461,6 +461,11 @@ class Controller_Sklad extends Controller_SkladTmp
                 $ModelModels->SpecificationsSetDeletedById($SpecificationsPOST['id'], '0');
                 $this->redirect($this->request->referrer());
                 break;
+
+            case 'specifications_move':
+                $ModelModels->SpecificationsMoveTo($SpecificationsPOST['id'], $SpecificationsPOST['newpos']);
+                $this->redirect($this->request->referrer());
+                break;
 //model specs
             case 'model_list':
                 $ses->set('ReturnTo', $this->request->referrer());
@@ -518,6 +523,10 @@ class Controller_Sklad extends Controller_SkladTmp
                 break;
             case 'specifications_enable':
                 $ModelModels->SpecificationsGroupsSetDeletedById($SpecificationsPOST['id'], '0');
+                $this->redirect($this->request->referrer());
+                break;
+            case 'specifications_move':
+                $ModelModels->SpecificationsGroupsMoveTo($SpecificationsPOST['id'], $SpecificationsPOST['newpos']);
                 $this->redirect($this->request->referrer());
                 break;
         }

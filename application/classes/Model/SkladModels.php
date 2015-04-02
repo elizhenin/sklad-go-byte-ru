@@ -390,12 +390,15 @@ class Model_SkladModels extends Model
             array('specifications.id', 'id'),
             array('specifications.name', 'name'),
             array('specifications.deleted', 'deleted'),
-            array('specifications_groups.name', 'group')
+            array('specifications_groups.name', 'group'),
+            array('specifications.order', 'order')
         )
             ->from('specifications')
             ->join('specifications_groups', 'LEFT')
             ->on('specifications.id_specifications_groups', '=', 'specifications_groups.id')
+            ->order_by('specifications_groups.order')
             ->order_by('specifications_groups.name')
+            ->order_by('specifications.order')
             ->order_by('specifications.deleted')
             ->execute()
             ->as_array();
@@ -408,6 +411,8 @@ class Model_SkladModels extends Model
         $records = DB::select()
             ->from('specifications')
             ->where('deleted', '=', '0')
+            ->order_by('order')
+            ->order_by('name')
             ->execute()
             ->as_array();
         return $records;
@@ -448,6 +453,15 @@ class Model_SkladModels extends Model
             ->execute();
     }
 
+    public function SpecificationsMoveTo($id,$newpos)
+    {
+        DB::update('specifications')
+            ->set(array('order' => $newpos))
+            ->where('id', '=', $id)
+            ->execute();
+
+    }
+
 //specifications groups
 
     public function SpecificationsGroupsGetAll()
@@ -456,6 +470,7 @@ class Model_SkladModels extends Model
         $tmp = DB::select()
             ->from('specifications_groups')
             ->order_by('deleted')
+            ->order_by('order')
             ->execute()
             ->as_array();
         $records = array();
@@ -472,6 +487,7 @@ class Model_SkladModels extends Model
         $tmp = DB::select()
             ->from('specifications_groups')
             ->where('deleted', '=', '0')
+            ->order_by('order')
             ->execute()
             ->as_array();
         $records = array();
@@ -484,8 +500,8 @@ class Model_SkladModels extends Model
     public function SpecificationsGroupsAdd($post)
     {
         if (trim(htmlspecialchars($post['name'])))
-            $item = $records = DB::insert('specifications_groups', array('name'))
-                ->values(array(trim(htmlspecialchars($post['name']))))
+            $item = $records = DB::insert('specifications_groups', array('name','order'))
+                ->values(array(trim(htmlspecialchars($post['name'])),trim(htmlspecialchars($post['order']))))
                 ->execute();
         if (!empty($item)) return $item[0]; else return false;
     }
@@ -505,6 +521,15 @@ class Model_SkladModels extends Model
             ->set(array('deleted' => $deleted))
             ->where('id', '=', $id)
             ->execute();
+    }
+
+    public function SpecificationsGroupsMoveTo($id,$newpos)
+    {
+        DB::update('specifications_groups')
+            ->set(array('order' => $newpos))
+            ->where('id', '=', $id)
+            ->execute();
+
     }
 
 //model specifications

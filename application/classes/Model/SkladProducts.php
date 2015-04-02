@@ -67,7 +67,7 @@ class Model_SkladProducts extends Model
         }
     }
 
-    public function ProductsGetAll($model = false)
+    public function ProductsGetAll($model = false,$filter=false)
     {
         $select = DB::select(
             array('products.id','id'),
@@ -88,6 +88,14 @@ class Model_SkladProducts extends Model
 
         if($model)
             $select->where('models.alias','=',$model);
+        if($filter) {
+            $select->and_where_open();
+            $select->or_where('products.sku', 'like', '%' . $filter . '%');
+            $select->or_where('models.sku', 'like', '%' . $filter . '%');
+            $select->or_where('models.name', 'like', '%' . $filter . '%');
+            $select->or_where('models.alias', 'like', '%' . $filter . '%');
+            $select->and_where_close();
+        }
 
         $select = $select
             ->order_by('models.name')

@@ -16,6 +16,7 @@ class Model_SkladLogin extends Model
         $select = DB::select(
             array('users.id', 'id'),
             array('citys.alias','login'),
+            array('citys.id','id_citys'),
             array('users.rights','rights')
         )
             ->from('users')

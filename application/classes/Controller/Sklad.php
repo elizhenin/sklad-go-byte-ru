@@ -140,7 +140,8 @@ class Controller_Sklad extends Controller_SkladTmp
             case 'list':
                 $id_model = $this->request->param('first');
                 $content = View::factory('sklad/products/show_products');
-                $content->items = $ModelProducts->ProductsGetAll($id_model);
+                $filter = $this->request->query('filter');
+                $content->items = $ModelProducts->ProductsGetAll($id_model,$filter);
                 $content->rights = $this->user['rights'];
                 break;
             case 'new':

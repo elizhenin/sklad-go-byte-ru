@@ -1,4 +1,7 @@
 <h1>Товары</h1>
+<form style="float: left;display: inline-block" method="get">
+    <input name="filter" type="text" placeholder="поиск: код или название" onchange="this.form.submit();">
+</form>
 <table style="width:100%">
     <thead style="background-color: dimgray">
     <td></td>

@@ -31,11 +31,13 @@ class Model_SkladProducts extends Model
         $product = $this->ProductsGetById($post['id']);
 
         if ($product) {
+            if(!empty($post['id_models']))
             $post['id_models'] = trim(htmlspecialchars($post['id_models']));
+            if(!empty($post['sku']))
             $post['sku'] = trim(htmlspecialchars($post['sku']));
+            if(!empty($post['comments']))
             $post['comments'] = trim(htmlspecialchars($post['comments']));
             $post['id_storage'] = trim(htmlspecialchars($post['id_storage']));
-            $post['sku'] = trim(htmlspecialchars($post['sku']));
             if(!empty($post['out'])) $post['out']='1';else $post['out'] = '0';
             $post['out'] = trim(htmlspecialchars($post['out']));
             //$post['date_out'] = trim(htmlspecialchars($post['date_out']));
@@ -43,6 +45,11 @@ class Model_SkladProducts extends Model
             unset($post['id']);
             unset($post['operation']);
 
+            $ses = Session::instance();
+            $user = $ses->get('user', 0);
+
+            if($product['out'] && $user['rights']!='super'){}
+            else
             DB::update('products')
                 ->set($post)
                 ->where('id', '=', $product['id'])
@@ -95,6 +102,11 @@ class Model_SkladProducts extends Model
             $select->or_where('models.name', 'like', '%' . $filter . '%');
             $select->or_where('models.alias', 'like', '%' . $filter . '%');
             $select->and_where_close();
+        }else{
+            $ses = Session::instance();
+            $user = $ses->get('user', false);
+            if($user['rights']=='sale')
+                $select->where('storages.id_citys','=',$user['id_citys']);
         }
 
         $select = $select

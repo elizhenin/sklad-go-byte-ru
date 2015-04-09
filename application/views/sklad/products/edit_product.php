@@ -12,7 +12,7 @@
     if(!empty($models))
     foreach($models as $one){
         ?>
-        <option value="<?=$one['id']?>" <?=(!empty($model) && $one['id']==$model)?'selected="selected"':''?>><?=$one['name']?></option>
+        <option value="<?=$one['id']?>" <?=(!empty($model) && $one['id']==$item['id_models'])?'selected="selected"':''?>><?=$one['name']?></option>
     <?php
     }
     ?>
@@ -26,10 +26,16 @@
             <td style="text-align: left">
                 <select name="id_storage">
                     <?php
+                    if(!empty($item['id_storage'])) {
+                        ?>
+                        <option value="<?= $item['id_storage'] ?>" selected="selected">(не менять)</option>
+                    ?>
+                    <?php
+                    }
                     if(!empty($storages))
                         foreach($storages as $one){
                             ?>
-                            <option value="<?=$one['id']?>" <?=(!empty($storage) && $one['id']==$storage)?'selected="selected"':''?>><?=$one['name']?></option>
+                            <option value="<?=$one['id']?>"><?=$one['name']?></option>
                         <?php
                         }
                     ?>

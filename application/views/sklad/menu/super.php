@@ -3,7 +3,7 @@
     <li class="icon-users <?=(Request::current()->action()=='users')?'menu_active':''?>">
         <a href="/sklad/users"><span></span><br>Пользователи</a>
     </li>
-    <li class="icon-storages <?=(Request::current()->action()=='storages')?'menu_active':''?>">
+    <li class="icon-storages <?=(Request::current()->action()=='storages' || Request::current()->action()=='storages_rules')?'menu_active':''?>">
         <a href="/sklad/storages"><span></span><br>Склады</a>
     </li>
 

@@ -81,7 +81,13 @@ class Model_SkladOrders extends Model
     {
         $select = DB::select()
             ->from('orders')
-            ->order_by('created', 'DESC')
+            ->order_by('created', 'DESC');
+
+        $ses = Session::instance();
+        $user = $ses->get('user', false);
+        if($user['rights']=='sale')
+            $select->where('orders.id_users','=',$user['id']);
+        $select = $select
             ->execute()
             ->as_array();
         if (!empty($select)) {
@@ -251,7 +257,13 @@ class Model_SkladOrders extends Model
         )
             ->from('orders')
             ->order_by('created', 'DESC')
-            ->group_by('session')
+            ->group_by('session');
+
+        $ses = Session::instance();
+        $user = $ses->get('user', false);
+        if($user['rights']=='sale')
+            $select->where('orders.id_users','=',$user['id']);
+        $select = $select
             ->execute()
             ->as_array();
         if (!empty($select)) {

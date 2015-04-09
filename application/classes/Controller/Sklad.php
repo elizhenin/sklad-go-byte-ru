@@ -177,25 +177,26 @@ class Controller_Sklad extends Controller_SkladTmp
                 break;
             case 'update':
 
-                if (($this->user['rights'] == 'sale')) $this->redirect($this->request->referrer());
+                if (($this->user['rights'] == 'sale')) {
+                    unset($ProductsPOST['id_models']);
+                    unset($ProductsPOST['sku']);
+                    unset($ProductsPOST['comments']);
+                }
                 $ModelProducts->ProductsUpdate($ProductsPOST);
                 $this->redirect($this->request->referrer());
                 break;
             case 'edit':
-
-                if (($this->user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $content = View::factory('sklad/products/edit_product');
                 $content->item = $ModelProducts->ProductsGetById($ProductsPOST['products_id']);
                 $content->models = $ModelModels->ModelGetVisible();
-                $content->storages = $ModelStorages->StoragesGetVisible();
+                $content->storages = $ModelStorages->StoragesGetAllowed();
                 $content->operation = 'update';
                 break;
             case 'add':
-
                 if (($this->user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $content = View::factory('sklad/products/edit_product');
                 $content->models = $ModelModels->ModelGetVisible();
-                $content->storages = $ModelStorages->StoragesGetVisible();
+                $content->storages = $ModelStorages->StoragesGetAllowed();
                 $content->operation = 'new';
                 break;
             case 'disable':
@@ -273,34 +274,84 @@ class Controller_Sklad extends Controller_SkladTmp
         switch ($StoragesPOST['operation']) {
             case 'list':
                 $content = View::factory('sklad/storages/show_storages');
-                $content->items = $ModelStorages->GetAll();
+                $content->items = $ModelStorages->StoragesGetAll();
                 break;
             case 'new':
-                $ModelStorages->NewStorage($StoragesPOST);
+                $ModelStorages->StoragesNew($StoragesPOST);
                 HTTP::redirect('/sklad/storages');
                 break;
             case 'update':
-                $ModelStorages->UpdateStorage($StoragesPOST);
+                $ModelStorages->StoragesUpdate($StoragesPOST);
                 HTTP::redirect('/sklad/storages');
                 break;
             case 'edit':
                 $content = View::factory('sklad/storages/edit_storage');
-                $content->item = $ModelStorages->GetById($StoragesPOST['storages_id']);
-                $content->citys = $ModelStorages->GetCitys();
+                $content->item = $ModelStorages->StoragesGetById($StoragesPOST['storages_id']);
+                $content->citys = $ModelStorages->StoragesGetCitys();
                 $content->operation = 'update';
                 break;
             case 'add':
                 $content = View::factory('sklad/storages/edit_storage');
-                $content->citys = $ModelStorages->GetCitys();
+                $content->citys = $ModelStorages->StoragesGetCitys();
                 $content->operation = 'new';
                 break;
             case 'disable':
-                $ModelStorages->SetDeletedById($StoragesPOST['storages_id'], '1');
+                $ModelStorages->StoragesSetDeletedById($StoragesPOST['storages_id'], '1');
                 HTTP::redirect('/sklad/storages');
                 break;
             case 'enable':
-                $ModelStorages->SetDeletedById($StoragesPOST['storages_id'], '0');
+                $ModelStorages->StoragesSetDeletedById($StoragesPOST['storages_id'], '0');
                 HTTP::redirect('/sklad/storages');
+                break;
+        }
+
+        $this->content = $content;
+    }
+
+    public
+    function action_storages_rules()
+    {
+
+        if (($this->user['rights'] != 'super')) HTTP::redirect('/sklad/main');
+
+        $StoragesPOST = $this->request->post();
+        if (empty($StoragesPOST['operation'])) {
+            $StoragesPOST['operation'] = 'list';
+        }
+        $ModelStorages = New Model_SkladStorages();
+        switch ($StoragesPOST['operation']) {
+            case 'list':
+                $content = View::factory('sklad/storages/show_storages_rules');
+                $content->items = $ModelStorages->StoragesRulesGetAll();
+                break;
+            case 'new':
+                $ModelStorages->StoragesRulesNew($StoragesPOST);
+                HTTP::redirect('/sklad/storages_rules');
+                break;
+            case 'update':
+                $ModelStorages->StoragesRulesUpdate($StoragesPOST);
+                HTTP::redirect('/sklad/storages_rules');
+                break;
+            case 'edit':
+                $content = View::factory('sklad/storages/edit_storage_rule');
+                $content->item = $ModelStorages->StoragesRulesGetById($StoragesPOST['storages_rules_id']);
+                $content->citys = $ModelStorages->StoragesGetCitys();
+                $content->storages = $ModelStorages->StoragesGetVisible();
+                $content->operation = 'update';
+                break;
+            case 'add':
+                $content = View::factory('sklad/storages/edit_storage_rule');
+                $content->citys = $ModelStorages->StoragesGetCitys();
+                $content->storages = $ModelStorages->StoragesGetVisible();
+                $content->operation = 'new';
+                break;
+            case 'disable':
+                $ModelStorages->StoragesRulesSetDeletedById($StoragesPOST['storages_rules_id'], '1');
+                HTTP::redirect('/sklad/storages_rules');
+                break;
+            case 'enable':
+                $ModelStorages->StoragesRulesSetDeletedById($StoragesPOST['storages_rules_id'], '0');
+                HTTP::redirect('/sklad/storages_rules');
                 break;
         }
 

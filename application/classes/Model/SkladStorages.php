@@ -8,7 +8,7 @@ class Model_SkladStorages extends Model
 //sale = sale manager
 
 
-    public function NewStorage($post)
+    public function StoragesNew($post)
     {
         $post['name'] = trim(htmlspecialchars($post['name']));
         if (empty($post['present'])) $post['present'] = '0';
@@ -21,9 +21,9 @@ class Model_SkladStorages extends Model
             ->execute();
     }
 
-    public function UpdateStorage($post)
+    public function StoragesUpdate($post)
     {
-        $storage = $this->GetById($post['storage_id']);
+        $storage = $this->StoragesGetById($post['storage_id']);
 
         if ($storage) {
             $post['name'] = trim(htmlspecialchars($post['name']));
@@ -41,10 +41,9 @@ class Model_SkladStorages extends Model
     }
 
 
-    public function GetById($id)
+    public function StoragesGetById($id)
     {
-        $select = DB::select(
-        )
+        $select = DB::select()
             ->from('storages')
             ->where('storages.id', '=', $id)
             ->limit(1)
@@ -57,16 +56,16 @@ class Model_SkladStorages extends Model
         }
     }
 
-    public function GetAll()
+    public function StoragesGetAll()
     {
         $select = DB::select(
-            array('storages.id','id'),
-            array('storages.name','name'),
-            array('storages.present','present'),
-            array('citys.name','city'),
-            array('storages.arrive','arrive'),
-            array('storages.transit','transit'),
-            array('storages.deleted','deleted')
+            array('storages.id', 'id'),
+            array('storages.name', 'name'),
+            array('storages.present', 'present'),
+            array('citys.name', 'city'),
+            array('storages.arrive', 'arrive'),
+            array('storages.transit', 'transit'),
+            array('storages.deleted', 'deleted')
         )
             ->from('storages')
             ->join('citys')
@@ -83,17 +82,17 @@ class Model_SkladStorages extends Model
     public function StoragesGetVisible()
     {
         $select = DB::select(
-            array('storages.id','id'),
-            array('storages.name','name'),
-            array('storages.present','present'),
-            array('citys.name','city'),
-            array('storages.arrive','arrive'),
-            array('storages.transit','transit')
+            array('storages.id', 'id'),
+            array('storages.name', 'name'),
+            array('storages.present', 'present'),
+            array('citys.name', 'city'),
+            array('storages.arrive', 'arrive'),
+            array('storages.transit', 'transit')
         )
             ->from('storages')
             ->join('citys')
             ->on('citys.id', '=', 'storages.id_citys')
-            ->where('storages.deleted','=','0')
+            ->where('storages.deleted', '=', '0')
             ->execute()
             ->as_array();
         if (!empty($select)) {
@@ -103,7 +102,44 @@ class Model_SkladStorages extends Model
         }
     }
 
-    public function SetDeletedById($id, $deleted)
+    public function StoragesGetAllowed()
+    {
+        $ses = Session::instance();
+        $user = $ses->get('user', false);
+        if($user['rights']!='sale') {
+            $select = DB::select(
+                array('storages.id', 'id'),
+                array('storages.name', 'name')
+            )
+                ->from('storages')
+                ->where('storages.deleted', '=', '0')
+                ->execute()
+                ->as_array();
+        }
+        else
+        {
+            $select = DB::select
+            (
+                array('storages.id', 'id'),
+                array('storages.name', 'name')
+            )
+                ->from('storages')
+                ->join(array('storages_settings','rules'))
+                ->on('rules.to','=','storages.id')
+                ->where('storages.id_citys','=',$user['id_citys'])
+                ->or_where('rules.id_citys','=',$user['id_citys'])
+                ->execute()
+                ->as_array();
+        }
+
+        if (!empty($select)) {
+            return $select;
+        } else {
+            return false;
+        }
+    }
+
+    public function StoragesSetDeletedById($id, $deleted)
     {
         DB::update('storages')
             ->set(array('deleted' => $deleted))
@@ -111,11 +147,11 @@ class Model_SkladStorages extends Model
             ->execute();
     }
 
-    public function GetCitys()
+    public function StoragesGetCitys()
     {
         $select = DB::select(
-            array('id','id'),
-            array('name','name')
+            array('id', 'id'),
+            array('name', 'name')
         )
             ->from('citys')
             ->execute()
@@ -125,5 +161,96 @@ class Model_SkladStorages extends Model
         } else {
             return false;
         }
+    }
+
+    public function StoragesRulesNew($post)
+    {
+        DB::insert('storages_settings', array('from', 'to', 'id_citys'))
+            ->values(array($post['from'], $post['to'], $post['id_citys']))
+            ->execute();
+    }
+
+    public function StoragesRulesUpdate($post)
+    {
+        $id = $post['id'];
+        unset($post['id']);
+        unset($post['operation']);
+        DB::update('storages_settings')
+            ->set($post)
+            ->where('id', '=', $id)
+            ->execute();
+    }
+    public function StoragesRulesGetById($id)
+    {
+        $select = DB::select()
+            ->from('storages_settings')
+            ->where('storages_settings.id', '=', $id)
+            ->limit(1)
+            ->execute()
+            ->as_array();
+        if (!empty($select)) {
+            return $select[0];
+        } else {
+            return false;
+        }
+    }
+
+    public function StoragesRulesGetAll()
+    {
+        $select = DB::select(
+            array('storages_settings.id', 'id'),
+            array('from.name', 'from'),
+            array('to.name', 'to'),
+            array('storages_settings.deleted', 'deleted'),
+            array('citys.name', 'city')
+        )
+            ->from('storages_settings')
+            ->join('citys')
+            ->on('citys.id', '=', 'storages_settings.id_citys')
+            ->join(array('storages','from'))
+            ->on('from.id','=','storages_settings.from')
+            ->join(array('storages','to'))
+            ->on('to.id','=','storages_settings.to')
+            ->execute()
+            ->as_array();
+        if (!empty($select)) {
+            return $select;
+        } else {
+            return false;
+        }
+    }
+
+    public function StoragesRulesGetVisible()
+    {
+        $select = DB::select(
+            array('storages_settings.id', 'id'),
+            array('from.name', 'from'),
+            array('to.name', 'to'),
+            array('storages_settings.deleted', 'deleted'),
+            array('citys.name', 'city')
+        )
+            ->from('storages_settings')
+            ->join('citys')
+            ->on('citys.id', '=', 'storages_settings.id_citys')
+            ->join(array('storages','from'))
+            ->on('from.id','=','storages_settings.from')
+            ->join(array('storages','to'))
+            ->on('to.id','=','storages_settings.to')
+            ->where('storages_settings.deleted','=','0')
+            ->execute()
+            ->as_array();
+        if (!empty($select)) {
+            return $select;
+        } else {
+            return false;
+        }
+    }
+
+    public function StoragesRulesSetDeletedById($id, $deleted)
+    {
+        DB::update('storages_settings')
+            ->set(array('deleted' => $deleted))
+            ->where('id', '=', $id)
+            ->execute();
     }
 }

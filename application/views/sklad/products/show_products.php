@@ -71,7 +71,7 @@
                     ?>
 
                 </td>
-                <td><?= $item['date_out'] ?></td>
+                <td <?=((time()-strtotime($item['date_out']) < 8640)||(strtotime($item['date_out'])<=0))?'':'style="color:red"'?>><?= $item['date_out'] ?></td>
             </tr>
         <?php
         }

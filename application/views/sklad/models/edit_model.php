@@ -251,7 +251,7 @@
                     <td></td>
                     <td>Фото</td>
                     <td>alt</td>
-                    <td>Важно</td>
+                    <td>Основная</td>
                     <td>Показывать</td>
                     </thead>
                     <tbody>

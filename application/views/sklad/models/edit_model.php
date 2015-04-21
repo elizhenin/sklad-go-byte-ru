@@ -147,6 +147,8 @@
                         }
                         ?>
                     </select>
+                    <label>Значение:
+                    <input type="text" name="value" value=""/></label>
                 </form>
             </td>
             </thead>

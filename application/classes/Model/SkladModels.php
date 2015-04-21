@@ -567,7 +567,9 @@ class Model_SkladModels extends Model
         }
         $specification['id_specifications'] = $post['id_specifications'];
         $specification['id_models'] = $post['id_models'];
-        $specification['value'] = 'N/A';
+        if(!empty($specification['value']))
+        $specification['value'] = trim(htmlspecialchars($specification['value']));
+        else $specification['value'] = 'N/A';
         $specification['important'] = '0';
         $specification['manual'] = '0';
         $specification['created'] = DB::expr('NOW()');

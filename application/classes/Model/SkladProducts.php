@@ -94,7 +94,9 @@ class Model_SkladProducts extends Model
             ->join('storages')
             ->on('products.id_storage', '=', 'storages.id')
             ->join('orders_products', 'LEFT')
-            ->on('products.id', '=', 'orders_products.id_products');
+            ->on('products.id', '=', 'orders_products.id_products')
+        ->join('orders','LEFT')
+        ->on('orders.id','=','orders_products.id_orders');
 
         if ($model)
             $select->where('models.alias', '=', $model);
@@ -118,6 +120,23 @@ class Model_SkladProducts extends Model
             ->execute()
             ->as_array();
         if (!empty($select)) {
+            if($filter){}
+            else{
+                foreach($select as $key=>$value)
+                    if($value['out']){
+                    $orders = DB::select(array('orders.id','id'))
+                        ->from('orders')
+                        ->join('orders_products')
+                        ->on('orders.id','=','orders_products.id_orders')
+                        ->where('orders_products.id_products','=',$value['id'])
+                        ->where('orders.complete','=','1')
+                        ->limit(1)
+                        ->execute()
+                        ->as_array();
+                        if(!empty($orders)) unset($select[$key]);
+                }
+            }
+
             return $select;
         } else {
             return false;

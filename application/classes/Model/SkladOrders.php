@@ -12,10 +12,6 @@ class Model_SkladOrders extends Model
     {
 
         $post['phone'] = trim(htmlspecialchars($post['phone']));
-        if (empty($post['confirm']))
-            $post['confirm'] = '0';
-        else
-            $post['confirm'] = '1';
 
         $ses = Session::instance();
         $user = $ses->get('user', false);
@@ -47,14 +43,11 @@ class Model_SkladOrders extends Model
     {
 
         $post['phone'] = trim(htmlspecialchars($post['phone']));
-        if (empty($post['confirm']))
-            $post['confirm'] = '0';
-        else
-            $post['confirm'] = '1';
 
         $ses = Session::instance();
         $user = $ses->get('user', false);
-
+if(!empty($post['complete'])) $post['complete'] ='1';
+        else $post['complete'] = '0';
         if ($post['session'] == '0') {
             $post['session'] = $user['login'] . time() . Text::random(null, '1');
             $post['created'] = DB::expr('NOW()');
@@ -126,10 +119,10 @@ class Model_SkladOrders extends Model
         }
     }
 
-    public function OrdersSetCompleteById($id, $deleted)
+    public function OrdersSetCompleteById($id, $status)
     {
         DB::update('orders')
-            ->set(array('complete' => $deleted))
+            ->set(array('complete' => $status))
             ->where('id', '=', $id)
             ->execute();
     }

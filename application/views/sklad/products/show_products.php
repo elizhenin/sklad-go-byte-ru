@@ -50,11 +50,26 @@
                 <td><a href="/sklad/products/<?=$item['alias']?>"><?= $item['model'] ?></a></td>
                 <td><?= $item['storage'] ?></td>
                 <td>
-                    <form action="/sklad/orders" method="post">
-                        <input type="checkbox" name="out" <?=(!empty($item['out']))?'checked="checked" disabled="disabled"':'onclick="this.form.submit();"'?>"/>
-                        <input type="hidden" name="operation" value="buyit">
-                        <input type="hidden" name="sku" value="<?=$item['sku']?>">
-                    </form>
+                    <?php
+                    if(!empty($item['out'])){
+                        ?>
+                        <form method="POST" action="/sklad/orders"><input
+                                type="hidden" name="orders_id"
+                                value="<?= $item['id_orders'] ?>"/><input
+                                type="hidden" name="operation" value="edit"/><input type="submit" value="Открыть ордер" />
+                        </form>
+                        <?php
+                    }else{
+                        ?>
+                        <form action="/sklad/orders" method="post">
+                            <input type="submit" name="out" value="Продать"/>
+                            <input type="hidden" name="operation" value="buyit">
+                            <input type="hidden" name="sku" value="<?=$item['sku']?>">
+                        </form>
+                        <?php
+                    }
+                    ?>
+
                 </td>
                 <td><?= $item['date_out'] ?></td>
             </tr>

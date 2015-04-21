@@ -180,7 +180,6 @@ class Controller_Sklad extends Controller_SkladTmp
                 if (($this->user['rights'] == 'sale')) {
                     unset($ProductsPOST['id_models']);
                     unset($ProductsPOST['sku']);
-                    unset($ProductsPOST['comments']);
                 }
                 $ModelProducts->ProductsUpdate($ProductsPOST);
                 $this->redirect($this->request->referrer());
@@ -191,6 +190,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 $content->models = $ModelModels->ModelGetVisible();
                 $content->storages = $ModelStorages->StoragesGetAllowed();
                 $content->operation = 'update';
+                $content->rights = $this->user['rights'];
                 break;
             case 'add':
                 if (($this->user['rights'] == 'sale')) $this->redirect($this->request->referrer());

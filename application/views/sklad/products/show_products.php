@@ -47,7 +47,9 @@
                         ?>
                 </td>
                 <td><?= $item['sku'] ?></td>
-                <td><a href="/sklad/products/<?=$item['alias']?>"><?= $item['model'] ?></a></td>
+                <td>
+                    <a href="/sklad/products/<?=$item['alias']?>" title="Сортировать по модели"><?= $item['model'] ?></a>
+                </td>
                 <td><?= $item['storage'] ?></td>
                 <td>
                     <?php

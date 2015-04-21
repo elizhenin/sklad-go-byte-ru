@@ -7,7 +7,7 @@
 </td>
             <td style="text-align: left">
 
-<select name="id_models">
+<select name="id_models" <?=($rights=='sale')?'disabled="disabled"':''?>>
     <?php
     if(!empty($models))
     foreach($models as $one){
@@ -48,7 +48,7 @@
                 Код:
             </td>
             <td style="text-align: left">
-                <input type="text" name="sku" value="<?=(!empty($item['sku']))?$item['sku']:''?>"/>
+                <input type="text" name="sku" value="<?=(!empty($item['sku']))?$item['sku']:''?>" <?=($rights=='sale')?'disabled="disabled"':''?>/>
             </td>
         </tr>
         <tr>

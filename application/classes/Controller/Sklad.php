@@ -404,6 +404,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 $content->images = $ModelModels->ImagesModelGetAll($ModelsPOST['models_id']);
                 $content->categorys = $ModelModels->CategoryFullNameAllowed();
                 $content->operation = 'update';
+                $content->rights = $this->user['rights'];
                 $return = $ses->get('ReturnTo', false);
                 if (empty($return)) $ses->set('ReturnTo', $this->request->referrer());
                 $ses->set('ModelOpened', $ModelsPOST['models_id']);
@@ -411,6 +412,7 @@ class Controller_Sklad extends Controller_SkladTmp
             case 'add':
                 $content = View::factory('sklad/models/edit_model');
                 $content->categorys = $ModelModels->CategoryFullNameAllowed();
+                $content->rights = $this->user['rights'];
                 $content->operation = 'new';
 
                 $return = $ses->get('ReturnTo', false);

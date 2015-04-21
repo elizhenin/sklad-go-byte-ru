@@ -139,6 +139,20 @@ class Model_SkladOrders extends Model
         $product['id_orders'] = trim(htmlspecialchars($post['id_orders']));
         $product['id_products'] = trim(htmlspecialchars($post['id_products']));
         $product['price_out'] = trim(htmlspecialchars($post['price_out']));
+
+        $check = DB::select(
+            array('models.in_price', 'in_price')
+        )
+            ->from('products')
+            ->join('models')
+            ->on('models.id', '=', 'products.id_models')
+            ->where('products.id', '=', $product['id_products'])
+            ->limit(1)
+            ->execute()
+            ->as_array();
+        if ($product['price_out']<$check[0]['in_price'])
+            $product['price_out'] = $check[0]['in_price'];
+
         DB::insert('orders_products', array_keys($product))
             ->values($product)
             ->execute();
@@ -175,7 +189,7 @@ class Model_SkladOrders extends Model
                 foreach($products as $product)
                 {
                     DB::update('products')
-                        ->set(array('out' => '0'))
+                        ->set(array('out' => '0','date_out'=>''))
                         ->where('id', '=', $product['id'])
                         ->execute();
                 }

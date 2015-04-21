@@ -75,7 +75,9 @@
                 </td>
                 <td style="text-align: left">
                     <input type="text" name="in_price"
-                           value="<?= (!empty($item['in_price'])) ? $item['in_price'] : '' ?>"/>
+                           value="<?= (!empty($item['in_price'])) ? $item['in_price'] : '' ?>"
+                        <?= ($rights == 'super') ? '' : 'disabled="disabled"' ?>
+                        />
                 </td>
             </tr>
             <tr>
@@ -84,7 +86,9 @@
                 </td>
                 <td style="text-align: left">
                     <input type="text" name="price"
-                           value="<?= (!empty($item['price'])) ? $item['price'] : '' ?>"/>
+                           value="<?= (!empty($item['price'])) ? $item['price'] : '' ?>"
+                        <?= ($rights == 'super') ? '' : 'disabled="disabled"' ?>
+                        />
                 </td>
             </tr>
             <tr>

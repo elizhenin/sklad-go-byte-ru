@@ -2,10 +2,10 @@
 <table style="width:100%">
     <thead style="background-color: dimgray">
     <td style="width: 80px"></td>
-    <td>Дата</td>
+    <td>Сессия</td>
     <td>Комментарий</td>
     <td>№ телефона</td>
-    <td>Сессия</td>
+    <td>Дата</td>
     </thead>
     <tbody>
     <?php
@@ -42,16 +42,16 @@
                     }
                         ?>
                 </td>
-                    <td><?=$item['date']?></td>
-                <td><?=$item['text']?></td>
-                <td><?=$item['phone']?></td>
                 <td><a href="/sklad/orders/<?=$item['session']?>"><?=$item['session']?></a>&nbsp;
                     <form name="form<?= $item['id'] ?>add" method="POST" style="display:inline;float:right;" action="/sklad/orders/<?=$item['session']?>">
                         <input
                             type="hidden" name="products_id"
                             value="<?= $item['id'] ?>"/><input
-                            type="hidden" name="operation" value="add"/><input type="submit" value="+" title="Новый на основании" />
+                            type="hidden" name="operation" value="add"/><input type="submit" value="+" title="Добавить в эту сессию" />
                     </form></td>
+                <td><?=$item['text']?></td>
+                <td><?=$item['phone']?></td>
+                <td><?=$item['date']?></td>
             </tr>
         <?php
         }

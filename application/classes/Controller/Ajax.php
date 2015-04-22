@@ -32,4 +32,10 @@ class Controller_Ajax extends Controller
         if ($product)
             echo json_encode($product);
     }
+    public function action_addMoveProduct()
+    {
+        $product = Model_SkladProducts::ProductsMoveCheck(trim(htmlspecialchars($this->request->post('sku'))));
+        if ($product)
+            echo json_encode($product);
+    }
 }

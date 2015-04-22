@@ -95,8 +95,8 @@ class Model_SkladProducts extends Model
             ->on('products.id_storage', '=', 'storages.id')
             ->join('orders_products', 'LEFT')
             ->on('products.id', '=', 'orders_products.id_products')
-        ->join('orders','LEFT')
-        ->on('orders.id','=','orders_products.id_orders');
+            ->join('orders', 'LEFT')
+            ->on('orders.id', '=', 'orders_products.id_orders');
 
         if ($model)
             $select->where('models.alias', '=', $model);
@@ -120,21 +120,21 @@ class Model_SkladProducts extends Model
             ->execute()
             ->as_array();
         if (!empty($select)) {
-            if($filter){}
-            else{
-                foreach($select as $key=>$value)
-                    if($value['out']){
-                    $orders = DB::select(array('orders.id','id'))
-                        ->from('orders')
-                        ->join('orders_products')
-                        ->on('orders.id','=','orders_products.id_orders')
-                        ->where('orders_products.id_products','=',$value['id'])
-                        ->where('orders.complete','=','1')
-                        ->limit(1)
-                        ->execute()
-                        ->as_array();
-                        if(!empty($orders)) unset($select[$key]);
-                }
+            if ($filter) {
+            } else {
+                foreach ($select as $key => $value)
+                    if ($value['out']) {
+                        $orders = DB::select(array('orders.id', 'id'))
+                            ->from('orders')
+                            ->join('orders_products')
+                            ->on('orders.id', '=', 'orders_products.id_orders')
+                            ->where('orders_products.id_products', '=', $value['id'])
+                            ->where('orders.complete', '=', '1')
+                            ->limit(1)
+                            ->execute()
+                            ->as_array();
+                        if (!empty($orders)) unset($select[$key]);
+                    }
             }
 
             return $select;
@@ -217,5 +217,70 @@ class Model_SkladProducts extends Model
             ->set(array('deleted' => $deleted))
             ->where('id', '=', $id)
             ->execute();
+    }
+
+    static function ProductsMoveCheck($sku)
+    {
+        $ses = Session::instance();
+        $user = $ses->get('user', 0);
+        $product = DB::select(
+            array('products.id', 'id'),
+            array('products.sku', 'sku'),
+            array('models.name', 'name'),
+            array('storages.name', 'storage'),
+            array('citys.alias', 'city')
+        )
+            ->from('products')
+            ->join('models')
+            ->on('models.id', '=', 'products.id_models')
+            ->join('storages')
+            ->on('storages.id', '=', 'products.id_storage')
+            ->join('citys')
+            ->on('citys.id', '=', 'storages.id_citys')
+            ->where('products.sku', '=', $sku)
+            ->where('products.out', '=', '0')
+            ->limit(1)
+            ->execute()
+            ->as_array();
+
+        if ($product) {
+            $product = $product[0];
+            $check = false;
+            if ($product['city'] == $user['login']) {
+                $check = true;
+                goto finish;
+            }
+            $settings = DB::select(
+                array('storages.id_citys', 'from')
+            )
+                ->from('storages_settings')
+                ->join('storages')
+                ->on('storages.id', '=', 'storages_settings.from')
+                ->where('storages.id_citys', '=', $user['id_citys'])
+                ->execute()
+                ->as_array();
+            if ($settings)
+                foreach ($settings as $setting) {
+                    if ($setting['from'] == $user['login']) {
+                        $check = true;
+                        goto finish;
+                    }
+                }
+            finish:
+            if ($check) return $product; else return false;
+        } else return false;
+    }
+
+    public function ProductsMove($post)
+    {
+        if (!empty($post['items'])) {
+            $move = DB::update('products')
+                ->set(array('id_storage' => $post['destination']))
+            ->and_where_open();
+            foreach ($post['items'] as $id) {
+                $move->or_where('id', '=', $id);
+            }
+            $move->and_where_close()->execute();
+        }
     }
 }

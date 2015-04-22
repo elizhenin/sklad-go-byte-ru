@@ -243,7 +243,7 @@ class Model_SkladOrders extends Model
     public function OrdersProductsRemove($post)
     {
         DB::update('products')
-            ->set(array('out' => '0'))
+            ->set(array('out' => '0','date_out'=>''))
             ->where('id', '=', $post['product'])
             ->execute();
         DB::delete('orders_products')

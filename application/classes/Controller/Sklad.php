@@ -213,6 +213,15 @@ class Controller_Sklad extends Controller_SkladTmp
                 $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '0');
                 $this->redirect($this->request->referrer());
                 break;
+            //storage operations
+            case 'products_move_prepare':
+                $content = View::factory('sklad/products/products_move');
+                $content->storages = $ModelStorages->StoragesGetAllowed();
+                break;
+            case 'products_move_complete':
+                  $ModelProducts->ProductsMove($ProductsPOST);
+                  $this->redirect($this->request->referrer());
+                break;
         }
 
         $this->content = $content;

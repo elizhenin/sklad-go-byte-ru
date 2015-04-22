@@ -14,6 +14,7 @@
 </table>
 <form method="post">
 <input type="hidden" name="operation" value="products_move_complete">
+    <label>Целевой склад:
     <select name="destination">
         <?php
         if(!empty($storages))
@@ -24,6 +25,7 @@
         }
         ?>
     </select>
+    </label>
 <table style="width:100%">
     <thead style="background-color: dimgray">
     <td></td>

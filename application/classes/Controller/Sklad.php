@@ -72,11 +72,15 @@ class Controller_Sklad extends Controller_SkladTmp
                 $this->redirect('/sklad/orders');
                 break;
             case 'list':
-                $content = View::factory('sklad/orders/show_orders');
-                if ($session)
+
+                if ($session) {
+                    $content = View::factory('sklad/orders/show_session');
                     $content->items = $ModelOrders->OrdersGetBySession($session);
-                else
+                }
+                else {
+                    $content = View::factory('sklad/orders/show_orders');
                     $content->items = $ModelOrders->OrdersGetAll();
+                }
                 $content->rights = $this->user['rights'];
                 break;
             case 'new':

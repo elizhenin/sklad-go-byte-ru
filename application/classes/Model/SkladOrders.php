@@ -46,7 +46,7 @@ class Model_SkladOrders extends Model
 
         $ses = Session::instance();
         $user = $ses->get('user', false);
-if(!empty($post['complete'])) $post['complete'] ='1';
+        if (!empty($post['complete'])) $post['complete'] = '1';
         else $post['complete'] = '0';
         if ($post['session'] == '0') {
             $post['session'] = $user['login'] . time() . Text::random(null, '1');
@@ -62,11 +62,11 @@ if(!empty($post['complete'])) $post['complete'] ='1';
         $post['text'] = trim(htmlspecialchars($post['text']));
 
         unset($post['operation']);
-        $id=$post['id'];
+        $id = $post['id'];
         unset($post['id']);
         DB::update('orders')
             ->set($post)
-            ->where('id','=',$id)
+            ->where('id', '=', $id)
             ->execute();
     }
 
@@ -78,8 +78,8 @@ if(!empty($post['complete'])) $post['complete'] ='1';
 
         $ses = Session::instance();
         $user = $ses->get('user', false);
-        if($user['rights']=='sale')
-            $select->where('orders.id_users','=',$user['id']);
+        if ($user['rights'] == 'sale')
+            $select->where('orders.id_users', '=', $user['id']);
         $select = $select
             ->execute()
             ->as_array();
@@ -113,6 +113,31 @@ if(!empty($post['complete'])) $post['complete'] ='1';
             ->execute()
             ->as_array();
         if (!empty($select)) {
+            $total_products = 0;
+            $total_cash = 0;
+            foreach ($select as $key => $item) {
+                $select[$key]['products'] =
+                    DB::select(
+                        array('products.sku', 'sku'),
+                        array('models.name', 'name'),
+                        array('orders_products.price_out', 'price_out')
+                        )
+                        ->from('products')
+                        ->join('orders_products')
+                        ->on('orders_products.id_products', '=', 'products.id')
+                        ->join('models')
+                        ->on('products.id_models', '=', 'models.id')
+                        ->where('orders_products.id_orders', '=', $item['id'])
+                        ->execute()
+                        ->as_array();
+                if (!empty($select[$key]['products']) && $item['complete'])
+                    foreach ($select[$key]['products'] as $product) {
+                        $total_products++;
+                        $total_cash += $product['price_out'];
+                    }
+            }
+            $select['total_cash'] = $total_cash;
+            $select['total_products'] = $total_products;
             return $select;
         } else {
             return false;
@@ -143,7 +168,7 @@ if(!empty($post['complete'])) $post['complete'] ='1';
             ->limit(1)
             ->execute()
             ->as_array();
-        if ($product['price_out']<$check[0]['in_price'])
+        if ($product['price_out'] < $check[0]['in_price'])
             $product['price_out'] = $check[0]['in_price'];
 
         DB::insert('orders_products', array_keys($product))
@@ -159,30 +184,28 @@ if(!empty($post['complete'])) $post['complete'] ='1';
     public function OrdersProductsRelease($id_users)
     {
         $orders = DB::select(
-            array('orders.id','id')
+            array('orders.id', 'id')
         )
             ->from('orders')
-            ->where('orders.id_users','=',$id_users)
-            ->where('orders.complete','=','0')
+            ->where('orders.id_users', '=', $id_users)
+            ->where('orders.complete', '=', '0')
             ->execute()
             ->as_array();
-        if($orders)
-            foreach($orders as $one)
-            {
+        if ($orders)
+            foreach ($orders as $one) {
                 $products = DB::select(
-                    array('orders_products.id_products','id')
+                    array('orders_products.id_products', 'id')
                 )
                     ->from('orders_products')
-                    ->where('id_orders','=',$one['id'])
+                    ->where('id_orders', '=', $one['id'])
                     ->execute()
                     ->as_array();
                 DB::delete('orders_products')
-                    ->where('id_orders','=',$one['id'])
+                    ->where('id_orders', '=', $one['id'])
                     ->execute();
-                foreach($products as $product)
-                {
+                foreach ($products as $product) {
                     DB::update('products')
-                        ->set(array('out' => '0','date_out'=>''))
+                        ->set(array('out' => '0', 'date_out' => ''))
                         ->where('id', '=', $product['id'])
                         ->execute();
                 }
@@ -190,7 +213,8 @@ if(!empty($post['complete'])) $post['complete'] ='1';
 
     }
 
-    static function OrdersProductsCheck($sku){
+    static function OrdersProductsCheck($sku)
+    {
         $ses = Session::instance();
         $user = $ses->get('user', 0);
         $product = DB::select(
@@ -213,7 +237,7 @@ if(!empty($post['complete'])) $post['complete'] ='1';
             ->limit(1)
             ->execute()
             ->as_array();
-        if($product) return $product[0];
+        if ($product) return $product[0];
     }
 
     public function OrdersProductsRemove($post)
@@ -268,8 +292,8 @@ if(!empty($post['complete'])) $post['complete'] ='1';
 
         $ses = Session::instance();
         $user = $ses->get('user', false);
-        if($user['rights']=='sale')
-            $select->where('orders.id_users','=',$user['id']);
+        if ($user['rights'] == 'sale')
+            $select->where('orders.id_users', '=', $user['id']);
         $select = $select
             ->execute()
             ->as_array();

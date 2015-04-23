@@ -121,7 +121,7 @@ class Model_SkladOrders extends Model
                         array('products.sku', 'sku'),
                         array('models.name', 'name'),
                         array('orders_products.price_out', 'price_out')
-                        )
+                    )
                         ->from('products')
                         ->join('orders_products')
                         ->on('orders_products.id_products', '=', 'products.id')
@@ -243,7 +243,7 @@ class Model_SkladOrders extends Model
     public function OrdersProductsRemove($post)
     {
         DB::update('products')
-            ->set(array('out' => '0','date_out'=>''))
+            ->set(array('out' => '0', 'date_out' => ''))
             ->where('id', '=', $post['product'])
             ->execute();
         DB::delete('orders_products')
@@ -304,4 +304,33 @@ class Model_SkladOrders extends Model
         }
     }
 
+    static function OrdersStatus()
+    {
+        $ses = Session::instance();
+        $user = $ses->get('user', false);
+        $result = '';
+        $orders = DB::select(
+            array('orders_products.price_out','price')
+        )
+            ->from('orders_products')
+            ->join('orders')
+            ->on('orders.id', '=', 'orders_products.id_orders')
+            ->join('products')
+            ->on('products.id','=','orders_products.id_products')
+            ->where('orders.id_users', '=', $user['id'])
+            ->where('orders.complete', '=', '1')
+            ->where('products.date_out', '>', DB::expr("MAKEDATE(YEAR(NOW()), DAYOFYEAR(NOW()))"))
+            ->execute()
+            ->as_array();
+        $count = 0;
+        $money = 0;
+        if(!empty($orders))
+            foreach($orders as $one)
+            {
+                $count++;
+                $money = $money + $one['price'];
+            }
+        $result = 'Продано за сегодня: '.$count.' товаров на сумму '.$money.' рублей';
+        return $result;
+    }
 }

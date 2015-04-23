@@ -40,6 +40,10 @@
 </div>
 <div class="wrap">
     <?= $content ?>
+    <div class="statusbar">
+        <?= $status ?>
+    </div>
 </div>
+
 </body>
 </html>

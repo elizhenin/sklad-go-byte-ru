@@ -17,7 +17,7 @@ class Controller_SkladTmp extends Controller_Template
         $ses = Session::instance();
         if (!$ses->get('user', false) && $this->request->action() != 'login') {
             HTTP::redirect('/sklad/login');
-        }else $this->user = $ses->get('user', false);
+        } else $this->user = $ses->get('user', false);
     }
 
     public function after()
@@ -33,6 +33,9 @@ class Controller_SkladTmp extends Controller_Template
         $this->template->topmenu = $topmenu;
 
         $this->template->content = $this->content;
+        $this->template->status = view::factory('/sklad/statusbar');
+        $this->template->status->info = Model_SkladOrders::OrdersStatus();
+
 
         switch ($this->user['rights']) {
             case 'super':
@@ -88,7 +91,7 @@ class Controller_SkladTmp extends Controller_Template
                     $submenu->rights = $this->user['rights'];
                     $this->template->submenu = $submenu;
                     break;
-                    default:
+                default:
                     $this->template->submenu = view::factory('/sklad/menu/submenu/default');
                     break;
             }

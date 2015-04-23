@@ -4,9 +4,9 @@
     height: 100%;
     position: fixed;
     color: #fff;
-    top: 20px;
+    top: 40px;
     left: 0;
-    padding: 20px 0px 30px 0px;
+    padding: 00px 0px 30px 0px;
 }
 
 .menu h2 {
@@ -200,4 +200,21 @@
     cursor: pointer;
     padding: 0px;
     margin: 0px;
+}
+
+.statusbar {
+    background-color: #808080;
+    width: 100%;
+    height: 30px;
+    position: fixed;
+    color: #fff;
+    bottom: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.statusbar input{
+    height: 20px;
+    font-size: 15px;
+    color: #000000;;
 }

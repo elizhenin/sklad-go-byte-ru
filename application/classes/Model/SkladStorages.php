@@ -106,7 +106,7 @@ class Model_SkladStorages extends Model
     {
         $ses = Session::instance();
         $user = $ses->get('user', false);
-        if($user['rights']!='sale') {
+        if ($user['rights'] != 'sale') {
             $select = DB::select(
                 array('storages.id', 'id'),
                 array('storages.name', 'name')
@@ -115,19 +115,17 @@ class Model_SkladStorages extends Model
                 ->where('storages.deleted', '=', '0')
                 ->execute()
                 ->as_array();
-        }
-        else
-        {
+        } else {
             $select = DB::select
             (
                 array('storages.id', 'id'),
                 array('storages.name', 'name')
             )
                 ->from('storages')
-                ->join(array('storages_settings','rules'))
-                ->on('rules.to','=','storages.id')
-                ->where('storages.id_citys','=',$user['id_citys'])
-                ->or_where('rules.id_citys','=',$user['id_citys'])
+                ->join(array('storages_settings', 'rules'))
+                ->on('rules.to', '=', 'storages.id')
+                ->where('storages.id_citys', '=', $user['id_citys'])
+                ->or_where('rules.id_citys', '=', $user['id_citys'])
                 ->execute()
                 ->as_array();
         }
@@ -180,6 +178,7 @@ class Model_SkladStorages extends Model
             ->where('id', '=', $id)
             ->execute();
     }
+
     public function StoragesRulesGetById($id)
     {
         $select = DB::select()
@@ -207,10 +206,10 @@ class Model_SkladStorages extends Model
             ->from('storages_settings')
             ->join('citys')
             ->on('citys.id', '=', 'storages_settings.id_citys')
-            ->join(array('storages','from'))
-            ->on('from.id','=','storages_settings.from')
-            ->join(array('storages','to'))
-            ->on('to.id','=','storages_settings.to')
+            ->join(array('storages', 'from'))
+            ->on('from.id', '=', 'storages_settings.from')
+            ->join(array('storages', 'to'))
+            ->on('to.id', '=', 'storages_settings.to')
             ->execute()
             ->as_array();
         if (!empty($select)) {
@@ -232,11 +231,11 @@ class Model_SkladStorages extends Model
             ->from('storages_settings')
             ->join('citys')
             ->on('citys.id', '=', 'storages_settings.id_citys')
-            ->join(array('storages','from'))
-            ->on('from.id','=','storages_settings.from')
-            ->join(array('storages','to'))
-            ->on('to.id','=','storages_settings.to')
-            ->where('storages_settings.deleted','=','0')
+            ->join(array('storages', 'from'))
+            ->on('from.id', '=', 'storages_settings.from')
+            ->join(array('storages', 'to'))
+            ->on('to.id', '=', 'storages_settings.to')
+            ->where('storages_settings.deleted', '=', '0')
             ->execute()
             ->as_array();
         if (!empty($select)) {
@@ -252,5 +251,30 @@ class Model_SkladStorages extends Model
             ->set(array('deleted' => $deleted))
             ->where('id', '=', $id)
             ->execute();
+    }
+
+    public function StorageExport($storage_id)
+    {
+        $products = DB::select(
+            array('products.sku', 'sku'),
+            array('models.name', 'name'),
+            array('models.in_price', 'in_price'),
+            array('models.price', 'price')
+        )
+            ->from('products')
+            ->join('models')
+            ->on('models.id', '=', 'products.id_models')
+            ->where('products.out', '=', '0')
+            ->where('products.id_storage','=',$storage_id)
+            ->order_by('models.id_categorys')
+            ->order_by('models.name')
+            ->order_by('products.sku')
+            ->execute()
+            ->as_array();
+        $result = 'Код; Название; Мин.цена; Цена'. "\n";
+        if (!empty($products))
+            foreach ($products as $product)
+                $result .= $product['sku'] . '; ' . $product['name'] . '; ' . $product['in_price'] . '; ' . $product['price'] . ';' . "\n";
+        return $result;
     }
 }

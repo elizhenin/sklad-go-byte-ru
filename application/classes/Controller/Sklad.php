@@ -76,8 +76,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 if ($session) {
                     $content = View::factory('sklad/orders/show_session');
                     $content->items = $ModelOrders->OrdersGetBySession($session);
-                }
-                else {
+                } else {
                     $content = View::factory('sklad/orders/show_orders');
                     $content->items = $ModelOrders->OrdersGetAll();
                 }
@@ -114,7 +113,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 $order = $ModelOrders->OrdersAdd(array(
                     'session' => 0,
                     'phone' => '',
-                    'text'=> ''
+                    'text' => ''
                 ));
                 $content = View::factory('sklad/orders/edit_order');
                 $content->item = $ModelOrders->OrdersGetById($order);
@@ -219,8 +218,20 @@ class Controller_Sklad extends Controller_SkladTmp
                 $content->storages = $ModelStorages->StoragesGetAllowed();
                 break;
             case 'products_move_complete':
-                  $ModelProducts->ProductsMove($ProductsPOST);
-                  $this->redirect($this->request->referrer());
+                $ModelProducts->ProductsMove($ProductsPOST);
+                $this->redirect($this->request->referrer());
+                break;
+            case 'export_prepare':
+                $content = View::factory('sklad/products/export_storage');
+                $content->storages = $ModelStorages->StoragesGetAllowed();
+                break;
+            case 'export_complete':
+                $content = View::factory('sklad/products/export_storage_complete');
+                $filename = time() . '.csv';
+                $content->filename = $filename;
+                file_put_contents('tmp/' . $filename,
+                    $ModelStorages->StorageExport(trim(htmlspecialchars($ProductsPOST['storage'])))
+                );
                 break;
         }
 
@@ -316,6 +327,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 $ModelStorages->StoragesSetDeletedById($StoragesPOST['storages_id'], '0');
                 HTTP::redirect('/sklad/storages');
                 break;
+            //
         }
 
         $this->content = $content;

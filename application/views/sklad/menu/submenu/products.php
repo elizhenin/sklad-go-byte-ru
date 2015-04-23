@@ -4,3 +4,6 @@
 <form method="POST" action="/sklad/products"><input
         type="hidden" name="operation" value="products_move_prepare"/><input type="submit" value="Перемещение"/>
 </form>
+<form method="POST" action="/sklad/products"><input
+        type="hidden" name="operation" value="export_prepare"/><input type="submit" value="Выгрузка товаров"/>
+</form>

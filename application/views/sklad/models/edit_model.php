@@ -1,8 +1,8 @@
 <h1>Модель</h1>
 <table style="width:100%;">
 <tbody>
-<tr style="vertical-align: top">
-<td  style="width: 40%">
+<tr>
+<td  style="width: 30%">
     <form method="POST">
         <h2>Параметры</h2>
         <table style="width:100%">
@@ -151,7 +151,7 @@
                         }
                         ?>
                     </select>
-                    <label>Значение:
+                    <label style="display: block;margin: 10px 0">Значение:
                     <input type="text" name="value" value=""/></label>
                 </form>
             </td>

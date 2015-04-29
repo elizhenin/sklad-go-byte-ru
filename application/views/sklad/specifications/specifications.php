@@ -1,5 +1,5 @@
 <h1>Названия спецификаций</h1>
-<table>
+<table class="crossmid">
     <thead style="background-color: dimgray">
     <td style="width: 5%;">
     </td>
@@ -94,7 +94,7 @@
                         <input type="submit" value="&uarr;" title="Вверх" <?=($item == reset($items))?'disabled="disabled"':''?>/>
                     </form>
 
-                    <div style="float: inherit">
+                    <div class="alcen">
                         <?=$item['order']?>
                     </div>
                 </td>

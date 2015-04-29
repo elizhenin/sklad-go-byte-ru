@@ -1,5 +1,5 @@
 <h1>Группы спецификаций</h1>
-<table>
+<table class="crossmid">
     <thead style="background-color: dimgray">
     <td style="width: 5%;">
     </td>

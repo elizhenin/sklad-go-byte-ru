@@ -26,10 +26,23 @@
             });
         });
     </script>
+    <script>
+        $(document).ready(function () {
+            $('.shid').click(function(e) {
+                $('.submenu').toggle(200, function(){
+                    $('.wrap').toggleClass("newmarg");
+                });
+            });
+            event.stopPropagation();
+        })
+    </script>
     <title><?$title?></title>
 </head>
 <body>
 <div class="topmenu">
+    <div class="shid">
+        Скрыть\Показать
+    </div>
     <?=$topmenu?>
 </div>
 <div class="menu">

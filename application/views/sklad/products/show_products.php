@@ -2,7 +2,7 @@
 <form style="float: left;display: inline-block" method="get">
     <input name="filter" type="text" placeholder="поиск: код или название" onchange="this.form.submit();">
 </form>
-<table style="width:100%">
+<table class="crossmid" style="width:100%">
     <thead style="background-color: dimgray">
     <td></td>
     <td>Код</td>

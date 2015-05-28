@@ -147,7 +147,7 @@ Kohana::modules(array(
  */
 Route::set('welcome', '()')
     ->defaults(array(
-        'controller' => 'Welcome',
+        'controller' => 'Catalog',
         'action' => 'index',
     ));
 

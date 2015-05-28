@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=1024">
     <link rel="icon" type="image/png" href="/favicon.png"/>
-    <link type="text/css" rel="stylesheet" href="/style/style.css">
+    <link type="text/css" rel="stylesheet" href="/style/sklad/style.css">
 
     <title>Авторизация</title>
 </head>

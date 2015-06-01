@@ -3,16 +3,6 @@
 class Controller_Ajax extends Controller
 {
 
-    function before()
-    {
-        $ses = Session::instance();
-        $auth = $ses->get('user', 0);
-        if ($auth == 0) {
-            die('No unautorized ajax access.');
-        }
-
-    }
-
     public function action_imageUpload()
     {
         if (isset($_FILES['file'])) {
@@ -37,5 +27,30 @@ class Controller_Ajax extends Controller
         $product = Model_SkladProducts::ProductsMoveCheck(trim(htmlspecialchars($this->request->post('sku'))));
         if ($product)
             echo json_encode($product);
+    }
+
+    public function action_selectCity()
+    {
+        if ($this->request->method() == Request::POST) {
+            $id = (int)$this->request->post('id');
+            $select = DB::select_array(array('name'))
+                ->from('citys')
+                ->where('id', '=', $id)
+                ->limit(1)
+                ->execute()
+                ->as_array();
+
+            if(!empty($select)){
+                $city =  $select[0]['name'];
+            }else{
+                $city =  false;
+            }
+
+            if(!empty($city)){
+                $ses = Session::instance();
+                $ses->set('city', $city);
+                echo 'ok';
+            }
+        }
     }
 }

@@ -67,17 +67,16 @@ class Goodies
                     copy(stripcslashes($path) . '/' . $image_file, stripcslashes($path) . '/' . $filename . '.' . $ext);
                     unlink(stripcslashes($path) . '/' . $image_file);
 
-                    $files[] =  $filename . '.' . $ext;
+                    $files[] = $filename . '.' . $ext;
                 }
             }
-        return $files;
-        }
-        else return false;
+            return $files;
+        } else return false;
     }
 
     static function checkCity($name)
     {
-        $select = DB::select_array(array('id'))
+        $select = DB::select()
             ->from('citys')
             ->where('name', '=', $name)
             ->limit(1)
@@ -90,4 +89,23 @@ class Goodies
             return false;
         }
     }
+
+    static function GetCitys()
+    {
+        $select = DB::select()
+            ->from('citys')
+            ->execute()
+            ->as_array();
+        if (!empty($select))
+            foreach ($select as $key => $value) {
+                if (($value['alias'] == 'superuser') || ($value['alias'] == 'content')) unset($select[$key]);
+            }
+
+        if (!empty($select)) {
+            return $select;
+        } else {
+            return false;
+        }
+    }
+
 }

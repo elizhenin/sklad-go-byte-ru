@@ -12,7 +12,7 @@ class Controller_Tmp extends Controller_Template
     {
         $ses = Session::instance();
         $getCity = Goodies::checkCity($ses->get('city', false));
-        if (!empty($getCity)) {
+        if (empty($getCity)) {
             $sxGeo = new SxGeo(DOCROOT . 'SxGeoCity.dat', SXGEO_BATCH | SXGEO_MEMORY);
             $city = $sxGeo->getCity(Request::$client_ip);
             $getCity = Goodies::checkCity($city['city']['name_ru']);
@@ -20,6 +20,7 @@ class Controller_Tmp extends Controller_Template
                 $ses->set('city', $city['city']['name_ru']);
             }else{
                 $ses->set('city', 'Воронеж');
+                $getCity['name'] = 'Воронеж';
             }
         }
         $this->city = $getCity;
@@ -32,7 +33,7 @@ class Controller_Tmp extends Controller_Template
         $this->template->bind('description', $this->description);
         $this->template->bind('keywords', $this->keywords);
         $this->template->bind('page', $this->page);
-
+        $this->template->bind('ActiveCity', $this->city);
         $this->detect_city();
     }
 
@@ -41,7 +42,7 @@ class Controller_Tmp extends Controller_Template
         if(empty($this->page)){
             throw new HTTP_Exception_404;
         }
-
+        $this->template->CitysList = Goodies::GetCitys();
         parent::after();
     }
 }

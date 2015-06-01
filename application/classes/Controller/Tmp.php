@@ -2,25 +2,26 @@
 
 class Controller_Tmp extends Controller_Template
 {
-    public $template = 'template';
-    public $title;
+    public $content;
+    public $title = 'Дисконт цифровой техники. Лучшие решения по низким ценам';
     public $description;
     public $keywords;
-    public $content;
-    public $alias;
-    public $user;
 
     public function before()
     {
         parent::before();
-
+        $this->template->bind('title', $this->title);
+        $this->template->bind('description', $this->description);
+        $this->template->bind('keywords', $this->keywords);
+        $this->template->bind('page', $this->page);
     }
 
     public function after()
     {
-
+        if(empty($this->page)){
+            throw new HTTP_Exception_404;
+        }
+        $this->template->content = $this->content;
         parent::after();
     }
-
-
 }

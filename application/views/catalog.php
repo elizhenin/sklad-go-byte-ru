@@ -18,10 +18,9 @@ if (!empty($items['categories']))
 </ul>
 <td>
 
-    <h2>Модели этой категории</h2>
+    <h2>Товар</h2>
     <table style="width:100%">
         <thead style="background-color: dimgray">
-        <td></td>
         <td>Код</td>
         <td>Название</td>
         <td>Цена</td>
@@ -34,7 +33,7 @@ if (!empty($items['categories']))
                 <tr>
                     <td><?= $item['sku'] ?></td>
                     <td><?= $item['name'] ?></td>
-                    <td><?= $item['price'] ?></td>
+                    <td><?= $item['price'] ?> р.</td>
                 </tr>
             <?php
             }

@@ -18,7 +18,7 @@ class Controller_Tmp extends Controller_Template
 
     public function after()
     {
-        if(empty($this->content)){
+        if(empty($this->page)){
             throw new HTTP_Exception_404;
         }
 

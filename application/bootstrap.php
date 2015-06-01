@@ -151,11 +151,12 @@ Route::set('welcome', '()')
         'action' => 'index',
     ));
 
-Route::set('articles', '<alias>')
+Route::set('catalog', 'catalog(/<alias>)',array('alias'=>'[\w-/.]+'))
     ->defaults(array(
-        'controller' => 'articles',
+        'controller' => 'Catalog',
         'action' => 'index',
     ));
+
 
 Route::set('ajax', 'ajax/<action>')
     ->defaults(array(
@@ -177,5 +178,11 @@ Route::set('sklad_categories', 'sklad/categories(/<alias>)',array('alias'=>'[\w-
 Route::set('sklad', 'sklad(/<action>(/<first>(/<second>)))', array('action' => '[0-9a-zA-Z_-]+', 'first'=>'[0-9a-zA-Z_-]+', 'second'=>'[0-9a-zA-Z_-]+'))
     ->defaults(array(
         'controller' => 'Sklad',
+        'action' => 'index',
+    ));
+
+Route::set('articles', '<alias>')
+    ->defaults(array(
+        'controller' => 'articles',
         'action' => 'index',
     ));

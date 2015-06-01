@@ -6,11 +6,14 @@ class Controller_Articles extends Controller_Tmp
     public function action_index()
     {
         $alias = $this->request->param('alias');
-        $this->content = View::factory('article');
+        $page = View::factory('article');
         $article = Model_Articles::GetArticleByAlias($alias);
         if (!empty($article)) {
-            $this->content->content = $article['content'];
+            $page->content = $article['content'];
+            $this->page = $page;
+            $this->title = $article['title'];
+            $this->keywords = $article['keywords'];
+            $this->description = $article['description'];
         }
     }
-
 }

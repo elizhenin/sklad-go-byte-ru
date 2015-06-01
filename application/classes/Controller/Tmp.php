@@ -2,7 +2,7 @@
 
 class Controller_Tmp extends Controller_Template
 {
-    public $content;
+    public $page;
     public $title = 'Дисконт цифровой техники. Лучшие решения по низким ценам';
     public $description;
     public $keywords;
@@ -18,10 +18,10 @@ class Controller_Tmp extends Controller_Template
 
     public function after()
     {
-        if(empty($this->page)){
+        if(empty($this->content)){
             throw new HTTP_Exception_404;
         }
-        $this->template->content = $this->content;
+
         parent::after();
     }
 }

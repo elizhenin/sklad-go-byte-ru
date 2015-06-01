@@ -6,6 +6,24 @@ class Controller_Tmp extends Controller_Template
     public $title = 'Дисконт цифровой техники. Лучшие решения по низким ценам';
     public $description;
     public $keywords;
+    public $city = '';
+
+    private function detect_city()
+    {
+        $ses = Session::instance();
+        $getCity = Goodies::checkCity($ses->get('city', false));
+        if (!empty($getCity)) {
+            $sxGeo = new SxGeo(DOCROOT . 'SxGeoCity.dat', SXGEO_BATCH | SXGEO_MEMORY);
+            $city = $sxGeo->getCity(Request::$client_ip);
+            $getCity = Goodies::checkCity($city['city']['name_ru']);
+            if(!empty($getCity)){
+                $ses->set('city', $city['city']['name_ru']);
+            }else{
+                $ses->set('city', 'Воронеж');
+            }
+        }
+        $this->city = $getCity;
+    }
 
     public function before()
     {
@@ -14,6 +32,8 @@ class Controller_Tmp extends Controller_Template
         $this->template->bind('description', $this->description);
         $this->template->bind('keywords', $this->keywords);
         $this->template->bind('page', $this->page);
+
+        $this->detect_city();
     }
 
     public function after()

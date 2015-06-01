@@ -74,4 +74,20 @@ class Goodies
         }
         else return false;
     }
+
+    static function checkCity($name)
+    {
+        $select = DB::select_array(array('id'))
+            ->from('citys')
+            ->where('name', '=', $name)
+            ->limit(1)
+            ->execute()
+            ->as_array();
+
+        if (!empty($select[0])) {
+            return $select[0];
+        } else {
+            return false;
+        }
+    }
 }

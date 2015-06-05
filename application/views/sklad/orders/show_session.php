@@ -21,7 +21,7 @@
             <tr><td>
                     <table style="width:100%">
                     <thead style="background-color: dimgray">
-                <td style="width: 80px"></td>
+                <td style="width: 80px;text-align: center"><a title="Не проведен: физически лежит на складе, зарезервирован но не продан, можно освободить и перепродать; Проведен: товар оплачен, вручен клиенту.">?</a></td>
                 <td>Сессия</td>
                 <td>Комментарий</td>
                 <td>№ телефона</td>

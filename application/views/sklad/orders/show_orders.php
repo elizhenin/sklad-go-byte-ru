@@ -1,7 +1,7 @@
 <h1>Продажи</h1>
 <table style="width:100%">
     <thead style="background-color: dimgray">
-    <td style="width: 80px"></td>
+    <td style="width: 80px"><a title="Не проведен: физически лежит на складе, зарезервирован но не продан, можно освободить и перепродать; Проведен: товар оплачен, вручен клиенту.">?</a></td>
     <td>Сессия</td>
     <td>Комментарий</td>
     <td>№ телефона</td>
@@ -42,7 +42,7 @@
                     }
                         ?>
                 </td>
-                <td><a href="/sklad/orders/<?=$item['session']?>"><?=$item['session']?></a>&nbsp;
+                <td><a href="/sklad/orders/<?=$item['session']?>" title="Показать продажи этой сессии"><?=$item['session']?></a>&nbsp;
                     <form name="form<?= $item['id'] ?>add" method="POST" style="display:inline;float:right;" action="/sklad/orders/<?=$item['session']?>">
                         <input
                             type="hidden" name="products_id"

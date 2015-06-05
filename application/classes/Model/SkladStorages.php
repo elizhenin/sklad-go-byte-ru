@@ -105,8 +105,8 @@ class Model_SkladStorages extends Model
     public function StoragesGetAllowed()
     {
         $ses = Session::instance();
-        $user = $ses->get('user', false);
-        if ($user['rights'] != 'sale') {
+   //     $user = $ses->get('user', false);
+   //     if ($user['rights'] != 'sale') {
             $select = DB::select(
                 array('storages.id', 'id'),
                 array('storages.name', 'name')
@@ -115,20 +115,20 @@ class Model_SkladStorages extends Model
                 ->where('storages.deleted', '=', '0')
                 ->execute()
                 ->as_array();
-        } else {
-            $select = DB::select
-            (
-                array('storages.id', 'id'),
-                array('storages.name', 'name')
-            )
-                ->from('storages')
-                ->join(array('storages_settings', 'rules'))
-                ->on('rules.to', '=', 'storages.id')
-                ->where('storages.id_citys', '=', $user['id_citys'])
-                ->or_where('rules.id_citys', '=', $user['id_citys'])
-                ->execute()
-                ->as_array();
-        }
+//        } else {
+//            $select = DB::select
+//            (
+//                array('storages.id', 'id'),
+//                array('storages.name', 'name')
+//            )
+//                ->from('storages')
+//                ->join(array('storages_settings', 'rules'))
+//                ->on('rules.to', '=', 'storages.id')
+//                ->where('storages.id_citys', '=', $user['id_citys'])
+//                ->or_where('rules.id_citys', '=', $user['id_citys'])
+//                ->execute()
+//                ->as_array();
+//        }
 
         if (!empty($select)) {
             return $select;

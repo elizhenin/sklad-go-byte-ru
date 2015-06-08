@@ -168,16 +168,18 @@ class Model_SkladOrders extends Model
             ->limit(1)
             ->execute()
             ->as_array();
-        if ($product['price_out'] < $check[0]['in_price'])
-            $product['price_out'] = $check[0]['in_price'];
+        if(!empty($check[0])) {
+            if ($product['price_out'] < $check[0]['in_price'])
+                $product['price_out'] = $check[0]['in_price'];
 
-        DB::insert('orders_products', array_keys($product))
-            ->values($product)
-            ->execute();
-        DB::update('products')
-            ->set(array('out' => '1', 'date_out' => DB::expr('NOW()')))
-            ->where('id', '=', $product['id_products'])
-            ->execute();
+            DB::insert('orders_products', array_keys($product))
+                ->values($product)
+                ->execute();
+            DB::update('products')
+                ->set(array('out' => '1', 'date_out' => DB::expr('NOW()')))
+                ->where('id', '=', $product['id_products'])
+                ->execute();
+        }
 
     }
 

@@ -438,7 +438,8 @@ class Model_SkladModels extends Model
 
     public function SpecificationsRegroup($post)
     {
-        if (trim(htmlspecialchars($post['id_specifications_groups'])))
+        $new_group = trim(htmlspecialchars($post['id_specifications_groups']));
+        if (!($new_group === NULL))
             DB::update('specifications')
                 ->set(array('id_specifications_groups' => trim(htmlspecialchars($post['id_specifications_groups']))))
                 ->where('id', '=', $post['id'])

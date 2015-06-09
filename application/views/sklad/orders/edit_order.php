@@ -16,13 +16,11 @@ if (empty($id_orders)) {
                     <thead style="background-color: dimgray">
                     <td style="text-align: left" colspan="4">
                         Добавить товар
-                        <form method="POST">
+                        <form method="POST" class="no-enter">
                             <input type="hidden" name="operation" value="add_product">
                             <input type="hidden" name="id_orders" value="<?= $id_orders ?>">
                             <input id="id_products" type="hidden" name="id_products" value="<?=(empty($buyit))?'':$buyit['id']?>">
-                            <input type="submit" value="+" autofocus="autofocus" title="добавить">
-                            <input id="sku" name="sku" type="text" onchange="check_product();" placeholder="код товара" value="<?=(empty($buyit))?'':$buyit['sku']?>">
-                            <input type="button" value=">">
+                            <input id="sku" autofocus="autofocus" name="sku" type="text" onkeyup="check_product();" placeholder="код товара" value="<?=(empty($buyit))?'':$buyit['sku']?>">
                             <label>Название:
                                 <input id="name" type="text" value="<?=(empty($buyit))?'':$buyit['name']?>" readonly>
                             </label>
@@ -32,6 +30,8 @@ if (empty($id_orders)) {
                             <label>мин:
                                 <input id="in_price" type="text" value="<?=(empty($buyit))?'':$buyit['in_price']?>" readonly>руб
                             </label>
+                            <br>
+                            <input type="submit" value="добавить" title="добавить в ордер">
                         </form>
                     </td>
                     </thead>
@@ -68,7 +68,7 @@ if (empty($id_orders)) {
                                         <input type="hidden" name="id" value="<?=$product['id']?>"/>
                                         <input type="hidden" name="product" value="<?=$product['id_products']?>">
                                         <input type="hidden" name="operation" value="remove_product"/>
-                                        <input type="submit" value="&#10005;" title="Отменить"/>
+                                        <input type="submit" value="&#10005;" title="Удалить из ордера"/>
                                     </form>
                                 </td>
                                 <td><?= $product['sku'] ?></td>
@@ -159,6 +159,7 @@ if (empty($id_orders)) {
 
 
 <script>
+
     function check_product() {
         product = $('#sku').val();
         jQuery.ajax({
@@ -172,7 +173,13 @@ if (empty($id_orders)) {
                     $("#price").val(fields.price);
                     $("#in_price").val(fields.in_price);
                     $("#id_products").val(fields.id);
-                } else alert('Не найдено');
+                } else {
+                    $("#name").val('');
+                    $("#price").val('');
+                    $("#in_price").val('');
+                    $("#id_products").val('')
+                    ;
+                };
             }
         });
     }

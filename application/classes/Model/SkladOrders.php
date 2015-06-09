@@ -47,7 +47,9 @@ class Model_SkladOrders extends Model
         $ses = Session::instance();
         $user = $ses->get('user', false);
         if (!empty($post['complete'])) $post['complete'] = '1';
-        else $post['complete'] = '0';
+        else {
+            if ($user['rights'] == 'superuser') $post['complete'] = '0';
+        }
         if ($post['session'] == '0') {
             $post['session'] = $user['login'] . time() . Text::random(null, '1');
             $post['created'] = DB::expr('NOW()');
@@ -81,6 +83,7 @@ class Model_SkladOrders extends Model
         if ($user['rights'] == 'sale')
             $select->where('orders.id_users', '=', $user['id']);
         $select = $select
+            ->where('deleted', '=', '0')
             ->execute()
             ->as_array();
         if (!empty($select)) {
@@ -95,6 +98,7 @@ class Model_SkladOrders extends Model
         $select = DB::select()
             ->from('orders')
             ->where('id', '=', $id)
+            ->where('deleted', '=', '0')
             ->limit(1)
             ->execute()
             ->as_array();
@@ -110,6 +114,7 @@ class Model_SkladOrders extends Model
         $select = DB::select()
             ->from('orders')
             ->where('session', '=', $session)
+            ->where('deleted', '=', '0')
             ->execute()
             ->as_array();
         if (!empty($select)) {
@@ -146,10 +151,15 @@ class Model_SkladOrders extends Model
 
     public function OrdersSetCompleteById($id, $status)
     {
-        DB::update('orders')
-            ->set(array('complete' => $status))
-            ->where('id', '=', $id)
-            ->execute();
+        $ses = Session::instance();
+        $user = $ses->get('user', false);
+        if ($user['rights'] != 'superuser' && $status == 0) {
+        } else {
+            DB::update('orders')
+                ->set(array('complete' => $status))
+                ->where('id', '=', $id)
+                ->execute();
+        }
     }
 
     public function OrdersProductsAdd($post)
@@ -168,7 +178,7 @@ class Model_SkladOrders extends Model
             ->limit(1)
             ->execute()
             ->as_array();
-        if(!empty($check[0])) {
+        if (!empty($check[0])) {
             if ($product['price_out'] < $check[0]['in_price'])
                 $product['price_out'] = $check[0]['in_price'];
 
@@ -205,6 +215,7 @@ class Model_SkladOrders extends Model
                 DB::delete('orders_products')
                     ->where('id_orders', '=', $one['id'])
                     ->execute();
+                $this->OrdersDeleteById($one['id']);
                 foreach ($products as $product) {
                     DB::update('products')
                         ->set(array('out' => '0', 'date_out' => ''))
@@ -312,13 +323,13 @@ class Model_SkladOrders extends Model
         $user = $ses->get('user', false);
         $result = '';
         $orders = DB::select(
-            array('orders_products.price_out','price')
+            array('orders_products.price_out', 'price')
         )
             ->from('orders_products')
             ->join('orders')
             ->on('orders.id', '=', 'orders_products.id_orders')
             ->join('products')
-            ->on('products.id','=','orders_products.id_products')
+            ->on('products.id', '=', 'orders_products.id_products')
             ->where('orders.id_users', '=', $user['id'])
             ->where('orders.complete', '=', '1')
             ->where('products.date_out', '>', DB::expr("MAKEDATE(YEAR(NOW()), DAYOFYEAR(NOW()))"))
@@ -326,13 +337,21 @@ class Model_SkladOrders extends Model
             ->as_array();
         $count = 0;
         $money = 0;
-        if(!empty($orders))
-            foreach($orders as $one)
-            {
+        if (!empty($orders))
+            foreach ($orders as $one) {
                 $count++;
                 $money = $money + $one['price'];
             }
-        $result = 'Продано за сегодня: '.$count.' товаров на сумму '.$money.' рублей';
+        $result = 'Продано за сегодня: ' . $count . ' товаров на сумму ' . $money . ' рублей';
         return $result;
+    }
+
+    public function OrdersDeleteById($id)
+    {
+        $id = htmlspecialchars(trim($id));
+        DB::update('orders')
+            ->set(array('deleted' => '1'))
+            ->where('id', '=', $id)
+            ->execute();
     }
 }

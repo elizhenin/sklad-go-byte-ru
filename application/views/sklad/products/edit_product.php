@@ -7,12 +7,12 @@
 </td>
             <td style="text-align: left">
 
-<select name="id_models" <?=($rights=='sale')?'disabled="disabled"':''?>>
+<select name="id_models" >
     <?php
     if(!empty($models))
     foreach($models as $one){
         ?>
-        <option value="<?=$one['id']?>" <?=(!empty($model) && $one['id']==$item['id_models'])?'selected="selected"':''?>><?=$one['name']?></option>
+        <option value="<?=$one['id']?>" <?=(!empty($item) && $one['id']==$item['id_models'])?'selected="selected"':''?>><?=$one['name']?></option>
     <?php
     }
     ?>
@@ -43,14 +43,7 @@
             </td>
         </tr>
 
-        <tr>
-            <td style="text-align: right">
-                Код:
-            </td>
-            <td style="text-align: left">
-                <input type="text" name="sku" value="<?=(!empty($item['sku']))?$item['sku']:''?>" <?=($rights=='sale')?'disabled="disabled"':''?>/>
-            </td>
-        </tr>
+
         <tr>
             <td style="text-align: right">
                 Комментарий:
@@ -60,6 +53,14 @@
                     name="comments"><?= (!empty($item['comments'])) ? $item['comments'] : '' ?></textarea>
             </td>
         </tr>
+        <tr>
+            <td style="text-align: right">
+                Код:
+            </td>
+            <td style="text-align: left">
+                <input type="text" name="sku" value="<?=(!empty($item['sku']))?$item['sku']:''?>"/>
+            </td>
+        </tr>
         </tbody>
     </table>
     <input type="hidden" name="operation" value="<?=$operation?>">
@@ -67,4 +68,7 @@
     <input type="submit" value="Сохранить">
 </form>
 
+<script>
+
+</script>
 

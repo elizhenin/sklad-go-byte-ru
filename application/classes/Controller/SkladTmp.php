@@ -100,6 +100,7 @@ class Controller_SkladTmp extends Controller_Template
         if (!empty($this->alias)) {
             $this->template->alias = $this->alias;
         }
+
         parent::after();
     }
 

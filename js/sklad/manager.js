@@ -1,3 +1,9 @@
-/**
- * Created by CyberPulse on 09.10.2014.
- */
+$(function () {
+    $('.no-enter').on("keyup keypress", function (e) {
+        var code = e.keyCode || e.which;
+        if (code == 13) {
+            e.preventDefault();
+            return false;
+        }
+    });
+});

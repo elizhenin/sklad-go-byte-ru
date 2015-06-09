@@ -39,6 +39,7 @@
     <title><?$title?></title>
 </head>
 <body>
+<?php ProfilerToolbar::render(true); ?>
 <div class="topmenu">
     <div class="shid">
         Скрыть\Показать

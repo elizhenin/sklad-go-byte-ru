@@ -173,8 +173,6 @@ class Controller_Sklad extends Controller_SkladTmp
                 $content->rights = $this->user['rights'];
                 break;
             case 'new':
-
-                if (($this->user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $ModelProducts->ProductsAdd($ProductsPOST);
                 $this->redirect($this->request->referrer());
                 break;
@@ -193,29 +191,31 @@ class Controller_Sklad extends Controller_SkladTmp
                 $content->models = $ModelModels->ModelGetVisible();
                 $content->storages = $ModelStorages->StoragesGetAllowed();
                 $content->operation = 'update';
+
                 $content->rights = $this->user['rights'];
+
                 break;
             case 'add':
-                if (($this->user['rights'] == 'sale')) $this->redirect($this->request->referrer());
-                $content = View::factory('sklad/products/edit_product');
+                 $content = View::factory('sklad/products/edit_product');
                 $content->models = $ModelModels->ModelGetVisible();
                 $content->storages = $ModelStorages->StoragesGetAllowed();
                 $content->operation = 'new';
+                $content->rights = $this->user['rights'];
                 break;
             case 'disable':
-                if (($this->user['rights'] == 'sale')) $this->redirect($this->request->referrer());
+//                if (($this->user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '1');
                 $this->redirect($this->request->referrer());
                 break;
             case 'enable':
-                if (($this->user['rights'] == 'sale')) $this->redirect($this->request->referrer());
+//                if (($this->user['rights'] == 'sale')) $this->redirect($this->request->referrer());
                 $ModelProducts->ProductsSetDeletedById($ProductsPOST['products_id'], '0');
                 $this->redirect($this->request->referrer());
                 break;
             //storage operations
             case 'products_move_prepare':
                 $content = View::factory('sklad/products/products_move');
-                $content->storages = $ModelStorages->StoragesGetAllowed();
+                $content->storages = $ModelStorages->StoragesGetVisible();
                 break;
             case 'products_move_complete':
                 $ModelProducts->ProductsMove($ProductsPOST);
@@ -223,7 +223,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 break;
             case 'export_prepare':
                 $content = View::factory('sklad/products/export_storage');
-                $content->storages = $ModelStorages->StoragesGetAllowed();
+                $content->storages = $ModelStorages->StoragesGetVisible();
                 break;
             case 'export_complete':
                 $content = View::factory('sklad/products/export_storage_complete');
@@ -234,7 +234,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 );
                 break;
         }
-
+        echo $ProductsPOST['operation'];
         $this->content = $content;
     }
 

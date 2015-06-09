@@ -14,31 +14,38 @@
             ?>
             <tr>
                 <td>
-
-                    <form name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"><input
-                            type="hidden" name="orders_id"
-                            value="<?= $item['id'] ?>"/><input
-                            type="hidden" name="operation" value="edit"/><input type="submit" value="&#x270E;" title="Редактировать" />
-                    </form>
                     <?php
-                    if($item['complete']){
+            if ($item['complete'] &&($rights !='superuser')) {}else{
                         ?>
-                        <form name="form<?= $item['id'] ?>enable" method="POST" style="display:inline;float:left;">
-                            <input
+                        <form name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"><input
                                 type="hidden" name="orders_id"
                                 value="<?= $item['id'] ?>"/><input
-                                type="hidden" name="operation" value="enable"/><input type="submit" value="&#10003;" title="Проведен" />
+                                type="hidden" name="operation" value="edit"/><input type="submit" value="&#x270E;"
+                                                                                    title="Редактировать"/>
                         </form>
                         <?php
-                    }else {
-                        ?>
-                        <form name="form<?= $item['id'] ?>disable" method="POST" style="display:inline;float:left;">
-                            <input
-                                type="hidden" name="orders_id"
-                                value="<?= $item['id'] ?>"/><input
-                                type="hidden" name="operation" value="disable"/><input type="submit" value="&#10005;" title="Не проведен" />
-                        </form>
-                    <?php
+                        if ($item['complete']) {
+                            ?>
+                            <form name="form<?= $item['id'] ?>enable" method="POST" style="display:inline;float:left;">
+                                <input
+                                    type="hidden" name="orders_id"
+                                    value="<?= $item['id'] ?>"/><input
+                                    type="hidden" name="operation" value="enable"/><input type="submit" value="&#10003;"
+                                                                                          title="Проведен"/>
+                            </form>
+                        <?php
+                        } else {
+                            ?>
+                            <form name="form<?= $item['id'] ?>disable" method="POST" style="display:inline;float:left;">
+                                <input
+                                    type="hidden" name="orders_id"
+                                    value="<?= $item['id'] ?>"/><input
+                                    type="hidden" name="operation" value="disable"/><input type="submit"
+                                                                                           value="&#10005;"
+                                                                                           title="Не проведен"/>
+                            </form>
+                        <?php
+                        }
                     }
                         ?>
                 </td>

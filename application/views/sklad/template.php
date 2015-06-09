@@ -36,7 +36,7 @@
             event.stopPropagation();
         })
     </script>
-    <title><?$title?></title>
+    <title>CRM Go-Byte</title>
 </head>
 <body>
 <?php ProfilerToolbar::render(true); ?>

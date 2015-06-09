@@ -22,11 +22,8 @@ class Controller_SkladTmp extends Controller_Template
 
     public function after()
     {
-        if (!empty($this->title)) {
-            $this->template->title = $this->title;
-        } else {
             $this->template->title = 'Склад';
-        }
+
 
         $topmenu = view::factory('/sklad/menu/top');
         $topmenu->title = $this->template->title;

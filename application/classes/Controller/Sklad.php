@@ -82,15 +82,15 @@ class Controller_Sklad extends Controller_SkladTmp
                 }
                 $content->rights = $this->user['rights'];
                 break;
-            case 'new':
-                $ModelOrders->OrdersAdd($OrdersPOST);
-                $this->redirect($this->request->referrer());
-                break;
             case 'update':
                 $ses->set('OrderOpened', false);
                 $ModelOrders->OrdersUpdate($OrdersPOST);
                 $this->redirect($this->request->referrer());
                 break;
+            case 'new':
+                $OrdersPOST['orders_id'] = $ModelOrders->OrdersAdd($OrdersPOST);
+                $OrdersPOST['operation'] = 'edit';
+
             case 'edit':
                 $content = View::factory('sklad/orders/edit_order');
                 $content->item = $ModelOrders->OrdersGetById($OrdersPOST['orders_id']);

@@ -30,9 +30,10 @@ class Model_SkladProducts extends Model
             $post['date_out'] = '0';
             $post['deleted'] = '0';
             unset($post['operation']);
-            DB::insert('products', array_keys($post))
+            $id = DB::insert('products', array_keys($post))
                 ->values($post)
                 ->execute();
+            Model_SkladProducts::ProductsHistory('Создан',$id);
         }
     }
 
@@ -69,11 +70,13 @@ class Model_SkladProducts extends Model
             $user = $ses->get('user', 0);
 
             if ($product['out'] && $user['rights'] != 'super') {
-            } else
+            } else {
+                Model_SkladProducts::ProductsHistory('Изменен',$product['id']);
                 DB::update('products')
                     ->set($post)
                     ->where('id', '=', $product['id'])
                     ->execute();
+            }
 
         }
     }
@@ -233,6 +236,15 @@ class Model_SkladProducts extends Model
 
     public function ProductsSetDeletedById($id, $deleted)
     {
+        switch ($deleted) {
+            case '1':
+                Model_SkladProducts::ProductsHistory('Удален',$id);
+                break;
+            case '0':
+                Model_SkladProducts::ProductsHistory('Восстановлен',$id);
+                break;
+        }
+
         DB::update('products')
             ->set(array('deleted' => $deleted))
             ->where('id', '=', $id)
@@ -298,9 +310,46 @@ class Model_SkladProducts extends Model
                 ->set(array('id_storage' => $post['destination']))
                 ->and_where_open();
             foreach ($post['items'] as $id) {
+                Model_SkladProducts::ProductsHistory('Перемещен на другой склад',$id);
                 $move->or_where('id', '=', $id);
             }
             $move->and_where_close()->execute();
+        }
+    }
+
+    static function ProductsHistory($message,$id_products)
+    {
+        $db = DB::select()
+            ->from('products')
+            ->where('id','=',$id_products)
+            ->limit(1)
+            ->execute()
+            ->as_array();
+        if(!empty($db[0])) {
+            $product = $db[0];
+            $old_values['products'] = $product;
+
+            $db = DB::select()
+                ->from('orders_products')
+                ->where('id_products','=',$product['id'])
+                ->limit(1)
+                ->execute()
+                ->as_array();
+            if(!empty($db[0])){
+                $old_values['orders_products'] = $db[0];
+            }
+            $data = array();
+            $data['id_products'] = $product['id'];
+            $data['sku_products'] = $product['id'];
+            $data['message'] = $message;
+            $data['old_values'] = json_encode($old_values);
+            $data['date'] = DB::expr('NOW');
+            $ses = Session::instance();
+            $user = $ses->get('user',false);
+            $data['id_users'] = $user['id'];
+            DB::insert('products_history', array_keys($data))
+                ->values($data)
+                ->execute();
         }
     }
 }

@@ -159,6 +159,25 @@ class Model_SkladOrders extends Model
                 ->set(array('complete' => $status))
                 ->where('id', '=', $id)
                 ->execute();
+
+            $products = DB::select(array('id_products', 'id'))
+                ->from('orders_products')
+                ->where('id_orders', '=', $id)
+                ->execute()
+                ->as_array();
+
+            switch($status){
+                case '1':
+                    if(!empty($products))
+                    foreach($products as $product)
+                    Model_SkladProducts::ProductsHistory('Проведен ордер', $product['id']);
+                    break;
+                case '0':
+                    if(!empty($products))
+                        foreach($products as $product)
+                            Model_SkladProducts::ProductsHistory('Отменен ордер', $product['id']);
+                    break;
+            }
         }
     }
 
@@ -185,6 +204,7 @@ class Model_SkladOrders extends Model
             DB::insert('orders_products', array_keys($product))
                 ->values($product)
                 ->execute();
+            Model_SkladProducts::ProductsHistory('Поставлен в резерв ордер id#' . $product['id_orders'], $product['id_products']);
             DB::update('products')
                 ->set(array('out' => '1', 'date_out' => DB::expr('NOW()')))
                 ->where('id', '=', $product['id_products'])
@@ -212,16 +232,18 @@ class Model_SkladOrders extends Model
                     ->where('id_orders', '=', $one['id'])
                     ->execute()
                     ->as_array();
-                DB::delete('orders_products')
-                    ->where('id_orders', '=', $one['id'])
-                    ->execute();
-                $this->OrdersDeleteById($one['id']);
                 foreach ($products as $product) {
+                    Model_SkladProducts::ProductsHistory('Освобожден из резерва', $product['id']);
                     DB::update('products')
                         ->set(array('out' => '0', 'date_out' => ''))
                         ->where('id', '=', $product['id'])
                         ->execute();
                 }
+                DB::delete('orders_products')
+                    ->where('id_orders', '=', $one['id'])
+                    ->execute();
+                $this->OrdersDeleteById($one['id']);
+
             }
 
     }
@@ -255,6 +277,7 @@ class Model_SkladOrders extends Model
 
     public function OrdersProductsRemove($post)
     {
+        Model_SkladProducts::ProductsHistory('Удален из ордера', $post['product']);
         DB::update('products')
             ->set(array('out' => '0', 'date_out' => ''))
             ->where('id', '=', $post['product'])

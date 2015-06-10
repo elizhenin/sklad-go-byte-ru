@@ -2,10 +2,10 @@
 <table style="width:100%">
     <thead style="background-color: dimgray">
     <td style="width: 80px"><a title="Не проведен: физически лежит на складе, зарезервирован но не продан, можно освободить и перепродать; Проведен: товар оплачен, вручен клиенту.">?</a></td>
-    <td>Сессия</td>
+    <td>Дата</td>
     <td>Комментарий</td>
     <td>№ телефона</td>
-    <td>Дата</td>
+    <td>Сессия</td>
     </thead>
     <tbody>
     <?php
@@ -30,8 +30,8 @@
                                 <input
                                     type="hidden" name="orders_id"
                                     value="<?= $item['id'] ?>"/><input
-                                    type="hidden" name="operation" value="enable"/><input type="submit" value="&#10003;"
-                                                                                          title="Проведен"/>
+                                    type="hidden" name="operation" value="disable"/><input type="submit" value="Х"
+                                                                                          title="Отменить проводку"/>
                             </form>
                         <?php
                         } else {
@@ -40,15 +40,19 @@
                                 <input
                                     type="hidden" name="orders_id"
                                     value="<?= $item['id'] ?>"/><input
-                                    type="hidden" name="operation" value="disable"/><input type="submit"
-                                                                                           value="&#10005;"
-                                                                                           title="Не проведен"/>
+                                    type="hidden" name="operation" value="enable"/><input type="submit"
+                                                                                           value="$$"
+                                                                                           title="Провести"/>
                             </form>
                         <?php
                         }
                     }
                         ?>
                 </td>
+                <td><?=$item['date']?></td>
+
+                <td><?=$item['text']?></td>
+                <td><?=$item['phone']?></td>
                 <td><a href="/sklad/orders/<?=$item['session']?>" title="Показать продажи этой сессии"><?=$item['session']?></a>&nbsp;
                     <form name="form<?= $item['id'] ?>add" method="POST" style="display:inline;float:right;" action="/sklad/orders/<?=$item['session']?>">
                         <input
@@ -56,9 +60,6 @@
                             value="<?= $item['id'] ?>"/><input
                             type="hidden" name="operation" value="add"/><input type="submit" value="+" title="Добавить в эту сессию" />
                     </form></td>
-                <td><?=$item['text']?></td>
-                <td><?=$item['phone']?></td>
-                <td><?=$item['date']?></td>
             </tr>
         <?php
         }

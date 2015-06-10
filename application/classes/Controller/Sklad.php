@@ -132,12 +132,12 @@ class Controller_Sklad extends Controller_SkladTmp
                 $this->redirect($this->request->referrer());
                 break;
             case
-            'disable':
+            'enable':
 
                 $ModelOrders->OrdersSetCompleteById($OrdersPOST['orders_id'], '1');
                 $this->redirect($this->request->referrer());
                 break;
-            case 'enable':
+            case 'disable':
 
                 $ModelOrders->OrdersSetCompleteById($OrdersPOST['orders_id'], '0');
                 $this->redirect($this->request->referrer());

@@ -11,19 +11,29 @@ class Model_SkladProducts extends Model
 
     public function ProductsAdd($post)
     {
-        $post['id_models'] = trim(htmlspecialchars($post['id_models']));
-        $post['sku'] = trim(htmlspecialchars($post['sku']));
-        $post['comments'] = trim(htmlspecialchars($post['comments']));
-        $post['id_storage'] = trim(htmlspecialchars($post['id_storage']));
-        $post['sku'] = trim(htmlspecialchars($post['sku']));
-        $post['out'] = '0';
-        $post['date_out'] = '0';
-        $post['deleted'] = '0';
-        unset($post['operation']);
-        DB::insert('products', array_keys($post))
-            ->values($post)
-            ->execute();
-
+        $model = htmlspecialchars(trim($post['models']));
+        unset($post['models']);
+        if(!empty($model))
+        $db = DB::select('id', 'name')
+            ->from('models')
+            ->where('name', '=', $model)
+            ->limit(1)
+            ->execute()
+            ->as_array();
+        if (!empty($db[0])) {
+            $post['id_models'] = $db[0]['id'];
+            $post['sku'] = trim(htmlspecialchars($post['sku']));
+            $post['comments'] = trim(htmlspecialchars($post['comments']));
+            $post['id_storage'] = trim(htmlspecialchars($post['id_storage']));
+            $post['sku'] = trim(htmlspecialchars($post['sku']));
+            $post['out'] = '0';
+            $post['date_out'] = '0';
+            $post['deleted'] = '0';
+            unset($post['operation']);
+            DB::insert('products', array_keys($post))
+                ->values($post)
+                ->execute();
+        }
     }
 
     public function ProductsUpdate($post)
@@ -31,8 +41,18 @@ class Model_SkladProducts extends Model
         $product = $this->ProductsGetById($post['id']);
 
         if ($product) {
-            if (!empty($post['id_models']))
-                $post['id_models'] = trim(htmlspecialchars($post['id_models']));
+            $model = htmlspecialchars(trim($post['models']));
+            unset($post['models']);
+            if(!empty($model))
+            $db = DB::select('id', 'name')
+                ->from('models')
+                ->where('name', '=', $model)
+                ->limit(1)
+                ->execute()
+                ->as_array();
+            if (!empty($db[0])) {
+                $post['id_models'] = $db[0]['id'];
+            }
             if (!empty($post['sku']))
                 $post['sku'] = trim(htmlspecialchars($post['sku']));
             if (!empty($post['comments']))
@@ -276,7 +296,7 @@ class Model_SkladProducts extends Model
         if (!empty($post['items'])) {
             $move = DB::update('products')
                 ->set(array('id_storage' => $post['destination']))
-            ->and_where_open();
+                ->and_where_open();
             foreach ($post['items'] as $id) {
                 $move->or_where('id', '=', $id);
             }

@@ -13,6 +13,9 @@
     <script src="/js/sklad/redactor/redactor.min.js"></script>
     <script src="/js/sklad/redactor/lang/ru.js"></script>
     <script src="/js/sklad/manager.js"></script>
+
+    <link rel="stylesheet" href="/style/jquery-ui.css">
+    <script src="/js/jquery-ui.js"></script>
     <script>
         $(function(){
             $('.redactor').redactor({

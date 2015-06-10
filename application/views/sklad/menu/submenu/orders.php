@@ -12,3 +12,9 @@
     <input type="hidden" name="operation" value="release">
     <input type="submit" value="Освободить товар" title="Высвобождает товар из резерва (непроведенных ордеров) и удаляет пустые непроведенные ордеры"/>
 </form>
+<form>
+    <input type="button" value="" disabled>
+</form>
+<form method="POST" action="/sklad/products"><input
+        type="hidden" name="operation" value="products_return_prepare"/><input type="submit" value="Возврат товара" title="Сформировать возврат товара"/>
+</form>

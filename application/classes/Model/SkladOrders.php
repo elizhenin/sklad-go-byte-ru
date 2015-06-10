@@ -153,7 +153,7 @@ class Model_SkladOrders extends Model
     {
         $ses = Session::instance();
         $user = $ses->get('user', false);
-        if ($user['rights'] != 'superuser' && $status == 0) {
+        if ($user['rights'] != 'super' && $status == 0) {
         } else {
             DB::update('orders')
                 ->set(array('complete' => $status))
@@ -218,8 +218,12 @@ class Model_SkladOrders extends Model
         $orders = DB::select(
             array('orders.id', 'id')
         )
-            ->from('orders')
-            ->where('orders.id_users', '=', $id_users)
+            ->from('orders');
+        $ses = Session::instance();
+        $user = $ses->get('user', false);
+        if($user['rights']=='sale')
+            $orders->where('orders.id_users', '=', $id_users);
+        $orders = $orders
             ->where('orders.complete', '=', '0')
             ->execute()
             ->as_array();

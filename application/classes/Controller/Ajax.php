@@ -29,6 +29,13 @@ class Controller_Ajax extends Controller
             echo json_encode($product);
     }
 
+    public function action_addReturnProduct()
+    {
+        $product = Model_SkladProducts::ProductsReturnCheck(trim(htmlspecialchars($this->request->post('sku'))));
+        if ($product)
+            echo json_encode($product);
+    }
+
     public function action_selectCity()
     {
         if ($this->request->method() == Request::POST) {

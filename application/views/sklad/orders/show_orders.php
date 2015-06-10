@@ -15,7 +15,7 @@
             <tr>
                 <td>
                     <?php
-            if ($item['complete'] &&($rights !='superuser')) {echo 'проведен';}else{
+            if (($item['complete']) && ($rights !='super')) {echo 'проведен';}else{
                         ?>
                         <form name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"><input
                                 type="hidden" name="orders_id"

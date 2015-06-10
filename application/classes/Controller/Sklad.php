@@ -223,6 +223,14 @@ class Controller_Sklad extends Controller_SkladTmp
                 $ModelProducts->ProductsMove($ProductsPOST);
                 $this->redirect($this->request->referrer());
                 break;
+            case 'products_return_prepare':
+                $content = View::factory('sklad/products/products_return');
+                $content->storages = $ModelStorages->StoragesGetVisible();
+                break;
+            case 'products_return_complete':
+                $ModelProducts->ProductsReturn($ProductsPOST);
+                $this->redirect($this->request->referrer());
+                break;
             case 'export_prepare':
                 $content = View::factory('sklad/products/export_storage');
                 $content->storages = $ModelStorages->StoragesGetVisible();

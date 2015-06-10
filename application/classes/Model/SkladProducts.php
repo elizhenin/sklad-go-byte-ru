@@ -277,27 +277,28 @@ class Model_SkladProducts extends Model
 
         if ($product) {
             $product = $product[0];
-            $check = false;
-            if ($product['city'] == $user['login']) {
-                $check = true;
-                goto finish;
-            }
-            $settings = DB::select(
-                array('storages.id_citys', 'from')
-            )
-                ->from('storages_settings')
-                ->join('storages')
-                ->on('storages.id', '=', 'storages_settings.from')
-                ->where('storages.id_citys', '=', $user['id_citys'])
-                ->execute()
-                ->as_array();
-            if ($settings)
-                foreach ($settings as $setting) {
-                    if ($setting['from'] == $user['login']) {
-                        $check = true;
-                        goto finish;
-                    }
-                }
+            $check = true;
+//            $check = false;
+//            if ($product['city'] == $user['login']) {
+//                $check = true;
+//                goto finish;
+//            }
+//            $settings = DB::select(
+//                array('storages.id_citys', 'from')
+//            )
+//                ->from('storages_settings')
+//                ->join('storages')
+//                ->on('storages.id', '=', 'storages_settings.from')
+//                ->where('storages.id_citys', '=', $user['id_citys'])
+//                ->execute()
+//                ->as_array();
+//            if ($settings)
+//                foreach ($settings as $setting) {
+//                    if ($setting['from'] == $user['login']) {
+//                        $check = true;
+//                        goto finish;
+//                    }
+//                }
             finish:
             if ($check) return $product; else return false;
         } else return false;
@@ -311,6 +312,51 @@ class Model_SkladProducts extends Model
                 ->and_where_open();
             foreach ($post['items'] as $id) {
                 Model_SkladProducts::ProductsHistory('Перемещен на другой склад',$id);
+                $move->or_where('id', '=', $id);
+            }
+            $move->and_where_close()->execute();
+        }
+    }
+
+    static function ProductsReturnCheck($sku)
+    {
+        $ses = Session::instance();
+        $user = $ses->get('user', 0);
+        $product = DB::select(
+            array('products.id', 'id'),
+            array('products.sku', 'sku'),
+            array('models.name', 'name'),
+            array('orders_products.price_out','money')
+        )
+            ->from('products')
+            ->join('models')
+            ->on('models.id', '=', 'products.id_models')
+            ->join('orders_products')
+            ->on('orders_products.id_products','=','products.id')
+            ->where('products.sku', '=', $sku)
+            ->where('products.out', '=', '1')
+            ->limit(1)
+            ->execute()
+            ->as_array();
+
+        if ($product[0]) {
+        return $product[0];
+        } else return false;
+    }
+
+    public function ProductsReturn($post)
+    {
+        if (!empty($post['items'])) {
+            $move = DB::update('products')
+                ->set(array(
+                    'id_storage' => $post['destination'],
+                    'out' => '0',
+                    'date_out' => '0',
+                    'returned' =>'1',
+                ))
+                ->and_where_open();
+            foreach ($post['items'] as $id) {
+                Model_SkladProducts::ProductsHistory('Возврат товара',$id);
                 $move->or_where('id', '=', $id);
             }
             $move->and_where_close()->execute();
@@ -343,7 +389,7 @@ class Model_SkladProducts extends Model
             $data['sku_products'] = $product['id'];
             $data['message'] = $message;
             $data['old_values'] = json_encode($old_values);
-            $data['date'] = DB::expr('NOW');
+            $data['date'] = DB::expr('NOW()');
             $ses = Session::instance();
             $user = $ses->get('user',false);
             $data['id_users'] = $user['id'];

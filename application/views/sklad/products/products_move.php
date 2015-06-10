@@ -4,8 +4,8 @@
     <td style="text-align: left" colspan="4">
         Добавить товар
         <form>
-            <input id="sku" type="text" onchange="add_product();" placeholder="код товара" value="" autofocus="autofocus">
-            <input type="button" value=">">
+            <input class="no-enter" id="sku" type="text"  placeholder="код товара" value="" autofocus="autofocus">
+            <input type="button" value="+" onclick="add_product();">
         </form>
     </td>
     </thead>
@@ -65,7 +65,7 @@
                         '</td>' +
                         '</tr>';
                     $("#products").html($("#products").html()+html);
-                } else alert('Не найдено');
+                }
             }
         });
     }

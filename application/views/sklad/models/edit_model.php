@@ -12,7 +12,7 @@
                     Код товара:
                 </td>
                 <td style="text-align: left">
-                    <input type="text" name="sku" value="<?= (!empty($item['sku'])) ? $item['sku'] : '' ?>"/>
+                    <input class="no-enter" autofocus="autofocus" type="text" name="sku" value="<?= (!empty($item['sku'])) ? $item['sku'] : '' ?>"/>
                 </td>
             </tr>
             <tr>

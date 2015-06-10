@@ -52,8 +52,7 @@
                                     terms.pop();
                                     // add the selected item
                                     terms.push(ui.item.value);
-                                    // add placeholder to get the comma-and-space at the end
-                                    this.value = terms.join("");
+                                    this.value = terms.join();
                                     return false;
                                 }
                             });
@@ -93,8 +92,14 @@
                 </select>
             </td>
         </tr>
-
-
+        <tr>
+            <td style="text-align: right">
+                Код:
+            </td>
+            <td style="text-align: left">
+                <input class="no-enter" type="text" name="sku" value="<?= (!empty($item['sku'])) ? $item['sku'] : '' ?>"/>
+            </td>
+        </tr>
         <tr>
             <td style="text-align: right">
                 Комментарий:
@@ -102,14 +107,6 @@
             <td style="text-align: left">
                 <textarea
                     name="comments"><?= (!empty($item['comments'])) ? $item['comments'] : '' ?></textarea>
-            </td>
-        </tr>
-        <tr>
-            <td style="text-align: right">
-                Код:
-            </td>
-            <td style="text-align: left">
-                <input type="text" name="sku" value="<?= (!empty($item['sku'])) ? $item['sku'] : '' ?>"/>
             </td>
         </tr>
         </tbody>

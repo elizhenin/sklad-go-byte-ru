@@ -9,9 +9,9 @@ class Model_SkladLogin extends Model
 
 
 
-    public function checkUser($login, $password)
+    public function checkUser($id, $password)
     {
-        $login = htmlspecialchars(trim($login));
+        $id = htmlspecialchars(trim($id));
         $password = md5(trim($password));
         $select = DB::select(
             array('users.id', 'id'),
@@ -22,7 +22,7 @@ class Model_SkladLogin extends Model
             ->from('users')
             ->join('citys')
             ->on('users.id_citys','=','citys.id')
-            ->where('citys.alias', '=', $login)
+            ->where('users.id', '=', $id)
             ->and_where('users.password', '=', $password)
             ->and_where('users.deleted','=','0')
             ->execute()
@@ -33,6 +33,28 @@ class Model_SkladLogin extends Model
             return false;
         }
     }
+
+    public function GetActive()
+    {
+        $select = DB::select(
+            array('users.id', 'id'),
+            array('citys.alias', 'login'),
+            array('citys.name', 'name')
+        )
+            ->from('citys')
+            ->join('users')
+            ->on('citys.id', '=', 'users.id_citys')
+            ->where('users.deleted','=','0')
+            ->order_by('citys.name')
+            ->execute()
+            ->as_array();
+        if (!empty($select)) {
+            return $select;
+        } else {
+            return false;
+        }
+    }
+
    public function UpdateLogin($id)
    {
        DB::update('users')

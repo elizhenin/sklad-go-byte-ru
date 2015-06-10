@@ -16,10 +16,19 @@
     <?php } ?>
     <form method="post">
         <p>Логин</p>
-        <input type="text" name="login" autofocus="autofocus">
+        <select name="id">
+            <?php
+            if (!empty($items))
+                foreach ($items as $one) {
+                    ?>
+                    <option value="<?=$one['id']?>" <?=($last == $one['id'])?'selected="selected"':''?>><?=$one['name']?></option>
+                <?php
+                }
+            ?>
+        </select>
 
         <p>Пароль</p>
-        <input type="password" name="password"><br>
+        <input type="password" name="password" autofocus="autofocus"><br>
         <input class="button" type="submit" value="Вход">
     </form>
 </div>

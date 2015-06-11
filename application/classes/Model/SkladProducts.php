@@ -386,7 +386,7 @@ class Model_SkladProducts extends Model
             }
             $data = array();
             $data['id_products'] = $product['id'];
-            $data['sku_products'] = $product['id'];
+            $data['sku_products'] = $product['sku'];
             $data['message'] = $message;
             $data['old_values'] = json_encode($old_values);
             $data['date'] = DB::expr('NOW()');

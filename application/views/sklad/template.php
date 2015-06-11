@@ -8,13 +8,12 @@
     <link type="text/css" rel="stylesheet" href="/style/sklad/menu.css">
     <link type="text/css" rel="stylesheet" href="/style/sklad/icons.css">
     <link type="text/css" rel="stylesheet" href="/js/sklad/redactor/redactor.css">
+    <link rel="stylesheet" href="/style/jquery-ui.css">
 
     <script src="/js/sklad/jquery.js"></script>
     <script src="/js/sklad/redactor/redactor.min.js"></script>
     <script src="/js/sklad/redactor/lang/ru.js"></script>
     <script src="/js/sklad/manager.js"></script>
-
-    <link rel="stylesheet" href="/style/jquery-ui.css">
     <script src="/js/jquery-ui.js"></script>
     <script>
         $(function(){
@@ -36,13 +35,12 @@
                     $('.wrap').toggleClass("newmarg");
                 });
             });
-            event.stopPropagation();
         })
     </script>
     <title>CRM Go-Byte</title>
 </head>
 <body>
-<?php ProfilerToolbar::render(true); ?>
+
 <div class="topmenu">
     <div class="shid">
         Скрыть\Показать

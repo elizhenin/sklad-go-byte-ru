@@ -33,7 +33,7 @@ class Model_SkladProducts extends Model
             $id = DB::insert('products', array_keys($post))
                 ->values($post)
                 ->execute();
-            Model_SkladProducts::ProductsHistory('Создан',$id);
+            Model_SkladProducts::ProductsHistory('Создан',$id[0]);
         }
     }
 

@@ -2,7 +2,8 @@
     <table style="width:100%">
         <tbody>
         <tr>
-            <td style="text-align: right">
+            <td style="text-align: right;width: 20%">
+                <input id="m_sku" class="no-enter" autofocus="autofocus" type="text" onkeyup="check_model();" placeholder="код модели">
                 Модель:
             </td>
             <td style="text-align: left">
@@ -82,4 +83,22 @@
 
     });
 </script>
+<script>
 
+    function check_model() {
+        product = $('#m_sku').val();
+        jQuery.ajax({
+            url: '/ajax/checkModel',
+            type: 'POST',
+            data: {sku: product},
+            success: function (data) {
+                if (data != '') {
+                    fields = JSON.parse(data);
+                    $("#models").val(fields.name);
+                } else {
+                    $("#name").val('');
+                }
+            }
+        });
+    }
+</script>

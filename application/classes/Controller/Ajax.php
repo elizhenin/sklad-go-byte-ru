@@ -16,12 +16,20 @@ class Controller_Ajax extends Controller
         }
     }
 
+    public function action_checkModel()
+    {
+        $product = Model_SkladModels::ProductsModelsCheck(trim(htmlspecialchars($this->request->post('sku'))));
+        if ($product)
+            echo json_encode($product);
+    }
+
     public function action_checkProduct()
     {
         $product = Model_SkladOrders::OrdersProductsCheck(trim(htmlspecialchars($this->request->post('sku'))));
         if ($product)
             echo json_encode($product);
     }
+
     public function action_addMoveProduct()
     {
         $product = Model_SkladProducts::ProductsMoveCheck(trim(htmlspecialchars($this->request->post('sku'))));

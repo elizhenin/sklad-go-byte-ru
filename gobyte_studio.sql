@@ -108,9 +108,9 @@ CREATE TABLE IF NOT EXISTS `skl_citys` (
 --
 
 INSERT INTO `skl_citys` (`id`, `name`, `alias`) VALUES
-(1, '[Админ]', 'superuser'),
+(1, '[Администратор]', 'superuser'),
 (5, 'Воронеж', 'voronezh'),
-(6, '[Контент]', 'content'),
+(6, '[Контент-менеджер]', 'content'),
 (7, 'Ростов-на-Дону', 'rostov-na-donu');
 
 -- --------------------------------------------------------

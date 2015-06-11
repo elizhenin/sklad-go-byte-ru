@@ -687,4 +687,19 @@ class Model_SkladModels extends Model
             }
         }
     }
+
+    static function ProductsModelsCheck($sku)
+    {
+        $product = DB::select(
+            array('models.name', 'name')
+
+        )
+            ->from('models')
+            ->where('models.sku', '=', $sku)
+            ->where('models.deleted', '=', '0')
+            ->limit(1)
+            ->execute()
+            ->as_array();
+        if ($product) return $product[0];
+    }
 }

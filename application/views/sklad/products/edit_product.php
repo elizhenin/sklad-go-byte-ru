@@ -1,9 +1,9 @@
 <form method="POST">
+    <input id="m_sku" class="no-enter srch floleft" autofocus="autofocus" type="text" onkeyup="check_model();" placeholder="Код модели">
     <table style="width:100%">
         <tbody>
         <tr>
             <td style="text-align: right;width: 20%">
-                <input id="m_sku" class="no-enter" autofocus="autofocus" type="text" onkeyup="check_model();" placeholder="код модели">
                 Модель:
             </td>
             <td style="text-align: left">

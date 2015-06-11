@@ -30,8 +30,8 @@ if (empty($id_orders)) {
                             <label>мин:
                                 <input id="in_price" type="text" value="<?=(empty($buyit))?'':$buyit['in_price']?>" readonly>руб
                             </label>
-                            <br>
-                            <input type="submit" value="добавить" title="добавить в ордер">
+
+                            <input type="submit" value="Добавить" title="добавить в ордер">
                         </form>
                     </td>
                     </thead>

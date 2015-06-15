@@ -14,6 +14,7 @@
 
 
     <link type="text/css" rel="stylesheet" href="/style/magnific-popup.css">
+    <link type="text/css" rel="stylesheet" href="/style/fancybox.css">
     <link type="text/css" rel="stylesheet" href="/style/general.css">
     <link type="text/css" rel="stylesheet" href="/js/paralax/paralax.css">
     <link href='http://fonts.googleapis.com/css?family=Play:700|Poiret+One|Open+Sans:300&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
@@ -238,9 +239,7 @@
                                                                           class="add-to-cart-no">Нет</a> </span>
 </div>
 <section id="workarea">
-    <div class="main-content">
         <?= (!empty($page)) ? $page : '' ?>
-    </div>
 </section>
 <footer id="footer">
     <div class="headshot">

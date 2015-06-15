@@ -1,3 +1,4 @@
+<div class="main-content">
 <div class="catalog new col span_1_of_3">
     <div class="catalog-item-wrapper">
         <h5><span class="ie8hack"></span> <span class="bg_before"><span class="ie8hack"></span></span> <span
@@ -282,3 +283,4 @@
     <!-- catalog-item-wrapper -->
 </div>
 <!-- catalog -->
+</div>

@@ -16,14 +16,11 @@
     <link type="text/css" rel="stylesheet" href="/style/magnific-popup.css">
     <link type="text/css" rel="stylesheet" href="/style/general.css">
     <link type="text/css" rel="stylesheet" href="/js/paralax/paralax.css">
+    <link href='http://fonts.googleapis.com/css?family=Play:700|Poiret+One|Open+Sans:300&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Didact+Gothic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <script>
-        $(function () {
-            $('.list_col').liColl({
-                c_unit: '%',
-                n_coll: 3,
-                p_left: 0
-            });
-        });
         $(document).ready(function () {
             $('.city-button').magnificPopup({
                 type: 'inline',
@@ -46,8 +43,6 @@
     </script>
 </head>
 <body>
-//НАЧАЛО
-
 <div id="wrapper">
 <header id="header">
     <section id="header-top">
@@ -87,9 +82,9 @@
                             <li><a href="/login/?register=yes&amp;backurl=%2Findex.php">Зарегистрироваться</a></li>
                             <li class="dropdown"><a href="#">Помощь</a> <img src="/images/downarrow.png">
                                 <ul class="sub-menu">
-                                    <li><a href="/about/howto/">Контакты</a></li>
-                                    <li><a href="/about/howto/corporate.php">Корпоративный отдел</a></li>
-                                    <li><a href="/about/delivery/">Помощь покупателю</a></li>
+                                    <li><a href="/contacts">Контакты</a></li>
+                                    <li><a href="/">Корпоративный отдел</a></li>
+                                    <li><a href="/">Помощь покупателю</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -119,10 +114,15 @@
                     <div class="phone-number"><img src="/images/phone_icon.png"> 8 (473) 200-10-95</div>
                     <div class="cities">
                         <ul>
-                            <li class="active-city"><a href="/">Воронеж</a>
+                            <li class="active-city"><a href="/"><?= (!empty($ActiveCity)) ? $ActiveCity['name'] : '' ?></a>
                                 <ul class="sub-cities">
-                                    <li><a href="http://lipetsk.go-byte.ru/">Липецк</a></li>
-                                    <li><a href="http://blg.go-byte.ru/">Белгород</a></li>
+                                    <?php foreach ($CitysList as $city) { ?>
+                                        <li>
+                        <a href="/" <?= $city['name'] == $ActiveCity['name'] ? 'class="active"' : 'onclick="selectCity(' . $city['id'] . ')"' ?>>
+                            <?= $city['name'] ?>
+                        </a>
+                                        </li>
+                                    <?php } ?>
                                 </ul>
                             </li>
                         </ul>
@@ -154,7 +154,14 @@
                         </li>
                         <li class="item-4"><a href="/catalog/auto/" class="root-item">Авто</a>
                             <ul>
-                                <li><a href="/catalog/dvrs/">Видеорегистраторы</a></li>
+                                <li><a href="/catalog/dvrs/" class="root-item">Видеорегистраторы</a>
+                                    <ul>
+                                        <li><a href="/catalog/radar_detectors/">Радар-детекторы</a></li>
+                                        <li><a href="/catalog/navigators/">Навигаторы</a></li>
+                                        <li><a href="/catalog/radar_detectors/">Радар-детекторы</a></li>
+                                        <li><a href="/catalog/navigators/">Навигаторы</a></li>
+                                    </ul>
+                                </li>
                                 <li><a href="/catalog/radar_detectors/">Радар-детекторы</a></li>
                                 <li><a href="/catalog/navigators/">Навигаторы</a></li>
                             </ul>
@@ -170,388 +177,71 @@
     </section>
     <!-- header-menu -->
 
-    <!-- -------------------------------------------------------- -->
 
-    <section id="header-promo">
-        <div id="da-slider" class="da-slider">
-            <div class="da-slide slide-4 da-slide-current">
-                <div class="slide4-wrapper">
-                    <div class="rightText">
-                        <h3>Нас уже больше 30000 человек</h3>
 
-                        <p>Нам доверяют, <a href="http://vk.com/topic-43410877_27364881" target="_blank">нас
-                                благодарят</a> за возможность купить крутые гаджеты по доступной цене!</p>
 
-                        <h2>СПАСИБО ВАМ!</h2>
-                    </div>
-                    <a href="http://vk.com/gobyte" target="_blank"><img class="vk-widget plax"
-                                                                        src="/images/promo/slide4/vk.png"
-                                                                        data-xrange="20" data-yrange="0"
-                                                                        style="top: 0px; left: 50.4624277456647px;"></a>
-                    <img class="soldier-1 plax" src="/images/promo/slide4/1.png"
-                         data-xrange="50" data-yrange="50" style="top: 94.2045454545455px; left: 96.1560693641619px;">
-                    <img class="soldier-2 plax" src="/images/promo/slide4/2.png"
-                         data-xrange="20" data-yrange="20" style="top: 299.681818181818px; left: 110.462427745665px;">
-                    <img class="soldier-3 plax" src="/images/promo/slide4/3.png"
-                         data-xrange="80" data-yrange="40" style="top: 359.363636363636px; left: 297.849710982659px;">
-                    <img class="soldier-4 plax" src="/images/promo/slide4/4.png"
-                         data-xrange="180" data-yrange="100" style="top: 118.409090909091px; left: 430.161849710983px;">
-                    <img class="soldier-5 plax" src="/images/promo/slide4/5.png"
-                         data-xrange="140" data-yrange="70" style="top: 323.886363636364px; left: 449.236994219653px;">
-                </div>
-            </div>
-            <div class="da-slide slide-2">
-                <h3 class="da-discount discount-title">Скидки!!!</h3>
-                <img class="da-discount discount-1" src="/images/promo/slide2/1.png"
-                     alt=""> <img class="da-discount discount-2"
-                                  src="/images/promo/slide2/2.png" alt=""> <img
-                    class="da-discount discount-3" src="/images/promo/slide2/3.png"
-                    alt=""> <img class="da-discount discount-4"
-                                 src="/images/promo/slide2/4.png" alt=""></div>
-            <nav class="da-arrows"><span class="da-arrows-prev"></span> <span class="da-arrows-next"></span></nav>
-            <nav class="da-dots"><span class="da-dots-current"></span><span></span></nav>
-        </div>
-        <div class="preorder-form-wrap" style="display: none;">
-            <div class="preorder-close"></div>
-            <form class="preorder-form" name="preorder" method="POST" action="/preorder/make_preorder_ajax.php">
-                <h2>Оформление предзаказа</h2>
-                <input type="hidden" name="ID" value="0">
-                <input type="hidden" name="CITY" value="41">
-
-                <p>
-                    <label for="NAME">Ваше имя</label>
-                    <input type="text" name="NAME" value="">
-                </p>
-
-                <p>
-                    <label for="PHONE">Телефон</label>
-                    <input type="text" name="PHONE" value="">
-                </p>
-
-                <p>
-                    <label for="EMAIL">Email</label>
-                    <input type="email" name="EMAIL" value="">
-                </p>
-
-                <p>
-                    <input type="submit" name="PREORDER" value="Бронировать">
-                </p>
-            </form>
-            <div class="success-message" style="display:none;">
-                <h3>Ваш заказ отправлен.</h3>
-
-                <p>Мы свяжемся с Вами после поступления товара.</p>
-            </div>
-            <p class="invalid" style="display:none;">Заполните все поля</p>
-        </div>
-    </section>
-    <!-- header-promo -->
-
-    <section id="headshot">
-        <div class="main-content">
-            <h3 class="default">на все товары</h3>
-
-            <h2>мы предоставляем гарантию</h2>
-        </div>
-        <!-- main-content -->
-    </section>
-    <div class="add-to-cart-message hide"><span>Товар добавлен в корзину!</span> <span> Оформить заказ? <a
-                class="make-order-yes" href="/personal/order/make/">Да</a> <a href=""
-                                                                              class="add-to-cart-no">Нет</a> </span>
-    </div>
 </header>
-<section id="workarea">
-<div class="main-content">
-<div class="catalog new col span_1_of_3">
-    <div class="catalog-item-wrapper">
-        <h5><span class="ie8hack"></span> <span class="bg_before"><span class="ie8hack"></span></span> <span
-                class="bg_after"></span></h5>
+<!-- ЭТО - Отдельным файлом для каждой view -->
+<!-- id header-promo - ТОЛЬКО для главной страницы -->
+<section id="header-promo">
+    <div id="da-slider" class="da-slider">
+        <div class="da-slide slide-4 da-slide-current">
+            <div class="slide4-wrapper">
+                <div class="rightText">
+                    <h3>Нас уже больше 30000 человек</h3>
 
-        <div class="catalog-item ">
-            <div class="item-image"><a class="link" href="/catalog/smartphones/apple_iphone_6_plus_64gb/"><img
-                        class="item_img" itemprop="image"
-                        src="/upload/resize_cache/iblock/10b/75_75_16a9cdfeb475445909b854c588a1af844/10b9f74c716e789fe199713b4b3b039b.png"
-                        width="75" alt=""></a></div>
-            <div class="item-info">
-                <p class="item-title"><a href="/catalog/smartphones/apple_iphone_6_plus_64gb/"><span itemprop="name">Apple iPhone 6 Plus 64Gb</span></a>
-                </p>
+                    <p>Нам доверяют, <a href="http://vk.com/topic-43410877_27364881" target="_blank">нас
+                            благодарят</a> за возможность купить крутые гаджеты по доступной цене!</p>
 
-                <div class="item-price">
-                    <div class="old-price-wrapper"><span class="old-price">76 000 руб</span></div>
-                    <div class="sale-price-wrapper"><span class="sale-price"> 49 900 руб </span></div>
+                    <h2>СПАСИБО ВАМ!</h2>
                 </div>
-                <a class="button-buy" href="/index.php?action=ADD2BASKET&amp;id=2586" id="2586">Купить</a>
-
-                <div style="clear:both"></div>
+                <a href="http://vk.com/gobyte" target="_blank"><img class="vk-widget plax"
+                                                                    src="/images/promo/slide4/vk.png"
+                                                                    data-xrange="20" data-yrange="0"
+                                                                    style="top: 0px; left: 50.4624277456647px;"></a>
+                <img class="soldier-1 plax" src="/images/promo/slide4/1.png"
+                     data-xrange="50" data-yrange="50" style="top: 94.2045454545455px; left: 96.1560693641619px;">
+                <img class="soldier-2 plax" src="/images/promo/slide4/2.png"
+                     data-xrange="20" data-yrange="20" style="top: 299.681818181818px; left: 110.462427745665px;">
+                <img class="soldier-3 plax" src="/images/promo/slide4/3.png"
+                     data-xrange="80" data-yrange="40" style="top: 359.363636363636px; left: 297.849710982659px;">
+                <img class="soldier-4 plax" src="/images/promo/slide4/4.png"
+                     data-xrange="180" data-yrange="100" style="top: 118.409090909091px; left: 430.161849710983px;">
+                <img class="soldier-5 plax" src="/images/promo/slide4/5.png"
+                     data-xrange="140" data-yrange="70" style="top: 323.886363636364px; left: 449.236994219653px;">
             </div>
-            <!--  item-info -->
         </div>
-        <!-- catalog-item -->
-
-        <div class="catalog-item ">
-            <div class="item-image"><a class="link"
-                                       href="/catalog/laptops_tablets/apple_macbook_air_13_early_2014_md761ru_b/"><img
-                        class="item_img" itemprop="image"
-                        src="/upload/resize_cache/iblock/b84/75_75_16a9cdfeb475445909b854c588a1af844/b84361dc174e9e8c74970f1a4dc1752b.png"
-                        width="75" alt=""></a></div>
-            <div class="item-info">
-                <p class="item-title"><a
-                        href="/catalog/laptops_tablets/apple_macbook_air_13_early_2014_md761ru_b/"><span
-                            itemprop="name">Apple MacBook Air 13 Early 2014 MD761RU/B</span></a></p>
-
-                <div class="item-price">
-                    <div class="old-price-wrapper"><span class="old-price">65 000 руб</span></div>
-                    <div class="sale-price-wrapper"><span class="sale-price"> 49 900 руб </span></div>
-                </div>
-                <a class="button-buy" href="/index.php?action=ADD2BASKET&amp;id=2519" id="2519">Купить</a>
-
-                <div style="clear:both"></div>
-            </div>
-            <!--  item-info -->
-        </div>
-        <!-- catalog-item -->
-
-        <div class="catalog-item ">
-            <div class="item-image"><a class="link"
-                                       href="/catalog/laptops_tablets/iru_c1501b_i7_4700mq_8gb_1tb_hd4600_15_6/"><img
-                        class="item_img" itemprop="image"
-                        src="/upload/resize_cache/iblock/1f5/75_75_16a9cdfeb475445909b854c588a1af844/1f5ab62cd12d206caac7b979eae09e4f.png"
-                        width="75" alt=""></a></div>
-            <div class="item-info">
-                <p class="item-title"><a href="/catalog/laptops_tablets/iru_c1501b_i7_4700mq_8gb_1tb_hd4600_15_6/"><span
-                            itemprop="name">IRU C1501B I7-4700MQ/8GB/1TB/HD4600/15,6"</span></a></p>
-
-                <div class="item-price">
-                    <div class="old-price-wrapper"><span class="old-price">30 000 руб</span></div>
-                    <div class="sale-price-wrapper"><span class="sale-price"> 24 900 руб </span></div>
-                </div>
-                <a class="button-buy" href="/index.php?action=ADD2BASKET&amp;id=2597" id="2597">Купить</a>
-
-                <div style="clear:both"></div>
-            </div>
-            <!--  item-info -->
-        </div>
-        <!-- catalog-item -->
-
-        <div class="catalog-item  last-item">
-            <div class="item-image"><a class="link" href="/catalog/laptops_tablets/dell_inspiron_3737/"><img
-                        class="item_img" itemprop="image"
-                        src="/upload/resize_cache/iblock/9e0/75_75_16a9cdfeb475445909b854c588a1af844/9e0d285cb207578fe8f92c63f74b5359.png"
-                        width="75" alt=""></a></div>
-            <div class="item-info">
-                <p class="item-title"><a href="/catalog/laptops_tablets/dell_inspiron_3737/"><span itemprop="name">Dell Inspiron 3737</span></a>
-                </p>
-
-                <div class="item-price">
-                    <div class="old-price-wrapper"><span class="old-price">28 000 руб</span></div>
-                    <div class="sale-price-wrapper"><span class="sale-price"> 24 900 руб </span></div>
-                </div>
-                <a class="button-buy" href="/index.php?action=ADD2BASKET&amp;id=2108" id="2108">Купить</a>
-
-                <div style="clear:both"></div>
-            </div>
-            <!--  item-info -->
-        </div>
-        <!-- catalog-item -->
+        <div class="da-slide slide-2">
+            <h3 class="da-discount discount-title">Скидки!!!</h3>
+            <img class="da-discount discount-1" src="/images/promo/slide2/1.png"
+                 alt=""> <img class="da-discount discount-2"
+                              src="/images/promo/slide2/2.png" alt=""> <img
+                class="da-discount discount-3" src="/images/promo/slide2/3.png"
+                alt=""> <img class="da-discount discount-4"
+                             src="/images/promo/slide2/4.png" alt=""></div>
+        <nav class="da-arrows"><span class="da-arrows-prev"></span> <span class="da-arrows-next"></span></nav>
+        <nav class="da-dots"><span class="da-dots-current"></span><span></span></nav>
     </div>
-    <!-- catalog-item-wrapper -->
-</div>
-<!-- catalog -->
-
-<div class="catalog leader col span_1_of_3"><span class="ie8hack_left"></span>
-    <h5><span class="ie8hack"></span></h5>
-
-    <div class="catalog-item-wrapper">
-        <div class="catalog-item ">
-            <div class="item-image"><a class="link" href="/catalog/smartphones/samsung_i9505_galaxy_s4/"><img
-                        class="item_img" itemprop="image"
-                        src="/upload/resize_cache/iblock/da8/75_75_16a9cdfeb475445909b854c588a1af844/da8f05a38783730b15b2c79821347c93.png"
-                        width="75" alt=""></a></div>
-            <div class="item-info">
-                <p class="item-title"><a href="/catalog/smartphones/samsung_i9505_galaxy_s4/"><span itemprop="name">Samsung I9505 Galaxy S4</span></a>
-                </p>
-
-                <div class="item-price">
-                    <div class="old-price-wrapper"><span class="old-price">21 990 руб</span></div>
-                    <div class="sale-price-wrapper"><span class="sale-price"> 15 500 руб </span></div>
-                </div>
-                <a class="button-buy" href="/index.php?action=ADD2BASKET&amp;id=1886" id="1886">Купить</a>
-
-                <div style="clear:both"></div>
-            </div>
-            <!--  item-info -->
-        </div>
-        <!-- catalog-item -->
-
-        <div class="catalog-item ">
-            <div class="item-image"><a class="link" href="/catalog/smartphones/sony_xperia_z_ultra/"><img
-                        class="item_img" itemprop="image"
-                        src="/upload/resize_cache/iblock/a62/75_75_16a9cdfeb475445909b854c588a1af844/a629babcadd374398d6858843f644426.png"
-                        width="75" alt=""></a></div>
-            <div class="item-info">
-                <p class="item-title"><a href="/catalog/smartphones/sony_xperia_z_ultra/"><span itemprop="name">Sony Xperia Z Ultra</span></a>
-                </p>
-
-                <div class="item-price">
-                    <div class="old-price-wrapper"><span class="old-price">20 000 руб</span></div>
-                    <div class="sale-price-wrapper"><span class="sale-price"> 13 900 руб </span></div>
-                </div>
-                <a class="button-buy" href="/index.php?action=ADD2BASKET&amp;id=1718" id="1718">Купить</a>
-
-                <div style="clear:both"></div>
-            </div>
-            <!--  item-info -->
-        </div>
-        <!-- catalog-item -->
-
-        <div class="catalog-item ">
-            <div class="item-image"><a class="link" href="/catalog/smartphones/sony_xperia_z/"><img class="item_img"
-                                                                                                    itemprop="image"
-                                                                                                    src="/upload/resize_cache/iblock/2b7/75_75_16a9cdfeb475445909b854c588a1af844/2b74a270e37f1a03566fa84e15f6e878.png"
-                                                                                                    width="52"
-                                                                                                    alt=""></a></div>
-            <div class="item-info">
-                <p class="item-title"><a href="/catalog/smartphones/sony_xperia_z/"><span
-                            itemprop="name">SONY Xperia Z</span></a></p>
-
-                <div class="item-price">
-                    <div class="old-price-wrapper"><span class="old-price">14 490 руб</span></div>
-                    <div class="sale-price-wrapper"><span class="sale-price"> 12 900 руб </span></div>
-                </div>
-                <a class="button-buy" href="/index.php?action=ADD2BASKET&amp;id=443" id="443">Купить</a>
-
-                <div style="clear:both"></div>
-            </div>
-            <!--  item-info -->
-        </div>
-        <!-- catalog-item -->
-
-        <div class="catalog-item  last-item">
-            <div class="item-image"><a class="link" href="/catalog/smartphones/sony_xperia_m2/"><img class="item_img"
-                                                                                                     itemprop="image"
-                                                                                                     src="/upload/resize_cache/iblock/712/75_75_16a9cdfeb475445909b854c588a1af844/7120dfc6c1774f2993c596c245f1eabc.png"
-                                                                                                     width="75" alt=""></a>
-            </div>
-            <div class="item-info">
-                <p class="item-title"><a href="/catalog/smartphones/sony_xperia_m2/"><span itemprop="name">SONY Xperia M2</span></a>
-                </p>
-
-                <div class="item-price">
-                    <div class="old-price-wrapper"><span class="old-price">12 000 руб</span></div>
-                    <div class="sale-price-wrapper"><span class="sale-price"> 9 900 руб </span></div>
-                </div>
-                <a class="button-buy" href="/index.php?action=ADD2BASKET&amp;id=2173" id="2173">Купить</a>
-
-                <div style="clear:both"></div>
-            </div>
-            <!--  item-info -->
-        </div>
-        <!-- catalog-item -->
-    </div>
-    <!-- catalog-item-wrapper -->
-</div>
-<!-- catalog -->
-
-<div class="catalog special col span_1_of_3">
-    <div class="catalog-item-wrapper">
-        <h5><span class="ie8hack"></span> <span class="bg_before"></span> <span class="bg_after"><span
-                    class="ie8hack"></span></span></h5>
-
-        <div class="catalog-item ">
-            <div class="item-image"><a class="link" href="/catalog/smartphones/iphone_6_128gb/"><img class="item_img"
-                                                                                                     itemprop="image"
-                                                                                                     src="/upload/resize_cache/iblock/180/75_75_16a9cdfeb475445909b854c588a1af844/1800f19650b4b0388fe3e268d395a0e0.png"
-                                                                                                     width="75" alt=""></a>
-            </div>
-            <div class="item-info">
-                <p class="item-title"><a href="/catalog/smartphones/iphone_6_128gb/"><span itemprop="name">iPhone 6 128GB</span></a>
-                </p>
-
-                <div class="item-price">
-                    <div class="old-price-wrapper"><span class="old-price">65 000 руб</span></div>
-                    <div class="sale-price-wrapper"><span class="sale-price"> 49 900 руб </span></div>
-                </div>
-                <a class="button-buy" href="/index.php?action=ADD2BASKET&amp;id=2584" id="2584">Купить</a>
-
-                <div style="clear:both"></div>
-            </div>
-            <!--  item-info -->
-        </div>
-        <!-- catalog-item -->
-
-        <div class="catalog-item ">
-            <div class="item-image"><a class="link" href="/catalog/smartphones/iphone_6_16gb/"><img class="item_img"
-                                                                                                    itemprop="image"
-                                                                                                    src="/upload/resize_cache/iblock/e9a/75_75_16a9cdfeb475445909b854c588a1af844/e9abc05b21c6b369b4d4b02595d2006b.png"
-                                                                                                    width="75"
-                                                                                                    alt=""></a></div>
-            <div class="item-info">
-                <p class="item-title"><a href="/catalog/smartphones/iphone_6_16gb/"><span
-                            itemprop="name">iPhone 6 16GB</span></a></p>
-
-                <div class="item-price">
-                    <div class="old-price-wrapper"><span class="old-price">49 000 руб</span></div>
-                    <div class="sale-price-wrapper"><span class="sale-price"> 39 900 руб </span></div>
-                </div>
-                <a class="button-buy" href="/index.php?action=ADD2BASKET&amp;id=2583" id="2583">Купить</a>
-
-                <div style="clear:both"></div>
-            </div>
-            <!--  item-info -->
-        </div>
-        <!-- catalog-item -->
-
-        <div class="catalog-item ">
-            <div class="item-image"><a class="link" href="/catalog/smartphones/sony_xperia_z3_compact/"><img
-                        class="item_img" itemprop="image"
-                        src="/upload/resize_cache/iblock/1d1/75_75_16a9cdfeb475445909b854c588a1af844/1d1c23b18fac0e4f5fd788d2bbd10b5a.png"
-                        width="75" alt=""></a></div>
-            <div class="item-info">
-                <p class="item-title"><a href="/catalog/smartphones/sony_xperia_z3_compact/"><span itemprop="name">Sony Xperia Z3 Compact</span></a>
-                </p>
-
-                <div class="item-price">
-                    <div class="old-price-wrapper"><span class="old-price">30 000 руб</span></div>
-                    <div class="sale-price-wrapper"><span class="sale-price"> 22 900 руб </span></div>
-                </div>
-                <a class="button-buy" href="/index.php?action=ADD2BASKET&amp;id=2142" id="2142">Купить</a>
-
-                <div style="clear:both"></div>
-            </div>
-            <!--  item-info -->
-        </div>
-        <!-- catalog-item -->
-
-        <div class="catalog-item  last-item">
-            <div class="item-image"><a class="link" href="/catalog/tablet_pc/samsung_galaxy_tab_pro_8_4_lte/"><img
-                        class="item_img" itemprop="image"
-                        src="/upload/resize_cache/iblock/92d/75_75_16a9cdfeb475445909b854c588a1af844/92d9cf102cee03faeea2be4b47c2938c.png"
-                        width="75" alt=""></a></div>
-            <div class="item-info">
-                <p class="item-title"><a href="/catalog/tablet_pc/samsung_galaxy_tab_pro_8_4_lte/"><span
-                            itemprop="name">Samsung Galaxy Tab Pro 8.4 LTE T325 </span></a></p>
-
-                <div class="item-price">
-                    <div class="old-price-wrapper"><span class="old-price">20 000 руб</span></div>
-                    <div class="sale-price-wrapper"><span class="sale-price"> 16 500 руб </span></div>
-                </div>
-                <a class="button-buy" href="/index.php?action=ADD2BASKET&amp;id=2308" id="2308">Купить</a>
-
-                <div style="clear:both"></div>
-            </div>
-            <!--  item-info -->
-        </div>
-        <!-- catalog-item -->
-    </div>
-    <!-- catalog-item-wrapper -->
-</div>
-<!-- catalog -->
-
-</div>
-<!-- main-content -->
 </section>
-<!-- workarea -->
+<!-- id headshot - для остальных страниц -->
+<section id="headshot">
+    <div class="main-content">
+        <h3 class="default">на все товары</h3>
 
+        <h2>мы предоставляем гарантию</h2>
+    </div>
+</section>
+<!-- КОНЕЦ -->
+
+<div class="add-to-cart-message hide"><span>Товар добавлен в корзину!</span> <span> Оформить заказ? <a
+            class="make-order-yes" href="/personal/order/make/">Да</a> <a href=""
+                                                                          class="add-to-cart-no">Нет</a> </span>
+</div>
+<section id="workarea">
+    <div class="main-content">
+        <?= (!empty($page)) ? $page : '' ?>
+    </div>
+</section>
 <footer id="footer">
     <div class="headshot">
         <div class="main-content">
@@ -570,7 +260,7 @@
         </div>
         <!-- main-content -->
     </div>
-    <nav class="footer-menu"><a class="copyright" href="http://gowhiterabbit.ru/" target="_blank"></a>
+    <nav class="footer-menu">
 
         <div class="main-content">
             <div class="col span_1_of_2">
@@ -598,34 +288,6 @@
         <!-- main-content -->
     </nav>
 </footer>
-</div>
-
-
-//КОНЕЦ
-<div class="choto">
-    Город:
-    <div class="city-button">
-        <span><?= (!empty($ActiveCity)) ? $ActiveCity['name'] : '' ?></span>
-    </div>
-
-
-    <?= (!empty($page)) ? $page : '' ?>
-
-
-    <div style="display: none">
-        <div class="city-block">
-            <h3>Выберите город:</h3>
-            <ul class="list_col">
-                <?php foreach ($CitysList as $city) { ?>
-                    <li>
-                        <span <?= $city['name'] == $ActiveCity['name'] ? 'class="active"' : 'onclick="selectCity(' . $city['id'] . ')"' ?>>
-                            <?= $city['name'] ?>
-                        </span>
-                    </li>
-                <?php } ?>
-            </ul>
-        </div>
-    </div>
 </div>
 </body>
 </html>

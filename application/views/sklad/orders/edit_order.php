@@ -14,7 +14,7 @@ if (empty($id_orders)) {
         <td>
             <?php
             if (($item['complete']) && ($rights != 'super')) {
-                echo 'проведен';
+                echo '<span class="prov">проведен</span>';
             } else {
                 ?>
                 <table style="width: 100%">
@@ -76,7 +76,7 @@ if (empty($id_orders)) {
                                 foreach ($products['products'] as $product) {
 
                                     ?>
-                                    <tr>
+                                    <tr <?=(!empty($product['moneyback'])?'class="moneyback"':'')?>>
                                         <td style="width: 40px">
                                             <?php
                                             if (($item['complete']) && ($rights != 'super')) {

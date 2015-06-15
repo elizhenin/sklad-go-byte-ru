@@ -291,3 +291,11 @@ a.add {
     max-width: 100%;
     max-height: 100%;
 }
+
+.wrap table tr.moneyback td {
+    color: #999999;
+}
+
+.wrap table span.prov {
+    font-size: 21px;
+}

@@ -14,6 +14,7 @@ class Controller_Catalog extends Controller_Tmp
             $page->alias = $alias;
             $items['categories'] = $ModelCatalog->CategoryGetSub($check);
             $items['models'] = $ModelCatalog->ModelGetByCategory($check['id']);
+
             $page->items = $items;
             $categories = $ModelCatalog->CategoryFullNames(false);
             if ($check['id'] != 0) $page->name = $categories[$check['id']]['name'];

@@ -134,7 +134,8 @@ class Model_SkladProducts extends Model
             $ses = Session::instance();
             $user = $ses->get('user', false);
             if ($user['rights'] == 'sale')
-                $select->where('storages.id_citys', '=', $user['id_citys']);
+                $select->where('storages.id_citys', '=', $user['id_citys'])
+                ->where('products.deleted','=','0');
         }
 
         $select = $select
@@ -376,13 +377,13 @@ class Model_SkladProducts extends Model
     public function ProductsMoneyback($post)
     {
         if (!empty($post)) {
+            Model_SkladProducts::ProductsHistory('Moneyback товара', $post['product']);
             $data = array();
             $data['out'] = '0';
             $data['date_out'] = '0';
-            Model_SkladProducts::ProductsHistory('Moneyback товара', $post['id_products']);
             DB::update('products')
                 ->set($data)
-                ->or_where('id', '=', $post['id_products'])
+                ->where('id', '=', $post['product'])
                 ->execute();
             DB::update('orders_products')
                 ->set(array(

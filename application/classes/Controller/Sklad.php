@@ -63,6 +63,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 && $OrdersPOST['operation'] != 'close'
                 && $OrdersPOST['operation'] != 'buyit'
                 && $OrdersPOST['operation'] != 'release'
+                && $OrdersPOST['operation'] != 'moneyback_product'
             ) && ($OrderOpened)
         ) {
             $OrdersPOST['operation'] = 'edit';
@@ -154,7 +155,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 $this->redirect($this->request->referrer());
                 break;
             case
-            'moneyback':
+            'moneyback_product':
                 $ModelProducts = new Model_SkladProducts();
                 $ModelProducts->ProductsMoneyback($OrdersPOST);
                 $this->redirect($this->request->referrer());

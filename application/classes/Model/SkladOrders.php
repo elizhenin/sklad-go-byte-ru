@@ -272,6 +272,7 @@ class Model_SkladOrders extends Model
             ->on('citys.id', '=', 'storages.id_citys')
             ->where('products.sku', '=', $sku)
             ->where('products.out', '=', '0')
+            ->where('products.deleted','=','0')
             ->where('citys.alias', '=', $user['login'])
             ->limit(1)
             ->execute()
@@ -297,6 +298,8 @@ class Model_SkladOrders extends Model
             array('orders_products.id', 'id'),
             array('orders_products.id_products', 'id_products'),
             array('orders_products.price_out', 'price_out'),
+            array('orders_products.moneyback', 'moneyback'),
+            array('orders_products.returned', 'returned'),
             array('products.sku', 'sku'),
             array('models.name', 'name')
         )
@@ -312,6 +315,7 @@ class Model_SkladOrders extends Model
             $products['products'] = $products;
             $cash = 0;
             foreach ($products['products'] as $product) {
+                if(($product['moneyback']+$product['returned']) == '0')
                 $cash += $product['price_out'];
             }
             $products['cash'] = $cash;
@@ -358,7 +362,9 @@ class Model_SkladOrders extends Model
             ->join('products')
             ->on('products.id', '=', 'orders_products.id_products')
             ->where('orders.id_users', '=', $user['id'])
+            ->where('orders.deleted','=','0')
             ->where('orders.complete', '=', '1')
+            ->where('orders_products.moneyback','=','0')
             ->where('products.date_out', '>', DB::expr("MAKEDATE(YEAR(NOW()), DAYOFYEAR(NOW()))"))
             ->execute()
             ->as_array();

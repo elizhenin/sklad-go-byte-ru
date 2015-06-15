@@ -74,6 +74,7 @@ if (empty($id_orders)) {
                             <?php
                             if (!empty($products)) {
                                 foreach ($products['products'] as $product) {
+
                                     ?>
                                     <tr>
                                         <td style="width: 40px">
@@ -86,7 +87,7 @@ if (empty($id_orders)) {
                                                     <input type="hidden" name="product"
                                                            value="<?= $product['id_products'] ?>">
                                                     <input type="hidden" name="operation" value="moneyback_product"/>
-                                                    <input type="submit" value="Moneyback" title="Манибэк товара"/>
+                                                    <input type="submit" value="Moneyback" title="Манибэк товара" <?=(!empty($product['moneyback'])?'disabled="disabled"':'')?>/>
                                                 </form>
                                             <?php
                                             } else {

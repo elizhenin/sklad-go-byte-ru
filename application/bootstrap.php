@@ -157,6 +157,11 @@ Route::set('catalog', 'catalog(/<alias>)',array('alias'=>'[\w-/.]+'))
         'action' => 'index',
     ));
 
+Route::set('product', 'product/<alias>')
+    ->defaults(array(
+        'controller' => 'product',
+        'action' => 'index',
+    ));
 
 Route::set('ajax', 'ajax/<action>')
     ->defaults(array(

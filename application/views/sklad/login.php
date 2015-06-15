@@ -40,13 +40,17 @@
         <p class="error">Ошибка авторизации</p>
     <?php } ?>
     <form method="post">
-        <p>Логин</p>
+        <div class="log">
+        <span>Логин</span>
         <select name="id">
 
         </select>
-
-        <p>Пароль</p>
-        <input type="password" name="password" autofocus="autofocus"><br>
+        </div>
+        <div class="clr"></div>
+        <div class="pas">
+        <span>Пароль</span>
+        <input type="password" name="password" autofocus="autofocus">
+        </div>
         <input class="button" type="submit" value="Вход">
     </form>
 </div>

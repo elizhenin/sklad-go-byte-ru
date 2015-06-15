@@ -108,16 +108,16 @@ class Goodies
         }
     }
 
-    static function ShowCatalogMenu($items)
+    static function ShowCatalogMenu($items,$link,$root=false)
     {
-        $return = '<ul>';
+        $return = '';
             foreach($items as $item) {
-                $return.='<li>';
-                $return.=$item['menu'];
-                    if(!empty($item['sub'])) $return.= Goodies::ShowCatalogMenu($item['sub']);
+                $return.='<li><a href="'.$link.'/'.$item['alias'].'"';
+                if($root) $return.='class="root-item"';
+                $return.='>'.$item['menu'].'</a>';
+                    if(!empty($item['sub'])) $return.= '<ul>'.Goodies::ShowCatalogMenu($item['sub'],$link.'/'.$item['alias']).'</ul>';
                 $return.='</li>';
             }
-        $return.='</ul>';
         return $return;
     }
 }

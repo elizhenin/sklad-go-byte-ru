@@ -322,6 +322,7 @@ class Model_SkladModels extends Model
             ->execute();
         $cache = Cache::instance();
         $cache->delete('CategoriesFullName');
+        $cache->delete('CatalogMenu');
     }
 
     public function CategoryUpdate($item)
@@ -351,6 +352,7 @@ class Model_SkladModels extends Model
             ->execute();
         $cache = Cache::instance();
         $cache->delete('CategoriesFullName');
+        $cache->delete('CatalogMenu');
         if (!empty($models)) {
             foreach ($models as $model) {
                 $categories = $this->CategoryFullNames(false);

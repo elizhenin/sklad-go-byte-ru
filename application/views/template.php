@@ -132,43 +132,9 @@
                 <nav class="main-menu">
                     <ul id="horizontal-multilevel-menu">
                         <li><a href="/userpages/others.php" class="root-item">Наличие++</a></li>
-                        <li><a href="/catalog/laptops_tablets/" class="root-item">Ноутбуки</a></li>
-                        <li class="item-1"><a href="/catalog/tablets/" class="root-item">Планшеты </a>
-                            <ul>
-                                <li><a href="/catalog/books/">Книги</a></li>
-                                <li><a href="/catalog/tablet_pc/">Планшеты</a></li>
-                            </ul>
-                        </li>
-                        <li class="item-2"><a href="/catalog/smartphones_and_cellphones/" class="root-item">Телефоны</a>
-                            <ul>
-                                <li><a href="/catalog/smartphones/">Смартфоны</a></li>
-                                <li><a href="/catalog/mobile_phones/">Мобильные телефоны</a></li>
-                            </ul>
-                        </li>
-                        <li class="item-3"><a href="/catalog/photo/" class="root-item">Фототехника</a>
-                            <ul>
-                                <li><a href="/catalog/slr_cameras/">Зеркальные фотоаппараты</a></li>
-                                <li><a href="/catalog/compact_cameras/">Компактные фотоаппараты</a></li>
-                                <li><a href="/catalog/ultrazoom_cameras/">Ультразум фотоаппараты</a></li>
-                                <li><a href="/catalog/lenses/">Объективы</a></li>
-                            </ul>
-                        </li>
-                        <li class="item-4"><a href="/catalog/auto/" class="root-item">Авто</a>
-                            <ul>
-                                <li><a href="/catalog/dvrs/" class="root-item">Видеорегистраторы</a>
-                                    <ul>
-                                        <li><a href="/catalog/radar_detectors/">Радар-детекторы</a></li>
-                                        <li><a href="/catalog/navigators/">Навигаторы</a></li>
-                                        <li><a href="/catalog/radar_detectors/">Радар-детекторы</a></li>
-                                        <li><a href="/catalog/navigators/">Навигаторы</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="/catalog/radar_detectors/">Радар-детекторы</a></li>
-                                <li><a href="/catalog/navigators/">Навигаторы</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="/catalog/game_consoles/" class="root-item">Игровые приставки</a></li>
-                    </ul>
+                        <?=Goodies::ShowCatalogMenu($menu,'/catalog',true)?>
+                        </ul>
+                    <ul>
                     <div class="menu-clear-left"></div>
                 </nav>
             </div>

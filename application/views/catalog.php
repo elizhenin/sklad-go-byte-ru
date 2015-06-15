@@ -1,4 +1,3 @@
-<?=Goodies::ShowCatalogMenu($menu)?>
 
 <div class="main-content">
     <h1><?php

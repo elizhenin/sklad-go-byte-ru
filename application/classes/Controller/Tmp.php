@@ -43,6 +43,8 @@ class Controller_Tmp extends Controller_Template
             throw new HTTP_Exception_404;
         }
         $this->template->CitysList = Goodies::GetCitys();
+        $modelCatalog = New Model_Catalog();
+        $this->template->menu = $modelCatalog->CategoryGetMenu();
         parent::after();
     }
 }

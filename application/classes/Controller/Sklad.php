@@ -20,18 +20,20 @@ class Controller_Sklad extends Controller_SkladTmp
         $ses = Session::instance();
         $this->template = View::factory('sklad/login');
          $modelSklad = new Model_SkladLogin();
-        $this->template->items = $modelSklad->GetActive();
-        $this->template->last = Cookie::get('user', '0');
         if (HTTP_Request::POST == $this->request->method()) {
             $id = $this->request->post('id');
             $password = $this->request->post('password');
             if ($user = $modelSklad->checkUser($id, $password)) {
                 $ses->set('user', $user);
-                Cookie::set('user', $user['id']);
+                Cookie::set('user', $user['name']);
             } else {
                 $this->template->error = true;
             }
         }
+
+        $this->template->items = $modelSklad->GetActive();
+        $this->template->last = Cookie::get('user', '');
+
         $user = $ses->get('user', false);
         if ($user) {
             $modelSklad->UpdateLogin($user['id']);

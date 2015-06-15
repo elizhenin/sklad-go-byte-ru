@@ -13,8 +13,15 @@ class Model_SkladLogin extends Model
     {
         $id = htmlspecialchars(trim($id));
         $password = md5(trim($password));
+        $ses = Session::instance();
+        $login = $ses->get('login',false);
+        if(!empty($login[$id]))
+                    $user_id = $login[$id]['user_id'];
+        else $user_id = false;
+
         $select = DB::select(
             array('users.id', 'id'),
+            array('citys.name', 'name'),
             array('citys.alias','login'),
             array('citys.id','id_citys'),
             array('users.rights','rights')
@@ -22,7 +29,7 @@ class Model_SkladLogin extends Model
             ->from('users')
             ->join('citys')
             ->on('users.id_citys','=','citys.id')
-            ->where('users.id', '=', $id)
+            ->where('users.id', '=', $user_id)
             ->and_where('users.password', '=', $password)
             ->and_where('users.deleted','=','0')
             ->execute()
@@ -49,7 +56,18 @@ class Model_SkladLogin extends Model
             ->execute()
             ->as_array();
         if (!empty($select)) {
-            return $select;
+            $login = array();
+            foreach($select as $key=>$value)
+            {
+                $id = Text::random('alnum', 24);
+                $login[$id]['user_id'] = $value['id'];
+                $login[$id]['name'] = $value['name'];
+                $login[$id]['id'] = $id;
+            }
+            unset($select);
+            $ses = Session::instance();
+            $ses->set('login',$login);
+            return $login;
         } else {
             return false;
         }

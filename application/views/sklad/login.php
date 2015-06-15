@@ -5,7 +5,32 @@
     <meta name="viewport" content="width=1024">
     <link rel="icon" type="image/png" href="/favicon.png"/>
     <link type="text/css" rel="stylesheet" href="/style/sklad/style.css">
+    <script src="/js/sklad/jquery.js"></script>
+    <script type="application/javascript">
+        $(function () {
+            var last_login = "<?=$last?>";
+            var logins = [
+                <?php
+                if (!empty($items))
+                    foreach ($items as $one) {
+                        ?>
+                {id:"<?= $one['id'] ?>", name:"<?= $one['name'] ?>"},
+                <?php
+                }
+            ?>
+            ];
 
+            logins.forEach(function(value){
+                    tmp = '<option value="'+value.id+'"';
+                    if(value.name == last_login) {
+                        tmp = tmp +'selected="selected"';
+                    }
+                    tmp = tmp +'>'+value.name+'</option>';
+                    $("select").append($(tmp));
+                }
+            );
+        });
+    </script>
     <title>Авторизация</title>
 </head>
 <body class="login">
@@ -17,14 +42,7 @@
     <form method="post">
         <p>Логин</p>
         <select name="id">
-            <?php
-            if (!empty($items))
-                foreach ($items as $one) {
-                    ?>
-                    <option value="<?=$one['id']?>" <?=($last == $one['id'])?'selected="selected"':''?>><?=$one['name']?></option>
-                <?php
-                }
-            ?>
+
         </select>
 
         <p>Пароль</p>
@@ -32,5 +50,6 @@
         <input class="button" type="submit" value="Вход">
     </form>
 </div>
+
 </body>
 </html>

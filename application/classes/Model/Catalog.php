@@ -18,20 +18,21 @@ class Model_Catalog extends Model
     }
     public function CategoryGetMenu()
     {
-        $result = false;
         $cache = Cache::instance();
-//        if ($result = $cache->get('CatalogMenu', false)) {
-//            return $result;
-//        } else
+        if ($result = $cache->get('CatalogMenu', false)) {
+            return $result;
+        } else
         {
             $tmp = DB::select('id', 'menu', 'alias', 'id_parent')
                 ->from('categorys')
                 ->where('deleted', '=', '0')
                 ->execute()
                 ->as_array();
+            if(!empty($tmp)){
             $tmp = Goodies::array_orderby($tmp, 'menu', SORT_ASC);
             $result = $this->AddSubMenuRecursive(0,$tmp);
             $cache->set('CatalogMenu', $result, 1800);
+            }else $result = false;
             return $result;
         }
     }

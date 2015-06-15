@@ -2,37 +2,37 @@
 
 class Model_Catalog extends Model
 {
-    private function AddSubMenuRecursive($id_parent,$items)
+    private function AddSubMenuRecursive($id_parent, $items)
     {
         $tmp = array();
-        if(!empty($items)) {
+        if (!empty($items)) {
             foreach ($items as $key => $one) {
-                 if ($one['id_parent'] == $id_parent) {
-                     $tmp[$one['id']] = $one;
-                     unset($items[$key]);
-                     $tmp[$one['id']]['sub'] = $this->AddSubMenuRecursive($one['id'], $items);
-                 }
+                if ($one['id_parent'] == $id_parent) {
+                    $tmp[$one['id']] = $one;
+                    unset($items[$key]);
+                    $tmp[$one['id']]['sub'] = $this->AddSubMenuRecursive($one['id'], $items);
+                }
             }
             return $tmp;
-        }else return false;
+        } else return false;
     }
+
     public function CategoryGetMenu()
     {
         $cache = Cache::instance();
         if ($result = $cache->get('CatalogMenu', false)) {
             return $result;
-        } else
-        {
+        } else {
             $tmp = DB::select('id', 'menu', 'alias', 'id_parent')
                 ->from('categorys')
                 ->where('deleted', '=', '0')
                 ->execute()
                 ->as_array();
-            if(!empty($tmp)){
-            $tmp = Goodies::array_orderby($tmp, 'menu', SORT_ASC);
-            $result = $this->AddSubMenuRecursive(0,$tmp);
-            $cache->set('CatalogMenu', $result, 1800);
-            }else $result = false;
+            if (!empty($tmp)) {
+                $tmp = Goodies::array_orderby($tmp, 'menu', SORT_ASC);
+                $result = $this->AddSubMenuRecursive(0, $tmp);
+                $cache->set('CatalogMenu', $result, 1800);
+            } else $result = false;
             return $result;
         }
     }
@@ -86,13 +86,9 @@ class Model_Catalog extends Model
         } else {
             $select = DB::select(
                 array('models.id', 'id'),
-                array('models.sku', 'sku'),
                 array('models.name', 'name'),
-                array('models.id_categorys', 'id_categorys'),
                 array('models.price', 'price'),
-                array('models.in_price', 'in_price'),
-                array('models.modificated', 'modificated'),
-                array('models.deleted', 'deleted')
+                array('models.alias', 'alias')
             )
                 ->from('models')
                 ->join('models_categorys')
@@ -102,12 +98,42 @@ class Model_Catalog extends Model
                 ->where('models_categorys.id_categorys', '=', $category)
                 ->where('products.out', '=', '0')
                 ->where('products.deleted', '=', 0)
+                ->distinct('models.id')
                 ->order_by('models.modificated', 'DESC')
                 ->execute()
                 ->as_array();
         }
         if (!empty($select)) {
-            return $select;
+            $return = array();
+            foreach ($select as $key => $product) {
+                $id = $product['id'];
+                $return[$id]['product'] = $product;
+                $return[$id]['specifications'] =
+                    DB::select(
+                        array('specifications_models.id', 'id'),
+                        array('specifications_models.value', 'value'),
+                        array('specifications_models.manual', 'manual'),
+                        array('specifications.name', 'name')
+                    )
+                        ->from('specifications_models')
+                        ->join('specifications')
+                        ->on('specifications_models.id_specifications', '=', 'specifications.id')
+                        ->where('specifications_models.id_models', '=', $id)
+                        ->where('specifications_models.important', '=', '1')
+                        ->execute()
+                        ->as_array();
+                $image = DB::select('file', 'alt')
+                    ->from('images_models')
+                    ->where('id_models', '=', $id)
+                    ->where('important', '=', '1')
+                    ->limit(1)
+                ->execute()
+                ->as_array();
+                if(!empty($image[0]))
+                $return[$id]['image'] = $image[0];
+
+            }
+            return $return;
         } else {
             return false;
         }

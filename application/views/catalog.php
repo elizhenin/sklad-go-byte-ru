@@ -48,102 +48,54 @@
         if (!empty($items['models'])) {
             foreach ($items['models'] as $item) {
                 ?>
-                <tr>
-                    <td><?= $item['sku'] ?></td>
-                    <td><?= $item['name'] ?></td>
-                    <td><?= $item['price'] ?></td>
-                </tr>
-
                 <div class="catalog-item">
                     <div class="catalog-item-info">
                         <div class="catalog-item-image col span_2_of_12">
-                            <a href="/catalog/laptops_tablets/apple_macbook_air_13_early_2014_md761ru_b/">
+                            <a href="/product/<?=$item['product']['alias']?>">
                                 <img
-                                    src="/upload/resize_cache/iblock/b84/180_180_16a9cdfeb475445909b854c588a1af844/b84361dc174e9e8c74970f1a4dc1752b.png"
+                                    src="/images/sklad/<?=(!empty($item['image']))?$item['image']['file']:'no-image.png'?>"
                                     width="180" height="180"
-                                    alt="Apple MacBook Air 13 Early 2014 MD761RU/B"
-                                    title="Apple MacBook Air 13 Early 2014 MD761RU/B">
+                                    alt="<?=(!empty($item['image']))?$item['image']['alt']:$item['product']['alias']?>"
+                                    title="<?=(!empty($item['product']))?$item['product']['name']:''?>">
                             </a>
                         </div>
                         <div class="catalog-item-desc col span_7_of_12">
                             <div class="catalog-item-title"><a
-                                    href="/catalog/laptops_tablets/apple_macbook_air_13_early_2014_md761ru_b/">
-                                    <h2>Apple MacBook Air 13 Early 2014 MD761RU/B</h2>
+                                    href="/product/<?=$item['product']['alias']?>">
+                                    <h2><?=$item['product']['name']?></h2>
                                 </a></div>
                             <div class="catalog-item-preview-text">
                                 <table class="properties" width="100%" cellspacing="1" cellpadding="1" border="0"
                                        style="border-collapse: collapse;">
                                     <tbody>
-                                    <tr>
-                                        <td class="name-it">Процессор</td>
-                                        <td>Intel® Core™
-                                            i5
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="name-it">Частота
-                                            (МГц)
-                                        </td>
-                                        <td>1400</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="name-it">Количество
-                                            ядер
-                                        </td>
-                                        <td>2</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="name-it">Оперативная
-                                            память (Мб)
-                                        </td>
-                                        <td>4096</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="name-it">Диагональ
-                                            дисплея (дюйм)
-                                        </td>
-                                        <td>13.3</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="name-it">Разрешение
-                                            дисплея
-                                        </td>
-                                        <td>1440x900</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="name-it">Видеокарта</td>
-                                        <td>Intel® HD Graphics
-                                            5000
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="name-it">Количество
-                                            USB-портов
-                                        </td>
-                                        <td>2</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="name-it">ОС</td>
-                                        <td>Mac OS
-                                            X
-                                        </td>
-                                    </tr>
+                                    <?php
+                                    if(!empty($item['specifications']))
+                                        foreach($item['specifications'] as $specification)
+                                        {
+                                            ?>
+                                            <tr>
+                                                <td class="name-it"><?=$specification['name']?></td>
+                                                <td><?=$specification['value']?></td>
+                                            </tr>
+                                            <?php
+                                        }
+                                    ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="catalog-item-buy col span_3_of_12">
                             <div class="catalog-item-price clearfix">
-                                <div class="numbers"><span class="economy">65000 руб.</span> <span class="sale-price">49 900 руб</span>
+                                <div class="numbers"><span class="economy">[FIXME] руб.</span> <span class="sale-price"><?=$item['product']['price']?> руб</span>
                                 </div>
                                 <form class="form-add-to-cart"
-                                      action="/bitrix/urlrewrite.php?SEF_APPLICATION_CUR_PAGE_URL=%2Fcatalog%2Flaptops_tablets%2Findex.php%3Fsort%3Dname%26order%3Dasc"
+                                      action=""
                                       method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="quantity" value="1">
-                                    <input type="hidden" name="id" value="2519">
+                                    <input type="hidden" name="id" value="<?=$item['product']['id']?>">
                                     <input type="hidden" name="action" value="ADD2BASKET">
                                     <!-- <input type="submit" name="actionBUY" value="Купить"> -->
-                                    <input type="submit" name="actionADD2BASKET" value="В корзину">
+                                    <input type="submit" name="actionADD2BASKET" value="В корзину" disabled="disabled">
                                 </form>
                             </div>
                         </div>

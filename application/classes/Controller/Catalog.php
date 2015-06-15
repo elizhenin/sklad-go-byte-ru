@@ -18,7 +18,7 @@ class Controller_Catalog extends Controller_Tmp
             $page->items = $items;
             $categories = $ModelCatalog->CategoryFullNames(false);
             if ($check['id'] != 0) $page->name = $categories[$check['id']]['name'];
-
+            $page->menu = $ModelCatalog->CategoryGetMenu();
             $this->page = $page;
         };
     }

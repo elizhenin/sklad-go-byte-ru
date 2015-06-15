@@ -2,6 +2,40 @@
 
 class Model_Catalog extends Model
 {
+    private function AddSubMenuRecursive($id_parent,$items)
+    {
+        $tmp = array();
+        if(!empty($items)) {
+            foreach ($items as $key => $one) {
+                 if ($one['id_parent'] == $id_parent) {
+                     $tmp[$one['id']] = $one;
+                     unset($items[$key]);
+                     $tmp[$one['id']]['sub'] = $this->AddSubMenuRecursive($one['id'], $items);
+                 }
+            }
+            return $tmp;
+        }else return false;
+    }
+    public function CategoryGetMenu()
+    {
+        $result = false;
+        $cache = Cache::instance();
+//        if ($result = $cache->get('CatalogMenu', false)) {
+//            return $result;
+//        } else
+        {
+            $tmp = DB::select('id', 'menu', 'alias', 'id_parent')
+                ->from('categorys')
+                ->where('deleted', '=', '0')
+                ->execute()
+                ->as_array();
+            $tmp = Goodies::array_orderby($tmp, 'menu', SORT_ASC);
+            $result = $this->AddSubMenuRecursive(0,$tmp);
+            $cache->set('CatalogMenu', $result, 1800);
+            return $result;
+        }
+    }
+
     public function CategoryCheckPath($alias)
     {
         $check = true;
@@ -62,7 +96,11 @@ class Model_Catalog extends Model
                 ->from('models')
                 ->join('models_categorys')
                 ->on('models.id', '=', 'models_categorys.id_models')
+                ->join('products')
+                ->on('products.id_models', '=', 'models.id')
                 ->where('models_categorys.id_categorys', '=', $category)
+                ->where('products.out', '=', '0')
+                ->where('products.deleted', '=', 0)
                 ->order_by('models.modificated', 'DESC')
                 ->execute()
                 ->as_array();

@@ -108,4 +108,16 @@ class Goodies
         }
     }
 
+    static function ShowCatalogMenu($items)
+    {
+        $return = '<ul>';
+            foreach($items as $item) {
+                $return.='<li>';
+                $return.=$item['menu'];
+                    if(!empty($item['sub'])) $return.= Goodies::ShowCatalogMenu($item['sub']);
+                $return.='</li>';
+            }
+        $return.='</ul>';
+        return $return;
+    }
 }

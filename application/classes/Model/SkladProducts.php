@@ -13,13 +13,13 @@ class Model_SkladProducts extends Model
     {
         $model = htmlspecialchars(trim($post['models']));
         unset($post['models']);
-        if(!empty($model))
-        $db = DB::select('id', 'name')
-            ->from('models')
-            ->where('name', '=', $model)
-            ->limit(1)
-            ->execute()
-            ->as_array();
+        if (!empty($model))
+            $db = DB::select('id', 'name')
+                ->from('models')
+                ->where('name', '=', $model)
+                ->limit(1)
+                ->execute()
+                ->as_array();
         if (!empty($db[0])) {
             $post['id_models'] = $db[0]['id'];
             $post['sku'] = trim(htmlspecialchars($post['sku']));
@@ -33,7 +33,7 @@ class Model_SkladProducts extends Model
             $id = DB::insert('products', array_keys($post))
                 ->values($post)
                 ->execute();
-            Model_SkladProducts::ProductsHistory('Создан',$id[0]);
+            Model_SkladProducts::ProductsHistory('Создан', $id[0]);
         }
     }
 
@@ -44,13 +44,13 @@ class Model_SkladProducts extends Model
         if ($product) {
             $model = htmlspecialchars(trim($post['models']));
             unset($post['models']);
-            if(!empty($model))
-            $db = DB::select('id', 'name')
-                ->from('models')
-                ->where('name', '=', $model)
-                ->limit(1)
-                ->execute()
-                ->as_array();
+            if (!empty($model))
+                $db = DB::select('id', 'name')
+                    ->from('models')
+                    ->where('name', '=', $model)
+                    ->limit(1)
+                    ->execute()
+                    ->as_array();
             if (!empty($db[0])) {
                 $post['id_models'] = $db[0]['id'];
             }
@@ -71,7 +71,7 @@ class Model_SkladProducts extends Model
 
             if ($product['out'] && $user['rights'] != 'super') {
             } else {
-                Model_SkladProducts::ProductsHistory('Изменен',$product['id']);
+                Model_SkladProducts::ProductsHistory('Изменен', $product['id']);
                 DB::update('products')
                     ->set($post)
                     ->where('id', '=', $product['id'])
@@ -238,10 +238,10 @@ class Model_SkladProducts extends Model
     {
         switch ($deleted) {
             case '1':
-                Model_SkladProducts::ProductsHistory('Удален',$id);
+                Model_SkladProducts::ProductsHistory('Удален', $id);
                 break;
             case '0':
-                Model_SkladProducts::ProductsHistory('Восстановлен',$id);
+                Model_SkladProducts::ProductsHistory('Восстановлен', $id);
                 break;
         }
 
@@ -311,7 +311,7 @@ class Model_SkladProducts extends Model
                 ->set(array('id_storage' => $post['destination']))
                 ->and_where_open();
             foreach ($post['items'] as $id) {
-                Model_SkladProducts::ProductsHistory('Перемещен на другой склад',$id);
+                Model_SkladProducts::ProductsHistory('Перемещен на другой склад', $id);
                 $move->or_where('id', '=', $id);
             }
             $move->and_where_close()->execute();
@@ -326,62 +326,93 @@ class Model_SkladProducts extends Model
             array('products.id', 'id'),
             array('products.sku', 'sku'),
             array('models.name', 'name'),
-            array('orders_products.price_out','money')
+            array('orders_products.price_out', 'money')
         )
             ->from('products')
             ->join('models')
             ->on('models.id', '=', 'products.id_models')
             ->join('orders_products')
-            ->on('orders_products.id_products','=','products.id')
+            ->on('orders_products.id_products', '=', 'products.id')
+            ->join('orders')
+            ->on('orders.id', '=', 'orders_products.id_orders')
+            ->where('orders.complete', '=', '1')
             ->where('products.sku', '=', $sku)
             ->where('products.out', '=', '1')
             ->limit(1)
             ->execute()
             ->as_array();
-
         if ($product[0]) {
-        return $product[0];
+            return $product[0];
         } else return false;
     }
 
     public function ProductsReturn($post)
     {
         if (!empty($post['items'])) {
-            $move = DB::update('products')
+            $products = DB::update('products')
                 ->set(array(
                     'id_storage' => $post['destination'],
                     'out' => '0',
-                    'date_out' => '0',
-                    'returned' =>'1',
+                    'date_out' => '0'
                 ))
                 ->and_where_open();
             foreach ($post['items'] as $id) {
-                Model_SkladProducts::ProductsHistory('Возврат товара',$id);
-                $move->or_where('id', '=', $id);
+                Model_SkladProducts::ProductsHistory('Возврат товара', $id);
+                $products->or_where('id', '=', $id);
+
+                DB::update('orders_products')
+                    ->set(array(
+                        'returned' => '1'
+                    ))
+                    ->where('id_products', '=', $id)
+                    ->order_by('id', 'DESC')
+                    ->limit(1)
+                    ->execute();
             }
-            $move->and_where_close()->execute();
+            $products->and_where_close()->execute();
         }
     }
 
-    static function ProductsHistory($message,$id_products)
+    public function ProductsMoneyback($post)
+    {
+        if (!empty($post)) {
+            $data = array();
+            $data['out'] = '0';
+            $data['date_out'] = '0';
+            Model_SkladProducts::ProductsHistory('Moneyback товара', $post['id_products']);
+            DB::update('products')
+                ->set($data)
+                ->or_where('id', '=', $post['id_products'])
+                ->execute();
+            DB::update('orders_products')
+                ->set(array(
+                    'moneyback' => '1'
+                ))
+                ->where('id', '=', $post['id'])
+                ->limit(1)
+                ->execute();
+        }
+    }
+
+    static function ProductsHistory($message, $id_products)
     {
         $db = DB::select()
             ->from('products')
-            ->where('id','=',$id_products)
+            ->where('id', '=', $id_products)
             ->limit(1)
             ->execute()
             ->as_array();
-        if(!empty($db[0])) {
+        if (!empty($db[0])) {
             $product = $db[0];
             $old_values['products'] = $product;
 
             $db = DB::select()
                 ->from('orders_products')
-                ->where('id_products','=',$product['id'])
+                ->where('id_products', '=', $product['id'])
                 ->limit(1)
                 ->execute()
                 ->as_array();
-            if(!empty($db[0])){
+            if (!empty($db[0])) {
                 $old_values['orders_products'] = $db[0];
             }
             $data = array();
@@ -391,7 +422,7 @@ class Model_SkladProducts extends Model
             $data['old_values'] = json_encode($old_values);
             $data['date'] = DB::expr('NOW()');
             $ses = Session::instance();
-            $user = $ses->get('user',false);
+            $user = $ses->get('user', false);
             $data['id_users'] = $user['id'];
             DB::insert('products_history', array_keys($data))
                 ->values($data)

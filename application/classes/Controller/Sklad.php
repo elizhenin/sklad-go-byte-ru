@@ -102,6 +102,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 $content->sessions = $ModelOrders->SessionsGetAll();
                 $content->products = $ModelOrders->OrdersProductsGetAll($OrdersPOST['orders_id']);
                 $content->operation = 'update';
+                $content->rights = $this->user['rights'];
                 $ses->set('OrderOpened', $OrdersPOST['orders_id']);
                 break;
             case 'add':
@@ -150,6 +151,12 @@ class Controller_Sklad extends Controller_SkladTmp
                 break;
             case 'remove_product':
                 $ModelOrders->OrdersProductsRemove($OrdersPOST);
+                $this->redirect($this->request->referrer());
+                break;
+            case
+            'moneyback':
+                $ModelProducts = new Model_SkladProducts();
+                $ModelProducts->ProductsMoneyback($OrdersPOST);
                 $this->redirect($this->request->referrer());
                 break;
         }
@@ -246,7 +253,6 @@ class Controller_Sklad extends Controller_SkladTmp
                 );
                 break;
         }
-        echo $ProductsPOST['operation'];
         $this->content = $content;
     }
 

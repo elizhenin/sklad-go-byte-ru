@@ -14,15 +14,15 @@
             ?>
             <tr>
                 <td>
+                    <form name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"><input
+                            type="hidden" name="orders_id"
+                            value="<?= $item['id'] ?>"/><input
+                            type="hidden" name="operation" value="edit"/><input type="submit" value="&#x270E;"
+                                                                                title="Редактировать"/>
+                    </form>
                     <?php
             if (($item['complete']) && ($rights !='super')) {echo 'проведен';}else{
                         ?>
-                        <form name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"><input
-                                type="hidden" name="orders_id"
-                                value="<?= $item['id'] ?>"/><input
-                                type="hidden" name="operation" value="edit"/><input type="submit" value="&#x270E;"
-                                                                                    title="Редактировать"/>
-                        </form>
                         <?php
                         if ($item['complete']) {
                             ?>

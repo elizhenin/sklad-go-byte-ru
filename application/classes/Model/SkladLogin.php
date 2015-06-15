@@ -56,6 +56,7 @@ class Model_SkladLogin extends Model
             ->execute()
             ->as_array();
         if (!empty($select)) {
+            $ses = Session::instance();
             $login = array();
             foreach($select as $key=>$value)
             {
@@ -65,7 +66,6 @@ class Model_SkladLogin extends Model
                 $login[$id]['id'] = $id;
             }
             unset($select);
-            $ses = Session::instance();
             $ses->set('login',$login);
             return $login;
         } else {

@@ -21,6 +21,13 @@ class Controller_Tmp extends Controller_Template
             }else{
                 $ses->set('city', 'Воронеж');
                 $getCity['name'] = 'Воронеж';
+                $getCity['id'] = DB::select()
+                ->from('citys')
+                ->where('name','=','Воронеж')
+                ->limit(1)
+                ->execute()
+                ->as_array();
+                $getCity['id'] = $getCity['id'][0]['id'];
             }
         }
         $this->city = $getCity;

@@ -4,7 +4,6 @@
     <td></td>
     <td>Из</td>
     <td>В</td>
-    <td>Кому</td>
      </thead>
     <tbody>
     <?php
@@ -43,7 +42,6 @@
                 </td>
                 <td><?= $item['from'] ?></td>
                 <td><?= $item['to'] ?></td>
-                <td><?= $item['city'] ?></td>
             </tr>
         <?php
         }

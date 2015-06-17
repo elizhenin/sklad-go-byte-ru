@@ -379,13 +379,11 @@ class Controller_Sklad extends Controller_SkladTmp
             case 'edit':
                 $content = View::factory('sklad/storages/edit_storage_rule');
                 $content->item = $ModelStorages->StoragesRulesGetById($StoragesPOST['storages_rules_id']);
-                $content->citys = $ModelStorages->StoragesGetCitys();
                 $content->storages = $ModelStorages->StoragesGetVisible();
                 $content->operation = 'update';
                 break;
             case 'add':
                 $content = View::factory('sklad/storages/edit_storage_rule');
-                $content->citys = $ModelStorages->StoragesGetCitys();
                 $content->storages = $ModelStorages->StoragesGetVisible();
                 $content->operation = 'new';
                 break;

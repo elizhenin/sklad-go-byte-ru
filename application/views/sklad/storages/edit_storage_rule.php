@@ -38,24 +38,6 @@
                 </select>
             </td>
         </tr>
-        <tr>
-            <td style="text-align: right">
-                Кому:
-            </td>
-            <td style="text-align: left">
-                <select name="id_citys">
-                    <?php
-                    if(!empty($citys)){
-                        foreach($citys as $city){
-                            ?>
-                            <option value="<?=$city['id']?>" <?=(!empty($item['id_citys'])&&$item['id_citys']==$city['id'])?'selected="selected"':''?>><?=$city['name']?></option>
-                        <?php
-                        }
-                    }
-                    ?>
-                </select>
-            </td>
-        </tr>
         </tbody>
     </table>
     <input type="hidden" name="operation" value="<?=$operation?>">

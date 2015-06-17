@@ -163,8 +163,8 @@ class Model_SkladStorages extends Model
 
     public function StoragesRulesNew($post)
     {
-        DB::insert('storages_settings', array('from', 'to', 'id_citys'))
-            ->values(array($post['from'], $post['to'], $post['id_citys']))
+        DB::insert('storages_settings', array('from', 'to'))
+            ->values(array($post['from'], $post['to']))
             ->execute();
     }
 
@@ -200,12 +200,9 @@ class Model_SkladStorages extends Model
             array('storages_settings.id', 'id'),
             array('from.name', 'from'),
             array('to.name', 'to'),
-            array('storages_settings.deleted', 'deleted'),
-            array('citys.name', 'city')
+            array('storages_settings.deleted', 'deleted')
         )
             ->from('storages_settings')
-            ->join('citys')
-            ->on('citys.id', '=', 'storages_settings.id_citys')
             ->join(array('storages', 'from'))
             ->on('from.id', '=', 'storages_settings.from')
             ->join(array('storages', 'to'))
@@ -225,12 +222,9 @@ class Model_SkladStorages extends Model
             array('storages_settings.id', 'id'),
             array('from.name', 'from'),
             array('to.name', 'to'),
-            array('storages_settings.deleted', 'deleted'),
-            array('citys.name', 'city')
+            array('storages_settings.deleted', 'deleted')
         )
             ->from('storages_settings')
-            ->join('citys')
-            ->on('citys.id', '=', 'storages_settings.id_citys')
             ->join(array('storages', 'from'))
             ->on('from.id', '=', 'storages_settings.from')
             ->join(array('storages', 'to'))

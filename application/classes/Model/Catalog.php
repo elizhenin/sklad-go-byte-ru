@@ -117,10 +117,11 @@ class Model_Catalog extends Model
             ->where('storages_settings.deleted', '=', '0')
             ->execute()
             ->as_array();
-        $other_citys = array();
+        $citys = array();
+        $citys[] = $this->city['id'];
         if (!empty($storages_settings)) {
             foreach ($storages_settings as $setting)
-                $other_citys[] = $setting['from_id'];
+                $citys[] = $setting['from_id'];
             unset($storages_settings);
         }
 
@@ -147,14 +148,7 @@ class Model_Catalog extends Model
             ->on('products.id_models', '=', 'models.id')
             ->join('storages')
             ->on('products.id_storage', '=', 'storages.id')
-
-            ->and_where_open()
-            ->or_where('storages.id_citys', '=', $this->city['id']);
-
-        if (!empty($other_citys))
-            $select->or_where('storages.id_citys', 'IN', $other_citys);
-
-        $select->and_where_close();
+            ->where('storages.id_citys', 'IN', $citys);
 
         if (!empty($category))
             $select->where('models_categorys.id_categorys', '=', $category);
@@ -164,15 +158,19 @@ class Model_Catalog extends Model
             ->where('products.deleted', '=', 0)
             ->where('models.deleted', '=', 0)
             ->where('storages.deleted', '=', 0)
-            ->distinct('models.id')
-            ->order_by('models.modificated', 'DESC')
+            ->distinct(true)
+            ->order_by('models.modificated', 'ASC')
             ->execute()
             ->as_array();
         if (!empty($select)) {
             $return = array();
             foreach ($select as $key => $product) {
                 $id = $product['id'];
-                $return[$id]['product'] = $product;
+                if (empty($return[$id]['product'])) {
+                    $return[$id]['product'] = $product;
+                } else {
+                    if ($product['id_citys'] == $this->city['id']) $return[$id]['product'] = $product;
+                }
                 $return[$id]['specifications'] =
                     DB::select(
                         array('specifications_models.id', 'id'),

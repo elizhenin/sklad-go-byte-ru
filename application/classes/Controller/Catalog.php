@@ -6,7 +6,7 @@ class Controller_Catalog extends Controller_Tmp
     public
     function action_index()
     {
-        $ModelCatalog = New Model_Catalog();
+        $ModelCatalog = New Model_Catalog($this->city);
         $alias = $this->request->param('alias');
         $id = $this->request->param('id');
         $product = $this->request->param('product');
@@ -16,7 +16,7 @@ class Controller_Catalog extends Controller_Tmp
                 if ($check) {
                     $page = View::factory('catalog');
                     $items['models'] = $ModelCatalog->ModelGetByCategory($check['id']);
-
+                    $page->current_city_id = $this->city['id'];
                     $page->items = $items;
                     $categories = $ModelCatalog->CategoryFullNames(false);
                     if ($check['id'] != 0) {

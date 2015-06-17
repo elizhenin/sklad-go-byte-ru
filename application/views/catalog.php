@@ -82,6 +82,7 @@
                                     <!-- <input type="submit" name="actionBUY" value="Купить"> -->
                                     <input type="submit" name="actionADD2BASKET" value="В корзину" disabled="disabled">
                                 </form>
+                                <div><?=($item['product']['id_citys']==$current_city_id)?'[В НАЛИЧИИ]':'[ПОД ЗАКАЗ]'?></div>
                             </div>
                         </div>
                     </div>

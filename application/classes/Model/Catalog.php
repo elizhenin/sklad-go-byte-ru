@@ -29,7 +29,6 @@ class Model_Catalog extends Model
                 ->execute()
                 ->as_array();
             if (!empty($tmp)) {
-                $tmp = Goodies::array_orderby($tmp, 'menu', SORT_ASC);
                 $result = $this->AddSubMenuRecursive(0, $tmp);
                 $cache->set('CatalogMenu', $result, 1800);
             } else $result = false;
@@ -37,35 +36,53 @@ class Model_Catalog extends Model
         }
     }
 
-    public function CategoryCheckPath($alias)
+//    public function CategoryCheckPath($alias)
+//    {
+//        $check = true;
+//        $path = explode('/', $alias);
+//        $parent = 0;
+//        if (!empty($alias)) {
+//            foreach ($path as $try) {
+//                $item = DB::select()
+//                    ->from('categorys')
+//                    ->where('alias', '=', $try)
+//                    ->where('id_parent', '=', $parent)
+//                    ->execute()
+//                    ->as_array();
+//                if (empty($item[0])) {
+//                    $check = false;
+//                } else {
+//                    $parent = $item[0]['id'];
+//                }
+//
+//                if (!$check) break;
+//            }
+//        } else {
+//            $item[0]['id'] = '0';
+//        }
+//        if ($check) {
+//            return $item[0];
+//        } else
+//            return false;
+//
+//    }
+
+    public function CategoryCheckPathID($id, $alias)
     {
-        $check = true;
-        $path = explode('/', $alias);
-        $parent = 0;
-        if (!empty($alias)) {
-            foreach ($path as $try) {
-                $item = DB::select()
-                    ->from('categorys')
-                    ->where('alias', '=', $try)
-                    ->where('id_parent', '=', $parent)
-                    ->execute()
-                    ->as_array();
-                if (empty($item[0])) {
-                    $check = false;
-                } else {
-                    $parent = $item[0]['id'];
-                }
-
-                if (!$check) break;
-            }
-        } else {
-            $item[0]['id'] = '0';
+        $check = false;
+        if (!empty($alias) && (!empty($id))) {
+            $item = DB::select()
+                ->from('categorys')
+                ->where('alias', '=', $alias)
+                ->where('id', '=', $id)
+                ->where('deleted', '=', '0')
+                ->execute()
+                ->as_array();
+            if(!empty($item[0])) $check = $item[0];
+        }else{
+            $check['id'] = '0';
         }
-        if ($check) {
-            return $item[0];
-        } else
-            return false;
-
+        return $check;
     }
 
     public function CategoryGetSub($item)
@@ -88,9 +105,15 @@ class Model_Catalog extends Model
                 array('models.id', 'id'),
                 array('models.name', 'name'),
                 array('models.price', 'price'),
-                array('models.alias', 'alias')
+                array('models.other_price', 'other_price'),
+                array('models.alias', 'alias'),
+                array('categorys.alias', 'categorys_alias'),
+                array('categorys.id', 'categorys_id')
+
             )
                 ->from('models')
+                ->join('categorys')
+                ->on('models.id_categorys','=','categorys.id')
                 ->join('models_categorys')
                 ->on('models.id', '=', 'models_categorys.id_models')
                 ->join('products')
@@ -98,6 +121,7 @@ class Model_Catalog extends Model
                 ->where('models_categorys.id_categorys', '=', $category)
                 ->where('products.out', '=', '0')
                 ->where('products.deleted', '=', 0)
+                ->where('models.deleted', '=', 0)
                 ->distinct('models.id')
                 ->order_by('models.modificated', 'DESC')
                 ->execute()
@@ -127,10 +151,10 @@ class Model_Catalog extends Model
                     ->where('id_models', '=', $id)
                     ->where('important', '=', '1')
                     ->limit(1)
-                ->execute()
-                ->as_array();
-                if(!empty($image[0]))
-                $return[$id]['image'] = $image[0];
+                    ->execute()
+                    ->as_array();
+                if (!empty($image[0]))
+                    $return[$id]['image'] = $image[0];
 
             }
             return $return;
@@ -141,9 +165,26 @@ class Model_Catalog extends Model
 
     public function ModelGetAll()
     {
-        $select = DB::select()
+        $select = DB::select(
+            array('models.id', 'id'),
+            array('models.name', 'name'),
+            array('models.price', 'price'),
+            array('models.other_price', 'other_price'),
+            array('models.alias', 'alias'),
+            array('categorys.alias', 'categorys_alias'),
+            array('categorys.id', 'categorys_id')
+
+        )
             ->from('models')
-            ->order_by('modificated', 'DESC')
+            ->join('categorys')
+            ->on('models.id_categorys','=','categorys.id')
+            ->join('products')
+            ->on('products.id_models', '=', 'models.id')
+            ->where('products.out', '=', '0')
+            ->where('products.deleted', '=', '0')
+            ->where('models.deleted', '=', '0')
+            ->distinct('models.id')
+            ->order_by('models.modificated', 'DESC')
             ->execute()
             ->as_array();
         if (!empty($select)) {
@@ -203,5 +244,83 @@ class Model_Catalog extends Model
             }
             return $categories;
         }
+    }
+
+    public function ProductCategoryCheckPath($id, $alias,$product)
+    {
+        $return = false;
+        if (!empty($alias) && (!empty($id)) && (!empty($product))) {
+            $select = DB::select(
+                array('models.id', 'id'),
+                array('models.name', 'name'),
+                array('models.title', 'title'),
+                array('models.keywords', 'keywords'),
+                array('models.description', 'description'),
+                array('models.price', 'price'),
+                array('models.other_price', 'other_price'),
+                array('models.alias', 'alias'),
+                array('models.text', 'text'),
+                array('models.short_text', 'short_text'),
+                array('models.complectation', 'complectation'),
+                array('categorys.alias', 'categorys_alias'),
+                array('categorys.id', 'categorys_id')
+
+            )
+                ->from('models')
+                ->join('categorys')
+                ->on('models.id_categorys','=','categorys.id')
+                ->join('products')
+                ->on('products.id_models', '=', 'models.id')
+                ->where('models.alias', '=', $product)
+                ->where('categorys.alias','=',$alias)
+                ->where('categorys.id','=',$id)
+                ->where('products.out', '=', '0')
+                ->where('products.deleted', '=', 0)
+                ->where('models.deleted', '=', 0)
+                ->distinct('models.id')
+                ->order_by('models.modificated', 'DESC')
+                ->execute()
+                ->as_array();
+            if(!empty($select[0])){
+                $return['product'] = $select[0];
+                $id = $select[0]['id'];
+                $return['specifications'] =  DB::select(
+                    array('specifications_models.id', 'id'),
+                    array('specifications_models.value', 'value'),
+                    array('specifications_models.manual', 'manual'),
+                    array('specifications.id_specifications_groups','group_id'),
+                    array('specifications.name', 'name')
+                )
+                    ->from('specifications_models')
+                    ->join('specifications')
+                    ->on('specifications_models.id_specifications', '=', 'specifications.id')
+                    ->where('specifications_models.id_models', '=', $id)
+                    ->execute()
+                    ->as_array();
+                $return['images'] = DB::select('file', 'alt','important')
+                    ->from('images_models')
+                    ->where('id_models', '=', $id)
+                    ->where('active', '=', '1')
+                    ->execute()
+                    ->as_array();
+            }
+        }
+        return $return;
+    }
+    public function SpecificationsGroupsGetVisible()
+    {
+
+        $tmp = DB::select('id','name')
+            ->from('specifications_groups')
+            ->where('deleted', '=', '0')
+            ->order_by('order')
+            ->execute()
+            ->as_array();
+        $records = array();
+        if (!empty($tmp))
+            foreach ($tmp as $one)
+                $records[$one['id']] = $one;
+        $records[] = array('id'=>0,'name'=>'Прочее');
+        return $records;
     }
 }

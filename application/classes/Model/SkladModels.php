@@ -149,6 +149,7 @@ class Model_SkladModels extends Model
                 array('models.id_categorys', 'id_categorys'),
                 array('models.price', 'price'),
                 array('models.in_price', 'in_price'),
+                array('models.other_price', 'other_price'),
                 array('models.modificated', 'modificated'),
                 array('models.deleted', 'deleted')
             )

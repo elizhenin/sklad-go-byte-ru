@@ -93,6 +93,17 @@
             </tr>
             <tr>
                 <td style="text-align: right">
+                    Цена нового:
+                </td>
+                <td style="text-align: left">
+                    <input type="text" name="other_price"
+                           value="<?= (!empty($item['other_price'])) ? $item['other_price'] : '' ?>"
+                        <?= ($rights == 'super') ? '' : 'disabled="disabled"' ?>
+                        />
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right">
                     Комплектация:
                 </td>
                 <td style="text-align: left">

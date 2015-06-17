@@ -151,17 +151,23 @@ Route::set('welcome', '()')
         'action' => 'index',
     ));
 
-Route::set('catalog', 'catalog(/<alias>)',array('alias'=>'[\w-/.]+'))
+Route::set('catalog', 'catalog(/<id>_<alias>(/<product>))', array('id' => '[0-9]+', 'alias'=>'[0-9a-zA-Z-]+', 'product'=>'[0-9a-zA-Z-]+'))
     ->defaults(array(
-        'controller' => 'Catalog',
+        'controller' => 'catalog',
         'action' => 'index',
     ));
 
-Route::set('product', 'product/<alias>')
-    ->defaults(array(
-        'controller' => 'product',
-        'action' => 'index',
-    ));
+//Route::set('catalog', 'catalog(/<alias>)',array('alias'=>'[\w-/.]+'))
+//    ->defaults(array(
+//        'controller' => 'Catalog',
+//        'action' => 'index',
+//    ));
+
+//Route::set('product', 'product/<alias>')
+//    ->defaults(array(
+//        'controller' => 'product',
+//        'action' => 'index',
+//    ));
 
 Route::set('ajax', 'ajax/<action>')
     ->defaults(array(

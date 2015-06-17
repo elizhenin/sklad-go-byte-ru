@@ -3,23 +3,8 @@
     <h1><?php
         if (!empty($alias)) {
             ?>
-            <form name="form_back" method="GET" style="float:left"
-                  action="/catalog/<?= substr($alias, 0, strrpos($alias, '/')) ?>">
-                <input type="submit" value="<- Назад"/>
-            </form>
+
         <?php } ?> / <?= (empty($name)) ? '' : $name ?></h1>
-
-
-    <ul style="display: inline-block">
-        <?php
-        if (!empty($items['categories']))
-            foreach ($items['categories'] as $item) {
-                ?>
-                <li style="display: inline-block">
-                    <a href="/catalog/<?= $alias ?><?= (empty($alias)) ? '' : '/' ?><?= $item['alias'] ?>"><?= $item['menu'] ?></a>
-                </li>
-            <?php } ?>
-    </ul>
 
 
     <div class="breadcrumb">
@@ -51,7 +36,7 @@
                 <div class="catalog-item">
                     <div class="catalog-item-info">
                         <div class="catalog-item-image col span_2_of_12">
-                            <a href="/product/<?=$item['product']['alias']?>">
+                            <a href="/catalog/<?=$item['product']['categorys_id']?>_<?=$item['product']['categorys_alias']?>/<?=$item['product']['alias']?>">
                                 <img
                                     src="/images/sklad/<?=(!empty($item['image']))?$item['image']['file']:'no-image.png'?>"
                                     width="180" height="180"
@@ -61,7 +46,7 @@
                         </div>
                         <div class="catalog-item-desc col span_7_of_12">
                             <div class="catalog-item-title"><a
-                                    href="/product/<?=$item['product']['alias']?>">
+                                    href="/catalog/<?=$item['product']['categorys_id']?>_<?=$item['product']['categorys_alias']?>/<?=$item['product']['alias']?>">
                                     <h2><?=$item['product']['name']?></h2>
                                 </a></div>
                             <div class="catalog-item-preview-text">
@@ -86,7 +71,7 @@
                         </div>
                         <div class="catalog-item-buy col span_3_of_12">
                             <div class="catalog-item-price clearfix">
-                                <div class="numbers"><span class="economy">[FIXME] руб.</span> <span class="sale-price"><?=$item['product']['price']?> руб</span>
+                                <div class="numbers"><span class="economy"><?=$item['product']['other_price']?> руб.</span> <span class="sale-price"><?=$item['product']['price']?> руб</span>
                                 </div>
                                 <form class="form-add-to-cart"
                                       action=""

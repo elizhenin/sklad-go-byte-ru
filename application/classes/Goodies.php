@@ -111,11 +111,12 @@ class Goodies
     static function ShowCatalogMenu($items,$link,$root=false)
     {
         $return = '';
+        $items = Goodies::array_orderby($items, 'menu', SORT_ASC);
             foreach($items as $item) {
-                $return.='<li><a href="'.$link.'/'.$item['alias'].'"';
+                $return.='<li><a href="'.$link.'/'.$item['id'].'_'.$item['alias'].'"';
                 if($root) $return.='class="root-item"';
                 $return.='>'.$item['menu'].'</a>';
-                    if(!empty($item['sub'])) $return.= '<ul>'.Goodies::ShowCatalogMenu($item['sub'],$link.'/'.$item['alias']).'</ul>';
+                    if(!empty($item['sub'])) $return.= '<ul>'.Goodies::ShowCatalogMenu($item['sub'],$link).'</ul>';
                 $return.='</li>';
             }
         return $return;

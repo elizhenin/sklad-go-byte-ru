@@ -16,17 +16,17 @@ class Controller_Tmp extends Controller_Template
             $sxGeo = new SxGeo(DOCROOT . 'SxGeoCity.dat', SXGEO_BATCH | SXGEO_MEMORY);
             $city = $sxGeo->getCity(Request::$client_ip);
             $getCity = Goodies::checkCity($city['city']['name_ru']);
-            if(!empty($getCity)){
+            if (!empty($getCity)) {
                 $ses->set('city', $city['city']['name_ru']);
-            }else{
+            } else {
                 $ses->set('city', 'Воронеж');
                 $getCity['name'] = 'Воронеж';
                 $getCity['id'] = DB::select()
-                ->from('citys')
-                ->where('name','=','Воронеж')
-                ->limit(1)
-                ->execute()
-                ->as_array();
+                    ->from('citys')
+                    ->where('name', '=', 'Воронеж')
+                    ->limit(1)
+                    ->execute()
+                    ->as_array();
                 $getCity['id'] = $getCity['id'][0]['id'];
             }
         }
@@ -46,12 +46,20 @@ class Controller_Tmp extends Controller_Template
 
     public function after()
     {
-        if(empty($this->page)){
+        if (empty($this->page)) {
             throw new HTTP_Exception_404;
         }
         $this->template->CitysList = Goodies::GetCitys();
         $modelCatalog = New Model_Catalog($this->city);
         $this->template->menu = $modelCatalog->CategoryGetMenu();
+
+        $tpl_head = View::factory('tpl-head');
+        $controller = $this->request->controller();
+        if ($controller == 'Welcome')
+            $tpl_head->welcome = true;
+        elseif ($controller == 'Catalog')
+            $tpl_head->catalog = true;
+        $this->template->tpl_head = $tpl_head;
         parent::after();
     }
 }

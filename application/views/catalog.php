@@ -1,4 +1,3 @@
-
 <div class="main-content">
     <h1><?php
         if (!empty($alias)) {
@@ -12,14 +11,14 @@
             <li><a href="/catalog/" title="Все разделы">Все разделы</a></li>
 
             <?php
-            if(!empty($breadcrumbs))
-            foreach(array_reverse($breadcrumbs) as $one)
-            {
-                ?>
-                <li class="breadcrumb-arrow"></li>
-            <li><a href="/catalog/<?=$one['id']?>_<?=$one['alias']?>" title="<?=$one['name']?>"><?=$one['name']?></a></li>
-            <?php
-            }
+            if (!empty($breadcrumbs))
+                foreach (array_reverse($breadcrumbs) as $one) {
+                    ?>
+                    <li class="breadcrumb-arrow"></li>
+                    <li><a href="/catalog/<?= $one['id'] ?>_<?= $one['alias'] ?>"
+                           title="<?= $one['name'] ?>"><?= $one['name'] ?></a></li>
+                <?php
+                }
             ?>
         </ul>
     </div>
@@ -45,33 +44,32 @@
                 <div class="catalog-item">
                     <div class="catalog-item-info">
                         <div class="catalog-item-image col span_2_of_12">
-                            <a href="/catalog/<?=$item['product']['categorys_id']?>_<?=$item['product']['categorys_alias']?>/<?=$item['product']['alias']?>">
+                            <a href="/catalog/<?= $item['product']['categorys_id'] ?>_<?= $item['product']['categorys_alias'] ?>/<?= $item['product']['alias'] ?>">
                                 <img
-                                    src="/images/sklad/<?=(!empty($item['image']))?$item['image']['file']:'no-image.png'?>"
+                                    src="/images/sklad/<?= (!empty($item['image'])) ? $item['image']['file'] : 'no-image.png' ?>"
                                     width="180" height="180"
-                                    alt="<?=(!empty($item['image']))?$item['image']['alt']:$item['product']['alias']?>"
-                                    title="<?=(!empty($item['product']))?$item['product']['name']:''?>">
+                                    alt="<?= (!empty($item['image'])) ? $item['image']['alt'] : $item['product']['alias'] ?>"
+                                    title="<?= (!empty($item['product'])) ? $item['product']['name'] : '' ?>">
                             </a>
                         </div>
                         <div class="catalog-item-desc col span_7_of_12">
                             <div class="catalog-item-title"><a
-                                    href="/catalog/<?=$item['product']['categorys_id']?>_<?=$item['product']['categorys_alias']?>/<?=$item['product']['alias']?>">
-                                    <h2><?=$item['product']['name']?></h2>
+                                    href="/catalog/<?= $item['product']['categorys_id'] ?>_<?= $item['product']['categorys_alias'] ?>/<?= $item['product']['alias'] ?>">
+                                    <h2><?= $item['product']['name'] ?></h2>
                                 </a></div>
                             <div class="catalog-item-preview-text">
                                 <table class="properties" width="100%" cellspacing="1" cellpadding="1" border="0"
                                        style="border-collapse: collapse;">
                                     <tbody>
                                     <?php
-                                    if(!empty($item['specifications']))
-                                        foreach($item['specifications'] as $specification)
-                                        {
+                                    if (!empty($item['specifications']))
+                                        foreach ($item['specifications'] as $specification) {
                                             ?>
                                             <tr>
-                                                <td class="name-it"><?=$specification['name']?></td>
-                                                <td><?=$specification['value']?></td>
+                                                <td class="name-it"><?= $specification['name'] ?></td>
+                                                <td><?= $specification['value'] ?></td>
                                             </tr>
-                                            <?php
+                                        <?php
                                         }
                                     ?>
                                     </tbody>
@@ -80,18 +78,19 @@
                         </div>
                         <div class="catalog-item-buy col span_3_of_12">
                             <div class="catalog-item-price clearfix">
-                                <div class="numbers"><span class="economy"><?=$item['product']['other_price']?> руб.</span> <span class="sale-price"><?=$item['product']['price']?> руб</span>
+                                <div class="numbers"><span class="economy"><?= $item['product']['other_price'] ?>
+                                        руб.</span> <span class="sale-price"><?= $item['product']['price'] ?> руб</span>
                                 </div>
                                 <form class="form-add-to-cart"
                                       action=""
                                       method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="quantity" value="1">
-                                    <input type="hidden" name="id" value="<?=$item['product']['id']?>">
+                                    <input type="hidden" name="id" value="<?= $item['product']['id'] ?>">
                                     <input type="hidden" name="action" value="ADD2BASKET">
                                     <!-- <input type="submit" name="actionBUY" value="Купить"> -->
                                     <input type="submit" name="actionADD2BASKET" value="В корзину" disabled="disabled">
                                 </form>
-                                <div><?=($item['product']['id_citys']==$current_city_id)?'[В НАЛИЧИИ]':'[ПОД ЗАКАЗ]'?></div>
+                                <div><?= ($item['product']['id_citys'] == $current_city_id) ? '[В НАЛИЧИИ]' : '[ПОД ЗАКАЗ]' ?></div>
                             </div>
                         </div>
                     </div>

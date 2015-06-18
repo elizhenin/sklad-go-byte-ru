@@ -182,7 +182,7 @@ class Controller_Sklad extends Controller_SkladTmp
                 $content = View::factory('sklad/products/show_products');
                 $filter = $this->request->query('filter');
                 $content->items = $ModelProducts->ProductsGetAll($id_model, $filter);
-                $content->rights = $this->user['rights'];
+                $content->user = $this->user;
                 break;
             case 'new':
                 $ModelProducts->ProductsAdd($ProductsPOST);
@@ -228,6 +228,7 @@ class Controller_Sklad extends Controller_SkladTmp
             case 'products_move_prepare':
                 $content = View::factory('sklad/products/products_move');
                 $content->storages = $ModelStorages->StoragesGetVisible();
+                $content->sku = $this->request->param('first');
                 break;
             case 'products_move_complete':
                 $ModelProducts->ProductsMove($ProductsPOST);

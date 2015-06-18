@@ -99,6 +99,28 @@ class Model_SkladProducts extends Model
 
     public function ProductsGetAll($model = false, $filter = false)
     {
+        $ses = Session::instance();
+        $user = $ses->get('user', false);
+        $storages_settings = DB::select(
+            array('from_storage.id_citys', 'from_id')
+        )
+            ->from('storages_settings')
+            ->join(array('storages', 'from_storage'))
+            ->on('from_storage.id', '=', 'storages_settings.from')
+            ->join(array('storages', 'to_storage'))
+            ->on('to_storage.id', '=', 'storages_settings.to')
+            ->where('to_storage.id_citys', '=', $user['id_citys'])
+            ->where('storages_settings.deleted', '=', '0')
+            ->execute()
+            ->as_array();
+        $citys = array();
+        $citys[] = $user['id_citys'];
+        if (!empty($storages_settings)) {
+            foreach ($storages_settings as $setting)
+                $citys[] = $setting['from_id'];
+            unset($storages_settings);
+        }
+
         $select = DB::select(
             array('products.id', 'id'),
             array('models.alias', 'alias'),
@@ -108,7 +130,8 @@ class Model_SkladProducts extends Model
             array('products.out', 'out'),
             array('products.date_out', 'date_out'),
             array('products.deleted', 'deleted'),
-            array('orders_products.id_orders', 'id_orders')
+            array('orders_products.id_orders', 'id_orders'),
+            array('storages.id_citys','id_citys')
 
         )
             ->from('products')
@@ -131,15 +154,14 @@ class Model_SkladProducts extends Model
             $select->or_where('models.alias', 'like', '%' . $filter . '%');
             $select->and_where_close();
         } else {
-            $ses = Session::instance();
-            $user = $ses->get('user', false);
             if ($user['rights'] == 'sale')
-                $select->where('storages.id_citys', '=', $user['id_citys'])
+                $select->where('storages.id_citys', 'IN', $citys)
                 ->where('products.deleted','=','0');
         }
 
         $select = $select
             ->order_by('models.name')
+
             ->order_by('products.sku')
             ->execute()
             ->as_array();

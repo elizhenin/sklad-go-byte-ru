@@ -23,7 +23,7 @@ class Controller_Catalog extends Controller_Tmp
                         $page->name = $categories[$check['id']]['name'];
 
                     }
-                    $this->page = $page;
+
                 };
                 break;
             case false:
@@ -32,12 +32,16 @@ class Controller_Catalog extends Controller_Tmp
                     $page = View::factory('product');
                     $page->spec_groups = $ModelCatalog->SpecificationsGroupsGetVisible();
                     $page->item = $check;
-                    $this->page = $page;
                     $this->title = $check['product']['title'];
                     $this->description = $check['product']['description'];
                     $this->keywords = $check['product']['keywords'];
                 }
                 break;
         }
+        if(!empty($page)) {
+            $page->breadcrumbs = $ModelCatalog->GetPath($id, $alias);
+            $this->page = $page;
+        }else
+            throw new HTTP_Exception_404;
     }
 }

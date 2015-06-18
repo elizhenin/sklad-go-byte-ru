@@ -370,4 +370,36 @@ class Model_Catalog extends Model
         $records[] = array('id' => 0, 'name' => 'Прочее');
         return $records;
     }
+
+    public function GetPath($id,$alias)
+    {
+        $check = false;
+        $return =[];
+        if (!empty($alias) && (!empty($id))) {
+            $item = DB::select('id','alias','name','id_parent')
+                ->from('categorys')
+                ->where('alias', '=', $alias)
+                ->where('id', '=', $id)
+                ->execute()
+                ->as_array();
+            if (!empty($item[0])) $check = $item[0];
+            $return[] = $check;
+        }
+
+        if(!empty($check['id_parent'])){
+            $parent = $check['id_parent'];
+            while($parent > 0){
+                $item = DB::select('id','alias','name','id_parent')
+                    ->from('categorys')
+                    ->where('id', '=', $parent)
+                    ->execute()
+                    ->as_array();
+                if (!empty($item[0])) $check = $item[0];
+                $return[] = $check;
+                $parent = $check['id_parent'];
+            }
+        }
+
+        return $return;
+    }
 }

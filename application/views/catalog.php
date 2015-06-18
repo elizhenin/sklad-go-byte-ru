@@ -10,8 +10,17 @@
     <div class="breadcrumb">
         <ul>
             <li><a href="/catalog/" title="Все разделы">Все разделы</a></li>
-            <li class="breadcrumb-arrow"></li>
-            <li><a href="/catalog/laptops_tablets/" title="Ноутбуки">Ноутбуки</a></li>
+
+            <?php
+            if(!empty($breadcrumbs))
+            foreach(array_reverse($breadcrumbs) as $one)
+            {
+                ?>
+                <li class="breadcrumb-arrow"></li>
+            <li><a href="/catalog/<?=$one['id']?>_<?=$one['alias']?>" title="<?=$one['name']?>"><?=$one['name']?></a></li>
+            <?php
+            }
+            ?>
         </ul>
     </div>
 

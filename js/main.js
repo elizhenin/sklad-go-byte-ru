@@ -384,10 +384,10 @@ function basket_preview()
         }
     });
 }
-function basket_order()
+function basket_edit()
 {
     jQuery.ajax({
-        url: '/basket/order',
+        url: '/basket/edit',
         type: 'POST',
         success: function (data) {
             if (data != '') {

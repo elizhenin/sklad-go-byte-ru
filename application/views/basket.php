@@ -1,5 +1,9 @@
 <h1>Корзина</h1>
+
+<?=(empty($message))?'':'<div class="feedback-message">'.$message.'</div>'?>
+
 Внимание! если какой-то товар внезапно исчез из списка - значит его приобрели прямо сейчас, чуть раньше вас
+
 <form method="POST">
     <table class="basket-table">
         <thead>
@@ -20,5 +24,5 @@
 </form>
 
 <script>
-setInterval (function(){basket_order();}, 1000);
+setInterval (function(){basket_edit();}, 1000);
 </script>

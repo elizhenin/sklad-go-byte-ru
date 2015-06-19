@@ -61,7 +61,7 @@ class Controller_Basketajax extends Controller
         }
     }
 
-    public function action_order()
+    public function action_edit()
     {
         if ($this->request->method() == Request::POST) {
             $basket = json_decode(Cookie::get('basket', '[]'),true);

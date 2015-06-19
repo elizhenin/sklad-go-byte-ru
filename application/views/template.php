@@ -54,22 +54,16 @@
           <div class="sale-basket-small">
               <div class="basket-small-header">
                   <div class="basket-icon empty"></div>
-                  <a class="your-cart" href="/personal/cart/">Корзина</a> <span class="basket-small-dropdown"></span>
+                  <a class="your-cart" href="/basket">Корзина</a> <span class="basket-small-dropdown"></span>
 
-                  <div class="to-cart" href="/personal/cart/"><span class="total-count">пуста</span> <span
-                          class="total-sum-text">на сумму </span> <span class="total-sum">0 руб</span></div>
+                  <div class="to-cart" href="/basket"><span class="total-count"></span> <span
+                          class="total-sum-text">на сумму </span> <span class="total-sum"></span></div>
               </div>
               <div class="basket-small-body">
                   <table class="basket-small-table">
-                      <tbody>
-                      <tr>
-                          <td><h3>Ваша корзина пуста</h3></td>
-                          <td></td>
-                      </tr>
-                      <tr></tr>
-                      </tbody>
+
                   </table>
-                  <a class="make-order-yes" href="/personal/order/make/">Оформить заказ</a></div>
+                  <a class="make-order-yes" href="/basket">Оформить заказ</a></div>
               <!-- basket-small-body -->
 
           </div>
@@ -79,15 +73,9 @@
                     <div class="block-content">
                         <p class="auth"></p>
                         <ul class="help-menu-links">
-                            <li><a href="/login/?backurl=%2F">Войти на сайт</a></li>
-                            <li><a href="/login/?register=yes&amp;backurl=%2Findex.php">Зарегистрироваться</a></li>
-                            <li class="dropdown"><a href="#">Помощь</a> <img src="/images/downarrow.png">
-                                <ul class="sub-menu">
                                     <li><a href="/contacts">Контакты</a></li>
-                                    <li><a href="/">Корпоративный отдел</a></li>
-                                    <li><a href="/">Помощь покупателю</a></li>
-                                </ul>
-                            </li>
+                                    <li><a href="/corporate">Корпоративный отдел</a></li>
+                                    <li><a href="/help">Помощь покупателю</a></li>
                         </ul>
                         <p></p>
                     </div>
@@ -131,7 +119,6 @@
                 </div>
                 <nav class="main-menu">
                     <ul id="horizontal-multilevel-menu">
-                        <li><a href="/userpages/others.php" class="root-item">Наличие++</a></li>
                         <?=Goodies::ShowCatalogMenu($menu,'/catalog',true)?>
                         </ul>
                     <ul>

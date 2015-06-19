@@ -161,7 +161,6 @@ class Model_SkladProducts extends Model
 
         $select = $select
             ->order_by('models.name')
-
             ->order_by('products.sku')
             ->execute()
             ->as_array();

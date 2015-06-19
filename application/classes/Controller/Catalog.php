@@ -21,7 +21,9 @@ class Controller_Catalog extends Controller_Tmp
                     $categories = $ModelCatalog->CategoryFullNames(false);
                     if ($check['id'] != 0) {
                         $page->name = $categories[$check['id']]['name'];
-
+                        $this->title = $categories[$check['id']]['title'];
+                        $this->description = $categories[$check['id']]['description'];
+                        $this->keywords = $categories[$check['id']]['keywords'];
                     }
 
                 };

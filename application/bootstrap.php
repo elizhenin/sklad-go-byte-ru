@@ -174,6 +174,17 @@ Route::set('ajax', 'ajax/<action>')
         'controller' => 'ajax'
     ));
 
+
+Route::set('basket', 'basket')
+    ->defaults(array(
+        'controller' => 'basket',
+        'action' =>'index'
+    ));
+Route::set('basketajax', 'basket/<action>')
+    ->defaults(array(
+        'controller' => 'basketajax',
+    ));
+
 Route::set('search', 'sklad/search')
     ->defaults(array(
         'controller' => 'SkladSearch',

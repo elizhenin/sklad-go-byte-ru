@@ -81,16 +81,21 @@
                                 <div class="numbers"><span class="economy"><?= $item['product']['other_price'] ?>
                                         руб.</span> <span class="sale-price"><?= $item['product']['price'] ?> руб</span>
                                 </div>
-                                <form class="form-add-to-cart"
-                                      action=""
-                                      method="post" enctype="multipart/form-data">
-                                    <input type="hidden" name="quantity" value="1">
-                                    <input type="hidden" name="id" value="<?= $item['product']['id'] ?>">
-                                    <input type="hidden" name="action" value="ADD2BASKET">
-                                    <!-- <input type="submit" name="actionBUY" value="Купить"> -->
-                                    <input type="submit" name="actionADD2BASKET" value="В корзину" disabled="disabled">
-                                </form>
-                                <div><?= ($item['product']['id_citys'] == $current_city_id) ? '[В НАЛИЧИИ]' : '[ПОД ЗАКАЗ]' ?></div>
+                                <?php
+                                if($item['product']['id_citys'] == $current_city_id)
+                                {
+                                    ?>
+                                    {В НАЛИЧИИ}
+                                    <div class="button-buy" onclick="basket_add(<?= $item['product']['id'] ?>);">[В корзину]</div>
+                                    <?php
+                                }else
+                                {
+                                    ?>
+                                    {ПОД ЗАКАЗ}
+                                    <div class="button-preorder" onclick="basket_add(<?= $item['product']['id'] ?>);">[Заказать]</div>
+                                    <?php
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>

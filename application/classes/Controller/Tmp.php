@@ -46,9 +46,9 @@ class Controller_Tmp extends Controller_Template
 
     public function after()
     {
-        if (empty($this->page)) {
-            throw new HTTP_Exception_404;
-        }
+//        if (empty($this->page)) {
+//            throw new HTTP_Exception_404;
+//        }
         $this->template->CitysList = Goodies::GetCitys();
         $modelCatalog = New Model_Catalog($this->city);
         $this->template->menu = $modelCatalog->CategoryGetMenu();

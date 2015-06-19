@@ -76,7 +76,7 @@ class Model_Basket extends Model
             ->execute()
             ->as_array();
         if (!empty($select)) {
-            $return=[];
+            $return=array();
             foreach($select as $one)
                 $return[$one['model']] = $one;
             return $return;

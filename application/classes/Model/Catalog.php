@@ -374,7 +374,7 @@ class Model_Catalog extends Model
     public function GetPath($id,$alias)
     {
         $check = false;
-        $return =[];
+        $return =array();
         if (!empty($alias) && (!empty($id))) {
             $item = DB::select('id','alias','name','id_parent')
                 ->from('categorys')

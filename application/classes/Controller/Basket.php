@@ -34,7 +34,8 @@ class Controller_Basket extends Controller_Tmp
         DB::update('products')
             ->set(
                 array('out' => '1'),
-                array('date_out' => DB::expr('NOW()'))
+                array('date_out' => DB::expr('NOW()')
+                )
             )
             ->where('id', 'IN', $products_ids)
             ->execute();

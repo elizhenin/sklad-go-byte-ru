@@ -5,19 +5,34 @@
                 class="bg_after"></span></h5>
 
         <div class="catalog-item ">
-            <div class="item-image"><a class="link" href="/catalog/smartphones/apple_iphone_6_plus_64gb/"><img
+            <div class="item-image"><a class="link" href="/catalog/<?= $item['product']['categorys_id'] ?>_<?= $item['product']['categorys_alias'] ?>/<?= $item['product']['alias'] ?>">
+                    <img
                         class="item_img" itemprop="image"
-                        src="/upload/resize_cache/iblock/10b/75_75_16a9cdfeb475445909b854c588a1af844/10b9f74c716e789fe199713b4b3b039b.png"
-                        width="75" alt=""></a></div>
+                        src="/images/sklad/<?= (!empty($item['image'])) ? $item['image']['file'] : 'no-image.png' ?>"
+                        width="75" alt="<?= (!empty($item['image'])) ? $item['image']['alt'] : $item['product']['alias'] ?>"
+                        title="<?= (!empty($item['product'])) ? $item['product']['name'] : '' ?>"
+                        ></a></div>
             <div class="item-info">
-                <p class="item-title"><a href="/catalog/smartphones/apple_iphone_6_plus_64gb/"><span itemprop="name">Apple iPhone 6 Plus 64Gb</span></a>
+                <p class="item-title"><a href="/catalog/<?= $item['product']['categorys_id'] ?>_<?= $item['product']['categorys_alias'] ?>/<?= $item['product']['alias'] ?>"><span itemprop="name"><?= (!empty($item['product'])) ? $item['product']['name'] : '' ?></span></a>
                 </p>
 
                 <div class="item-price">
-                    <div class="old-price-wrapper"><span class="old-price">76 000 руб</span></div>
-                    <div class="sale-price-wrapper"><span class="sale-price"> 49 900 руб </span></div>
+                    <div class="old-price-wrapper"><span class="old-price"><?= $item['product']['other_price'] ?></span></div>
+                    <div class="sale-price-wrapper"><span class="sale-price"> <?= $item['product']['price'] ?> руб </span></div>
                 </div>
-                <a class="button-buy" href="/index.php?action=ADD2BASKET&amp;id=2586" id="2586">Купить</a>
+                <?php
+                if($item['product']['id_citys'] == $current_city_id)
+                {
+                    ?>
+                    <div class="button-buy" onclick="basket_add(<?= $item['product']['id'] ?>);">[Купить]</div>
+                <?php
+                }else
+                {
+                    ?>
+                    <div class="button-preorder" onclick="basket_add(<?= $item['product']['id'] ?>);">[Заказать]</div>
+                <?php
+                }
+                ?>
 
                 <div style="clear:both"></div>
             </div>

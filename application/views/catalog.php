@@ -92,7 +92,7 @@
                                 {
                                     ?>
                                     {ПОД ЗАКАЗ}
-                                    <div class="button-preorder" onclick="basket_add(<?= $item['product']['id'] ?>);">[Заказать]</div>
+                                    <div class="button-preorder" onclick="">[Заказать]</div>
                                     <?php
                                 }
                                 ?>

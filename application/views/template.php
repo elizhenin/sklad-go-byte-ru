@@ -12,7 +12,6 @@
     <script src="/js/main.js"></script>
     <script src="/js/plugins.js"></script>
 
-
     <link type="text/css" rel="stylesheet" href="/style/magnific-popup.css">
     <link type="text/css" rel="stylesheet" href="/style/fancybox.css">
     <link type="text/css" rel="stylesheet" href="/style/general.css">
@@ -22,20 +21,6 @@
     <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <script>
-        $(document).ready(function () {
-            $('.city-button').magnificPopup({
-                type: 'inline',
-                items: {
-                    src: '.city-block'
-                },
-                mainClass: 'mfp-with-zoom',
-                zoom: {
-                    enabled: true,
-                    duration: 300,
-                    easing: 'ease-in-out'
-                }
-            });
-        });
         function selectCity(id) {
             $.post('/ajax/selectCity', {id: id}, function (data) {
                 location.reload(true);
@@ -91,10 +76,6 @@
     </section>
     <!-- header-top -->
 
-    <section class="tolanding" style="right: -100%;">
-        <h2><a href="/landing/" target="_blank">Что такое дисконт?</a></h2>
-    </section>
-
     <!-- -------------------------------------------------------- -->
     <section id="header-menu">
         <div id="header-menu-wrapper">
@@ -137,13 +118,9 @@
 </header>
 <?=(!empty($tpl_head))?$tpl_head:''?>
 
-<div class="add-to-cart-message hide"><span>Товар добавлен в корзину!</span> <span> Оформить заказ? <a
-            class="make-order-yes" href="/personal/order/make/">Да</a> <a href=""
-                                                                          class="add-to-cart-no">Нет</a> </span>
-</div>
-<section id="workarea">
+    <section id="workarea">
         <?= (!empty($page)) ? $page : '' ?>
-</section>
+    </section>
 <footer id="footer">
     <div class="headshot">
         <div class="main-content">

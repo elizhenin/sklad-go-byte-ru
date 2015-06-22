@@ -380,6 +380,7 @@ class Model_SkladProducts extends Model
                     'date_out' => '0'
                 ))
                 ->and_where_open();
+
             foreach ($post['items'] as $id) {
                 Model_SkladProducts::ProductsHistory('Возврат товара', $id);
                 $products->or_where('id', '=', $id);

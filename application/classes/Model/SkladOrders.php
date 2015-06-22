@@ -46,7 +46,10 @@ class Model_SkladOrders extends Model
 
         $ses = Session::instance();
         $user = $ses->get('user', false);
-        if (!empty($post['complete'])) $post['complete'] = '1';
+        if (!empty($post['complete'])) {
+            unset($post['complete']);
+            $this->OrdersSetCompleteById($post['id'], '1');
+        }
         else {
             if ($user['rights'] == 'superuser') $post['complete'] = '0';
         }
@@ -160,21 +163,29 @@ class Model_SkladOrders extends Model
                 ->where('id', '=', $id)
                 ->execute();
 
-            $products = DB::select(array('id_products', 'id'))
+            $products = DB::select(
+                array('orders_products.id_products', 'id'),
+                array('products.id_models', 'id_models')
+            )
                 ->from('orders_products')
-                ->where('id_orders', '=', $id)
+                ->join('products')
+                ->on('products.id', '=', 'orders_products.id_products')
+                ->where('orders_products.id_orders', '=', $id)
                 ->execute()
                 ->as_array();
-
-            switch($status){
+            $models = array();
+            switch ($status) {
                 case '1':
-                    if(!empty($products))
-                    foreach($products as $product)
-                    Model_SkladProducts::ProductsHistory('Проведен ордер', $product['id']);
+                    if (!empty($products))
+                        foreach ($products as $product) {
+                            Model_SkladProducts::ProductsHistory('Проведен ордер', $product['id']);
+                            $models[] = $product['id_models'];
+                    }
+                    Model_SkladModels::ModelsCountInc($models);
                     break;
                 case '0':
-                    if(!empty($products))
-                        foreach($products as $product)
+                    if (!empty($products))
+                        foreach ($products as $product)
                             Model_SkladProducts::ProductsHistory('Отменен ордер', $product['id']);
                     break;
             }
@@ -221,7 +232,7 @@ class Model_SkladOrders extends Model
             ->from('orders');
         $ses = Session::instance();
         $user = $ses->get('user', false);
-        if($user['rights']=='sale')
+        if ($user['rights'] == 'sale')
             $orders->where('orders.id_users', '=', $id_users);
         $orders = $orders
             ->where('orders.complete', '=', '0')
@@ -272,7 +283,7 @@ class Model_SkladOrders extends Model
             ->on('citys.id', '=', 'storages.id_citys')
             ->where('products.sku', '=', $sku)
             ->where('products.out', '=', '0')
-            ->where('products.deleted','=','0')
+            ->where('products.deleted', '=', '0')
             ->where('citys.alias', '=', $user['login'])
             ->limit(1)
             ->execute()
@@ -316,8 +327,8 @@ class Model_SkladOrders extends Model
             $products['products'] = $products;
             $cash = 0;
             foreach ($products['products'] as $product) {
-                if(($product['moneyback']+$product['returned']) == '0')
-                $cash += $product['price_out'];
+                if (($product['moneyback'] + $product['returned']) == '0')
+                    $cash += $product['price_out'];
             }
             $products['cash'] = $cash;
 
@@ -331,11 +342,11 @@ class Model_SkladOrders extends Model
         $model = DB::select('models.in_price')
             ->from('models')
             ->join('products')
-            ->on('products.id_models','=','models.id')
-            ->where('products.id','=',$post['product'])
+            ->on('products.id_models', '=', 'models.id')
+            ->where('products.id', '=', $post['product'])
             ->execute()
             ->as_array();
-        if(!empty($model)) {
+        if (!empty($model)) {
             $model = $model[0]['in_price'];
             if ($model <= $post['price_out'])
                 DB::update('orders_products')
@@ -383,9 +394,9 @@ class Model_SkladOrders extends Model
             ->join('products')
             ->on('products.id', '=', 'orders_products.id_products')
             ->where('orders.id_users', '=', $user['id'])
-            ->where('orders.deleted','=','0')
+            ->where('orders.deleted', '=', '0')
             ->where('orders.complete', '=', '1')
-            ->where('orders_products.moneyback','=','0')
+            ->where('orders_products.moneyback', '=', '0')
             ->where('products.date_out', '>', DB::expr("MAKEDATE(YEAR(NOW()), DAYOFYEAR(NOW()))"))
             ->execute()
             ->as_array();

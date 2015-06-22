@@ -704,5 +704,64 @@ class Model_SkladModels extends Model
             ->execute()
             ->as_array();
         if ($product) return $product[0];
+        else return false;
+    }
+
+    static function ModelsCountInc($ids)
+    {
+
+        $db=DB::select()
+            ->from('models_count')
+            ->where('id_models','IN',$ids)
+            ->execute()
+            ->as_array();
+        $stored = array();
+        if(!empty($db))
+            foreach($db as $one)
+                $stored[$one['id_models']] = $one['count'];
+        foreach($ids as $id){
+            if(empty($stored[$id])){
+                DB::insert('models_count',array('id_models','count'))
+                    ->values(array($id,1))
+                    ->execute();
+            }else{
+                DB::update('models_count')
+                    ->set(array(
+                            'count'=>$stored[$id]+1
+                        ))
+                    ->where('id_models','=',$id)
+                    ->execute();
+            }
+        }
+    }
+
+    static function ModelsCountDec($_ids)
+    {
+        $ids = array();
+        foreach($_ids as $one)
+            $ids[$one] = $one;
+        $db=DB::select()
+            ->from('models_count')
+            ->where('id_models','IN',$ids)
+            ->execute()
+            ->as_array();
+        $stored = array();
+        if(!empty($db))
+            foreach($db as $one)
+                $stored[$one['id_models']] = $one['count'];
+        foreach($ids as $id){
+            if(empty($stored[$id])){
+                DB::insert('models_count',array('id_models','count'))
+                    ->values(array($id,0))
+                    ->execute();
+            }else{
+                DB::update('models_count')
+                    ->set(array(
+                        'count'=>$stored[$id]-1
+                    ))
+                    ->where('id_models','=',$id)
+                    ->execute();
+            }
+        }
     }
 }

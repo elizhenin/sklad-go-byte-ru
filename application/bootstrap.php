@@ -185,9 +185,15 @@ Route::set('basketajax', 'basket/<action>')
         'controller' => 'basketajax',
     ));
 
-Route::set('search', 'sklad/search')
+Route::set('skladsearch', 'sklad/search')
     ->defaults(array(
         'controller' => 'SkladSearch',
+        'action' => 'index'
+    ));
+
+Route::set('contacts', 'contacts')
+    ->defaults(array(
+        'controller' => 'Contacts',
         'action' => 'index'
     ));
 

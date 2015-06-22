@@ -27,7 +27,7 @@ class Controller_Basket extends Controller_Tmp
     private function ProductsToOrder($orders_id, $models_ids)
     {
         $products = Model_Basket::ModelsAssignProducts($models_ids);
-        $products_ids = [];
+        $products_ids = array();
         foreach ($products as $one)
             $products_ids[] = $one['id'];
 

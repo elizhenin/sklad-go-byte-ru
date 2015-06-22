@@ -32,11 +32,7 @@ class Controller_Basket extends Controller_Tmp
             $products_ids[] = $one['id'];
 
         DB::update('products')
-            ->set(
-                array('out' => '1'),
-                array('date_out' => DB::expr('NOW()')
-                )
-            )
+            ->set(array('out' => '1', 'date_out' => DB::expr('NOW()')))
             ->where('id', 'IN', $products_ids)
             ->execute();
 

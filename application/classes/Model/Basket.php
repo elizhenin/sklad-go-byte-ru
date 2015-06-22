@@ -67,6 +67,8 @@ class Model_Basket extends Model
             ->join('storages')
             ->on('products.id_storage', '=', 'storages.id')
             ->where('storages.id_citys', '=', $city['id'])
+            ->where('storages.transit','=',0)
+            ->where('storages.present','=',1)
             ->where('products.out', '=', '0')
             ->where('products.deleted', '=', '0')
             ->where('models.deleted', '=', '0')

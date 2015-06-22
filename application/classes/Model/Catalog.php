@@ -154,10 +154,12 @@ class Model_Catalog extends Model
             $select->where('models_categorys.id_categorys', '=', $category);
 
         $select = $select
-            ->where('products.out', '=', '0')
+            ->where('products.out', '=', 0)
             ->where('products.deleted', '=', 0)
             ->where('models.deleted', '=', 0)
             ->where('storages.deleted', '=', 0)
+            ->where('storages.transit','=',0)
+            ->where('storages.present','=',1)
             ->distinct(true)
             ->order_by('models.modificated', 'ASC')
             ->execute()
@@ -222,6 +224,8 @@ class Model_Catalog extends Model
             ->join('storages')
             ->on('products.id_storage', '=', 'storages.id')
             ->where('storages.id_citys', '=', $this->city['id'])
+            ->where('storages.transit','=',0)
+            ->where('storages.present','=',1)
             ->where('products.out', '=', '0')
             ->where('products.deleted', '=', '0')
             ->where('models.deleted', '=', '0')

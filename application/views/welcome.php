@@ -70,7 +70,7 @@
         </div>
         <!-- catalog-item -->
 
-        <div class="catalog-item  last-item">
+        <div class="catalog-item ">
             <div class="item-image"><a class="link" href="/catalog/laptops_tablets/dell_inspiron_3737/"><img
                         class="item_img" itemprop="image"
                         src="/upload/resize_cache/iblock/9e0/75_75_16a9cdfeb475445909b854c588a1af844/9e0d285cb207578fe8f92c63f74b5359.png"
@@ -89,6 +89,8 @@
             </div>
             <!--  item-info -->
         </div>
+
+        <div class="catalog-item last-item"></div>
         <!-- catalog-item -->
     </div>
     <!-- catalog-item-wrapper -->
@@ -163,7 +165,7 @@
         </div>
         <!-- catalog-item -->
 
-        <div class="catalog-item  last-item">
+        <div class="catalog-item">
             <div class="item-image"><a class="link" href="/catalog/smartphones/sony_xperia_m2/"><img class="item_img"
                                                                                                      itemprop="image"
                                                                                                      src="/upload/resize_cache/iblock/712/75_75_16a9cdfeb475445909b854c588a1af844/7120dfc6c1774f2993c596c245f1eabc.png"
@@ -183,6 +185,8 @@
             </div>
             <!--  item-info -->
         </div>
+
+        <div class="catalog-item last-item"></div>
         <!-- catalog-item -->
     </div>
     <!-- catalog-item-wrapper -->
@@ -259,7 +263,7 @@
         </div>
         <!-- catalog-item -->
 
-        <div class="catalog-item  last-item">
+        <div class="catalog-item  ">
             <div class="item-image"><a class="link" href="/catalog/tablet_pc/samsung_galaxy_tab_pro_8_4_lte/"><img
                         class="item_img" itemprop="image"
                         src="/upload/resize_cache/iblock/92d/75_75_16a9cdfeb475445909b854c588a1af844/92d9cf102cee03faeea2be4b47c2938c.png"
@@ -278,6 +282,8 @@
             </div>
             <!--  item-info -->
         </div>
+
+        <div class="catalog-item last-item"></div>
         <!-- catalog-item -->
     </div>
     <!-- catalog-item-wrapper -->

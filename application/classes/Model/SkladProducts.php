@@ -160,8 +160,10 @@ class Model_SkladProducts extends Model
         }
 
         $select = $select
+            ->group_by('products.id')
             ->order_by('models.name')
             ->order_by('products.sku')
+
             ->execute()
             ->as_array();
         if (!empty($select)) {

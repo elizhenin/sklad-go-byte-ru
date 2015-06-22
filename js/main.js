@@ -3,11 +3,14 @@ $(document).ready(function() {
     $('.tooltip').tooltipster({theme: '.tooltipster-shadow'});
 
     //выпадающая помощь в шапке сайта
-    $('#headshot').on({
+    $('.webform-title').on({
         'mouseenter': function () {
             $('.preorder-help-inner').show();
             $('.header-webform-body').show();
-        },
+        }
+    });
+
+    $('.header-webform-body').on({
         'mouseleave': function () {
             $('.preorder-help-inner').hide();
             $('.header-webform-body').hide();

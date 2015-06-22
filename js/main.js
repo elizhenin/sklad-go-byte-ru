@@ -3,7 +3,7 @@ $(document).ready(function() {
     $('.tooltip').tooltipster({theme: '.tooltipster-shadow'});
 
     //выпадающая помощь в шапке сайта
-    $('.webform-title').on({
+    $('.webform-title span').on({
         'mouseenter': function () {
             $('.preorder-help-inner').show();
             $('.header-webform-body').show();

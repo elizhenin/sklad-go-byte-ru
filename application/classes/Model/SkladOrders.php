@@ -301,6 +301,7 @@ class Model_SkladOrders extends Model
             array('orders_products.moneyback', 'moneyback'),
             array('orders_products.returned', 'returned'),
             array('products.sku', 'sku'),
+            array('models.in_price', 'in_price'),
             array('models.name', 'name')
         )
             ->from('orders_products')
@@ -322,6 +323,26 @@ class Model_SkladOrders extends Model
 
             return $products;
         } else return false;
+    }
+
+    public function OrdersProductsAlterPrice($post)
+    {
+        Model_SkladProducts::ProductsHistory('Изменение цены в ордере', $post['product']);
+        $model = DB::select('models.in_price')
+            ->from('models')
+            ->join('products')
+            ->on('products.id_models','=','models.id')
+            ->where('products.id','=',$post['product'])
+            ->execute()
+            ->as_array();
+        if(!empty($model)) {
+            $model = $model[0]['in_price'];
+            if ($model <= $post['price_out'])
+                DB::update('orders_products')
+                    ->set(array('price_out' => $post['price_out']))
+                    ->where('id', '=', $post['id'])
+                    ->execute();
+        }
     }
 
     public function SessionsGetAll()

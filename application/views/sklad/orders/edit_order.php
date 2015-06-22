@@ -106,7 +106,15 @@ if (empty($id_orders)) {
                                         </td>
                                         <td><?= $product['sku'] ?></td>
                                         <td><?= $product['name'] ?></td>
-                                        <td><?= $product['price_out'] ?> руб</td>
+                                        <td><form name="form<?= $product['id'] ?>cash" method="POST">
+                                                <input type="hidden" name="id" value="<?= $product['id'] ?>"/>
+                                                <input type="hidden" name="product"
+                                                       value="<?= $product['id_products'] ?>">
+                                                <input type="hidden" name="operation" value="alterprice_product"/>
+                                                <input type="text" name="price_out" title="минимум <?=$product['in_price']?>" value="<?= $product['price_out'] ?>" style="width: 100px;text-align: right"/> руб
+                                                <input type="submit" value="Применить" title="Внести изменения" <?=(!empty($item['complete'])?'disabled="disabled"':'')?>/>
+                                            </form>
+                                        </td>
                                     </tr>
                                 <?php
                                 }

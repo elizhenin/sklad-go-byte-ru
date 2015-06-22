@@ -37,44 +37,6 @@ $(document).ready(function() {
     });
 
     //автооткрытие ссылки на landing
-    if ($('.autoshow').length > 0) {
-        setTimeout(landingShow, 2000);
-    }
-
-    $('.halflogo').hover(landingShow);
-
-    //Картинки товара на странице детального описания товара
-    var a = function (self) {
-
-        self.anchor.addClass('fancybox').attr('rel', 'group').click(function (e) {
-            $('.jcarousel-container li .fancybox').attr('rel', 'group');
-            $('.jcarousel-container li.active .fancybox').attr('rel', '');
-
-        }).fancybox({titleShow: false});
-
-        $('.jcarousel-container li .clip').each(function (index) {
-            var img = $('img', this),
-                href = $(img).attr('src');
-            link = $('<a class="fancybox" rel="group" href="' + href + '"></a>');
-            $(this).append(link);
-        });
-    };
-
-    $('#pikachoose').PikaChoose({
-        buildFinished: a,
-        autoPlay: false,
-        carousel: true,
-        thumbOpacity: 0.7,
-        text: {previous: "", next: ""}
-    });
-
-    $(".fancybox").fancybox();
-
-    $('a.fancy-loop').click(function (e) {
-
-        $('.pika-stage a').trigger('click');
-        e.preventDefault();
-    });
 
     $('img.plax').plaxify();
     $.plax.enable({"activityTarget": $('.slide-4')});
@@ -275,8 +237,6 @@ $(document).ready(function() {
         if (window.canClick) {
             rotatePanel(this);
         }
-        ;
-
         window.canClick = false;
         setTimeout(function () {
             window.canClick = true

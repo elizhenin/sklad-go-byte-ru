@@ -382,3 +382,8 @@ function basket_del(product) {
 
 setInterval (function(){basket_preview();}, 2000);
 //end_basket
+
+function request_product(product)
+{
+
+}

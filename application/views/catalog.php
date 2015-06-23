@@ -23,18 +23,18 @@
         </ul>
     </div>
 
-    <div class="catalog-switch"><a href="												http://www.go-byte.ru/catalog/
-											">В наличии</a> <a> | </a> <a href="												http://www.go-byte.ru/userpages/others.php
-											">Прочие товары</a> <a> | </a> <a href="												http://www.go-byte.ru/userpages/futuredelivery.php
-											">Будущие поставки</a> <a> | </a> <a
-            href="http://www.go-byte.ru/userpages/chocobox.php">Шоколадная коробка</a>
-    </div>
-    <div class="catalog-item-sorting">
-        <label>Сортировать по:</label>
-        <a href="/" class="selected asc" rel="nofollow">названию</a>
-        <a href="/" rel="nofollow">цене</a>
-        <a href="/" rel="nofollow">новизне</a>
-    </div>
+<!--    <div class="catalog-switch"><a href="												http://www.go-byte.ru/catalog/-->
+<!--											">В наличии</a> <a> | </a> <a href="												http://www.go-byte.ru/userpages/others.php-->
+<!--											">Прочие товары</a> <a> | </a> <a href="												http://www.go-byte.ru/userpages/futuredelivery.php-->
+<!--											">Будущие поставки</a> <a> | </a> <a-->
+<!--            href="http://www.go-byte.ru/userpages/chocobox.php">Шоколадная коробка</a>-->
+<!--    </div>-->
+<!--    <div class="catalog-item-sorting">-->
+<!--        <label>Сортировать по:</label>-->
+<!--        <a href="/" class="selected asc" rel="nofollow">названию</a>-->
+<!--        <a href="/" rel="nofollow">цене</a>-->
+<!--        <a href="/" rel="nofollow">новизне</a>-->
+<!--    </div>-->
 
     <div class="catalog-item-list">
         <?php

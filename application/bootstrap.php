@@ -192,6 +192,12 @@ Route::set('skladsearch', 'sklad/search')
         'action' => 'index'
     ));
 
+Route::set('skladprintable', 'sklad/printable(/<action>(/<first>(/<second>)))', array('action' => '[0-9a-zA-Z_-]+', 'first'=>'[0-9a-zA-Z_-]+', 'second'=>'[0-9a-zA-Z_-]+'))
+    ->defaults(array(
+        'controller' => 'SkladPrintable',
+        'action' => 'index',
+    ));
+
 Route::set('contacts', 'contacts')
     ->defaults(array(
         'controller' => 'Contacts',

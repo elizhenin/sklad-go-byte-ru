@@ -385,5 +385,5 @@ setInterval (function(){basket_preview();}, 2000);
 
 function request_product(product)
 {
-
+$('#request'+product).show();
 }

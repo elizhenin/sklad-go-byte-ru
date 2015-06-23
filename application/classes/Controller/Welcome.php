@@ -10,8 +10,10 @@ class Controller_Welcome extends Controller_Tmp
         $page->current_city_id = $this->city['id'];
         $page->ModelsNew = $ModelWelcome->ModelGetNew();
         $page->ModelsLeader = $ModelWelcome->ModelGetLeaders();
-        $page->ModelsSpecial = $ModelWelcome->ModelGetSpecial();
-
+        $ses = Session::instance();
+        $Special = $ses->get('ModelsSpecial',false);
+        if(empty($Special)) $Special = $ModelWelcome->ModelGetSpecial();
+        $page->ModelsSpecial = $Special;
         $this->page = $page;
         }
 

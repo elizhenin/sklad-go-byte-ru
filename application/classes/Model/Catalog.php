@@ -128,6 +128,7 @@ class Model_Catalog extends Model
         $select = DB::select(
             array('models.id', 'id'),
             array('models.name', 'name'),
+            array('models.sku', 'sku'),
             array('models.price', 'price'),
             array('models.other_price', 'other_price'),
             array('models.alias', 'alias'),

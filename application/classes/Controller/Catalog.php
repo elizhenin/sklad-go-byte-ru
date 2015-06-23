@@ -3,6 +3,23 @@
 class Controller_Catalog extends Controller_Tmp
 {
 
+    public function before()
+    {
+        parent::before();
+        if ($this->request->method() == Request::POST) {
+            $post = $this->request->post();
+            foreach ($post as $key => $value) $post[$key] = htmlspecialchars(trim($value));
+            switch ($post['operation']) {
+                case 'request_product':
+                    if(!empty($post['phone']) && !empty($post['email']) && !empty($post['name'])) {
+
+                        MailSender::request_product($post);
+                    }
+                    break;
+            }
+        }
+    }
+
     public
     function action_index()
     {
@@ -40,10 +57,10 @@ class Controller_Catalog extends Controller_Tmp
                 }
                 break;
         }
-        if(!empty($page)) {
+        if (!empty($page)) {
             $page->breadcrumbs = $ModelCatalog->GetPath($id, $alias);
             $this->page = $page;
-        }else
+        } else
             throw new HTTP_Exception_404;
     }
 }

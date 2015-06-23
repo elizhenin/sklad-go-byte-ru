@@ -63,15 +63,7 @@ $(document).ready(function() {
     });
 
     //переключение вкладок с характеристиками
-    $(document).on('click', '.tabs-control li', function (e) {
-        var tabParent = $(this).parents('.tabs-control');
-        $('.active', tabParent).removeClass('active');
-        $(this).addClass('active');
-        $('div:not(.hide)', tabParent.next('.tabs')).toggleClass('hide');
-        $('[tab=' + $(this).attr('tab') + ']', tabParent.next('.tabs')).toggleClass('hide');
 
-        e.preventDefault();
-    });
 
 
     $('.personal a').click(function (e) {
@@ -385,3 +377,7 @@ function basket_del(product) {
 
 setInterval (function(){basket_preview();}, 2000);
 //end_basket
+
+$(function() {
+    $( "#prod-tabs" ).tabs();
+});

@@ -11,11 +11,14 @@
     <script src="/js/jquery.liColl.js"></script>
     <script src="/js/main.js"></script>
     <script src="/js/plugins.js"></script>
+    <script src="/js/pik/jquery.jcarousel.min.js"></script>
+    <script src="/js/pik/jquery.pikachoose.min.js"></script>
 
     <link type="text/css" rel="stylesheet" href="/style/magnific-popup.css">
     <link type="text/css" rel="stylesheet" href="/style/fancybox.css">
     <link type="text/css" rel="stylesheet" href="/style/general.css">
     <link type="text/css" rel="stylesheet" href="/js/paralax/paralax.css">
+    <link type="text/css" rel="stylesheet" href="/js/pik/base.css">
     <link href='http://fonts.googleapis.com/css?family=Play:700|Poiret+One|Open+Sans:300&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Didact+Gothic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic' rel='stylesheet' type='text/css'>

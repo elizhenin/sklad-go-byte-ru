@@ -1,0 +1,42 @@
+.pikachoose {width: 100%; margin: 0 auto;}
+
+/* Style the thumbnails */
+.pika-thumbs li{ width: 110px; overflow: hidden;
+    float: left; list-style-type: none; cursor: pointer;}
+.pika-thumbs .active{}
+.pika-thumbs li .clip {position:relative;height:100%;text-align: center; vertical-align: middle; overflow: hidden; margin-left: 10px;}
+.pika-thumbs li .clip img{max-height: 80px; width: auto !important;}
+
+/* The stage is the wrapper. The image fills 100% the height of the stage */
+.pika-stage, .pika-textnav {width: 100%;}
+.pika-stage {position: relative; text-align:center; height:485px; margin-bottom: 10px; overflow: hidden;}
+.pika-stage img{height:100%;}
+.pika-stage .caption {display:none;}
+.pika-stage .caption p {padding: 0; margin: 0; line-height: 14px;}
+
+/* Ths play, pause, prev and next buttons */
+.pika-imgnav a {position: absolute; text-indent: -5000px; display: block;z-index:3;}
+.pika-imgnav a.previous {display:none;}
+.pika-imgnav a.next {display:none;}
+.pika-imgnav a.play {display:none;;}
+.pika-imgnav a.pause {display:none;}
+
+/* The previous and next textual buttons */
+.pika-textnav {display:none;}
+.pika-textnav a {display:none;}
+.pika-textnav a.previous {display:none;}
+.pika-textnav a.next {display:none;}
+
+/*for the tool tips*/
+.pika-tooltip{font-size:12px;position:absolute;color:white;padding:3px; background-color: rgba(0,0,0,0.7);border:3px solid black;}
+.pika-counter{display:none;}
+
+/* If using user thumbnails there's a pause well the new large image loads. This is the loader for that */
+.pika-loader{ background:url(loading.gif) 3px 3px no-repeat #000; background-color:rgba(0,0,0,0.9); color:white; width:60px; font-size:11px; padding:5px 3px;
+    text-align:right; position:absolute; top:15px; right:15px; }
+
+/* jCarousel Styles */
+/*if you're not using the carousel you can delete everything below this */
+.jcarousel-container-horizontal {overflow:hidden;}
+.jcarousel-skin-pika .jcarousel-clip-horizontal {height: 110px; width: 485px;}
+.jcarousel-skin-pika .jcarousel-item-horizontal { margin-right: 20px;}

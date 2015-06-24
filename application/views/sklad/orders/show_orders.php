@@ -14,13 +14,13 @@
             ?>
             <tr>
                 <td>
-                    <form name="form<?= $item['id'] ?>print" target="_blank" action="/sklad/printable/order" method="POST" style="display:inline;float:left;"><input
+                    <form class="symbols" name="form<?= $item['id'] ?>print" target="_blank" action="/sklad/printable/order" method="POST" style="display:inline;float:left;"><input
                             type="hidden" name="orders_id"
                             value="<?= $item['id'] ?>"/><input
                             type="hidden" name="operation" value="edit"/><input type="submit" value="&#x1f5b6;"
                                                                                 title="Печать"/>
                     </form>
-                    <form name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"><input
+                    <form class="symbols" name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"><input
                             type="hidden" name="orders_id"
                             value="<?= $item['id'] ?>"/><input
                             type="hidden" name="operation" value="edit"/><input type="submit" value="&#x270E;"
@@ -32,7 +32,7 @@
                         <?php
                         if ($item['complete']) {
                             ?>
-                            <form name="form<?= $item['id'] ?>enable" method="POST" style="display:inline;float:left;">
+                            <form class="symbols" name="form<?= $item['id'] ?>enable" method="POST" style="display:inline;float:left;">
                                 <input
                                     type="hidden" name="orders_id"
                                     value="<?= $item['id'] ?>"/><input
@@ -42,7 +42,7 @@
                         <?php
                         } else {
                             ?>
-                            <form name="form<?= $item['id'] ?>disable" method="POST" style="display:inline;float:left;">
+                            <form class="symbols" name="form<?= $item['id'] ?>disable" method="POST" style="display:inline;float:left;">
                                 <input
                                     type="hidden" name="orders_id"
                                     value="<?= $item['id'] ?>"/><input
@@ -60,7 +60,7 @@
                 <td><?=$item['text']?></td>
                 <td><?=$item['phone']?></td>
                 <td><a href="/sklad/orders/<?=$item['session']?>" title="Показать продажи этой сессии"><?=$item['session']?></a>&nbsp;
-                    <form name="form<?= $item['id'] ?>add" method="POST" style="display:inline;float:right;" action="/sklad/orders/<?=$item['session']?>">
+                    <form class="symbols" name="form<?= $item['id'] ?>add" method="POST" style="display:inline;float:right;" action="/sklad/orders/<?=$item['session']?>">
                         <input
                             type="hidden" name="products_id"
                             value="<?= $item['id'] ?>"/><input

@@ -77,48 +77,15 @@ $(document).ready(function() {
 
 
     //Всплывающее окно для похожих товаров
-    $('.related-element').on('click', function (e) {
 
-        e.preventDefault();
-
-        var accessories = false;
-
-        if ($(this).hasClass('accessories')) {
-            accessories = true;
-        }
-
-        var url = 'http://' + document.location.hostname + '/catalog/element_ajax.php';
-
-        var top = $(window).height() / 2 - 290 + $(window).scrollTop() - $('.catalog-element').offset().top,
-            left = $(window).width() / 2 - 365 - $('.catalog-element').offset().left;
-
-        $('.related-frame-wrap').show();
-        $('.related-frame-wrap').css({'top': top + 'px', left: left + 'px'});
-
-        $.ajax({
-            type: 'POST',
-            url: url,
-            data: {'elementID': $(this).attr('data-el-id'), 'accessories': accessories},
-            success: function (data) {
-                $('.related-frame-wrap').html(data);
-            }
-        })
-    });
-
-    $('.related-frame-wrap').draggable({handle: '.draggable-area'});
-
-    //Кнопка закрыть
-    $(document).on('click', '.related-frame-close, .related-frame-close-area', function (e) {
-        $('.related-frame-wrap').empty().hide();
-        e.preventDefault();
-    });
 
     //Прокрутка похожих товаров
     $('.related-carousel').jcarousel({
+        scroll: 1,
+        wrap: 'circular',
         buttonPrevHTML: '<span class="related-prev"></span>',
         buttonNextHTML: '<span class="related-next"></span>'
     });
-
 
     //Раскрытие элементов на странице каталога
     $('.preorder-item.small').on('click', function (e) {
@@ -384,5 +351,20 @@ $('#request'+product).show();
 }//end_basket
 
 $(function() {
+    $('.fancyb').fancybox();
+
     $( "#prod-tabs" ).tabs();
+});
+
+
+$(document).ready(function (){
+    var a = function(self){
+        self.anchor.addClass('fancyb');
+    };
+    $("#prod-gal").PikaChoose({buildFinished:a});
+    $('a.fancy-loop').click(function(e){
+
+        $('.pika-stage a').trigger('click');
+        e.preventDefault();
+    });
 });

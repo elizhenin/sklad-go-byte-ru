@@ -14,18 +14,18 @@ $images = $item['images'];
         </section>
         <div class="main-content">
             <div class="catalog-element-photo col span_4_of_7">
+                <a href="/bitrix/templates/ironbuy/images/element/loop.png" class="fancy-loop"></a>
                 <ul id="prod-gal">
                         <?php
                         foreach ($images as $image) {
                             ?>
                             <li>
-                                <img src="/images/sklad/<?= $image['file'] ?>" alt="<?= $image['alt'] ?>">
+                                <a class="fancyb" href="/images/sklad/<?= $image['file'] ?>"><img src="/images/sklad/<?= $image['file'] ?>" alt="<?= $image['alt'] ?>"></a>
                             </li>
                         <?php
                         }
                         ?>
                 </ul>
-                <script>$(function(){ $('#prod-gal').pikachoose(); });</script>
             </div>
             <div class="catalog-element-buy col span_3_of_7">
                 <div class="content-col">
@@ -115,7 +115,49 @@ $images = $item['images'];
 
             </div>
         </div>
-
+        <div class="catalog-element-related col span_3_of_7">
+            <div class="related">
+                <div class="related-table">
+                    <ul class="related-carousel">
+                        <li>
+                            <a class="related-element" href="/">
+                                <div class="related-image"><img src="/images/sklad/1427104704_7koW.png" alt=""></div>
+                                <h3>IRU Ultraslim 302 E240/2GB/320GB/11,6"NoOS</h3>
+                                <span class="price">7 900 руб</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="related-element" href="/">
+                                <div class="related-image"><img src="/images/sklad/1427104704_7koW.png" alt=""></div>
+                                <h3>2 Ultraslim 302 E240/2GB/320GB/11,6"NoOS</h3>
+                                <span class="price">7 900 руб</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="related-element" href="/">
+                                <div class="related-image"><img src="/images/sklad/1427104704_7koW.png" alt=""></div>
+                                <h3>3 Ultraslim 302 E240/2GB/320GB/11,6"NoOS</h3>
+                                <span class="price">7 900 руб</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="related-element" href="/">
+                                <div class="related-image"><img src="/images/sklad/1427104704_7koW.png" alt=""></div>
+                                <h3>4 Ultraslim 302 E240/2GB/320GB/11,6"NoOS</h3>
+                                <span class="price">7 900 руб</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="related-element" href="/">
+                                <div class="related-image"><img src="/images/sklad/1427104704_7koW.png" alt=""></div>
+                                <h3>5 Ultraslim 302 E240/2GB/320GB/11,6"NoOS</h3>
+                                <span class="price">7 900 руб</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
     </div>
 

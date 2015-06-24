@@ -49,6 +49,7 @@ class Controller_Catalog extends Controller_Tmp
                 $check = $ModelCatalog->ProductCategoryCheckPath($id, $alias, $product);
                 if ($check) {
                     $page = View::factory('product');
+                    $page->current_city_id = $this->city['id'];
                     $page->spec_groups = $ModelCatalog->SpecificationsGroupsGetVisible();
                     $page->item = $check;
                     $this->title = $check['product']['title'];

@@ -16,16 +16,65 @@ if (empty($welcome)) {
 <!--   Страницы каталога     -->
         <section id="headshot">
             <div class="main-content">
-                <p>Уважаемые покупатели. Просим обратить внимание, что наш <strong>сайт обновляется раз в 24
-                        часа.</strong>
-                    Благодарим за понимание.</p>
-
-                <p>Товара гораздо БОЛЬШЕ! Если вы не нашли то, что искали. Оставьте заявку и мы постараемся его
-                    найти!</p>
-                <span>[Оставить заявку]</span>
+                <div class="header-webform">
+                    <p>Уважаемые покупатели. Просим обратить внимание, что наш <strong>сайт обновляется раз в 24 часа.</strong> Благодарим за понимание.</p>
+                    <p>Товара гораздо БОЛЬШЕ! Если вы не нашли то, что искали. Оставьте заявку и мы постараемся его найти!</p>
+                    <h3 class="webform-title" style="margin-top: 15px;"><span>Оставить заявку</span></h3>
+                    <div id="send-feedback-form">
+                        <form>
+                            <div class="header-webform-body" style="display: none;">
+                                <h3 class="webform-title"><span>Оставить заявку</span></h3>
+                                <div>
+                                    <div class="col span_1_of_2">
+                                        <div class="webform-description"> Как это работает?<br>
+                                            <br>
+                                            Это система совпадений. Она сравнивает заявки и поставки, как только происходит совпадение, мы вам звоним:)<br>
+                                            <br>
+                                            Главное понимать, что BYTE - магазин спец. предложений.<br>
+                                            Мы привозим только то, что появляется в торговых сетях. </div>
+                                    </div>
+                                    <div class="col span_1_of_2">
+                                        <table class="form-table data-table">
+                                            <tbody>
+                                            <tr>
+                                                <td width="30%"> Ваше имя<span class="form-required starrequired">*</span></td>
+                                                <td width="70%"><input type="text" class="inputtext" name="form_text_1" value="" size="0"></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="30%"> Телефон<span class="form-required starrequired">*</span></td>
+                                                <td width="70%"><input type="text" class="inputtext" name="form_text_2" value="" size="0"></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="30%"> Товар<span class="form-required starrequired">*</span></td>
+                                                <td width="70%"><input type="text" class="inputtext" name="form_text_3" value="" size="0" placeholder="Canon 600D"></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="30%"> Актуально до </td>
+                                                <td width="70%"><input type="text" class="inputtext" name="form_text_4" value="" size="0" placeholder="В течении недели"></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="30%"></td>
+                                                <input type="hidden" name="form_city" value="Воронеж">
+                                            </tr>
+                                            </tbody>
+                                            <tfoot>
+                                            <tr>
+                                                <th></th>
+                                                <th colspan="2"> <input type="submit" name="form_submit" class="web_form_submit" value="Оставить заявку">
+                                                </th>
+                                            </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
-        <?php
+
+    <?php
     }
 } else {
     ?>

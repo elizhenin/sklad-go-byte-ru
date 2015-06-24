@@ -78,15 +78,15 @@
                         </div>
                         <div class="catalog-item-buy col span_3_of_12">
                             <div class="catalog-item-price clearfix">
-                                <div class="numbers"><span class="economy"><?= $item['product']['other_price'] ?>
-                                        руб.</span> <span class="sale-price"><?= $item['product']['price'] ?> руб</span>
+                                <div class="numbers">
+                                    <span class="economy"><?= $item['product']['other_price'] ?> руб.</span>
+                                    <span class="sale-price"><?= $item['product']['price'] ?> руб.</span>
                                 </div>
                                 <?php
                                 if($item['product']['id_citys'] == $current_city_id)
                                 {
                                     ?>
-                                    {В НАЛИЧИИ}
-                                    <div class="button-buy" onclick="basket_add(<?= $item['product']['id'] ?>);">[В корзину]</div>
+                                    <div class="button-buy" onclick="basket_add(<?= $item['product']['id'] ?>);">В корзину</div>
                                     <?php
                                 }else
                                 {

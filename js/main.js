@@ -3,11 +3,14 @@ $(document).ready(function() {
     $('.tooltip').tooltipster({theme: '.tooltipster-shadow'});
 
     //выпадающая помощь в шапке сайта
-    $('#headshot').on({
+    $('.webform-title span').on({
         'mouseenter': function () {
             $('.preorder-help-inner').show();
             $('.header-webform-body').show();
-        },
+        }
+    });
+
+    $('.header-webform-body').on({
         'mouseleave': function () {
             $('.preorder-help-inner').hide();
             $('.header-webform-body').hide();
@@ -60,15 +63,7 @@ $(document).ready(function() {
     });
 
     //переключение вкладок с характеристиками
-    $(document).on('click', '.tabs-control li', function (e) {
-        var tabParent = $(this).parents('.tabs-control');
-        $('.active', tabParent).removeClass('active');
-        $(this).addClass('active');
-        $('div:not(.hide)', tabParent.next('.tabs')).toggleClass('hide');
-        $('[tab=' + $(this).attr('tab') + ']', tabParent.next('.tabs')).toggleClass('hide');
 
-        e.preventDefault();
-    });
 
 
     $('.personal a').click(function (e) {
@@ -386,4 +381,8 @@ setInterval (function(){basket_preview();}, 2000);
 function request_product(product)
 {
 $('#request'+product).show();
-}
+}//end_basket
+
+$(function() {
+    $( "#prod-tabs" ).tabs();
+});

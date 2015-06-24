@@ -310,7 +310,8 @@ class Model_Catalog extends Model
                 array('models.short_text', 'short_text'),
                 array('models.complectation', 'complectation'),
                 array('categorys.alias', 'categorys_alias'),
-                array('categorys.id', 'categorys_id')
+                array('categorys.id', 'categorys_id'),
+                array('storages.id_citys','id_citys')
 
             )
                 ->from('models')

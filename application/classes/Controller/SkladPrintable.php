@@ -16,7 +16,7 @@ class Controller_SkladPrintable extends Controller
 
     private function content($content)
     {
-        $page = View::factory('printable');
+        $page = View::factory('sklad/printable/template');
         $page->body = $content;
         $this->response->body($page);
     }

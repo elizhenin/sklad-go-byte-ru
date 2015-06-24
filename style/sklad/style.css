@@ -3,10 +3,15 @@
     /*dummy for autocomplete*/
 }
 
+@font-face {
+    font-family: Sklad;
+    src: url(/fonts/FreeSans.ttf);
+}
+
 html, body {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, Sans Serif;
+    font-family: Sklad, Sans Serif;
     background-color: #f0f0f0;
 }
 

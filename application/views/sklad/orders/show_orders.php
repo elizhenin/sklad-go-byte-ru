@@ -14,6 +14,12 @@
             ?>
             <tr>
                 <td>
+                    <form name="form<?= $item['id'] ?>print" target="_blank" action="/sklad/printable/order" method="POST" style="display:inline;float:left;"><input
+                            type="hidden" name="orders_id"
+                            value="<?= $item['id'] ?>"/><input
+                            type="hidden" name="operation" value="edit"/><input type="submit" value="&#x1f5b6;"
+                                                                                title="Печать"/>
+                    </form>
                     <form name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"><input
                             type="hidden" name="orders_id"
                             value="<?= $item['id'] ?>"/><input

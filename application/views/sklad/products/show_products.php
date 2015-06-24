@@ -19,7 +19,7 @@
     <tr>
         <td>
 
-            <form name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"><input
+            <form class="symbols" name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"><input
                     type="hidden" name="products_id"
                     value="<?= $item['id'] ?>"/><input
                     type="hidden" name="operation" value="edit"/><input type="submit" value="&#x270E;"

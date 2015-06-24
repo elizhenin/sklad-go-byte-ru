@@ -28,7 +28,7 @@
                         <tr>
                             <td>
 
-                                <form name="form<?= $item['id'] ?>edit" method="POST"
+                                <form class="symbols" name="form<?= $item['id'] ?>edit" method="POST"
                                       style="display:inline;float:left;"><input
                                         type="hidden" name="category_id"
                                         value="<?= $item['id'] ?>"/><input
@@ -39,7 +39,7 @@
                                 <?php
                                 if ($item['deleted']) {
                                     ?>
-                                    <form name="form<?= $item['id'] ?>enable" method="POST"
+                                    <form class="symbols" name="form<?= $item['id'] ?>enable" method="POST"
                                           style="display:inline;float:left;">
                                         <input
                                             type="hidden" name="category_id"
@@ -51,7 +51,7 @@
                                 <?php
                                 } else {
                                     ?>
-                                    <form name="form<?= $item['id'] ?>disable" method="POST"
+                                    <form class="symbols" name="form<?= $item['id'] ?>disable" method="POST"
                                           style="display:inline;float:left;">
                                         <input
                                             type="hidden" name="category_id"
@@ -97,7 +97,7 @@
                         <tr>
                             <td>
 
-                                <form name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"
+                                <form class="symbols" name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"
                                       action="/sklad/models"><input
                                         type="hidden" name="models_id"
                                         value="<?= $item['id'] ?>"/><input
@@ -108,7 +108,7 @@
                                 <?php
                                 if ($item['deleted']) {
                                     ?>
-                                    <form name="form<?= $item['id'] ?>enable" method="POST"
+                                    <form class="symbols" name="form<?= $item['id'] ?>enable" method="POST"
                                           style="display:inline;float:left;" action="/sklad/models">
                                         <input
                                             type="hidden" name="models_id"
@@ -120,7 +120,7 @@
                                 <?php
                                 } else {
                                     ?>
-                                    <form name="form<?= $item['id'] ?>disable" method="POST"
+                                    <form class="symbols" name="form<?= $item['id'] ?>disable" method="POST"
                                           style="display:inline;float:left;" action="/sklad/models">
                                         <input
                                             type="hidden" name="models_id"

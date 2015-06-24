@@ -16,7 +16,7 @@
             <tr>
                 <td>
 
-                    <form name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"><input
+                    <form class="symbols" name="form<?= $item['id'] ?>edit" method="POST" style="display:inline;float:left;"><input
                             type="hidden" name="users_id"
                             value="<?= $item['id'] ?>"/><input
                             type="hidden" name="operation" value="edit"/><input type="submit" value="&#x270E;" title="Редактировать"/>
@@ -24,7 +24,7 @@
                     <?php
                     if($item['deleted']){
                         ?>
-                        <form name="form<?= $item['id'] ?>enable" method="POST" style="display:inline;float:left;">
+                        <form class="symbols" name="form<?= $item['id'] ?>enable" method="POST" style="display:inline;float:left;">
                             <input
                                 type="hidden" name="users_id"
                                 value="<?= $item['id'] ?>"/><input
@@ -33,7 +33,7 @@
                         <?php
                     }else {
                         ?>
-                        <form name="form<?= $item['id'] ?>disable" method="POST" style="display:inline;float:left;">
+                        <form class="symbols" name="form<?= $item['id'] ?>disable" method="POST" style="display:inline;float:left;">
                             <input
                                 type="hidden" name="users_id"
                                 value="<?= $item['id'] ?>"/><input

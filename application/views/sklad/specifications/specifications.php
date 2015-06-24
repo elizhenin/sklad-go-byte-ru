@@ -37,7 +37,7 @@
                     <?php
                     if($item['deleted']){
                         ?>
-                        <form name="form<?= $item['id'] ?>enable" method="POST" style="display:inline;float:right;">
+                        <form class="symbols" name="form<?= $item['id'] ?>enable" method="POST" style="display:inline;float:right;">
                             <input
                                 type="hidden" name="id"
                                 value="<?= $item['id'] ?>"/><input
@@ -46,7 +46,7 @@
                     <?php
                     }else {
                         ?>
-                        <form name="form<?= $item['id'] ?>disable" method="POST" style="display:inline;float:right;">
+                        <form class="symbols" name="form<?= $item['id'] ?>disable" method="POST" style="display:inline;float:right;">
                             <input
                                 type="hidden" name="id"
                                 value="<?= $item['id'] ?>"/><input
@@ -80,14 +80,14 @@
                 </td>
                 <td>
 
-                    <form name="form<?= $item['id'] ?>movedown" method="POST" style="display:inline-block;float: right">
+                    <form class="symbols" name="form<?= $item['id'] ?>movedown" method="POST" style="display:inline-block;float: right">
                         <input type="hidden" name="id" value="<?= $item['id'] ?>"/>
                         <input type="hidden" name="newpos" value="<?=$item['order']+1?>"?>
                         <input type="hidden" name="operation" value="specifications_move"/>
                         <input type="submit" value="&darr;" title="Вниз" <?=($item == end($items))?'disabled="disabled"':''?>/>
                     </form>
 
-                    <form name="form<?= $item['id'] ?>moveup" method="POST" style="display:inline-block;float: left">
+                    <form class="symbols" name="form<?= $item['id'] ?>moveup" method="POST" style="display:inline-block;float: left">
                         <input type="hidden" name="id" value="<?= $item['id'] ?>"/>
                         <input type="hidden" name="newpos" value="<?=$item['order']-1?>"?>
                         <input type="hidden" name="operation" value="specifications_move"/>
@@ -108,7 +108,7 @@
 
 <script type="application/javascript">
     function edit_name(id) {
-        edit_form = '<form name="name' + id + '" method="POST" style="display:inline;">' +
+        edit_form = '<form class="symbols" name="name' + id + '" method="POST" style="display:inline;">' +
         '<input type="hidden" name="id" value="' + id + '"/>' +
         '<input type="hidden" name="operation" value="specifications_rename"/>' +
         '<input type="text" name="name" value="' + $('#id' + id+' div div').text() + '"/>' +

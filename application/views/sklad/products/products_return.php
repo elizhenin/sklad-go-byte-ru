@@ -54,7 +54,7 @@
                     fields = JSON.parse(data);
                     html =
                         '<tr id="row'+fields.id+'">' +
-                        '<td>' + '<form><input type="button" value="X" onclick="row_remove(\'row'+fields.id+'\');"></form>' +
+                        '<td>' + '<form class="symbols"><input type="button" value="X" onclick="row_remove(\'row'+fields.id+'\');"></form>' +
                         '<input type="hidden" name="items[]" value="'+fields.id+'">' +
                         '</td>' +
                         '<td>' + fields.sku +

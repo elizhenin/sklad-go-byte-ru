@@ -81,7 +81,7 @@ if (empty($id_orders)) {
                                             <?php
                                             if (($item['complete']) && ($rights != 'super')) {
                                                 ?>
-                                                <form name="form<?= $product['id'] ?>return" method="POST"
+                                                <form class="symbols" name="form<?= $product['id'] ?>return" method="POST"
                                                       style="display:inline;float:left;">
                                                     <input type="hidden" name="id" value="<?= $product['id'] ?>"/>
                                                     <input type="hidden" name="product"
@@ -92,7 +92,7 @@ if (empty($id_orders)) {
                                             <?php
                                             } else {
                                                 ?>
-                                                <form name="form<?= $product['id'] ?>delete" method="POST"
+                                                <form class="symbols" name="form<?= $product['id'] ?>delete" method="POST"
                                                       style="display:inline;float:left;">
                                                     <input type="hidden" name="id" value="<?= $product['id'] ?>"/>
                                                     <input type="hidden" name="product"
@@ -106,7 +106,7 @@ if (empty($id_orders)) {
                                         </td>
                                         <td><?= $product['sku'] ?></td>
                                         <td><?= $product['name'] ?></td>
-                                        <td><form name="form<?= $product['id'] ?>cash" method="POST">
+                                        <td><form class="symbols" name="form<?= $product['id'] ?>cash" method="POST">
                                                 <input type="hidden" name="id" value="<?=(!empty($item['complete']))?'':$product['id']?>"/>
                                                 <input type="hidden" name="product"
                                                        value="<?=(!empty($item['complete']))?'':$product['id_products']?>">

@@ -91,8 +91,7 @@
                                 }else
                                 {
                                     ?>
-                                    {ПОД ЗАКАЗ}
-                                    <div class="button-preorder" onclick="request_product(<?= $item['product']['id'] ?>);">[Заказать]</div>
+                                    <div class="button-preorder" onclick="request_product(<?= $item['product']['id'] ?>);">Заказать</div>
                                     <div class="request-product" id="request<?= $item['product']['id'] ?>" style="display: none">
                                         <form method="POST">
                                             <input type="hidden" name="id" value="<?= $item['product']['sku'] ?>">

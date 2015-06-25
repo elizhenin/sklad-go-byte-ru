@@ -117,27 +117,27 @@
         ?>
         <div class="catalog-item-separator"></div>
     </div>
-    <div class="catalog-section-list">
-        <ul>
-            <li><a href="/catalog/laptops_tablets/">Ноутбуки</a><sup>(16)</sup></li>
-            <li><a href="/catalog/tablets/">Планшеты</a><sup>(16)</sup></li>
-            <li><a href="/catalog/books/">Книги</a><sup>(16)</sup></li>
-            <li><a href="/catalog/tablet_pc/">Планшеты</a><sup>(16)</sup></li>
-            <li><a href="/catalog/smartphones_and_cellphones/">Телефоны</a><sup>(16)</sup></li>
-            <li><a href="/catalog/smartphones/">Смартфоны</a><sup>(16)</sup></li>
-            <li><a href="/catalog/mobile_phones/">Мобильные телефоны</a><sup>(16)</sup></li>
-            <li><a href="/catalog/photo/">Фототехника</a><sup>(16)</sup></li>
-            <li><a href="/catalog/slr_cameras/">Зеркальные фотоаппараты</a><sup>(16)</sup></li>
-            <li><a href="/catalog/compact_cameras/">Компактные фотоаппараты</a><sup>(16)</sup>
-            </li>
-            <li><a href="/catalog/ultrazoom_cameras/">Ультразум фотоаппараты</a><sup>(16)</sup>
-            </li>
-            <li><a href="/catalog/auto/">Авто</a><sup>(16)</sup></li>
-            <li><a href="/catalog/dvrs/">Видеорегистраторы</a><sup>(16)</sup></li>
-            <li><a href="/catalog/radar_detectors/">Радар-детекторы</a><sup>(16)</sup></li>
-            <li><a href="/catalog/navigators/">Навигаторы</a><sup>(16)</sup></li>
-            <li><a href="/catalog/game_consoles/">Игровые приставки</a><sup>(16)</sup></li>
-        </ul>
-    </div>
+<!--    <div class="catalog-section-list">-->
+<!--        <ul>-->
+<!--            <li><a href="/catalog/laptops_tablets/">Ноутбуки</a><sup>(16)</sup></li>-->
+<!--            <li><a href="/catalog/tablets/">Планшеты</a><sup>(16)</sup></li>-->
+<!--            <li><a href="/catalog/books/">Книги</a><sup>(16)</sup></li>-->
+<!--            <li><a href="/catalog/tablet_pc/">Планшеты</a><sup>(16)</sup></li>-->
+<!--            <li><a href="/catalog/smartphones_and_cellphones/">Телефоны</a><sup>(16)</sup></li>-->
+<!--            <li><a href="/catalog/smartphones/">Смартфоны</a><sup>(16)</sup></li>-->
+<!--            <li><a href="/catalog/mobile_phones/">Мобильные телефоны</a><sup>(16)</sup></li>-->
+<!--            <li><a href="/catalog/photo/">Фототехника</a><sup>(16)</sup></li>-->
+<!--            <li><a href="/catalog/slr_cameras/">Зеркальные фотоаппараты</a><sup>(16)</sup></li>-->
+<!--            <li><a href="/catalog/compact_cameras/">Компактные фотоаппараты</a><sup>(16)</sup>-->
+<!--            </li>-->
+<!--            <li><a href="/catalog/ultrazoom_cameras/">Ультразум фотоаппараты</a><sup>(16)</sup>-->
+<!--            </li>-->
+<!--            <li><a href="/catalog/auto/">Авто</a><sup>(16)</sup></li>-->
+<!--            <li><a href="/catalog/dvrs/">Видеорегистраторы</a><sup>(16)</sup></li>-->
+<!--            <li><a href="/catalog/radar_detectors/">Радар-детекторы</a><sup>(16)</sup></li>-->
+<!--            <li><a href="/catalog/navigators/">Навигаторы</a><sup>(16)</sup></li>-->
+<!--            <li><a href="/catalog/game_consoles/">Игровые приставки</a><sup>(16)</sup></li>-->
+<!--        </ul>-->
+<!--    </div>-->
 
 </div>

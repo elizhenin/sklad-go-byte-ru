@@ -1,6 +1,7 @@
 <?php
 if (empty($welcome)) {
-    if(empty($catalog)) {
+    if(true) {
+//        if(empty($catalog)) {
         ?>
         <!--    Остальные страницы     -->
         <section id="headshot">

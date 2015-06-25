@@ -150,26 +150,24 @@
             <div class="col span_1_of_2">
                 <div class="left-menu">
                     <ul>
-                        <li><a href="/about/howto/">Контакты</a></li>
-                        <li><a href="/about/delivery/">Помощь покупателю</a></li>
-                        <li><a href="http://vk.com/topic-43410877_27364881" target="_blank">Оставить отзыв</a></li>
-                        <li><a href="/distributors/">Поставщикам</a></li>
+                        <li><a href="/contacts">Контакты</a></li>
+                        <li><a href="/corporate">Корпоративный отдел</a></li>
+                        <li><a href="/help">Помощь покупателю</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col span_1_of_2 right-menu">
-                <ul class="store-horizontal">
-                    <li><a href="/userpages/others.php">Наличие++</a></li>
-                    <li><a href="/catalog/laptops_tablets/">Ноутбуки</a></li>
-                    <li><a href="/catalog/tablets/">Планшеты </a></li>
-                    <li><a href="/catalog/smartphones_and_cellphones/">Телефоны</a></li>
-                    <li><a href="/catalog/photo/">Фототехника</a></li>
-                    <li><a href="/catalog/auto/">Авто</a></li>
-                    <li><a href="/catalog/game_consoles/">Игровые приставки</a></li>
-                </ul>
-            </div>
+<!--            <div class="col span_1_of_2 right-menu">-->
+<!--                <ul class="store-horizontal">-->
+<!--                    <li><a href="/catalog/laptops_tablets/">Ноутбуки</a></li>-->
+<!--                    <li><a href="/catalog/tablets/">Планшеты </a></li>-->
+<!--                    <li><a href="/catalog/smartphones_and_cellphones/">Телефоны</a></li>-->
+<!--                    <li><a href="/catalog/photo/">Фототехника</a></li>-->
+<!--                    <li><a href="/catalog/auto/">Авто</a></li>-->
+<!--                    <li><a href="/catalog/game_consoles/">Игровые приставки</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
         </div>
-        <!-- main-content -->
+         main-content
     </nav>
 </footer>
 </div>

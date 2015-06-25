@@ -130,41 +130,22 @@ $images = $item['images'];
             <div class="related">
                 <div class="related-table">
                     <ul class="related-carousel">
-                        <li>
-                            <a class="related-element" href="/">
-                                <div class="related-image"><img src="/images/sklad/1427104704_7koW.png" alt=""></div>
-                                <h3>IRU Ultraslim 302 E240/2GB/320GB/11,6"NoOS</h3>
-                                <span class="price">7 900 руб</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="related-element" href="/">
-                                <div class="related-image"><img src="/images/sklad/1427104704_7koW.png" alt=""></div>
-                                <h3>2 Ultraslim 302 E240/2GB/320GB/11,6"NoOS</h3>
-                                <span class="price">7 900 руб</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="related-element" href="/">
-                                <div class="related-image"><img src="/images/sklad/1427104704_7koW.png" alt=""></div>
-                                <h3>3 Ultraslim 302 E240/2GB/320GB/11,6"NoOS</h3>
-                                <span class="price">7 900 руб</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="related-element" href="/">
-                                <div class="related-image"><img src="/images/sklad/1427104704_7koW.png" alt=""></div>
-                                <h3>4 Ultraslim 302 E240/2GB/320GB/11,6"NoOS</h3>
-                                <span class="price">7 900 руб</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="related-element" href="/">
-                                <div class="related-image"><img src="/images/sklad/1427104704_7koW.png" alt=""></div>
-                                <h3>5 Ultraslim 302 E240/2GB/320GB/11,6"NoOS</h3>
-                                <span class="price">7 900 руб</span>
-                            </a>
-                        </li>
+                        <?php
+                        if(!empty($similar))
+                        foreach($similar as $item) {
+                            ?>
+                            <li>
+                                <a class="related-element" href="/catalog/<?= $item['product']['categorys_id'] ?>_<?= $item['product']['categorys_alias'] ?>/<?= $item['product']['alias'] ?>">
+                                    <div class="related-image"><img src="/images/sklad/<?= (!empty($item['image'])) ? $item['image']['file'] : 'no-image.png' ?>"
+                                                                    alt="<?= (!empty($item['image'])) ? $item['image']['alt'] : $item['product']['alias'] ?>">
+                                    </div>
+                                    <h3><?= $item['product']['name'] ?></h3>
+                                    <span class="price"><?= $item['product']['price'] ?> руб</span>
+                                </a>
+                            </li>
+                        <?php
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>

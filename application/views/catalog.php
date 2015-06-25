@@ -38,8 +38,8 @@
 
     <div class="catalog-item-list">
         <?php
-        if (!empty($items['models'])) {
-            foreach ($items['models'] as $item) {
+        if (!empty($items)) {
+            foreach ($items as $item) {
                 ?>
                 <div class="catalog-item">
                     <div class="catalog-item-info">

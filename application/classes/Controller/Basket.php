@@ -76,7 +76,7 @@ class Controller_Basket extends Controller_Tmp
                     if ($post['deliv_id'] == '2')
                         $text = 'С доставкой по адресу: ' . $post['client_address'] . "\n";
                     else $text = 'Самовывоз' . "\n";
-                    if (!empty($post['client_name'])) {
+                    if (!empty($post['client_name']))
                     $text .= 'Имя: ' . $post['client_name'] . "\n";
                     $text .= 'Почта: ' . $post['client_email'] . "\n";
                     if (!empty($post['client_comments'])) {

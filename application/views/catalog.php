@@ -92,14 +92,15 @@
                                 {
                                     ?>
                                     <div class="button-preorder" onclick="request_product(<?= $item['product']['id'] ?>);">Заказать</div>
-                                    <div class="request-product" id="request<?= $item['product']['id'] ?>" style="display: none">
+                                    <div class="request-product" id="request<?= $item['product']['id'] ?>">
+                                        <div class="clse">закрыть</div>
                                         <form method="POST">
                                             <input type="hidden" name="id" value="<?= $item['product']['sku'] ?>">
                                             <input type="hidden" name="operation" value="request_product">
                                             <input type="hidden" name="model" value="<?= $item['product']['name'] ?>">
-                                            Имя:<input type="text" name="name" title="Как к вам обращаться?">
-                                            email:<input type="email" name="email" title="Почта для связи">
-                                            телефон:<input type="tel" name="phone" title="Мы вам позвоним">
+                                            <div class="fi">Имя:<input type="text" name="name" title="Как к вам обращаться?"></div>
+                                            <div class="fi">Email:<input type="email" name="email" title="Почта для связи"></div>
+                                            <div class="fi">Телефон:<input type="tel" name="phone" title="Мы вам позвоним"></div>
                                             <input type="submit" value="Заказать">
                                         </form>
                                     </div>

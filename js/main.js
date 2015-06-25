@@ -347,8 +347,12 @@ setInterval (function(){basket_preview();}, 2000);
 
 function request_product(product)
 {
-$('#request'+product).show();
-}//end_basket
+    $('#request'+product).show();
+    $('.clse').click(function(){
+        $('#request'+product).hide();
+    });
+}
+
 
 $(function() {
     $('.fancyb').fancybox();

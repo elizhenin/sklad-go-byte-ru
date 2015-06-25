@@ -58,7 +58,21 @@
                             <tr><td colspan="4" width="100%">(Проверяем наличие...)</td></tr>
                             </tbody>
                         </table>
-
+                    <div class="tot">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="rt">Итого товаров:</td>
+                                    <td><span class="total-count"></span></td>
+                                </tr>
+                                <tr>
+                                    <td class="rt">На сумму:</td>
+                                    <td><span class="total-sum"></span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="clear: both;"></div>
                     <?=(empty($message))?'':'<div class="feedback-message">'.$message.'</div>'?>
                     <p>Внимание! если какой-то товар внезапно исчез из списка - значит его приобрели прямо сейчас, чуть раньше вас</p>
                     <script>

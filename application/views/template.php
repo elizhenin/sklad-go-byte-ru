@@ -13,6 +13,7 @@
     <script src="/js/main.js"></script>
     <script src="/js/pik/jquery.jcarousel.min.js"></script>
     <script src="/js/pik/jquery.pikachoose.min.js"></script>
+    <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
 
     <link type="text/css" rel="stylesheet" href="/style/magnific-popup.css">
     <link type="text/css" rel="stylesheet" href="/style/fancybox.css">

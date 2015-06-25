@@ -2,7 +2,7 @@
 
 class Controller_Basket extends Controller_Tmp
 {
-    private function OrdersAdd($phone)
+    private function OrdersAdd($phone, $text)
     {
         $user = DB::select()
             ->from('users')
@@ -17,7 +17,7 @@ class Controller_Basket extends Controller_Tmp
         $data['date'] = DB::expr('NOW()');
         $data['phone'] = $phone;
         $data['modificated'] = $data['date'];
-        $data['text'] = 'Заказ с интернет-магазина';
+        $data['text'] = $text;
         $order = DB::insert('orders', array_keys($data))
             ->values($data)
             ->execute();
@@ -52,22 +52,46 @@ class Controller_Basket extends Controller_Tmp
     {
         $page = view::factory('basket');
         if ($this->request->method() == Request::POST) {
-            $phone = htmlspecialchars(trim($this->request->post('phone')));
-            if ($phone) {
+            $post = $this->request->post();
+            foreach ($post as $key => $value) $post[$key] = htmlspecialchars(trim($value));
+            $check = true;$feedback_message='Заказ успешно оформлен';
+            if (empty($post['client_email'])) {
+                $check = false;
+                $feedback_message = 'Введите email';
+            }
+            if (empty($post['client_phone'])) {
+                $check = false;
+                $feedback_message = 'Заполните номер телефона';
+            }
+            if (empty($post['client_address']) && $post['deliv_id'] == '2') {
+                $check = false;
+                $feedback_message = 'А куда везти-то?';
+            }
+            if ($check) {
                 $basket = json_decode(Cookie::get('basket', '[]'), true);
                 if (!empty($basket))
                     $items = Model_Basket::ModelsCheckAvailAble($basket);
                 if (!empty($items)) {
-                    $order = $this->OrdersAdd($phone);
+                    $phone = $post['client_phone'];
+                    if ($post['deliv_id'] == '2')
+                        $text = 'С доставкой по адресу: ' . $post['client_address'] . "\n";
+                    else $text = 'Самовывоз' . "\n";
+                    if (!empty($post['client_name'])) {
+                    $text .= 'Имя: ' . $post['client_name'] . "\n";
+                    $text .= 'Почта: ' . $post['client_email'] . "\n";
+                    if (!empty($post['client_comments'])) {
+                        $text .= 'Комментарий клиента:' . "\n";
+                        $text .= $post['client_comments'];
+                    }
+                    $order = $this->OrdersAdd($phone, $text);
                     $this->ProductsToOrder($order, $basket);
                     Cookie::set('basket', '[]');
-                    $page->message = 'Ваш заказ оформлен';
-                }else $page->message = 'Сожалеем, но выбранного товара больше нет. Кто-то успел раньше Вас :(';
+                        $feedback_message = 'Ваш заказ оформлен';
+                } else $feedback_message = 'Сожалеем, но выбранного товара больше нет. Кто-то успел раньше Вас :(';
 
-            } else $page->message = 'Заполните номер телефона';
+            }
+                    $page->message = $feedback_message;
         }
         $this->page = $page;
     }
-
-
 }

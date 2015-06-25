@@ -150,7 +150,7 @@ if (empty($id_orders)) {
                             Комментарий:
                         </td>
                         <td style="text-align: left">
-                            <input type="text" name="text" value="<?= (!empty($item['text'])) ? $item['text'] : '' ?>"/>
+                            <textarea name="text"><?= (!empty($item['text'])) ? $item['text'] : '' ?></textarea>
                         </td>
                     </tr>
                     <tr>

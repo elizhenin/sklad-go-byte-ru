@@ -52,7 +52,13 @@ class Controller_Catalog extends Controller_Tmp
                     $page->current_city_id = $this->city['id'];
                     $page->spec_groups = $ModelCatalog->SpecificationsGroupsGetVisible();
                     $page->item = $product_check;
-                    $page->similar = $ModelCatalog->ModelGetByCategory($category_check['id']);
+                    $similar = $ModelCatalog->ModelGetByCategory($category_check['id']);
+                    if(!empty($similar))
+                        foreach($similar as $key=>$item)
+                        {
+                            if(abs($item['product']['price'] - $page->item['product']['price'])>3000) unset($similar[$key]);
+                        }
+                    $page->similar = $similar;
                     $this->title = $product_check['product']['title'];
                     $this->description = $product_check['product']['description'];
                     $this->keywords = $product_check['product']['keywords'];

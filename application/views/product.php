@@ -50,7 +50,18 @@ $images = $item['images'];
                         }else
                         {
                             ?>
-                            <div class="button-preorder" onclick="basket_add(<?= $product['id'] ?>);">Заказать</div>
+                            <div class="button-preorder" onclick="request_product(<?= $product['id'] ?>);">Заказать</div>
+                            <div class="request-product" id="request<?= $product['id'] ?>" style="display: none">
+                                <form method="POST">
+                                    <input type="hidden" name="id" value="<?= $product['sku'] ?>">
+                                    <input type="hidden" name="operation" value="request_product">
+                                    <input type="hidden" name="model" value="<?= $product['name'] ?>">
+                                    Имя:<input type="text" name="name" title="Как к вам обращаться?">
+                                    email:<input type="email" name="email" title="Почта для связи">
+                                    телефон:<input type="tel" name="phone" title="Мы вам позвоним">
+                                    <input type="submit" value="Заказать">
+                                </form>
+                            </div>
                         <?php
                         }
                         ?>

@@ -297,8 +297,28 @@ class Model_Catalog extends Model
     {
         $return = false;
         if (!empty($alias) && (!empty($id)) && (!empty($product))) {
+            $storages_settings = DB::select(
+                array('from_storage.id_citys', 'from_id')
+            )
+                ->from('storages_settings')
+                ->join(array('storages', 'from_storage'))
+                ->on('from_storage.id', '=', 'storages_settings.from')
+                ->join(array('storages', 'to_storage'))
+                ->on('to_storage.id', '=', 'storages_settings.to')
+                ->where('to_storage.id_citys', '=', $this->city['id'])
+                ->where('storages_settings.deleted', '=', '0')
+                ->execute()
+                ->as_array();
+            $citys = array();
+            $citys[] = $this->city['id'];
+            if (!empty($storages_settings)) {
+                foreach ($storages_settings as $setting)
+                    $citys[] = $setting['from_id'];
+                unset($storages_settings);
+            }
             $select = DB::select(
                 array('models.id', 'id'),
+                array('models.sku', 'sku'),
                 array('models.name', 'name'),
                 array('models.title', 'title'),
                 array('models.keywords', 'keywords'),
@@ -321,7 +341,7 @@ class Model_Catalog extends Model
                 ->on('products.id_models', '=', 'models.id')
                 ->join('storages')
                 ->on('products.id_storage', '=', 'storages.id')
-                ->where('storages.id_citys', '=', $this->city['id'])
+                ->where('storages.id_citys', 'IN', $citys)
                 ->where('models.alias', '=', $product)
                 ->where('categorys.alias', '=', $alias)
                 ->where('categorys.id', '=', $id)

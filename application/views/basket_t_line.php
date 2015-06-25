@@ -3,8 +3,8 @@
     <td><?=$item['name']?></td>
     <td><?=$item['price']?> р.</td>
     <td>
-        <div onclick="basket_del(<?=$item['id']?>);" style="cursor: pointer">
-            [X]
+        <div class="basket-del" onclick="basket_del(<?=$item['id']?>);" >
+            Удалить
         </div>
     </td>
 </tr>

@@ -82,7 +82,6 @@ $(document).ready(function() {
     //Прокрутка похожих товаров
     $('.related-carousel').jcarousel({
         scroll: 1,
-        wrap: 'circular',
         buttonPrevHTML: '<span class="related-prev"></span>',
         buttonNextHTML: '<span class="related-next"></span>'
     });
@@ -248,45 +247,6 @@ $(document).ready(function() {
         $('.outset', panel).css({transform: insetTransform});
     }
 
-
-    function loadMap() {
-
-        ymaps.ready(function () {
-
-            if (cityCode == 'lipetsk') {
-                coord = [52.606845, 39.573774];
-                baloonStr = "<strong>Магазин компьютерной техники \"Byte\"</strong><div>ул. 8-ое марта 36";
-            } else {
-                coord = [51.667977, 39.172731];
-                baloonStr = "<strong>Магазин компьютерной техники \"Byte\"</strong><div>ул. 9 Января 68 \"З\"";
-            }
-
-            myMap = new ymaps.Map("map", {
-                center: coord,
-                zoom: 16
-            });
-
-            myMap.setType('yandex#map');
-            myMap.controls.add('mapTools');
-
-            myMap.controls.add(new ymaps.control.ZoomControl());
-
-            myPlacemark = new ymaps.Placemark(coord, {
-                    balloonContent: baloonStr
-                },
-                {
-                    iconImageHref: '/bitrix/templates/ironbuy/images/marker.png',
-                    iconImageSize: [139, 42],
-                    iconImageOffset: [-10, -42]
-                });
-
-            myMap.geoObjects.add(myPlacemark);
-
-//		функция для перерисовки карты
-//	    myMap.container.fitToViewport();
-
-        });
-    }
 
 });
 

@@ -511,7 +511,6 @@ p {
 
 #header #header-top .logo img {
   position: relative;
-  left: -32px;
   top: 7px
 }
 
@@ -764,7 +763,21 @@ p {
 }
 
 #header #header-menu .menu-left {
-  float: left
+  float: left;
+  margin: 0 0 0 32px;
+}
+
+.feedback-message {
+  position: fixed;
+  z-index: 999;
+  background: url("../img/transparent.png") repeat;
+  color: #FFFFFF;
+  bottom: 30px;
+  left: 30px;
+  padding: 40px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
 }
 
 #header #header-menu .phone-number {
@@ -2780,6 +2793,22 @@ p {
   padding-top: 15px
 }
 
+#workarea #order-form-wrapper{
+  .op4 {
+    display: none;
+  }
+  .order-info {
+    textarea {
+      max-width: 100%;
+    }
+  }
+  .order-buttons {
+    input[type="submit"] {
+      cursor: pointer;
+    }
+  }
+}
+
 #workarea .order-confirm h1 {
   font-size: 18px;
   margin-bottom: 20px
@@ -3212,6 +3241,8 @@ p {
 
 #workarea .basket-del {
   cursor: pointer;
+  font-size: 14px;
+
 }
 
 #workarea .tot {
@@ -3418,6 +3449,9 @@ p {
 }
 
 #workarea .order-list #map {
+  -webkit-box-shadow: 0px 4px 7px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    0px 4px 7px 0px rgba(50, 50, 50, 0.75);
+  box-shadow:         0px 4px 7px 0px rgba(50, 50, 50, 0.75);
   height: 200px;
   width: 100%
 }

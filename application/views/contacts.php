@@ -16,31 +16,7 @@
         <p>тел.: 8 (473) 200-10-95</p>
     </div>
     <div class="col span_4_of_7">
-        <script type="text/javascript">
-            ymaps.ready(init);
-
-            function init(){
-              var myMap = new ymaps.Map ("map", {
-                    center: [51.66772617, 39.17602591],
-                    zoom: 16
-                });
-                myMap.controls.add(
-                    new ymaps.control.ZoomControl()
-                );
-              var myPlacemark = new ymaps.Placemark([51.66791298, 39.17285018], {
-                    hintContent: 'Дисконт центр "Byte"',
-                    balloonContent: 'Дисконт центр "BYTE"<br><span>9 января 68з, 3 этаж</span>'
-                } , {
-                  iconImageHref: 'http://gobyte.studio-pulse.ru/images/logo.png',
-                  iconImageSize: [130, 39],
-                  iconImageOffset: [-10, -50]
-
-              });
-
-                myMap.geoObjects.add(myPlacemark);
-            }
-        </script>
         <h2>Как нас найти</h2>
-        <div id="map"</div>
+        <div id="map"></div>
     </div>
 </div>

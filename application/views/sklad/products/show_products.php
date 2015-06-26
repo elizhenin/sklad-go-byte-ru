@@ -8,6 +8,8 @@
     <td>Код</td>
     <td>Модель</td>
     <td>Склад</td>
+    <td>Цена</td>
+    <td>Мин.цена</td>
     <td>Продан</td>
     <td>Дата продажи</td>
     </thead>
@@ -61,6 +63,8 @@
             <a href="/sklad/products/<?= $item['alias'] ?>" title="Сортировать по модели"><?= $item['model'] ?></a>
         </td>
         <td><?= $item['storage'] ?></td>
+        <td style="text-align: right"><?= $item['price'] ?> р</td>
+        <td style="text-align: right"><?= $item['in_price'] ?> р</td>
         <td>
             <?php
             if (!empty($item['out'])) {

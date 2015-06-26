@@ -124,6 +124,8 @@ class Model_SkladProducts extends Model
         $select = DB::select(
             array('products.id', 'id'),
             array('models.alias', 'alias'),
+            array('models.price', 'price'),
+            array('models.in_price', 'in_price'),
             array('models.name', 'model'),
             array('products.sku', 'sku'),
             array('storages.name', 'storage'),

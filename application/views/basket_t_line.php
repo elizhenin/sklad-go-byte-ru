@@ -4,7 +4,7 @@
     <td><?=$item['price']?> р.</td>
     <td>
         <div class="basket-del" onclick="basket_del(<?=$item['id']?>);" >
-            Удалить
+            Убрать
         </div>
     </td>
 </tr>

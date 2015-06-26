@@ -21,6 +21,7 @@
     <link type="text/css" rel="stylesheet" href="/js/paralax/paralax.css">
     <link type="text/css" rel="stylesheet" href="/js/pik/base.css">
     <link type="text/css" rel="stylesheet" href="/js/fancybox/jquery.fancybox.css">
+    <link type="text/css" rel="stylesheet" href="/style/tooltipster.css">
     <link href='http://fonts.googleapis.com/css?family=Play:700|Poiret+One|Open+Sans:300&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Didact+Gothic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
@@ -38,7 +39,7 @@
 <header id="header">
     <section id="header-top">
         <div class="main-content">
-            <div class="logo col span_1_of_3"><a href="/" title=""> <span class="halflogo"></span> <img
+            <div class="logo col span_1_of_3"><a href="/">  <img
                         src="/images/logo.png"> </a></div>
             <div class="basket col span_1_of_3"> <span class="cart_line">
           <div class="sale-basket-small">

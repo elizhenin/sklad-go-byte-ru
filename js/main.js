@@ -2,12 +2,28 @@ $(document).ready(function() {
 
     $('.tooltip').tooltipster({theme: '.tooltipster-shadow'});
 
+    setTimeout(function(){
+        $('.feedback-message').fadeOut(700)
+    }, 5000);
+
     //выпадающая помощь в шапке сайта
     $('.webform-title span').on({
         'mouseenter': function () {
             $('.preorder-help-inner').show();
             $('.header-webform-body').show();
         }
+    });
+
+    $("input[name$='deliv_id']").change(function() {
+        var test = $(this).val();
+        if(test == 2){
+            $("#map").stop(true,true).slideUp();
+            $('.op4').fadeIn();
+        }else{
+            $("#map").stop(true,true).slideDown();
+            $('.op4').fadeOut();
+        }
+
     });
 
     $('.header-webform-body').on({
@@ -180,15 +196,35 @@ $(document).ready(function() {
     });
 
 
+    ymaps.ready(init);
+
+    function init(){
+        var myMap = new ymaps.Map ("map", {
+            center: [51.66772617, 39.17602591],
+            zoom: 16
+        });
+        myMap.controls.add(
+            new ymaps.control.ZoomControl()
+        );
+        var myPlacemark = new ymaps.Placemark([51.66791298, 39.17285018], {
+            hintContent: 'Дисконт центр "Byte"',
+            balloonContent: 'Дисконт центр "BYTE"<br><span>9 января 68з, 3 этаж</span>'
+        } , {
+            iconImageHref: 'http://gobyte.studio-pulse.ru/images/logo.png',
+            iconImageSize: [130, 39],
+            iconImageOffset: [-10, -50]
+
+        });
+
+        myMap.geoObjects.add(myPlacemark);
+    }
+
+
     //Панели предзаказа товара в шапке страницы
     $('.promo-item:not(.promo-9) a:not(.social)').on('click', function (e) {
         if (Modernizr.csstransitions) {
             e.preventDefault();
         }
-    });
-
-    $(document).on('click', '.b-share__link', function (e) {
-        e.stopPropagation();
     });
 
     //Вращение плиток в шапке сайта
@@ -316,10 +352,8 @@ function request_product(product)
 
 $(function() {
     $('.fancyb').fancybox();
-
     $( "#prod-tabs" ).tabs();
 });
-
 
 $(document).ready(function (){
     var a = function(self){

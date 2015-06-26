@@ -3,7 +3,7 @@
             <section class="delivery" id="delivery-section">
                 <div class="main-content">
                     <div class="field">
-                        <input type="radio" id="deliv1" name="deliv_id" checked="checked"  value="1">
+                        <input type="radio" id="deliv1" name="deliv_id" checked value="1">
                         <label for="deliv1">
                             Самовывоз
                             <p>Самостоятельно забрать заказ в день оформления  по адресу г. Воронеж 9 Января 68 "3" , третий этаж офис № 302 </p>
@@ -16,6 +16,7 @@
                             <p>Доставка осуществляется в течение дня в удобное для вас время. </p>
                         </label>
                     </div>
+                    <div id="map"></div>
                 </div>
             </section>
             <section class="rekv">
@@ -30,11 +31,11 @@
                     </div>
                     <div class="field op3">
                         <label for="op3"> Телефон </label>
-                        <input type="text" maxlength="250" size="0" value="" name="client_phone" id="op3">
+                        <input class="tooltip" title="Поле обязательно для заполнения" type="text" maxlength="250" size="0" value="" name="client_phone" id="op3">
                     </div>
                     <div class="field op4">
                         <label for="op4"> Адрес доставки </label>
-                        <input type="text" maxlength="250" size="30" value="" name="client_address" id="op4" placeholder="ул. Ленина д. 1 кв. 15">
+                        <input class="tooltip" title="Поле обязательно для заполнения" type="text" maxlength="250" size="30" value="" name="client_address" id="op4" placeholder="ул. Ленина д. 1 кв. 15">
                     </div>
                 </div>
             </section>
@@ -73,7 +74,6 @@
                         </table>
                     </div>
                     <div style="clear: both;"></div>
-                    <?=(empty($message))?'':'<div class="feedback-message">'.$message.'</div>'?>
                     <p>Внимание! если какой-то товар внезапно исчез из списка - значит его приобрели прямо сейчас, чуть раньше вас</p>
                     <script>
                         setInterval (function(){basket_edit();}, 1000);
@@ -81,7 +81,7 @@
                 </div>
             </section>
             <!-- summary -->
-
+            <?=(empty($message))?'':'<div class="feedback-message">'.$message.'</div>'?>
             <section class="order-comment">
                 <div class="main-content">
                     <div class="order-title">

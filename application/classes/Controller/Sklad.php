@@ -30,10 +30,6 @@ class Controller_Sklad extends Controller_SkladTmp
                 $this->template->error = true;
             }
         }
-
-        $this->template->items = $modelSklad->GetActive();
-        $this->template->last = Cookie::get('user', '');
-
         $user = $ses->get('user', false);
         if ($user) {
             $modelSklad->UpdateLogin($user['id']);

@@ -3,6 +3,33 @@
 class Controller_Ajax extends Controller
 {
 
+    public function action_login()
+    {
+        $check =  str_replace(
+            URL::site(NULL, TRUE),
+            '[OK]/',
+            $this->request->referrer()
+        );
+        if ($check == '[OK]/sklad/login') {
+            $modelSklad = new Model_SkladLogin();
+            $active = $modelSklad->GetActive();
+            $logins = array();
+            if (!empty($active))
+                foreach ($active as $key => $value) {
+                    $logins[] = array(
+                        'id' => $value['id'],
+                        'name' => $value['name']
+                    );
+                }
+
+            $fields = array(
+                'lastlogin' => Cookie::get('user', ''),
+                'logins' => $logins
+            );
+            echo json_encode($fields);
+        }
+    }
+
     public function action_imageUpload()
     {
         if (isset($_FILES['file'])) {

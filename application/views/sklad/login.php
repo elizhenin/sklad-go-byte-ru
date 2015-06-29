@@ -8,27 +8,24 @@
     <script src="/js/sklad/jquery.js"></script>
     <script type="application/javascript">
         $(function () {
-            var last_login = "<?=$last?>";
-            var logins = [
-                <?php
-                if (!empty($items))
-                    foreach ($items as $one) {
-                        ?>
-                {id:"<?= $one['id'] ?>", name:"<?= $one['name'] ?>"},
-                <?php
-                }
-            ?>
-            ];
-
-            logins.forEach(function(value){
-                    tmp = '<option value="'+value.id+'"';
-                    if(value.name == last_login) {
-                        tmp = tmp +'selected="selected"';
+            jQuery.ajax({
+                url: '/ajax/login',
+                type: 'GET',
+                success: function (data) {
+                    if (data != '') {
+                        fields = JSON.parse(data);
+                        logins = fields["logins"];
+                        logins.forEach(function (value) {
+                            tmp = '<option value="' + value.id + '"';
+                            if (value.name == fields["lastlogin"]) {
+                                tmp = tmp + 'selected="selected"';
+                            }
+                            tmp = tmp + '>' + value.name + '</option>';
+                            $("select").append($(tmp));
+                        })
                     }
-                    tmp = tmp +'>'+value.name+'</option>';
-                    $("select").append($(tmp));
                 }
-            );
+            });
         });
     </script>
     <title>Авторизация</title>
@@ -41,15 +38,15 @@
     <?php } ?>
     <form method="post">
         <div class="log">
-        <span>Логин</span>
-        <select name="id">
+            <span>Логин</span>
+            <select name="id">
 
-        </select>
+            </select>
         </div>
         <div class="clr"></div>
         <div class="pas">
-        <span>Пароль</span>
-        <input type="password" name="password" autofocus="autofocus">
+            <span>Пароль</span>
+            <input type="password" name="password" autofocus="autofocus">
         </div>
         <input class="button" type="submit" value="Вход">
     </form>

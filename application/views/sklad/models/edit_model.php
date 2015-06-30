@@ -66,7 +66,7 @@
                     Описание:
                 </td>
                 <td style="text-align: left">
-                    <textarea name="text"><?= (!empty($item['text'])) ? $item['text'] : '' ?></textarea>
+                    <textarea  class="redactor" name="text"><?= (!empty($item['text'])) ? $item['text'] : '' ?></textarea>
                 </td>
             </tr>
             <tr>

@@ -1,4 +1,4 @@
-    <div id="order-form-wrapper">
+<!--    <div id="order-form-wrapper">-->
         <form method="POST">
             <section class="delivery" id="delivery-section">
                 <div class="main-content">

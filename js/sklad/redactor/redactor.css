@@ -3,7 +3,7 @@
 	overflow: visible;
 	border: 1px solid #ddd;
 	background-color: #fff;
-    width: 710px;
+    width: 100%;
     margin: 0 auto 30px auto;
     text-align: left;
 }
@@ -323,7 +323,7 @@ body .redactor_box_fullscreen {
 	background: -ms-linear-gradient(top,  #fafafa 0%,#e5e5e5 94%,#d3d3d3 94%,#d3d3d3 100%);
 	background: linear-gradient(to bottom,  #fafafa 0%,#e5e5e5 94%,#d3d3d3 94%,#d3d3d3 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#d3d3d3',GradientType=0 );
-
+	z-index: 9;
 	list-style: none !important;
 	font-size: 0;
 	font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif !important;

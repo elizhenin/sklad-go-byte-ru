@@ -21,9 +21,9 @@
                 lang: 'ru',
                 convertDivs: false,
                 deniedTags: ['html', 'head', 'body', 'meta', 'applet'],
-                minHeight: 400,
+                minHeight: 200,
                 imageUpload: '/ajax/imageUpload',
-                toolbarFixedBox: true,
+                toolbarFixedBox: false,
                 removeEmpty: ['strong', 'em', 'span', 'p']
             });
         });

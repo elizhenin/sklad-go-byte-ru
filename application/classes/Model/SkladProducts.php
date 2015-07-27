@@ -421,6 +421,28 @@ class Model_SkladProducts extends Model
         }
     }
 
+    public function ProductsBroken($post)
+    {
+        if (!empty($post)) {
+            Model_SkladProducts::ProductsHistory('Возврат по браку', $post['product']);
+            $data = array();
+            $data['out'] = '0';
+            $data['date_out'] = '0';
+            $data['id_storage'] = '1';
+            DB::update('products')
+                ->set($data)
+                ->where('id', '=', $post['product'])
+                ->execute();
+            DB::update('orders_products')
+                ->set(array(
+                    'moneyback' => '1'
+                ))
+                ->where('id', '=', $post['id'])
+                ->limit(1)
+                ->execute();
+        }
+    }
+
     static function ProductsHistory($message, $id_products)
     {
         $db = DB::select()

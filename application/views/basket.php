@@ -41,8 +41,6 @@
             </section>
             <!-- rekv -->
 
-
-
             <section class="pay-system">
                 <div class="main-content">
 
